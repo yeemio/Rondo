@@ -40,7 +40,7 @@ import type { SqliteRepositories } from '../../adapters/sqlite/repositories';
 export const SCRYPT_PARAMS = { N: 16384, r: 8, p: 1, keylen: 64 } as const;
 
 export const DEFAULT_GUARDIAN_SESSION_TTL_MS = 60 * 60 * 1000; // 1 hour
-export const DEFAULT_LEARNER_SESSION_TTL_MS = 15 * 60 * 1000; // 15 minutes ("短期会话")
+export const DEFAULT_LEARNER_SESSION_TTL_MS = 4 * 60 * 60 * 1000; // Owner-approved ordinary learning session; lock and Host epoch still revoke it.
 export const DEFAULT_MAX_FAILED_ATTEMPTS = 5;
 export const DEFAULT_LOCKOUT_MS = 5 * 60 * 1000;
 
