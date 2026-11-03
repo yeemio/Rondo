@@ -1,5 +1,5 @@
-import {MATH_ACTIVITIES} from '../../../modules/curriculum/math6';
-import {GESP_ACTIVITIES} from '../../../modules/curriculum/gesp';
+import {MATH_REGISTERED_ACTIVITIES} from '../../../modules/curriculum/math6';
+import {GESP_REGISTERED_ACTIVITIES} from '../../../modules/curriculum/gesp';
 /**
  * Rondo learning wiring (A lane, integrated/ R2): the single Host service that
  * assembles B's learning domain behind the frozen composition seams.
@@ -56,7 +56,7 @@ import {
 } from '../../../modules/contracts/public/auth';
 import { rondoError, type RondoError } from '../../../modules/contracts/public/errors';
 import { rondoOpError } from './ipc-router';
-import {AI_ACTIVITIES} from '../../../modules/curriculum/mvp';
+import {AI_ACTIVITIES,supersededActivityNotice} from '../../../modules/curriculum/mvp';
 import { ViewOps, callView } from './view-ops';
 
 /** WindowRef recorded on issued sessions: the rondo://app trusted main window (sender/origin asserted by Desktop Main on every message). */
@@ -73,8 +73,8 @@ export const TRUSTED_WINDOW_REF = 'rondo://app/main';
 export const RELEASE_IDS = [
   'rondo.mvp.math-ratio-r1', 'rondo.mvp.gesp-202303-p1-r1',
   ...AI_ACTIVITIES.map(a=>a.releaseId),
-  ...GESP_ACTIVITIES.map(a=>a.releaseId),
-  ...MATH_ACTIVITIES.map(a=>a.releaseId),
+  ...GESP_REGISTERED_ACTIVITIES.map(a=>a.releaseId),
+  ...MATH_REGISTERED_ACTIVITIES.map(a=>a.releaseId),
   // 先修微课（themes.micro.v1 — prerequisite entry strand）
   'rondo.thm.m1-r1',
   'rondo.thm.m2-r1',
@@ -166,7 +166,7 @@ async function rondo<T>(fn: () => Promise<T>): Promise<T> {
 function policyFromReleases(releases: readonly ReleaseRecord[]): LearningPolicySet {
   const nextByTask = new Map<string, string[]>();
   const hintMax = new Map<string, number>();
-  const byCourseOrder = releases.slice().sort(
+  const byCourseOrder = releases.filter(record=>!supersededActivityNotice(record.releaseId)).sort(
     (a, b) => RELEASE_IDS.indexOf(a.releaseId as (typeof RELEASE_IDS)[number]) - RELEASE_IDS.indexOf(b.releaseId as (typeof RELEASE_IDS)[number]),
   );
   for (let r = 0; r < byCourseOrder.length; r += 1) {

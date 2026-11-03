@@ -3,8 +3,9 @@ export const MATH_ACTIVITY='math6' as const;
 export const MATH_FAMILIES=['decimal','relation','billing','place','ratio','golden','circle','scale','position'] as const;
 export type MathFamily=typeof MATH_FAMILIES[number];
 export const mathLessonIdSchema=z.string().regex(/^math6\.(?:u[167]-\d{2}|a-(?:u[23]|sp|bin)-\d{2}|b\d{2}|r-\d{2})$/);
-export const MATH_CONTROLS=['a','b','total','part','den','first','second','elapsed','count','denominator','base','digits','minutes','usage','threshold','scale','radius','inner','angle','slices','assembled','sx','sy','divisor','mapCm','col','row','quadrant','distance','width','step','dx','dy','turn','mirror','measured','roll'] as const;
-const valuesSchema=z.record(z.string(),z.number().finite()).refine(v=>Object.keys(v).every(k=>(MATH_CONTROLS as readonly string[]).includes(k)),'未知模型数值项');
+export const MATH_CONTROLS=['a','b','total','part','den','first','second','elapsed','count','denominator','base','digits','minutes','usage','threshold','scale','radius','inner','angle','slices','assembled','sx','sy','divisor','mapCm','col','row','quadrant','distance','width','step','dx','dy','turn','mirror','measured','roll','positionView'] as const;
+// Measurement identity is derived by the server; it is never an editable control.
+const valuesSchema=z.record(z.string(),z.number().finite()).refine(v=>Object.keys(v).every(k=>k==='measuredRadius'||(MATH_CONTROLS as readonly string[]).includes(k)),'未知模型数值项');
 export const mathStateSchema=z.object({version:z.literal('math.state.v1'),lessonId:mathLessonIdSchema,family:z.enum(MATH_FAMILIES),values:valuesSchema,trials:z.array(z.object({values:valuesSchema}).strict()).max(12),observation:z.string().max(2000)}).strict();
 export type MathState=z.infer<typeof mathStateSchema>;
 export const mathOperationSchema=z.discriminatedUnion('type',[

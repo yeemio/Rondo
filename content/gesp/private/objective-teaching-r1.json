@@ -1,0 +1,58 @@
+{
+  "gesp2.202606.tf09": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "每轮用N%10取个位并乘当前位权，再把N除10、位权乘10，已取得的各位回到原来的位置，正常小整数例子会还原原数。若推广到int最大位数，最后多做的Nbase*=10也可能溢出；工程代码应采用更宽类型或避免无用的最终更新，不能把题中小范围推演当无范围保证。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq06": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i为0、1时内层没有满足的j；i=2时j=1，2*1%2==0输出2#；i=3时j=2输出3#。continue只结束当前内层轮次，最后循环外输出0，因此是2#3#0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "||执行逻辑或，6和7都转成真，结果是真值1。它不会把两个数字拼接成67，也不会返回它们的十进制连接。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq06": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "XX按12种状态00到11循环，Y按10种状态0到9循环，因此两个取余模数分别12和10，空格选择A。但原题说第1个为00-0，而代码直接用N取余有整体偏移；若按第1个编号从N=1输入，应先令位置=N-1再取余，不能把原代码当完整正确程序。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "每次把当前score加进total_score；只有score>=6时把人数high_count加1，人数不能加上分值。最后按代码给出的high_count>=5决定输出；原文字对不满足该条件的中间人数情况表述不完全，课程按这段核心规则说明，不把它补写成另一套计分规则。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq14": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "先比较距离，更近就更新；距离相同则只在新身高更矮时更新。两种更新原因用||连接，第二种内部用&&；身高完全相同则不更新，保留先遇到的人。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "进入else if说明距离已经相同，只需比较h与当前best_height。h更小时才替换成更矮者；相同身高不替换，才能保留题目要求的第一个。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  }
+}

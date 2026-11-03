@@ -348,12 +348,16 @@
         "label": "3.5÷1.1保留三位小数"
       }
     ],
-    "construction": {},
+    "construction": {
+      "a": 90,
+      "b": 45
+    },
     "explanation": "0.9÷0.045=900÷45=20；13.6÷4=3.4，剩余也需一次；3.1818…看第四位舍入。",
     "hints": [
       "把两个数一起乘1000。",
       "运输次数不是简单按四舍五入。"
-    ]
+    ],
+    "modelEvidence": "decimal-division"
   },
   "math6.u1-12": {
     "version": "math.truth.v1",
@@ -1315,31 +1319,31 @@
         "kind": "quantity",
         "value": "300",
         "unit": "克",
-        "feedback": "两种皮中糯米粉：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
-        "label": "两种皮中糯米粉"
+        "feedback": "先只看第一份500克青团皮，按糯米粉、草浆的顺序列份数，再核对总份数与单位。",
+        "label": "500克青团皮中的糯米粉"
       },
       {
         "id": "q2",
         "kind": "quantity",
         "value": "200",
         "unit": "克",
-        "feedback": "两种皮中草浆：先核对数量所指的对象、运算和单位。 加入第三种材料后，整体与总份数都变了。",
-        "label": "两种皮中草浆"
+        "feedback": "第一问只分糯米粉和草浆；豆沙属于另一份总量同为500克的配方，不能把两个整体混用。",
+        "label": "500克青团皮中的草浆"
       },
       {
         "id": "q3",
         "kind": "quantity",
         "value": "250",
         "unit": "克",
-        "feedback": "三种材料中豆沙：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
-        "label": "三种材料中豆沙"
+        "feedback": "第二份按豆沙、糯米粉、草浆的顺序对应5、3、2份；先求总份数，再取豆沙所占部分。",
+        "label": "另一份500克青团中的豆沙"
       }
     ],
     "construction": {},
-    "explanation": "两份皮共5份，每份100克；含馅料共10份，每份50克，豆沙5份250克。",
+    "explanation": "两份配方的总质量各为500克。青团皮中糯米粉与草浆共3+2=5份，每份100克，分别为300克、200克。另一份青团中豆沙、糯米粉、草浆按5∶3∶2对应，共10份，每份50克，分别为250克、150克、100克，合计500克。模型只展示第一份两种材料的份数关系。",
     "hints": [
       "先写所有份数的和。",
-      "加入第三种材料后，整体与总份数都变了。"
+      "先分清两份各500克的配方；第二份按豆沙、糯米粉、草浆的顺序对应5、3、2份。"
     ]
   },
   "math6.b07": {
@@ -1643,12 +1647,16 @@
         "label": "直径3厘米的圆半径"
       }
     ],
-    "construction": {},
+    "construction": {
+      "radius": 1.5,
+      "assembled": 0
+    },
     "explanation": "两种要求并不是同一个圆。直径通过圆心、两端在圆上；任意弦不都是直径。",
     "hints": [
       "直径由两条半径组成。",
       "画圆时圆规开口是半径，不是直径。"
-    ]
+    ],
+    "modelEvidence": "circle-pair"
   },
   "math6.b17": {
     "version": "math.truth.v1",
@@ -2348,7 +2356,8 @@
     "hints": [
       "数对需要统一格距与坐标约定。",
       "方向距离需要统一观测点和单位。"
-    ]
+    ],
+    "modelEvidence": "same-position"
   },
   "math6.r-01": {
     "version": "math.truth.v1",
@@ -2484,12 +2493,21 @@
         "label": "平移是否改变面积"
       }
     ],
-    "construction": {},
+    "construction": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1,
+      "dx": 7,
+      "dy": 0,
+      "turn": 0,
+      "mirror": 0
+    },
     "explanation": "放缩边长乘2、面积乘4；平移只对坐标加同一个位移。两种操作不同。",
     "hints": [
       "比较每一条对应边。",
       "平移后各点的相对距离保持。"
-    ]
+    ],
+    "modelEvidence": "scale-translation"
   },
   "math6.r-05": {
     "version": "math.truth.v1",
@@ -2587,12 +2605,19 @@
         "label": "车轮滚过长度"
       }
     ],
-    "construction": {},
+    "construction": {
+      "col": 4,
+      "row": 3,
+      "radius": 2,
+      "angle": 90,
+      "assembled": 0
+    },
     "explanation": "四分之一圆对应90°；每圈3.14×45厘米，40圈共5652厘米=56.52米。坐标只表示圆心位置。",
     "hints": [
       "面积占比在同一个圆中比较。",
       "先算厘米路程，最后换米。"
-    ]
+    ],
+    "modelEvidence": "coordinate-sector"
   },
   "math6.r-08": {
     "version": "math.truth.v1",

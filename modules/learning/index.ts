@@ -1,6 +1,7 @@
-import {MATH_LESSONS,applyMathOperation} from '../curriculum/math6';
+import {mathLessonForRelease,applyMathOperation} from '../curriculum/math6';
 import {mathOperationSchema} from '../contracts/public/math6';
 import {evaluateMath6} from './math6-evaluate';
+import {evaluateGespObjective} from './gesp-evaluate';
 import {CompilerLifecycle} from './compiler-lifecycle';
 import {GESP_LESSONS} from '../curriculum/gesp';
 import {gespReasoningOperationSchema} from '../contracts/public/gesp';
@@ -32,7 +33,7 @@ import {gespReasoningOperationSchema} from '../contracts/public/gesp';
  */
 import { createHash } from 'node:crypto';
 import { activityStateSchema, type ActivityState, type CodeSnapshot, type ActivityHistory } from '../contracts/public/activity';
-import { COMPILER_CONTRACT, LEARNING_ACTIVITIES } from '../curriculum/mvp';
+import { COMPILER_CONTRACT, LEARNING_ACTIVITIES, supersededActivityNotice } from '../curriculum/mvp';
 import compilerConfig from '../../workers/cpp/worker-lock.json';
 import type { ActivityRule } from '../contracts/server/rules-activity';
 import {AI_NEW_IDS,aiLabOperationSchema,applyAILabOperation,type NewAIId} from '../contracts/public/ai-lab';
@@ -396,6 +397,7 @@ class LearningServerImpl {
   }
 
   private async requireReleaseForNewWork(scope: RepoScope, releaseId: string, repos: Repositories): Promise<void> {
+    const notice=supersededActivityNotice(releaseId);if(notice)throw rondoError('CONTENT_UNAVAILABLE',notice);
     const release = await repos.contentRelease.findById(scope, releaseId);
     if (release === null) {
       throw rondoError('CONTENT_UNAVAILABLE', `未知 release：${releaseId}`);
@@ -532,7 +534,7 @@ class LearningServerImpl {
     if(family==='activity'){
       const activity=activityStateSchema.parse(state);
       if(op.type==='SaveActivityDraft') return activityStateSchema.parse({...activity,draft:op['draft']});
-      if(activity.math){const q=MATH_LESSONS.find(q=>q.id===activity.math!.lessonId&&q.id+'.v1'===taskId),parsed=mathOperationSchema.safeParse(op);const next=q&&parsed.success?applyMathOperation(q,activity.math,parsed.data):null;if(!next)throw rondoError('INVALID_OPERATION','这项模型操作未登记或超出当前活动范围。');return activityStateSchema.parse({...activity,math:next});}
+      if(activity.math){const q=mathLessonForRelease(releaseId,taskId),parsed=mathOperationSchema.safeParse(op);const next=q&&parsed.success?applyMathOperation(q,activity.math,parsed.data):null;if(!next)throw rondoError('INVALID_OPERATION','这项模型操作未登记或超出当前活动范围。');return activityStateSchema.parse({...activity,math:next});}
       if(activity.gesp){const parsed=gespReasoningOperationSchema.safeParse(op);if(!parsed.success||!GESP_LESSONS.some(q=>q.id===activity.gesp!.questionId))throw rondoError('INVALID_OPERATION','本题未登记这项推演操作。');return activityStateSchema.parse({...activity,gesp:{...activity.gesp,reasoning:{...activity.gesp.reasoning,[parsed.data.fieldId]:parsed.data.text}}});}
       if(activity.lab&&AI_NEW_IDS.includes(activity.activity as NewAIId)){const parsed=aiLabOperationSchema.safeParse(op);const next=parsed.success?applyAILabOperation(activity.activity as NewAIId,activity.lab,parsed.data):null;if(!next)throw rondoError('INVALID_OPERATION','这项操作未登记、超出本活动范围或阶段不符。');return activityStateSchema.parse({...activity,lab:next});}
       if(op.type==='SetActivityScale'&&activity.activity==='ratio') return activityStateSchema.parse({...activity,scale:op['value']});
@@ -1105,6 +1107,7 @@ class LearningServerImpl {
   ) {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
+    const notice=supersededActivityNotice(attempt.releaseId);if(notice)throw rondoError('CONTENT_UNAVAILABLE',notice);
     const cycle = await this.currentCycle(scope, repos, attempt, 'OPERATE');
     const instance = await repos.questionInstance.findById(scope, cycle.questionInstanceId);
     if (instance === null) {
@@ -1388,6 +1391,7 @@ class LearningServerImpl {
   ) {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
+    const notice=supersededActivityNotice(attempt.releaseId);if(notice)throw rondoError('CONTENT_UNAVAILABLE',notice);
     if (attempt.attemptStatus !== 'ACTIVE') {
       throw rondoError('INVALID_OPERATION', `attempt 当前状态 ${attempt.attemptStatus}，不能完成。`);
     }
@@ -1921,10 +1925,8 @@ class LearningServerImpl {
       if(!truth||!record||record.questionId!==truth.questionId||!question)throw rondoError('INVALID_OPERATION','题目与本次推演不匹配。');
       const reasoned=Object.values(record.reasoning).every(text=>text.trim().length>0);
       let correct=false,scorable=true;
-      if(rule.activity==='gesp-objective'){
-        if(response.length!==1||response[0].kind!=='singleChoice'||response[0].selectionId!==truth.questionId||!(question.kind==='mcq'?['A','B','C','D','ISSUE']:['T','F','ISSUE']).includes(response[0].optionId))throw rondoError('INVALID_OPERATION','请提交本题登记的选择。');
-        const selected=response[0].optionId;correct=reasoned&&truth.acceptedAnswers.some(answer=>answer===selected);
-      }else{
+      if(rule.activity==='gesp-objective')return evaluateGespObjective(rule,record,response);
+      else{
         if(response.length!==1||response[0].kind!=='codeRun')throw rondoError('INVALID_OPERATION','请提交本题一次真实运行。');
         const item=response[0],stored=(await this.codeRecords(scope,repos,attemptId)).find(x=>x.run.jobId===item.jobId);
         if(!stored||stored.run.cycleId!==cycleId||stored.run.source!==item.source||stored.run.stdin!==item.stdin)throw rondoError('INVALID_OPERATION','代码或输入已经变化，请运行当前版本再提交。');

@@ -1,5 +1,5 @@
-import {MATH_ACTIVITIES} from './math6';
-import {GESP_ACTIVITIES} from './gesp';
+import {MATH_ACTIVITIES,MATH_LEGACY_ACTIVITIES} from './math6';
+import {GESP_ACTIVITIES,GESP_LEGACY_ACTIVITIES} from './gesp';
 /** Scope index and registered learning activities. */
 import {AI_ADDITIONAL_ACTIVITIES} from './ai';
 export const MVP_ACTIVITIES = [
@@ -14,5 +14,7 @@ export const AI_CARDS = [ {id:'hours', title:'开放时间公告', text:'回旋�
 export const CPP_STARTER = '#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    // 请从这里写出你的方法\n    return 0;\n}\n';
 export const COMPILER_CONTRACT = 'rondo.gesp.gcc13.2.cpp11.linux-arm64.v1';
 
-export const LEARNING_ACTIVITIES=[...MVP_ACTIVITIES,...AI_ADDITIONAL_ACTIVITIES,...GESP_ACTIVITIES,...MATH_ACTIVITIES] as const;
+export const SUPERSEDED_ACTIVITIES=[...MATH_LEGACY_ACTIVITIES,...GESP_LEGACY_ACTIVITIES];
+export function supersededActivityNotice(releaseId:string):string|undefined{return SUPERSEDED_ACTIVITIES.some(a=>a.releaseId===releaseId)?'这是已修订的旧版r1活动，仅供恢复和回看原题、草稿与历史记录，不再用于新作答或任务达成。旧版“已完成”及核对反馈是当时的原始记录，不代表已满足新版要求。请返回目录开始r2新版；原记录不会被改写或计为新版完成。':undefined;}
+export const LEARNING_ACTIVITIES=[...MVP_ACTIVITIES,...AI_ADDITIONAL_ACTIVITIES,...GESP_ACTIVITIES,...MATH_ACTIVITIES,...SUPERSEDED_ACTIVITIES] as const;
 export const AI_ACTIVITIES=['ai-a1','ai-a2','ai-a3','ai-a4','ai-a5','ai-a6','ai-a7','ai-a8'].map(id=>LEARNING_ACTIVITIES.find(a=>a.id===id)!);

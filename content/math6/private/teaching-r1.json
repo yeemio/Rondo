@@ -1,0 +1,213 @@
+{
+  "math6.u1-11": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-11",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "unitless",
+        "feedback": "0.9÷0.045：先核对数量所指的对象、运算和单位。 把两个数一起乘1000。",
+        "label": "0.9÷0.045"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "次",
+        "feedback": "至少运输次数：先核对数量所指的对象、运算和单位。 运输次数不是简单按四舍五入。",
+        "label": "至少运输次数"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "3.182",
+        "unit": "unitless",
+        "feedback": "3.5÷1.1保留三位小数：先核对数量所指的对象、运算和单位。 把两个数一起乘1000。",
+        "label": "3.5÷1.1保留三位小数"
+      }
+    ],
+    "construction": {},
+    "explanation": "0.9÷0.045=900÷45=20；13.6÷4=3.4，剩余也需一次；3.1818…看第四位舍入。",
+    "hints": [
+      "把两个数一起乘1000。",
+      "运输次数不是简单按四舍五入。"
+    ]
+  },
+  "math6.b06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "300",
+        "unit": "克",
+        "feedback": "两种皮中糯米粉：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
+        "label": "两种皮中糯米粉"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "200",
+        "unit": "克",
+        "feedback": "两种皮中草浆：先核对数量所指的对象、运算和单位。 加入第三种材料后，整体与总份数都变了。",
+        "label": "两种皮中草浆"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "250",
+        "unit": "克",
+        "feedback": "三种材料中豆沙：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
+        "label": "三种材料中豆沙"
+      }
+    ],
+    "construction": {},
+    "explanation": "两份皮共5份，每份100克；含馅料共10份，每份50克，豆沙5份250克。",
+    "hints": [
+      "先写所有份数的和。",
+      "加入第三种材料后，整体与总份数都变了。"
+    ]
+  },
+  "math6.b16": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b16",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "厘米",
+        "feedback": "半径3厘米的圆直径：先核对数量所指的对象、运算和单位。 直径由两条半径组成。",
+        "label": "半径3厘米的圆直径"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1.5",
+        "unit": "厘米",
+        "feedback": "直径3厘米的圆半径：先核对数量所指的对象、运算和单位。 画圆时圆规开口是半径，不是直径。",
+        "label": "直径3厘米的圆半径"
+      }
+    ],
+    "construction": {},
+    "explanation": "两种要求并不是同一个圆。直径通过圆心、两端在圆上；任意弦不都是直径。",
+    "hints": [
+      "直径由两条半径组成。",
+      "画圆时圆规开口是半径，不是直径。"
+    ]
+  },
+  "math6.b20": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b20",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "87.92",
+        "unit": "米",
+        "feedback": "半径14米圆周长：先核对数量所指的对象、运算和单位。 先区分已知r还是d。",
+        "label": "半径14米圆周长"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "10",
+        "unit": "厘米",
+        "feedback": "周长31.4厘米圆的直径：先核对数量所指的对象、运算和单位。 测量比值不会每次恰好3.14，记录误差不能改写π的定义。",
+        "label": "周长31.4厘米圆的直径"
+      }
+    ],
+    "construction": {},
+    "explanation": "C=2πr=2×3.14×14=87.92米；d=C/π=10厘米。π不是3.14精确值，本练习按约定近似值计算。",
+    "hints": [
+      "先区分已知r还是d。",
+      "测量比值不会每次恰好3.14，记录误差不能改写π的定义。"
+    ]
+  },
+  "math6.u7-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-05",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明原点/观测点、轴方向、比例尺，提出一次误差检查；不要记录真实家庭位置。",
+    "hints": [
+      "数对需要统一格距与坐标约定。",
+      "方向距离需要统一观测点和单位。"
+    ]
+  },
+  "math6.r-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "格",
+        "feedback": "新底：先核对数量所指的对象、运算和单位。 比较每一条对应边。",
+        "label": "新底"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "格",
+        "feedback": "新高：先核对数量所指的对象、运算和单位。 平移后各点的相对距离保持。",
+        "label": "新高"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "平移是否改变面积：平移改变位置，不改变形状和大小。 比较每一条对应边。",
+        "label": "平移是否改变面积"
+      }
+    ],
+    "construction": {},
+    "explanation": "放缩边长乘2、面积乘4；平移只对坐标加同一个位移。两种操作不同。",
+    "hints": [
+      "比较每一条对应边。",
+      "平移后各点的相对距离保持。"
+    ]
+  },
+  "math6.r-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "90",
+        "unit": "度",
+        "feedback": "扇形圆心角：先核对数量所指的对象、运算和单位。 面积占比在同一个圆中比较。",
+        "label": "扇形圆心角"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "56.52",
+        "unit": "米",
+        "feedback": "车轮滚过长度：先核对数量所指的对象、运算和单位。 先算厘米路程，最后换米。",
+        "label": "车轮滚过长度"
+      }
+    ],
+    "construction": {},
+    "explanation": "四分之一圆对应90°；每圈3.14×45厘米，40圈共5652厘米=56.52米。坐标只表示圆心位置。",
+    "hints": [
+      "面积占比在同一个圆中比较。",
+      "先算厘米路程，最后换米。"
+    ]
+  }
+}
