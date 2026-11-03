@@ -1,0 +1,38 @@
+{
+  "ruleId": "rule.cppU1.branch.v1",
+  "ruleVersion": "1",
+  "body": {
+    "kind": "STEP_TASK_TRUTH",
+    "stepBudget": 200,
+    "entries": {
+      "cpp.u1.g3.member-discount.v1": {
+        "visibleCase": {
+          "caseId": "g3-canonical",
+          "inputs": {},
+          "expectedLines": [
+            "42"
+          ]
+        },
+        "hiddenCases": [],
+        "branchCheckpoints": [
+          {
+            "checkpointId": "if-1",
+            "expected": "TAKEN"
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.g3.ge-vs-gt",
+            "correctOptionId": "opt-original"
+          }
+        ],
+        "judging": {
+          "outputSource": "SNAPSHOT_RERUN"
+        },
+        "feedback": {
+          "reviseGeneric": "回到单步：判断那一行走进的是哪个大括号，输出和变量终值跟当前卡片对。"
+        }
+      }
+    }
+  }
+}

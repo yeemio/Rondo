@@ -1,0 +1,71 @@
+{
+  "ruleId": "rule.cylParam.readback.v1",
+  "file": "rule.cylParam.readback.v1.json",
+  "boundTasks": [
+    "cyl.param.g2.radius-change.v1",
+    "cyl.param.g3.height-section.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "rules": [
+      {
+        "ruleKind": "PARAMETER_IDENTIFICATION_V1",
+        "expectedJudgments": [
+          {
+            "propertyId": "diameter",
+            "direction": "INCREASE"
+          }
+        ]
+      },
+      {
+        "ruleKind": "PARAMETER_IDENTIFICATION_V1",
+        "expectedJudgments": [
+          {
+            "propertyId": "height",
+            "direction": "INCREASE"
+          }
+        ]
+      }
+    ],
+    "note": "rules[0]=G2 分支（快照 r=40/h=80）；rules[1]=G3 分支（快照 h=100/r=30，且 SetSection 至少一次 APPLIED）。expectedJudgments 与公开表单采集范围一致（authored 草案 §3/§4：G2 只判直径方向+数值，G3 只判高度方向+数值+截面；radius/height 的耦合识别属 I1，不入引导题判分）。"
+  },
+  "pendingDsl": {
+    "reasons": [
+      "L1_NUMERIC_READBACK_FAMILY: 冻结两族无法表达 L1 数值读数判定（d=2r、高读数）与 G3 截面选择判定"
+    ],
+    "numericReadback": {
+      "cyl.param.g2.radius-change.v1": {
+        "snapshot": {
+          "radiusMm": 40,
+          "heightMm": 80
+        },
+        "quantityId": "diameter",
+        "acceptedUnitIds": [
+          "cm",
+          "mm"
+        ],
+        "expectedCm": "8.0"
+      },
+      "cyl.param.g3.height-section.v1": {
+        "snapshot": {
+          "radiusMm": 30,
+          "heightMm": 100
+        },
+        "quantityId": "height",
+        "acceptedUnitIds": [
+          "cm",
+          "mm"
+        ],
+        "expectedCm": "10.0",
+        "sectionPair": {
+          "leftId": "cyl-part-height-line",
+          "rightId": "section-view-axial"
+        }
+      }
+    },
+    "feedback": {
+      "numericRevise": "再读一次确认后的尺寸表，注意半径和直径的关系。",
+      "sectionRevise": "再分别切一次横截面和轴截面，找一找哪条边和高一样长。"
+    }
+  }
+}

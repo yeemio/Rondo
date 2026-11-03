@@ -1,0 +1,1947 @@
+{
+  "registryVersion": "2",
+  "representationNote": "所有 VERIFY 响应由冻结三段表达承载：propertyJudgments（属性方向）/ objectMapping（稳定对象配对）/ numberWithUnit（数值+单位）。UNSURE 在 objectMapping 用 opt-unsure 选项；数值段提交需给数值（不确定只能在预测阶段表达）。registryVersion 2（h0-mathl34-20261027-1）：增 L3/L4 九个 schemaId、单位 cm3/layer、propertyLabels 增 layerThickness/totalVolume（承载 L34-7 已裁定的 resp.l4.stackInvariant.v1）；VERIFY 内的「选择」类作答以 objectMapping 单行承载（choice 为预测侧 ask，VERIFY 三段无 choice kind）。复合段 prompt 实例化限于 paramRead 段，以 segmentPromptOverrides 版本化登记（L34-7 附注）。",
+  "propertyLabels": {
+    "radius": "半径",
+    "diameter": "直径",
+    "height": "高度",
+    "layerThickness": "每层厚度",
+    "totalVolume": "总体积"
+  },
+  "directionLabels": {
+    "INCREASE": "变大",
+    "DECREASE": "变小",
+    "UNCHANGED": "不变"
+  },
+  "schemas": [
+    {
+      "schemaId": "resp.l1.viewChange.v1",
+      "summary": "视角变化与尺寸判断（三属性方向）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g1.directions",
+            "kind": "propertyDirections",
+            "prompt": "预测：只转动观察、不碰尺寸设置，三个尺寸各自会怎样？（也可以整体选「不确定」）",
+            "properties": [
+              "radius",
+              "diameter",
+              "height"
+            ],
+            "optionalUncertain": true
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "propertyJudgments",
+            "prompt": "转动观察之后：三个尺寸各自怎样了？",
+            "properties": [
+              "radius",
+              "diameter",
+              "height"
+            ],
+            "propertyLabels": {
+              "radius": "半径",
+              "diameter": "直径",
+              "height": "高度"
+            },
+            "directionLabels": {
+              "INCREASE": "变大",
+              "DECREASE": "变小",
+              "UNCHANGED": "不变"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l1.predictDimension.v1",
+      "summary": "预测/作答某参数（方向 + 数值 + 单位）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g2.direction",
+            "kind": "choice",
+            "prompt": "预测：改完之后，直径会变大、变小还是不变？",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.g2.value",
+            "kind": "numberValue",
+            "prompt": "预测：新的直径是多少？（记录用，不判分）",
+            "quantityLabel": "直径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "propertyJudgments",
+            "prompt": "观察之后：直径的方向是？",
+            "properties": [
+              "diameter"
+            ],
+            "propertyLabels": {
+              "radius": "半径",
+              "diameter": "直径",
+              "height": "高度"
+            },
+            "directionLabels": {
+              "INCREASE": "变大",
+              "DECREASE": "变小",
+              "UNCHANGED": "不变"
+            }
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "新的直径是多少？",
+            "quantityId": "diameter",
+            "quantityLabel": "直径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l1.dimensionRead.v1",
+      "summary": "读数（高度）+ 截面选择",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g3.height-direction",
+            "kind": "choice",
+            "prompt": "预测：改完之后高度会变大、变小还是不变？",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.g3.height-value",
+            "kind": "numberValue",
+            "prompt": "预测：新的高是多少？（记录用，不判分）",
+            "quantityLabel": "高",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ]
+          },
+          {
+            "id": "ask.g3.section",
+            "kind": "choice",
+            "prompt": "凭定义先猜：横截面和轴截面，哪个切面里能看到高？",
+            "options": [
+              {
+                "id": "section-view-axial",
+                "label": "轴截面（沿轴切开）"
+              },
+              {
+                "id": "section-view-transverse",
+                "label": "横截面（垂直于轴切开）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "propertyJudgments",
+            "prompt": "观察之后：高度的方向是？",
+            "properties": [
+              "height"
+            ],
+            "propertyLabels": {
+              "radius": "半径",
+              "diameter": "直径",
+              "height": "高度"
+            },
+            "directionLabels": {
+              "INCREASE": "变大",
+              "DECREASE": "变小",
+              "UNCHANGED": "不变"
+            }
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "圆筒现在的高是多少？",
+            "quantityId": "height",
+            "quantityLabel": "高",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          },
+          {
+            "kind": "objectMapping",
+            "prompt": "哪个切面里能看到高？",
+            "pairs": [
+              {
+                "leftId": "cyl-part-height-line",
+                "leftLabel": "高（这条线）",
+                "rightOptions": [
+                  {
+                    "id": "section-view-transverse",
+                    "label": "横截面（垂直于轴切开，是圆）"
+                  },
+                  {
+                    "id": "section-view-axial",
+                    "label": "轴截面（沿轴切开，是矩形）"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l1.identifyParams.v1",
+      "summary": "独立题：变化项/不变项识别（条件预测 + 识别作答）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.i1.if-radius",
+            "kind": "choice",
+            "prompt": "如果悄悄改变的是半径，直径会：",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.i1.if-height",
+            "kind": "choice",
+            "prompt": "如果悄悄改变的是高度，直径会：",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.i1.bet",
+            "kind": "propertyBet",
+            "prompt": "你猜这次实际改变的是哪个尺寸、怎么变？（选一组作为预测；不猜就选「不确定」）",
+            "properties": [
+              "radius",
+              "height"
+            ],
+            "directionOptions": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "propertyJudgments",
+            "prompt": "观察之后：这次到底变了哪些量、怎么变？（没变的选「不变」）",
+            "properties": [
+              "radius",
+              "diameter",
+              "height"
+            ],
+            "propertyLabels": {
+              "radius": "半径",
+              "diameter": "直径",
+              "height": "高度"
+            },
+            "directionLabels": {
+              "INCREASE": "变大",
+              "DECREASE": "变小",
+              "UNCHANGED": "不变"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l2.directionRelation.v1",
+      "summary": "方向关系：哪条边卷回后形成圆周/成为高",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.netg1.mapping",
+            "kind": "mapping",
+            "prompt": "先猜：每条边卷回去属于哪个方向？（边 1–4 各选一项）",
+            "leftIds": [
+              "net-edge-1",
+              "net-edge-2",
+              "net-edge-3",
+              "net-edge-4"
+            ],
+            "rightOptions": [
+              {
+                "id": "cyl-part-base-circle",
+                "label": "底面圆（绕一圈的圆周）"
+              },
+              {
+                "id": "cyl-part-height-line",
+                "label": "高"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "objectMapping",
+            "prompt": "每条边卷回去以后，属于哪个方向？",
+            "pairs": [
+              {
+                "leftId": "net-edge-1",
+                "leftLabel": "边 1",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-base-circle",
+                    "label": "底面圆（绕一圈的圆周）"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-2",
+                "leftLabel": "边 2",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-base-circle",
+                    "label": "底面圆（绕一圈的圆周）"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-3",
+                "leftLabel": "边 3",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-base-circle",
+                    "label": "底面圆（绕一圈的圆周）"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-4",
+                "leftLabel": "边 4",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-base-circle",
+                    "label": "底面圆（绕一圈的圆周）"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l2.edgePair.v1",
+      "summary": "边配对：条带的边 ↔ 圆柱部件（上底圆/下底圆/高）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.netpair.mapping",
+            "kind": "mapping",
+            "prompt": "先猜：每条边卷回去贴着谁？（边 1–4 各选一项）",
+            "leftIds": [
+              "net-edge-1",
+              "net-edge-2",
+              "net-edge-3",
+              "net-edge-4"
+            ],
+            "rightOptions": [
+              {
+                "id": "cyl-part-upper-circle",
+                "label": "上底圆"
+              },
+              {
+                "id": "cyl-part-lower-circle",
+                "label": "下底圆"
+              },
+              {
+                "id": "cyl-part-height-line",
+                "label": "高（侧面从上到下的直线）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "objectMapping",
+            "prompt": "每条边卷回去以后，它贴着谁？",
+            "pairs": [
+              {
+                "leftId": "net-edge-1",
+                "leftLabel": "边 1",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-upper-circle",
+                    "label": "上底圆"
+                  },
+                  {
+                    "id": "cyl-part-lower-circle",
+                    "label": "下底圆"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高（侧面从上到下的直线）"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-2",
+                "leftLabel": "边 2",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-upper-circle",
+                    "label": "上底圆"
+                  },
+                  {
+                    "id": "cyl-part-lower-circle",
+                    "label": "下底圆"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高（侧面从上到下的直线）"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-3",
+                "leftLabel": "边 3",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-upper-circle",
+                    "label": "上底圆"
+                  },
+                  {
+                    "id": "cyl-part-lower-circle",
+                    "label": "下底圆"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高（侧面从上到下的直线）"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "net-edge-4",
+                "leftLabel": "边 4",
+                "rightOptions": [
+                  {
+                    "id": "cyl-part-upper-circle",
+                    "label": "上底圆"
+                  },
+                  {
+                    "id": "cyl-part-lower-circle",
+                    "label": "下底圆"
+                  },
+                  {
+                    "id": "cyl-part-height-line",
+                    "label": "高（侧面从上到下的直线）"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l2.areaValue.v1",
+      "summary": "侧面积数值 + 单位（cm²，两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.area.value",
+            "kind": "numberValue",
+            "prompt": "预测：侧面面积大约是多少？（记录用，不判分）",
+            "quantityLabel": "侧面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "侧面的面积是多少？（四舍五入保留两位小数）",
+            "quantityId": "lateral-area",
+            "quantityLabel": "侧面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l2.strangerComposite.v1",
+      "summary": "陌生/迁移复合响应（按任务启用子段）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.stranger.radius",
+            "kind": "numberValue",
+            "prompt": "预测：半径大约是多少？（记录用，不判分）",
+            "quantityLabel": "半径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ]
+          },
+          {
+            "id": "ask.stranger.pairing",
+            "kind": "mapping",
+            "prompt": "先猜：每条边卷回去贴着谁？",
+            "leftIds": [
+              "net-edge-1",
+              "net-edge-2",
+              "net-edge-3",
+              "net-edge-4"
+            ],
+            "rightOptions": [
+              {
+                "id": "cyl-part-upper-circle",
+                "label": "上底圆"
+              },
+              {
+                "id": "cyl-part-lower-circle",
+                "label": "下底圆"
+              },
+              {
+                "id": "cyl-part-height-line",
+                "label": "高（侧面从上到下的直线）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.stranger.area",
+            "kind": "numberValue",
+            "prompt": "预测：面积大约是多少？（记录用，不判分；本任务不问面积则跳过）",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "segments": [
+          {
+            "id": "paramRead",
+            "label": "(1) 参数识别",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "瓶身/罐身的半径是多少？",
+              "quantityId": "radius",
+              "quantityLabel": "半径",
+              "units": [
+                {
+                  "id": "cm",
+                  "label": "厘米（cm）"
+                },
+                {
+                  "id": "mm",
+                  "label": "毫米（mm）"
+                }
+              ],
+              "decimals": 1
+            }
+          },
+          {
+            "id": "edgePairing",
+            "label": "(2) 边配对",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "四条边分别卷回去贴着谁？",
+              "pairs": [
+                {
+                  "leftId": "net-edge-1",
+                  "leftLabel": "边 1",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-upper-circle",
+                      "label": "上底圆"
+                    },
+                    {
+                      "id": "cyl-part-lower-circle",
+                      "label": "下底圆"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高（侧面从上到下的直线）"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-2",
+                  "leftLabel": "边 2",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-upper-circle",
+                      "label": "上底圆"
+                    },
+                    {
+                      "id": "cyl-part-lower-circle",
+                      "label": "下底圆"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高（侧面从上到下的直线）"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-3",
+                  "leftLabel": "边 3",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-upper-circle",
+                      "label": "上底圆"
+                    },
+                    {
+                      "id": "cyl-part-lower-circle",
+                      "label": "下底圆"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高（侧面从上到下的直线）"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-4",
+                  "leftLabel": "边 4",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-upper-circle",
+                      "label": "上底圆"
+                    },
+                    {
+                      "id": "cyl-part-lower-circle",
+                      "label": "下底圆"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高（侧面从上到下的直线）"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "directionClaims",
+            "label": "(3) 方向关系",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "每条边卷回去属于哪个方向？",
+              "pairs": [
+                {
+                  "leftId": "net-edge-1",
+                  "leftLabel": "边 1",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-base-circle",
+                      "label": "底面圆（绕一圈的圆周）"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-2",
+                  "leftLabel": "边 2",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-base-circle",
+                      "label": "底面圆（绕一圈的圆周）"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-3",
+                  "leftLabel": "边 3",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-base-circle",
+                      "label": "底面圆（绕一圈的圆周）"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "net-edge-4",
+                  "leftLabel": "边 4",
+                  "rightOptions": [
+                    {
+                      "id": "cyl-part-base-circle",
+                      "label": "底面圆（绕一圈的圆周）"
+                    },
+                    {
+                      "id": "cyl-part-height-line",
+                      "label": "高"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "areaValue",
+            "label": "(4) 面积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "贴纸/商标纸的面积是多少？（四舍五入保留两位小数）",
+              "quantityId": "lateral-area",
+              "quantityLabel": "面积",
+              "units": [
+                {
+                  "id": "cm2",
+                  "label": "平方厘米（cm²）"
+                }
+              ],
+              "decimals": 2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l1.changeClassify.v1",
+      "summary": "未绑定预留（分类语义由 resp.l1.identifyParams.v1 的 changedSet 判定承载；保留注册，首批不绑定任务）",
+      "predict": null,
+      "verify": null
+    },
+    {
+      "schemaId": "resp.l3.faceSet.v1",
+      "summary": "面集合三行（算入/不算入/不确定）+ 盖面数",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.faces.predict",
+            "kind": "mapping",
+            "prompt": "先猜：这个包装需要哪些面？每面选「算入/不算入」，也可以选「不确定」。",
+            "leftIds": [
+              "cyl-face-side",
+              "cyl-face-upper",
+              "cyl-face-lower"
+            ],
+            "rightOptions": [
+              {
+                "id": "opt-include",
+                "label": "算入"
+              },
+              {
+                "id": "opt-exclude",
+                "label": "不算入"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.faces.predict-compare",
+            "kind": "choice",
+            "prompt": "先猜：封口罐比标签筒的纸：",
+            "options": [
+              {
+                "id": "opt-more",
+                "label": "多"
+              },
+              {
+                "id": "opt-less",
+                "label": "少"
+              },
+              {
+                "id": "opt-same",
+                "label": "一样"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "objectMapping",
+            "prompt": "这个包装的纸样要算哪些面？（每面选：算入 / 不算入 / 不确定）",
+            "pairs": [
+              {
+                "leftId": "cyl-face-side",
+                "leftLabel": "侧面",
+                "rightOptions": [
+                  {
+                    "id": "opt-include",
+                    "label": "算入"
+                  },
+                  {
+                    "id": "opt-exclude",
+                    "label": "不算入"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "cyl-face-upper",
+                "leftLabel": "上盖面",
+                "rightOptions": [
+                  {
+                    "id": "opt-include",
+                    "label": "算入"
+                  },
+                  {
+                    "id": "opt-exclude",
+                    "label": "不算入"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "cyl-face-lower",
+                "leftLabel": "下盖面",
+                "rightOptions": [
+                  {
+                    "id": "opt-include",
+                    "label": "算入"
+                  },
+                  {
+                    "id": "opt-exclude",
+                    "label": "不算入"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "objectMapping",
+            "prompt": "盖面（圆面）有几个？",
+            "pairs": [
+              {
+                "leftId": "lid-count",
+                "leftLabel": "盖面个数",
+                "rightOptions": [
+                  {
+                    "id": "opt-0",
+                    "label": "0 个"
+                  },
+                  {
+                    "id": "opt-1",
+                    "label": "1 个"
+                  },
+                  {
+                    "id": "opt-2",
+                    "label": "2 个"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l3.comboArea.v1",
+      "summary": "组合面积复合段：faceSet（objectMapping 三行）+ paperArea（numberWithUnit cm² 两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.combo.predict",
+            "kind": "numberValue",
+            "prompt": "预测：总共大约多少平方厘米？（记录用，不判分）",
+            "quantityLabel": "总面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ]
+          },
+          {
+            "id": "ask.combo.advice-usable",
+            "kind": "choice",
+            "prompt": "如果本题附有「人工建议单」：你觉得它能用吗？（没有建议单就跳过/选「不确定」）",
+            "options": [
+              {
+                "id": "opt-advice-usable",
+                "label": "能用"
+              },
+              {
+                "id": "opt-advice-no",
+                "label": "不能用"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.combo.advice-problem",
+            "kind": "choice",
+            "prompt": "建议单的问题最可能出在哪？（没有建议单就跳过/选「不确定」）",
+            "options": [
+              {
+                "id": "opt-advice-missing-lid",
+                "label": "漏了一个盖面"
+              },
+              {
+                "id": "opt-advice-side-wrong",
+                "label": "侧面积算错"
+              },
+              {
+                "id": "opt-advice-none",
+                "label": "没有问题"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "segments": [
+          {
+            "id": "faceSet",
+            "label": "(1) 面集合",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "纸样要算哪些面？（每面选：算入 / 不算入 / 不确定）",
+              "pairs": [
+                {
+                  "leftId": "cyl-face-side",
+                  "leftLabel": "侧面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "cyl-face-upper",
+                  "leftLabel": "上盖面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "cyl-face-lower",
+                  "leftLabel": "下盖面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "paperArea",
+            "label": "(2) 总面积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "一共多少平方厘米？（四舍五入保留两位小数）",
+              "quantityId": "paper-area",
+              "quantityLabel": "总面积",
+              "units": [
+                {
+                  "id": "cm2",
+                  "label": "平方厘米（cm²）"
+                }
+              ],
+              "decimals": 2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l3.lidDelta.v1",
+      "summary": "盖数条件差值：Δ 面积（numberWithUnit）+ 概念归属（mapping 单行）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.delta.direction",
+            "kind": "choice",
+            "prompt": "预测：改造后用纸会：",
+            "options": [
+              {
+                "id": "opt-more",
+                "label": "多"
+              },
+              {
+                "id": "opt-less",
+                "label": "少"
+              },
+              {
+                "id": "opt-same",
+                "label": "一样"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.delta.value",
+            "kind": "numberValue",
+            "prompt": "预测：多用大约多少平方厘米？（记录用，不判分）",
+            "quantityLabel": "多用面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "比原来多用多少平方厘米？（四舍五入保留两位小数）",
+            "quantityId": "paper-area-delta",
+            "quantityLabel": "多用面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "objectMapping",
+            "prompt": "这份多用的纸最接近：",
+            "pairs": [
+              {
+                "leftId": "delta-attribution",
+                "leftLabel": "概念归属",
+                "rightOptions": [
+                  {
+                    "id": "opt-one-lid",
+                    "label": "一个盖面的面积"
+                  },
+                  {
+                    "id": "opt-two-lid",
+                    "label": "两个盖面的面积"
+                  },
+                  {
+                    "id": "opt-double-side",
+                    "label": "侧面积的 2 倍"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.stackInvariant.v1",
+      "summary": "层叠不变量：两属性方向（layerThickness/totalVolume）+ 总体积（numberWithUnit cm³ 两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.stack.total",
+            "kind": "choice",
+            "prompt": "预测：层数变多后，总体积会：",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.stack.thickness",
+            "kind": "choice",
+            "prompt": "预测：每层厚度会：",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变厚"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变薄"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "propertyJudgments",
+            "prompt": "层数从 8 改成 16 后：两个量各自怎么变？",
+            "properties": [
+              "layerThickness",
+              "totalVolume"
+            ],
+            "propertyLabels": {
+              "radius": "半径",
+              "diameter": "直径",
+              "height": "高度"
+            },
+            "directionLabels": {
+              "INCREASE": "变大",
+              "DECREASE": "变小",
+              "UNCHANGED": "不变"
+            }
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "8 层装满的总体积是多少立方厘米？（四舍五入保留两位小数）",
+            "quantityId": "volume",
+            "quantityLabel": "总体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.layerVolume.v1",
+      "summary": "层体积三数值：层厚（cm 一位小数）/ 每层体积 / 总体积（cm³ 两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.lv.per-layer",
+            "kind": "numberValue",
+            "prompt": "预测：每一层大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "每层体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          },
+          {
+            "id": "ask.lv.total",
+            "kind": "numberValue",
+            "prompt": "预测：装满一共大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "总体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "每一层的厚度是多少厘米？（一位小数）",
+            "quantityId": "layer-thickness",
+            "quantityLabel": "层厚",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "每一层的体积是多少立方厘米？（四舍五入保留两位小数）",
+            "quantityId": "layer-volume",
+            "quantityLabel": "每层体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "8 层装满一共多少立方厘米？（四舍五入保留两位小数）",
+            "quantityId": "volume",
+            "quantityLabel": "总体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.varCompare.v1",
+      "summary": "高/半径对比复合段：bigger + valueA + valueB + ratio（按任务启用；ratio 段 I2 禁用）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.var.bigger",
+            "kind": "choice",
+            "prompt": "预测：哪个方案装得多？",
+            "options": [
+              {
+                "id": "opt-plan-a",
+                "label": "加高的方案"
+              },
+              {
+                "id": "opt-plan-b",
+                "label": "加宽的方案"
+              },
+              {
+                "id": "opt-same",
+                "label": "一样多"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.var.value-a",
+            "kind": "numberValue",
+            "prompt": "预测：加高方案大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "加高方案体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          },
+          {
+            "id": "ask.var.value-b",
+            "kind": "numberValue",
+            "prompt": "预测：加宽方案大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "加宽方案体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "segments": [
+          {
+            "id": "bigger",
+            "label": "(1) 哪个装得多",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "哪个方案装得多？",
+              "pairs": [
+                {
+                  "leftId": "bigger-plan",
+                  "leftLabel": "装得多的方案",
+                  "rightOptions": [
+                    {
+                      "id": "opt-plan-a",
+                      "label": "加高的方案"
+                    },
+                    {
+                      "id": "opt-plan-b",
+                      "label": "加宽的方案"
+                    },
+                    {
+                      "id": "opt-same",
+                      "label": "一样多"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "valueA",
+            "label": "(2) 加高方案的体积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "加高方案能装多少立方厘米？（四舍五入保留两位小数）",
+              "quantityId": "volume-a",
+              "quantityLabel": "加高方案体积",
+              "units": [
+                {
+                  "id": "cm3",
+                  "label": "立方厘米（cm³）"
+                }
+              ],
+              "decimals": 2
+            }
+          },
+          {
+            "id": "valueB",
+            "label": "(3) 加宽方案的体积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "加宽方案能装多少立方厘米？（四舍五入保留两位小数）",
+              "quantityId": "volume-b",
+              "quantityLabel": "加宽方案体积",
+              "units": [
+                {
+                  "id": "cm3",
+                  "label": "立方厘米（cm³）"
+                }
+              ],
+              "decimals": 2
+            }
+          },
+          {
+            "id": "ratio",
+            "label": "(4) 半径加倍的比例",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "半径加倍后，体积是原来的几倍？",
+              "pairs": [
+                {
+                  "leftId": "radius-double-ratio",
+                  "leftLabel": "体积倍数",
+                  "rightOptions": [
+                    {
+                      "id": "opt-ratio-2",
+                      "label": "2 倍"
+                    },
+                    {
+                      "id": "opt-ratio-4",
+                      "label": "4 倍"
+                    },
+                    {
+                      "id": "opt-ratio-8",
+                      "label": "8 倍"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.volumeValue.v1",
+      "summary": "体积数值 + 单位（cm³，两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.vol.predict",
+            "kind": "numberValue",
+            "prompt": "预测：体积大约是多少？（记录用，不判分）",
+            "quantityLabel": "体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "它最多能装多少立方厘米？（四舍五入保留两位小数）",
+            "quantityId": "volume",
+            "quantityLabel": "体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.accumulate.v1",
+      "summary": "累加边界：首次超限层号（numberWithUnit，单位「层」）+ 当时累计（cm³ 两位小数）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.acc.layer",
+            "kind": "numberValue",
+            "prompt": "预测：第一次超过 100 cm³ 大约在第几层？（记录用，不判分）",
+            "quantityLabel": "层号",
+            "units": [
+              {
+                "id": "layer",
+                "label": "层"
+              }
+            ]
+          },
+          {
+            "id": "ask.acc.cumulative",
+            "kind": "numberValue",
+            "prompt": "预测：那时累计大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "累计体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "累计体积第一次超过 100 cm³ 是在第几层？（整数层号）",
+            "quantityId": "layer-index",
+            "quantityLabel": "层号",
+            "units": [
+              {
+                "id": "layer",
+                "label": "层"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "那时候累计是多少立方厘米？（四舍五入保留两位小数）",
+            "quantityId": "cumulative-volume",
+            "quantityLabel": "累计体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.l4.strangerComposite.v1",
+      "summary": "L4 陌生/迁移复合响应（四段：paramRead / faceSet / paperArea / volume，按任务启用；paramRead 段 prompt 可实例化改写）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.stranger4.radius",
+            "kind": "numberValue",
+            "prompt": "预测：半径大约是多少厘米？（记录用，不判分）",
+            "quantityLabel": "半径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ]
+          },
+          {
+            "id": "ask.stranger4.faces",
+            "kind": "mapping",
+            "prompt": "先猜：纸板要算哪些面？",
+            "leftIds": [
+              "cyl-face-side",
+              "cyl-face-upper",
+              "cyl-face-lower"
+            ],
+            "rightOptions": [
+              {
+                "id": "opt-include",
+                "label": "算入"
+              },
+              {
+                "id": "opt-exclude",
+                "label": "不算入"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.stranger4.paper",
+            "kind": "numberValue",
+            "prompt": "预测：纸板大约多少平方厘米？（记录用，不判分）",
+            "quantityLabel": "纸板面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ]
+          },
+          {
+            "id": "ask.stranger4.volume",
+            "kind": "numberValue",
+            "prompt": "预测：能装大约多少立方厘米？（记录用，不判分）",
+            "quantityLabel": "体积",
+            "units": [
+              {
+                "id": "cm3",
+                "label": "立方厘米（cm³）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "segments": [
+          {
+            "id": "paramRead",
+            "label": "(1) 参数识别",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "半径是多少厘米？（按题面给出的直径或周长换算；一位小数）",
+              "quantityId": "radius",
+              "quantityLabel": "半径",
+              "units": [
+                {
+                  "id": "cm",
+                  "label": "厘米（cm）"
+                },
+                {
+                  "id": "mm",
+                  "label": "毫米（mm）"
+                }
+              ],
+              "decimals": 1
+            }
+          },
+          {
+            "id": "faceSet",
+            "label": "(2) 面集合",
+            "item": {
+              "kind": "objectMapping",
+              "prompt": "纸板要算哪些面？（每面选：算入 / 不算入 / 不确定）",
+              "pairs": [
+                {
+                  "leftId": "cyl-face-side",
+                  "leftLabel": "侧面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "cyl-face-upper",
+                  "leftLabel": "上盖面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                },
+                {
+                  "leftId": "cyl-face-lower",
+                  "leftLabel": "下盖面",
+                  "rightOptions": [
+                    {
+                      "id": "opt-include",
+                      "label": "算入"
+                    },
+                    {
+                      "id": "opt-exclude",
+                      "label": "不算入"
+                    },
+                    {
+                      "id": "opt-unsure",
+                      "label": "不确定"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "id": "paperArea",
+            "label": "(3) 纸板面积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "整盒纸板多少平方厘米？（四舍五入保留两位小数）",
+              "quantityId": "paper-area",
+              "quantityLabel": "纸板面积",
+              "units": [
+                {
+                  "id": "cm2",
+                  "label": "平方厘米（cm²）"
+                }
+              ],
+              "decimals": 2
+            }
+          },
+          {
+            "id": "volume",
+            "label": "(4) 体积",
+            "item": {
+              "kind": "numberWithUnit",
+              "prompt": "能装多少立方厘米？（四舍五入保留两位小数）",
+              "quantityId": "volume",
+              "quantityLabel": "体积",
+              "units": [
+                {
+                  "id": "cm3",
+                  "label": "立方厘米（cm³）"
+                }
+              ],
+              "decimals": 2
+            }
+          }
+        ]
+      },
+      "segmentPromptOverrides": {
+        "cyl.layers.d1.delayed-transfer.v1": {
+          "paramRead": "由周长求半径：罐底圆的周长是 25.12 cm，半径是多少厘米？（一位小数）"
+        }
+      }
+    }
+  ]
+}

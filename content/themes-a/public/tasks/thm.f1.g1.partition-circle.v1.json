@@ -1,0 +1,182 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f1.g1.partition-circle.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "等分圆盘，用分数表示",
+  "boardView": "PIE",
+  "givens": {
+    "rows": 1,
+    "cols": 1,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows"
+  ],
+  "responseSchemaId": "resp.thm.f1g1.v1",
+  "allowedOperationIds": [
+    "SetGridSize",
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetGridSize",
+      "rowsValues": [
+        1
+      ],
+      "colsValues": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "type": "SetFilled",
+      "maxCount": 12
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把圆盘平均分成 4 份"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧是一个圆盘。术语：把整体平均分成若干份，其中的 1 份或几份就可以用分数表示——分母写总份数，分子写取的份数。\"平均分\"是分数的前提：每份必须一样大。"
+    },
+    {
+      "type": "TEXT",
+      "text": "操作：用步进按钮或方向键把圆盘平均分成 4 份（左右键调份数），再把其中 3 份涂上颜色（上下键调涂色份数），每步都要确认。"
+    },
+    {
+      "type": "TEXT",
+      "text": "然后回答：涂色部分是这个圆盘的几分之几？分数中的分母 4 表示什么？如果分成的 4 份大小不一样，还能说涂了 4 份中的 3 份就是 3/4 吗？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-fraction",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "把圆盘平均分成 4 份、涂 3 份，写出涂色部分的分数，并说明分母的意思。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "分数下半部分（分母）写\"一共平均分成几份\"，上半部分（分子）写\"取了几份\"。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先数总份数，再数涂色份数；想想\"每份一样大\"这个前提。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f1g1.denom",
+        "prompt": "3/4 里的 4 表示什么？",
+        "options": [
+          {
+            "id": "opt-total-parts",
+            "label": "整体被平均分成的总份数"
+          },
+          {
+            "id": "opt-taken-parts",
+            "label": "取走的份数"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.f1g1.premise",
+        "prompt": "用分数表示份数的前提是什么？",
+        "options": [
+          {
+            "id": "opt-equal-parts",
+            "label": "平均分（每份一样大）"
+          },
+          {
+            "id": "opt-any-parts",
+            "label": "随便分成几份就行"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人解释：为什么\"平均分\"对分数这么重要。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "等分圆盘（SVG）：扇形随确认的份数重绘，涂色份数高亮；左右/上下键与按钮同入口。",
+    "boardTable": "份数/涂色份数读数表；同一状态、同一表单与判分。"
+  }
+}

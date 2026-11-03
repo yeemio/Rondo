@@ -1,0 +1,290 @@
+{
+  "ruleId": "rule.thm.f2.v1",
+  "file": "rule.thm.f2.v1.json",
+  "boundTasks": [
+    "thm.f2.g1.scale-bar.v1",
+    "thm.f2.g2.equivalent-find.v1",
+    "thm.f2.i1.numberline.v1",
+    "thm.f2.s1.stranger.v1",
+    "thm.f2.d1.delayed-transfer.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.f2.g1.scale-bar.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "scaled-fraction",
+            "label": "同乘后的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "涂色大小是否变化",
+            "selectionId": "sel.size-change",
+            "correctOptionId": "opt-same-size"
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "相等的原因",
+            "selectionId": "sel.why-equal",
+            "correctOptionId": "opt-both-scaled"
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 4,
+          "filled": 2
+        },
+        "scenarioFeedback": "请先做一次\"同乘 2\"并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-numerator-only-scaled",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_NUMERATOR_ONLY_SCALED",
+              "preNumerator": 1,
+              "preDenominator": 2,
+              "multiplier": 2
+            },
+            "feedback": "再看看：只有分子乘了 2，分母也要乘同一个数——同乘要\"一起\"。"
+          },
+          {
+            "tag": "mis-denominator-only-scaled",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_DENOMINATOR_ONLY_SCALED",
+              "preNumerator": 1,
+              "preDenominator": 2,
+              "multiplier": 2
+            },
+            "feedback": "再看看：只有分母乘了 2，分子也要乘同一个数——同乘要\"一起\"。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "分子分母同乘 2：1/2 → 2/4。"
+          },
+          {
+            "checkId": "c2",
+            "text": "大小不变——涂的还是同一半。"
+          },
+          {
+            "checkId": "c3",
+            "text": "分子分母乘了同一个数，分数大小不变。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再看一遍图：同乘只是把每份切细，涂色的长短没变。"
+        }
+      },
+      "thm.f2.g2.equivalent-find.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "scaled-fraction",
+            "label": "分母 8 的等值分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "相等的原因",
+            "selectionId": "sel.why-eq",
+            "correctOptionId": "opt-num-den-same-times"
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 8,
+          "filled": 6
+        },
+        "scenarioFeedback": "请先做一次\"同乘 2\"并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-numerator-only-scaled",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_NUMERATOR_ONLY_SCALED",
+              "preNumerator": 3,
+              "preDenominator": 4,
+              "multiplier": 2
+            },
+            "feedback": "再看看：6/4 只有分子乘了 2——分母 4 也要乘 2。"
+          },
+          {
+            "tag": "mis-denominator-only-scaled",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_DENOMINATOR_ONLY_SCALED",
+              "preNumerator": 3,
+              "preDenominator": 4,
+              "multiplier": 2
+            },
+            "feedback": "再看看：3/8 只有分母乘了 2——分子 3 也要乘 2。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "3/4 同乘 2 → 6/8。"
+          },
+          {
+            "checkId": "c2",
+            "text": "分子分母同时乘了 2。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：等值要分子分母\"同时\"乘同一个数。"
+        }
+      },
+      "thm.f2.i1.numberline.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "point-fraction",
+            "label": "点表示的分数",
+            "source": {
+              "kind": "AUTHORED",
+              "numerator": 2,
+              "denominator": 6
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "与 2/6 相等的分数",
+            "selectionId": "sel.eq-choice",
+            "correctOptionId": "opt-1-3"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "6 格走到第 2 格 → 2/6。"
+          },
+          {
+            "checkId": "c2",
+            "text": "2/6 分子分母同 ÷2 → 1/3。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：总格数作分母、走过格数作分子；等值要同除一个数。"
+        }
+      },
+      "thm.f2.s1.stranger.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "choice",
+            "label": "1/2 与 2/4 谁大",
+            "selectionId": "sel.who-more",
+            "correctOptionId": "opt-same"
+          },
+          {
+            "id": "c2",
+            "kind": "fraction",
+            "quantityId": "denom-8-fraction",
+            "label": "1/2 写成分母 8",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 8,
+          "filled": 4
+        },
+        "scenarioFeedback": "请先用\"同乘\"把 1/2 变到分母是 8 并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-numerator-only-scaled",
+            "checkId": "c2",
+            "when": {
+              "kind": "FRACTION_NUMERATOR_ONLY_SCALED",
+              "preNumerator": 1,
+              "preDenominator": 2,
+              "multiplier": 4
+            },
+            "feedback": "再看看：只有分子乘了 4——分母 2 也要乘 4。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "一样大：2/4 = 1/2（分子分母同乘 2）。"
+          },
+          {
+            "checkId": "c2",
+            "text": "1/2 同乘 4 → 4/8。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再看一遍：两张纸一样大，涂的比例也一样。"
+        }
+      },
+      "thm.f2.d1.delayed-transfer.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "choice",
+            "label": "3/9 与 1/3 是否相等",
+            "selectionId": "sel.eq-judge",
+            "correctOptionId": "opt-equal"
+          },
+          {
+            "id": "c2",
+            "kind": "fraction",
+            "quantityId": "reduced-fraction",
+            "label": "2/6 的最简分数",
+            "source": {
+              "kind": "AUTHORED",
+              "numerator": 1,
+              "denominator": 3
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "相等：3/9 分子分母同 ÷3 → 1/3。"
+          },
+          {
+            "checkId": "c2",
+            "text": "2/6 同 ÷2 → 1/3。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：约分是分子分母同除一个数，除到只剩公因数 1。"
+        }
+      }
+    }
+  }
+}

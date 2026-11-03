@@ -1,0 +1,189 @@
+{
+  "title": "只改半径，预测直径",
+  "taskId": "cyl.param.g2.radius-change.v1",
+  "taskFamily": "cylinder.parameters.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l1.predictDimension.v1",
+  "allowedOperationIds": [
+    "SetDimension"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetDimension",
+      "dimension": "RADIUS",
+      "valuesMm": [
+        40
+      ]
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "mm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把圆筒变粗一点"
+    },
+    {
+      "type": "TEXT",
+      "text": "这个圆筒半径 3.0 cm、高 8.0 cm。现在我们只改一件事：把半径改成 4.0 cm，高度不动。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "现在",
+          "unitId": "cm"
+        },
+        {
+          "label": "改动后（脚本）",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0",
+          "4.0"
+        ],
+        [
+          "高度 h",
+          "8.0",
+          "8.0（不变）"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "动手改之前先预测：改完之后，直径会是多少？会变大、变小还是不变？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "dim.diameter",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "OPERATE 阶段确认前显示「未确认 —」，确认后显示直径读数"
+    },
+    {
+      "material": "card.before-after",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "只把半径从 3.0 cm 改成 4.0 cm，高度不变。你要预测：新的直径是多少？"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "想想直径和半径是什么关系。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "直径 = 半径 × 2；用新的半径 4.0 cm 算一遍。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g2.which-followed",
+        "prompt": "半径变大之后，下面哪些量跟着变了？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "opt-radius",
+            "label": "半径"
+          },
+          {
+            "id": "opt-diameter",
+            "label": "直径"
+          },
+          {
+            "id": "opt-height",
+            "label": "高度"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么高度没有变？你怎么确认的？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "带标签的数字输入、步进按钮与确认按钮；未确认预览标注「未确认」，确认后显示新尺寸并保留旧参数对照。",
+    "svgDom": "同一组输入控件驱动 SVG 轮廓（底圆宽度随 r 变化）与同一尺寸表；确认/未确认用文字标注。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

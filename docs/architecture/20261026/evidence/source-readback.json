@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T08:22:27.147436+00:00",
+  "purpose": "Rondo architecture source snapshot, not donor acceptance or independent installation",
+  "files": [
+    {
+      "path": "/Users/yeemio/AI/gitrep/Rondo/AGENTS.md",
+      "bytes": 1530,
+      "sha256": "bb52808fceb9beba6368c0d20a6860cef5da259daff42fd23f7ec1714454a67a"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Rondo/docs/handoff/START-HERE.md",
+      "bytes": 10719,
+      "sha256": "16101039549b6b6ff3a7e5d638569dea1ff3cefa730dd01dc9a083abb35f99b1"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Rondo/docs/planning/rondo-requirements-20261026.md",
+      "bytes": 16183,
+      "sha256": "773a3d8c34c94ef31de98aee076f5ae05036615eec8a592eea480d4fa2092f48"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Rondo/docs/planning/rondo-product-plan-20261026.md",
+      "bytes": 27162,
+      "sha256": "aa77fa28c7be5341d315bb8cfd5e95b7c7d71859f2e10e2d5177b7fffe3c5e21"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/docs/architecture/core-first-20261013/ASTRA-ARCHITECTURE.md",
+      "bytes": 88986,
+      "sha256": "0573c7d895274fba7fa9f263db8f0ecbbd5a074476fddec1565d106fcd7ccc02"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/docs/architecture/core-first-20261013/CONTROLLER-ACCEPTANCE.md",
+      "bytes": 8430,
+      "sha256": "98b7c08bce65666d9a7507ab9ad3927d23eb610c501f2d778ed3e588ed410f27"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/packages/core-api/src/index.ts",
+      "bytes": 2146,
+      "sha256": "1e0bd633e6c13896ad1ccb720bd34169d69692afd4174c3c6cefb257568a7c9f"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/packages/core-api/src/client.ts",
+      "bytes": 1552,
+      "sha256": "33c0a4a06be8ba595b899b7fe9ecf8fefba4af133f0da6fd75b4eb825685e3d2"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/package.json",
+      "bytes": 10750,
+      "sha256": "3513b59527aa800e026e4d07cb1f5153268d0a145860968ba339929ae02f4272"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/docs/ui-dsh-integration/README.md",
+      "bytes": 5300,
+      "sha256": "bbb17dc65c5c78de953b3e31a32723e6afba00b981690dac8b90c6d30ff1ea86"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/package.json",
+      "bytes": 58207,
+      "sha256": "2a2c225b151ece6e888961aa9b01cc8c20202bebe5ff9f2c9ec7dbd7a687950c"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/packages/integration-dsh/product-composition/profile/package.json",
+      "bytes": 518,
+      "sha256": "a5fc6c35cfe5eb461ed6655917f8e717b61431d02d9de8f251af4910e89592bc"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/packages/integration-dsh/product-composition/bundle/package.json",
+      "bytes": 421,
+      "sha256": "8066e3dbed9b1e635fa7774ba7e18fa2b6158ccd62c5368ab4faf703623d5315"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/ARTIFACT_IDENTITY.json",
+      "bytes": 2538,
+      "sha256": "32a4259f92d90a82ca86302564d8f2c248801dac52a1d3499781e5572c4a76df"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/inventory.json",
+      "bytes": 113104,
+      "sha256": "551fb8ad4305c8cb7462f8d12fa401f4ae3ddcd06e04626d6fea0a70a776a2a2"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/SHA256SUMS",
+      "bytes": 45586,
+      "sha256": "3eefcf14307b4702d9b4a8a25f6e1728e6e655816a5a2e227e0f57418aad87de"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/README.md",
+      "bytes": 6402,
+      "sha256": "8e8db744293ed03034a604cd9812dab83fdf7b02a21b7782fa9d37309179beba"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/pilot-log.md",
+      "bytes": 1243,
+      "sha256": "d8ca30af7c35accce094daccaa62f626c5142496a1b75cf15947ca605ed8354e"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/index.html",
+      "bytes": 65343,
+      "sha256": "8ad7106888923097227825cbfab09ccca6ae46481e63031ee3b9f1e8ca253a45"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/verify/report.md",
+      "bytes": 4202,
+      "sha256": "a715d06afc737dbfdbc255269ca1218c9e694d5d901b5268cf387cdad4e2cb29"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/verify/verify-headless.mjs",
+      "bytes": 27227,
+      "sha256": "dba5f94e3e742a9461195f8f2afa638efe2f36f235f6ad67ef61eb041c636065"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/vendor/three.module.js",
+      "bytes": 662772,
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/vendor/three.core.js",
+      "bytes": 1458113,
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/dsh/deepseek-ai-dsh-host-webserver-0.2.1-rc.2.owlcoda.1.tgz",
+      "bytes": 23042,
+      "sha256": "24372cb1018f39c4d96a9f8046204dfea9aaed72c4da8674a9dc3653bac25fb2"
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/vendor/deepseek-ai-cordis-4.0.5.tgz",
+      "bytes": 57043,
+      "sha256": "579e54fd4bd522716c87c120e95b6c66b8ac1ce78038dac5e57ff55e91404dfa"
+    }
+  ],
+  "selectedPublicPackages": [
+    {
+      "name": "@deepseek-ai/dsh-host-webserver",
+      "version": "0.2.1-rc.2.owlcoda.1",
+      "tarball": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/dsh/deepseek-ai-dsh-host-webserver-0.2.1-rc.2.owlcoda.1.tgz",
+      "sha256": "24372cb1018f39c4d96a9f8046204dfea9aaed72c4da8674a9dc3653bac25fb2",
+      "matchesDonorChecksum": true,
+      "installedSelectedFilesEqualTarball": {
+        "package.json": true,
+        "lib/index.js": true
+      },
+      "engines": null,
+      "dependencies": {
+        "@deepseek-ai/schemastery": "~3.18.5",
+        "compression": "^1.8.1",
+        "ipaddr.js": "^2.5.0",
+        "negotiator": "^1.1.0"
+      },
+      "peerDependencies": {
+        "@deepseek-ai/cordis": "~4.0.5"
+      }
+    },
+    {
+      "name": "@deepseek-ai/cordis",
+      "version": "4.0.5",
+      "tarball": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/vendor/deepseek-ai-cordis-4.0.5.tgz",
+      "sha256": "579e54fd4bd522716c87c120e95b6c66b8ac1ce78038dac5e57ff55e91404dfa",
+      "matchesDonorChecksum": true,
+      "installedSelectedFilesEqualTarball": {
+        "package.json": true,
+        "lib/index.js": true
+      },
+      "engines": null,
+      "dependencies": {
+        "@standard-schema/spec": "^1.1.0",
+        "@deepseek-ai/cosmokit": "~1.8.6"
+      },
+      "peerDependencies": {
+        "@deepseek-ai/cordis-plugin-include": "~1.0.10",
+        "@deepseek-ai/cordis-plugin-loader": "~1.0.6"
+      }
+    }
+  ],
+  "observedEnvironment": {
+    "node": "24.18.0",
+    "npm": "12.0.1",
+    "platform": "darwin-arm64"
+  },
+  "pilotReportStatus": "17 steps PASS reported by donor; not rerun in this chat; no Rondo acceptance",
+  "probeResult": "dsh-public-consumer-result.json",
+  "notPerformed": [
+    "full dependency closure validation",
+    "donor tests",
+    "donor modifications",
+    "product implementation",
+    "dependency install",
+    "Git staging or commit",
+    "model calls",
+    "child data transfer"
+  ],
+  "desktopDecisionSupplement": {
+    "recordedAt": "2026-10-26T09:51:43.666537+00:00",
+    "ownerDecision": "macOS desktop first; local data; separate Web UI and domain service",
+    "files": [
+      {
+        "path": "/Users/yeemio/AI/gitrep/Metis/apps/desktop/src/main.ts",
+        "bytes": 18490,
+        "sha256": "63273fe6be2e1f3ee0cf82f5317fb8ca6678a2e67c919c10e5cd455a3a70a9e0"
+      },
+      {
+        "path": "/Users/yeemio/AI/gitrep/Metis/apps/host/src/main.ts",
+        "bytes": 3641,
+        "sha256": "a341fa4e84f8dc90b08d3b6f742d46ac30c409b856a899063ac197c831765e8a"
+      },
+      {
+        "path": "/Users/yeemio/AI/gitrep/Metis/node_modules/electron/package.json",
+        "bytes": 744,
+        "sha256": "af9a6fdc372c2516076375d676ba5005937513e1bdcc6769768217a1561b18b6"
+      },
+      {
+        "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/dsh/deepseek-ai-dsh-app-boot-0.2.1-rc.2.owlcoda.1.tgz",
+        "bytes": 117809,
+        "sha256": "2300b068ee745ac884e4ae4ccbdeb212e814f3746c95830148e3439123f4bafb"
+      }
+    ],
+    "runtimeIdentity": {
+      "electron": "44.7.0",
+      "node": "24.21.0",
+      "chrome": "152.0.7977.130",
+      "modules": "149",
+      "platform": "darwin",
+      "arch": "arm64",
+      "executable": "/Users/yeemio/AI/gitrep/Metis/node_modules/electron/dist/Electron.app/Contents/MacOS/Electron"
+    },
+    "probeResult": "electron-public-consumer-result.json",
+    "notVerified": [
+      "BrowserWindow",
+      "utilityProcess lifecycle",
+      "preload IPC",
+      "independent Rondo installation",
+      "packaging/signing"
+    ]
+  },
+  "probeSourceSha256": "982d407dc24d118da2839efb9aa8f094cc15104dac67ab9d41a200b7d008f541"
+}

@@ -1,0 +1,23 @@
+{
+  "taskId": "thm.f3.s1.stranger.v1",
+  "file": "thm.f3.s1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "thm.f3.s1.F1",
+      "initial": {
+        "rows": 10,
+        "cols": 10,
+        "filled": 0
+      },
+      "truth": {
+        "storeA": "60.00",
+        "storeB": "64.00",
+        "cheaper": "store-a",
+        "diff": "4.00",
+        "story": "单价 40 元买 2 支"
+      },
+      "answerHint": "甲店 40+40×50%=60.00 元；乙店 80×80%=64.00 元；甲店便宜 64−60=4.00 元。"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "taskId": "cyl.net.s1.stranger-relabel.v1",
+  "file": "cyl.net.s1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.net.s1.F1",
+      "initial": {
+        "radiusMm": 15,
+        "heightMm": 90
+      },
+      "givenDiameterCm": "3.0",
+      "truth": {
+        "radiusCm": "1.5",
+        "circumferenceCm": "9.42",
+        "lateralAreaCm2": "84.78",
+        "pairing": "standard",
+        "directionCircleEdges": [
+          "net-edge-2",
+          "net-edge-4"
+        ],
+        "directionHeightEdges": [
+          "net-edge-1",
+          "net-edge-3"
+        ]
+      },
+      "answerHint": "半径 = 3.0÷2 = 1.5 cm；配对：边1→高、边2→上底圆、边3→高、边4→下底圆；圆周={2,4}、高={1,3}；面积 = 9.42×9.0 = 84.78 cm²。"
+    }
+  ]
+}

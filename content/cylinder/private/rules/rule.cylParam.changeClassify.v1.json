@@ -1,0 +1,31 @@
+{
+  "ruleId": "rule.cylParam.changeClassify.v1",
+  "file": "rule.cylParam.changeClassify.v1.json",
+  "boundTasks": [
+    "cyl.param.g1.view-invariance.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "rules": [
+      {
+        "ruleKind": "PARAMETER_IDENTIFICATION_V1",
+        "expectedJudgments": [
+          {
+            "propertyId": "radius",
+            "direction": "UNCHANGED"
+          },
+          {
+            "propertyId": "diameter",
+            "direction": "UNCHANGED"
+          },
+          {
+            "propertyId": "height",
+            "direction": "UNCHANGED"
+          }
+        ]
+      }
+    ],
+    "note": "G1：仅视角操作不改变任何尺寸；全部 UNCHANGED 才 CORRECT。reasonTag/freeText 仅入过程证据。"
+  },
+  "pendingDsl": null
+}

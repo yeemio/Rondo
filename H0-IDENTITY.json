@@ -1,0 +1,12 @@
+{
+  "h0Version": "h0-20261027-1",
+  "createdAt": "2026-10-26T17:17:26Z",
+  "contractsHash": "dd4ea2300c7dd423008f79a2a242e62c7ed43c11ee48d6eeb7753bbb84962518",
+  "schemaHash": "0b34621c9792ba746188ac82fb2c816a5fd510b074b6dcd98657be1033180ede",
+  "lockHash": "7a695b0a84ef5de5d6fded34a149d24b3677411f7663e7e574cb60cad4ac3966",
+  "sourceManifestHash": "a6de58d35a154132141c21427f388e73051d13175d80922b10b5018af959fc2c",
+  "sourceManifestFile": "preparation/A/h0-source-manifest.txt",
+  "commands": ["npm ci", "npm run typecheck", "npm run check:contracts"],
+  "digestRule": "sorted relative path + byte size + file sha256 per line, sha256 over listing; excludes node_modules/dist/build; includes vendor/lock/schema",
+  "pendingC": ["B-D10 DSL final alignment (await C prep; delta follows)"]
+}

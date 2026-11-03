@@ -1,0 +1,16 @@
+{
+  "releaseId": "rondo.cyl.l4-r1",
+  "note": "path -> sha256 of the public asset files hashed into publicAssetHashes; this map itself is not hashed",
+  "assets": {
+    "content/cylinder/public/lessons.json": "52b89a0497c4981eb831ac30c23b714eac22c86e8851a3b875a090634d295e23",
+    "content/cylinder/public/schemas/response-schemas.registry.json": "8f6e3ac7b638585971da36dc1a954e5c57a90726ac812d3d82dec74881f12338",
+    "content/cylinder/public/tasks/cyl.layers.d1.delayed-transfer.v1.json": "88dc4449650219f05c79460cd5c35297d5e2818dad9f1df49ef8390132d8e065",
+    "content/cylinder/public/tasks/cyl.layers.g1.stack-invariant.v1.json": "f9b4a0e2c29a2219dc2d3d8d45321bb71b0f1ec45487eee65832482c499316b1",
+    "content/cylinder/public/tasks/cyl.layers.g2.layer-volume.v1.json": "046110176caa0905af0239c0db7e363bea95cfca77c32f9bca3a1a2cc42f8929",
+    "content/cylinder/public/tasks/cyl.layers.g3.height-vs-radius.v1.json": "7c90bb1c7aabac38fcedacf8d00451684568e506e8dd3f31785f5022d480470a",
+    "content/cylinder/public/tasks/cyl.layers.i1.volume-value-unit.v1.json": "56ec86ba1a4076e28b24cc8e4d357d6335cd080fd4d4fce79a05c1575254e4d2",
+    "content/cylinder/public/tasks/cyl.layers.i2.height-vs-radius-choice.v1.json": "8fdfa49b9c2a3c194d2c3dc8811bca4673c30ee82345ac4284c732baeb869708",
+    "content/cylinder/public/tasks/cyl.layers.i3.accumulate-count.v1.json": "1b14b6c99564a38725f58092d93bf248106269012c7445e89fc9d1afc90b65ef",
+    "content/cylinder/public/tasks/cyl.layers.s1.stranger-package.v1.json": "1b4e5f269108bdc6837725f909c70e2db3bafb815ad04101f40ff81edb0a4919"
+  }
+}

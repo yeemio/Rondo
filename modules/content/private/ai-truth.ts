@@ -1,0 +1,11 @@
+/** Private authored grading/explanations. This module must never enter the web graph. */
+import type {NewAIId} from '../../contracts/public/ai-lab';
+export const AI_TRUTH:Record<NewAIId,{choices:Record<string,string>;explanation:string;hints:readonly string[]}>= {
+ 'ai-a1':{choices:{},explanation:'规则搜索下棋是传统AI的一种，本例没有从样本学习；图片分类器是AI中的机器学习应用；本例的故事生成器同时属于AI、机器学习和生成式AI。类别可以包含，不是互斥的三选一。并非所有AI都生成内容，也并非所有AI都靠带标签样本学习。',hints:['先分别看每个系统怎么工作，不要只看“像不像人”。','一个系统可以同时符合几个类别；区分“利用写好的规则搜索”“从样本学习”和“生成新内容”。']},
+ 'ai-a2':{choices:{'history-selection':'selection-only','history-start':'research-before-chat'},explanation:'1955年提案设想1956年研究计划；2012年图像分类、2017年机器翻译架构、2020年语言任务与上下文示例、2022年公众对话产品，是任务和形态变化的若干节点。它们只是节选，不能据此说机器学习始于2012，或AI始于2022。',hints:['先把年份排好，再读每张卡中的“研究什么”，不要把提案愿景当成已实现能力。','提案年份与计划年份要分开；后来的一个成果或产品不能代替整个领域的起点。']},
+ 'ai-a3':{choices:{'nearest-rule':'nearest-example','unseen-case':'not-guaranteed'},explanation:'这个教学模型计算新卡与每个例子的宽高距离，只沿用最近例子的标签；它没有从一次试验中证明人的分组约定。补充例子或改标签可能改变预测，也可能暂时不变，必须引用实际试验。有限数据仍有未覆盖情况。监督学习只是机器学习的一类。',hints:['先试未出现过的宽高组合，把预测和人的约定分开记。','保留一次旧结果，改一个例子或标签后再试同一张卡；看最近例子是否变了，而不是预设结论。']},
+ 'ai-a4':{choices:{'training-action':'changes-parameters','inference-action':'uses-frozen'},explanation:'这里对照训练卡的标签调整参数，属于简化的训练阶段；冻结后只用既有参数给新卡算得分，是使用/推理。测试不会自动改参数。真实模型训练远比这个纸面公式复杂，训练也并非都使用人工标签；一次聊天不等于当场重新训练。',hints:['先看三张卡的给定标签和当前得分，比较参数变化前后的不同。','冻结后再测试新卡，检查记录中的参数是否仍是冻结值；把“改参数”和“用参数”分开。']},
+ 'ai-a5':{choices:{'token-unit':'variable-pieces','token-model':'depends-on-encoding'},explanation:'同一句“小猫喜欢晒太阳”可以被本活动切成不同长度的片段，片段数随边界改变。这里只是纸面模拟，不能拿它计算真实模型token；真实tokenizer和计数依赖具体模型、编码、语言，token不固定等于一个汉字或一个词。',hints:['先保留一种切法，再打开或合上一个字间边界，看总片段数。','比较“每字一片”和“按词组切分”的结果；活动中的片段不是某个真实模型的token输出。']},
+ 'ai-a6':{choices:{'context-link':'reading-analogy','fluent-truth':'needs-evidence'},explanation:'“它累了”这段联系的是猫；“它挡住了门”这段联系的是被挪开的椅子。上下文改变了合理的指向和后续表达。本活动的连线和预写续句是阅读类比，不是真实注意力权重或在线生成。真实模型根据上下文生成后续文字，不是直接从一个答案库查真值；流畅仍需核查。',hints:['两段文字都出现猫和椅子，但“它”后面的事情不同。先找哪个对象能做或承受这件事。','每换一段上下文，都重新连一次指向、比较续写。不要把可见连线解释成模型内部真实权重。']},
+ 'ai-a8':{choices:{responsibility:'person-responsible','privacy-rule':'minimize-data'},explanation:'构思和理解可让AI辅助，但要由人选择、核查并形成自己的工作。明确要求独立完成的作业应自己做或向老师求助，不能代交生成答案。无关的住址、电话、账号不应输入；必要时先问可信成年人。责任不会因为使用AI自动转移。',hints:['分别问：它在辅助什么？哪一步仍需要人核查或遵守要求？','尤其比较“找思路”和“直接代交”，以及学习任务是否真的需要那些个人资料。只讨论虚构角色。']},
+};

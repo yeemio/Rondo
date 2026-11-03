@@ -1,0 +1,53 @@
+{
+  "ruleId": "rule.cylNet.pairing.v1",
+  "file": "rule.cylNet.pairing.v1.json",
+  "boundTasks": [
+    "cyl.net.g2.edge-pairing.v1",
+    "cyl.net.i1.pair-normal.v1",
+    "cyl.net.i2.pair-tall-thin.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "note": "配对真值锚定展开参数化，与屏幕朝向/条带横竖/长短无关。"
+  },
+  "pendingDsl": {
+    "reasons": [
+      "NUMERIC_RELATION_V1_QUANTITY_MIN1: 冻结 NUMERIC_RELATION_V1 要求 quantityChecks>=1，纯配对任务无法以该族表达"
+    ],
+    "numericRelationShape": {
+      "ruleKind": "NUMERIC_RELATION_V1",
+      "expectedEdgeMapping": [
+        {
+          "cylinderObjectId": "cyl-part-height-line",
+          "netEdgeId": "net-edge-1"
+        },
+        {
+          "cylinderObjectId": "cyl-part-upper-circle",
+          "netEdgeId": "net-edge-2"
+        },
+        {
+          "cylinderObjectId": "cyl-part-height-line",
+          "netEdgeId": "net-edge-3"
+        },
+        {
+          "cylinderObjectId": "cyl-part-lower-circle",
+          "netEdgeId": "net-edge-4"
+        }
+      ],
+      "quantityChecks": null
+    },
+    "diagnostics": {
+      "cyl.net.i2.pair-tall-thin.v1": {
+        "misAppearanceLongEdge": "提交配对呈「长边配圆周」模式（1/3→circle、2/4→height 的任意上下底指派）时记诊断标签 mis-appearance-long-edge",
+        "feedbackVariant": "再看与底面圆相接的边"
+      }
+    },
+    "feedback": {
+      "reviseGeneric": [
+        "有一条边再回卷确认一下",
+        "再看与底面圆相接的边"
+      ],
+      "policy": "REVISE 反馈不显示逐行对错、不显示正确行数、不点名边号、不揭示正确配对"
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "title": "圆筒悄悄变了",
+  "taskId": "cyl.param.i1.identify-changes.v1",
+  "taskFamily": "cylinder.parameters.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l1.identifyParams.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "mm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "圆筒悄悄变了"
+    },
+    {
+      "type": "TEXT",
+      "text": "这是一个新的圆筒，尺寸和刚才的不一样，而且现在不给你看尺寸数字。"
+    },
+    {
+      "type": "TEXT",
+      "text": "接下来会发生两件事：画面会请你转到新的视角观察，同时其中一个尺寸——半径或者高度——会被悄悄改变。你事先不知道是哪一个。"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测：如果变的是半径，直径会怎样？如果变的是高度，直径会怎样？预测保存后改变才会发生。"
+    },
+    {
+      "type": "TEXT",
+      "text": "观察之后回答：这次到底变了哪些量？变大了还是变小了？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [],
+      "rows": [
+        "radius",
+        "height"
+      ],
+      "note": "独立题：数值读数全档隐藏，REVIEW 由比对卡解禁"
+    },
+    {
+      "material": "dim.radius",
+      "phases": []
+    },
+    {
+      "material": "dim.diameter",
+      "phases": []
+    },
+    {
+      "material": "dim.height",
+      "phases": []
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.before-after",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "一个新圆筒，没有尺寸数字。画面会换视角，同时半径或高度之一会被悄悄改变。你要答：哪些量变了、变大了还是变小了。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "转动视角会改变画面，但不会改变尺寸；想办法把「画面变了」和「尺寸变了」分开验证。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "转到正侧面固定视角对比前后：水平方向的宽度对应直径（半径×2），竖直方向对应高。宽度变了→半径和直径都变；竖直方向变了→高度变。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.i1.how",
+        "prompt": "你主要靠什么分辨出来的？",
+        "options": [
+          {
+            "id": "opt-fixed-view-compare",
+            "label": "固定视角对比前后轮廓"
+          },
+          {
+            "id": "opt-side-view-check",
+            "label": "转到正侧面看宽度和高度"
+          },
+          {
+            "id": "opt-repeat-rotate",
+            "label": "反复转动排除视角因素"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果只看一次画面、不转动视角，你能确定是哪个变了吗？为什么？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "scriptedChangeSnapshot",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "无尺寸标注的圆柱；脚本变更以一次动画呈现（权威状态已先落库）；REVIEW 前画面与标注层不含 r/d/h 数值。",
+    "svgDom": "前/侧/俯视按钮 + 复位；SVG 轮廓随确认状态重绘；无尺寸表控件，比对卡 REVIEW 才注入 DOM。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 45,
+    "heightMm": 120,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

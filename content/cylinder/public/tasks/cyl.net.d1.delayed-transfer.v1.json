@@ -1,0 +1,264 @@
+{
+  "title": "茶叶罐的商标纸",
+  "taskId": "cyl.net.d1.delayed-transfer.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "DELAYED_TRANSFER",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.strangerComposite.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "茶叶罐的商标纸"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个圆柱形茶叶罐，罐身裹一层商标纸，只包侧面。商标纸的高 5.5 cm，罐身底面圆的周长是 12.56 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "底面圆周长 C",
+          "12.56"
+        ],
+        [
+          "商标纸的高 h",
+          "5.5"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 罐身的半径是多少厘米？(2) 商标纸摊开后，四条边（编号 1–4）分别卷回去贴着谁（上底圆/下底圆/高）？(3) 卷回去以后，哪条边形成底面圆的圆周？哪条边成为高？π 取 3.14。每项都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "height"
+      ],
+      "note": "故事 given：周长以文字给出，高度可见"
+    },
+    {
+      "material": "dim.radius",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "半径为推导目标"
+    },
+    {
+      "material": "dim.diameter",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "迁移复测方法回忆"
+    },
+    {
+      "material": "card.formula-S",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "商标纸只包罐身侧面。已知底面圆周长 12.56 cm、商标纸高 5.5 cm。三问：半径；四条边配对；哪条边成圆周/成高。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "周长、直径和半径是一家人：C=2πr 倒过来用。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "r=C÷(2×3.14)；配对与方向回卷一小段验证。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.netd1.circle-edges",
+        "prompt": "卷回后哪条边形成底面圆的圆周？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.netd1.height-edges",
+        "prompt": "哪条边成为高？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.netd1.same-diff",
+        "prompt": "这次和上次的圆筒题目哪里相同、哪里不同？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "opt-same-unroll",
+            "label": "都是侧面展开对应"
+          },
+          {
+            "id": "opt-diff-given-form",
+            "label": "参数给法不同"
+          },
+          {
+            "id": "opt-same-find-c",
+            "label": "都要找周长对应边"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "隔了这些天，你是怎么想起来的？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同 S1 基线；「回看练习」卡、状态与间隔显示在两种表达下一致。",
+    "svgDom": "同 S1 基线。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 20,
+    "heightMm": 55,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

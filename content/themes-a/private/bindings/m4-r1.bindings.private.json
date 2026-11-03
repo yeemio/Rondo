@@ -1,0 +1,21 @@
+{
+  "releaseId": "rondo.thm.m4-r1",
+  "taskBindings": [
+    {
+      "taskId": "thm.m4.diag.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.m4.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.m4.v1.json"
+      }
+    },
+    {
+      "taskId": "thm.m4.supp.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.m4.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.m4.v1.json"
+      }
+    }
+  ]
+}

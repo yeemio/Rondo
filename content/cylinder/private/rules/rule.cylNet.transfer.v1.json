@@ -1,0 +1,129 @@
+{
+  "ruleId": "rule.cylNet.transfer.v1",
+  "file": "rule.cylNet.transfer.v1.json",
+  "boundTasks": [
+    "cyl.net.s1.stranger-relabel.v1",
+    "cyl.net.d1.delayed-transfer.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "rules": [
+      {
+        "ruleKind": "NUMERIC_RELATION_V1",
+        "expectedEdgeMapping": [
+          {
+            "cylinderObjectId": "cyl-part-height-line",
+            "netEdgeId": "net-edge-1"
+          },
+          {
+            "cylinderObjectId": "cyl-part-upper-circle",
+            "netEdgeId": "net-edge-2"
+          },
+          {
+            "cylinderObjectId": "cyl-part-height-line",
+            "netEdgeId": "net-edge-3"
+          },
+          {
+            "cylinderObjectId": "cyl-part-lower-circle",
+            "netEdgeId": "net-edge-4"
+          }
+        ],
+        "quantityChecks": [
+          {
+            "quantityId": "radius",
+            "expected": {
+              "kind": "RATIONAL_PRODUCT_V1",
+              "factors": [
+                {
+                  "factor": "radiusMm"
+                }
+              ]
+            },
+            "acceptedUnitIds": [
+              "cm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            },
+            "comparison": "EXACT_AFTER_ROUNDING"
+          },
+          {
+            "quantityId": "lateral-area",
+            "expected": {
+              "kind": "RATIONAL_PRODUCT_V1",
+              "factors": [
+                {
+                  "numerator": 157,
+                  "denominator": 50
+                },
+                {
+                  "numerator": 2,
+                  "denominator": 1
+                },
+                {
+                  "factor": "radiusMm"
+                },
+                {
+                  "factor": "heightMm"
+                }
+              ]
+            },
+            "acceptedUnitIds": [
+              "cm2"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            },
+            "comparison": "EXACT_AFTER_ROUNDING"
+          }
+        ]
+      },
+      {
+        "ruleKind": "NUMERIC_RELATION_V1",
+        "expectedEdgeMapping": [
+          {
+            "cylinderObjectId": "cyl-part-base-circle",
+            "netEdgeId": "net-edge-2"
+          },
+          {
+            "cylinderObjectId": "cyl-part-base-circle",
+            "netEdgeId": "net-edge-4"
+          },
+          {
+            "cylinderObjectId": "cyl-part-height-line",
+            "netEdgeId": "net-edge-1"
+          },
+          {
+            "cylinderObjectId": "cyl-part-height-line",
+            "netEdgeId": "net-edge-3"
+          }
+        ],
+        "quantityChecks": [
+          {
+            "quantityId": "radius",
+            "expected": {
+              "kind": "RATIONAL_PRODUCT_V1",
+              "factors": [
+                {
+                  "factor": "radiusMm"
+                }
+              ]
+            },
+            "acceptedUnitIds": [
+              "cm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            },
+            "comparison": "EXACT_AFTER_ROUNDING"
+          }
+        ]
+      }
+    ],
+    "note": "本 rule 在冻结 DSL 内完整可表达（mapping+quantity 同时存在）。expected 表达式一律 mm 基（面积 mm²、半径 mm），学生作答单位经单位表换算后比较；两 rules 分别承载 edgePairing 与 directionClaims 两段映射词表，S1/D1 冻结实例见 instances/。"
+  },
+  "pendingDsl": null
+}

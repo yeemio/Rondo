@@ -1,0 +1,151 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f2.d1.delayed-transfer.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "DELAYED_TRANSFER",
+  "title": "回看练习 · 约分",
+  "boardView": "BAR",
+  "givens": {
+    "rows": 1,
+    "cols": 6,
+    "filled": 2
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.f2d1.v1",
+  "allowedOperationIds": [
+    "ScaleBoth"
+  ],
+  "operationConstraints": [
+    {
+      "type": "ScaleBoth",
+      "multipliers": [
+        2,
+        3
+      ]
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "回看练习：判断与约分（隔几天后再来）"
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 3/9 和 1/3 相等吗？(2) 把 2/6 化成分子、分母都最小的等值分数（右侧条带可以帮助你检查，可同乘后再对照）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "提示信息"
+        },
+        {
+          "label": "内容"
+        }
+      ],
+      "rows": [
+        [
+          "右侧面板",
+          "当前显示 2/6 的条带"
+        ],
+        [
+          "同乘方向提示",
+          "约分与同乘是反方向的操作"
+        ]
+      ]
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "判断 3/9 与 1/3 是否相等；把 2/6 约到最简。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "分子分母同除一个数，大小不变；最简就是分子分母只剩公因数 1。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "3/9 的 3 和 9 都除以 3；2/6 的 2 和 6 都除以 2。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f2d1.direction",
+        "prompt": "同乘和约分是什么关系？",
+        "options": [
+          {
+            "id": "opt-inverse",
+            "label": "互为反方向：一个放大份数，一个缩小份数"
+          },
+          {
+            "id": "opt-unrelated",
+            "label": "没有关系"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "隔了这些天，你是怎么想起来的？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "条带（SVG）同乘检查用。",
+    "boardTable": "份数/涂色份数读数表；同一判分。"
+  }
+}

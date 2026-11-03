@@ -1,0 +1,237 @@
+{
+  "title": "新的圆筒",
+  "taskId": "cyl.net.i1.pair-normal.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.edgePair.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "新的圆筒"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个新圆筒：r=4.0 cm，h=5.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "4.0"
+        ],
+        [
+          "高度 h",
+          "5.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "把侧面完全展开，把条带的四条边（编号 1–4）和圆筒配对：每条边卷回去以后，它是上底圆、下底圆，还是高？每条边都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "公开公式卡，不含数值"
+    },
+    {
+      "material": "card.formula-S",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "公开公式卡，不含数值"
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "新圆筒 r=4.0 cm、h=5.0 cm。四条编号边各配上：上底圆 / 下底圆 / 高。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "侧面和每个底面相接的地方是一条圆周；和上底相接、和下底相接，是两条不同的边。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "回卷一小段，看每条编号边贴着谁。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.neti1.circle-edges",
+        "prompt": "卷回后哪两条边形成底面圆的圆周？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.neti1.height-edges",
+        "prompt": "哪两条边成为高？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么你这样配对？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同 G2 基线；测量读数隐藏，仅边编号与形状呈现。",
+    "svgDom": "同 G2 基线；SVG 尺寸表同受投影约束（测量读数 REVIEW 前不注入）。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 40,
+    "heightMm": 50,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

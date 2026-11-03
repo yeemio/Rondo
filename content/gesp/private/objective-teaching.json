@@ -1,0 +1,3008 @@
+{
+  "gesp2.202303.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "硬盘依靠磁性介质保存信息，强磁场可能破坏记录。光盘利用光学方式读写盘面结构，不靠磁化保存；本题按存储介质的基本原理选光盘，不是在承诺任何设备能抵抗所有电磁环境。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq02": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "沿菱形判断框分为“是”和“否”两条路线，随后汇合。这是按条件选择执行路线的分支结构；没有返回前面重复执行的箭头，所以不是循环。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "double表示浮点数，不表示变量所占内存会随数值浮动；同一实现中该类型的sizeof固定。bool常见实现占1字节，本课程锁定的环境如此；int取值有限，8位char有256种位模式，不能把“浮点”误解为内存大小浮动。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "标识符可用字母、数字和下划线，但首字符不能是数字。变量定义要有类型，之后可以赋值改变内容，所以不正确的是“可以以数字开始”。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq05": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "return、else、case是语言保留的关键字。max是标准库中常用的函数名，并非语言关键字；函数名和关键字不能混为一谈。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq06": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "/=、-=分别把除法、减法的结果赋回左边，!=表示不等于。C++没有反斜线加等号这个运算符；除号是正斜线/。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq07": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "a是可修改的变量，所以a++合法；字符相加会先参与整数运算，再赋回b。字符字面量'a'不是可修改的对象，不能对它执行++，因此C不符合语法要求。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "四个int相加后如果除以整数4，会先做整数除法，丢掉小数部分。除以4.0会转为浮点除法，才能得到可能带小数的平均值；浮点数不能用于%取余。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq09": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "单独计算a+1只产生表达式结果，没有把结果存回a。其余三项都有赋值或自增；在题设连续数字字符编码中，原值'2'会变为'3'。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq10": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "a-=3等价于用原a减3，再把结果赋给a。原值9减去3得到6，不是把a直接改成3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq11": {
+    "topic": "C",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "!a在a为0时为真，!b在b为0时为真。||只要求其中一个为真，因此表达“a为0或b为0”；&&要求两者都为0，链式==也不是数学连等。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq12": {
+    "topic": "C",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "要落在小写字母区间，必须同时满足a不小于'a'、不大于'z'，所以用&&连接两个比较。C++会把'a'<=a<= 'z'先算成真假再比较，不会按数学区间理解。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq13": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "初始a=10、b=50，先令a=b-a得到40。随后b-=a得到10，最后a+=b得到50，正好输出50 10；顺序和中间值都不能跳过。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq14": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "循环访问字符'1'到'9'。在ASCII兼容编码里这九个字符的码值与数字本身奇偶相同，ch%2==1选出1、3、5、7、9共五个；ch>='4'则有六个。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.mcq15": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "循环把i从2一直检查到n本身。到i=17时17%17为0，isprime被置为false；cout默认把bool输出为0或1，所以最后输出0，而不是文字false。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "按这份试卷采用的二进制换算约定，4×1024MB=4096MB，两者相等，不能说后者更大。实际产品标注还应区分GB与GiB，比较时先统一单位和约定。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "IPv4每段用8位表示，数值范围是0到255，并非1到255。地址形式和某些网络中可分配给主机的地址限制是两件事。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "一个通常的C++可执行程序只有一个入口main的定义。可以有许多普通函数，但不能把多个main定义放进同一程序来作为多个入口。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "下划线可以出现在标识符中，也可以作为开头；只是某些以下划线开头的名字保留给实现，应用代码应避免这些保留形式。把所有下划线开头都说成不合法并不正确。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "加单引号的'a'是字符字面量，与变量a的值无关。即使变量a等于整数1，表达式'a'仍是字符a，不会自动变成字符1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "if和else对应的语句都可以是另一个if语句。需要明确多条语句或消除阅读歧义时使用大括号；嵌套本身不是禁止事项。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "while先检查条件，再决定是否执行循环体。若初次条件就是false，执行零次；至少执行一次的是do...while的检查顺序。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": ">=是大于等于运算符，两个字符的顺序有固定含义。=>不是C++的大于等于运算符，不能交换字符位置。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf09": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "在本题采用的ASCII兼容字母编码中，a-'a'求出小写字母的偏移，再加'A'得到对应的大写字母。先得到偏移再换起点，不能直接把字符当作变量名。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202303.tf10": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "10.0是double字面量，除法另一侧的2会转成double参与运算。结果数值为5.0，表达式类型仍是double，显示时是否带小数点不改变类型。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "编辑是写代码，保存是把文件存下来，调试是寻找和修正问题。把高级语言源程序翻译为目标代码的关键环节是编译；完整构建中还可能有链接步骤。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq02": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "流程图在条件为否时进入语句块，之后回到判断；条件为真时离开。应写成while not 条件判断 do语句块，不能只看有菱形就当作一次if。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "两个int操作数的乘法表达式仍是int类型，计算前不会自动变成任意精度数。若有符号整数溢出属于未定义行为，不能保证报错崩溃；char可以转为int。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq04": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "C++由大括号和语法规则决定语句的归属，不靠缩进决定循环体包含几句。缩进能帮助阅读，却不能代替多语句循环体的大括号。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq05": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "double是语言直接规定的类型关键字。main是入口函数名，max、sqrt是库函数名，名字常见不等于关键字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq06": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": ">=、/=、||分别是比较、复合赋值、逻辑或。C++的不等于写成!=，不是某些语言使用的<>。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq07": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "强制转换表达式(int)b只是转换后的值，不是可以赋值的位置。把a赋给这个临时结果不合法；其余三项都把结果赋给真正的变量。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "平行四边形面积是a*h，再除以b得到对应高。A先做整数a/b，余数已经丢失，之后加浮点数也补不回来；另外三项在除法前已引入浮点运算。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "在本课程C++11环境中，bool的自增虽已不推荐但仍可编译；false加一次变true，之后仍保持true。b<=true总成立，因此B不终止；在C++17中对bool使用++已被禁止，要明确语言版本。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq10": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "字符C的编码为67。a+2经过整数提升得到整数69，直接交给cout输出的是数字69；只有再转换成char才会按字符显示。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq11": {
+    "topic": "C",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "a==b与b==1同时为真，才能推出a和b都等于1。单看a&&b只说明它们非零，例如2和3也为真，不能替代相等判断。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq12": {
+    "topic": "C",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "字符必须同时位于'0'到'9'之间，所以用'0'<=a && a<='9'。两个比较要分别写完整，C++不支持数学式连续区间比较。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq13": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "a='3'、b='6'时，a+b-'0'的数值仍是字符'9'的编码，而不是整数9。再转换成char后cout输出字符9；如果不转换，输出的是编码值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq14": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "20的正因子是1、2、4、5、10、20，和为42。条件20%i==0正好筛出它们；i的倍数条件与“i是20的因子”方向不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.mcq15": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "分别代入A、B、C、D。四个判断相加得到A为1、B为2、C为3、D为2，只有C满足和等于3，因此只输出字符C。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "6763个汉字每个2字节，共13526字节。64×1024÷5=13107.2字节，13526大于五分之一，故“不超过”不成立。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "域名层级从右往左看。gesp.ccf.org.cn最右侧的cn是顶级域，gesp是更低层级的名称，不能把最左一段当顶级域。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "题意是在缺少相关声明时不能直接调用这些数学函数。包含cmath等头文件后可以按相应命名空间规则调用sqrt、abs；函数本身并不是C++禁止使用的功能。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "下划线是标识符可使用的字符，不是一个独立运算符。能在变量名中出现，不等于能在两个操作数之间表示运算。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "3.5是double值，与整数10相乘时10先转成double。结果数值为35，但类型仍为double，不能由显示的整数外观判断类型。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "if后的受控语句可以是用大括号包起来的复合语句。这样多句一起受同一条件控制，缩进本身不能完成这一点。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "如果循环继续条件一直为真而且没有退出路径，循环就可能无限执行。是否终止取决于条件和状态变化，不是循环语法自动保证。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "+=也是C++复合赋值运算符，例如a+=2把加法结果写回a。++和==合法，并不能推出+=不合法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf09": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "题设字符F之后是G。计算a+1得到下一个编码并赋回char变量a，因此变为G；这里没有停留在只求值不赋值的情况。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202306.tf10": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "sqrt(9.0)的数值是3，但所调用的double重载返回double。结果类型不因平方根恰好是整数而改变。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "我国第一台大型通用电子计算机通常指1958年的103机，采用电子管作为主要逻辑部件。晶体管、集成电路是后续不同发展阶段的典型器件。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq02": {
+    "topic": "C",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "先记x=5、y=12，条件x>y为假，沿“否”分支执行a=y、b=x。输出顺序是a后b，所以为12 5。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq03": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "比较a与b后，根据结果输出其中一个值。两条执行路线由条件决定，属于分支结构；不需要反复执行的循环。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "continue、break、goto都是语言关键字。cout是标准输出流对象的名字，来自标准库，不是关键字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "先算浮点除法-123.123/10得到约-12.3123。转为int时向零截断小数部分，结果为-12，不是向负无穷取整的-13。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "从N向下逐个检查，才能按从大到小顺序得到因子。条件i>0让1也被检查，同时避开除数0；i>1会漏掉因子1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq07": {
+    "topic": "G",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "主对角线上的行号与列号相同，因此判断i==j。i=j是赋值，i>=j会把整块下三角区域都标为1，均不是只有对角线。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq08": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "发现一个真因子后已确定不是素数，应break离开因子循环。此时i<N，循环后的if(i==N)不成立；continue还会继续找，不能表达立即结束。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "i取2到8，只有3能整除9，其余2、4、5、6、7、8的余数都非零，共输出六次1#。循环外再输出0，得到六组1#之后接0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "外层i为1到8；内层j从1开始每次加2且j<i。各轮次数为0、1、1、2、2、3、3、4，合计16次，cnt最终为16。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq11": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "外层i依次为1、4、7、10。i=4、10遇到j=1时乘积为偶数立即break；i=7时j=1、3、5都使乘积为奇数，计数三次；i=1没有内层轮次，总数3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq12": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "x按奇数前进，3与9可被3整除，分别输出3,和9,。到11时不整除3且11/10非零，break保留x=11，循环外再输出11，得到3,9,11。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "j从0开始，j%3依次0、1、2再循环。加'A'得到A、B、C的编码后要转换为char输出，否则输出整数编码；因此D同时满足循环和字符显示。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq14": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "第i行从0编号，右侧每个数字带一个空格，数字中心每下一行向左移两个字符。前导空格数应为2×(lineCount-i-1)，最后一行为0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.mcq15": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "人数未知，需要先持续读取，再在读到负数时break。C++布尔常量写成小写true；false会完全不进循环，True和False不是这里的语言常量。实际求平均还要处理一开始就负数造成无人数据的情况。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "Internet是由许多网络互联形成的全球网络，不是单一国家独有的一个局域系统。这里描述的是网络范围与组织性质，不是说网络不受任何当地法律管理。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "神威·太湖之光是我国自主研制的超级计算机，曾多次位列TOP500第一。这里核对的是既有历史事实，不把该陈述当作今天排名不变的保证。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "7.8没有f后缀，是double字面量；除以2仍得到double。数值3.9正确，类型float错误，判断题必须同时核对值与类型。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "||执行逻辑或，6和7都转成真，结果是真值1。它不会把两个数字拼接成67，也不会返回它们的十进制连接。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "逗号表达式依次执行并取最后一项的值。每轮先令m=3*n，虽然中间算m+1，赋给n的最后值却是m-1；n从1变2再变5再变14，14不小于9而停止，为偶数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "a>=5 && a<=10真正限制在区间内。5<=a<=10先把5<=a算成0或1，而0和1都<=10，因此后者总为真，例如a=0就可反驳等价。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "for更新部分让i加1，循环体里还让i再加1，所以实际i取1、3、5、7、9。cnt只增加五次，输出5而不是10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "i从-100到98，每次加2，共100项。首末项之和为-2，等差和为100×(-2)/2=-100，正负数并没有完全抵消到0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "i依次为0、2、4、6、8，循环条件i<10不含10。相加为20，不是把10也加上得到30。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202309.tf10": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "C++使用类型、表达式、控制结构等较接近人类问题表达的抽象，是高级程序设计语言。它最终仍需经实现翻译为机器能执行的指令。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "变量名不能以数字开头。FiveStar、fiveStar、Star5都满足基本标识符形式，只有5Star首字符是数字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq02": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "原循环输出10、12、14、16、18。把上界从i<20改成i<19仍保留完全相同五项；从11起步或包含20都会改变输出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq03": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "正因子从1检查到N，不能把0当除数，也不能漏掉N本身。i=1、i<N+1、i++恰好覆盖该区间。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "逐位取余反转数字时，循环不断执行N/=10，结束时N已经为0。若想与原数比较，必须事先保存原值；语法可以通过，不代表逻辑达到目标。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq05": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "原循环i<N/2会漏查边界，例如N=4时2未被检查，可能把4当素数。把边界改到包含N/2可修复这个漏洞；更常见方法检查到i*i<=N。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq06": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i为0、1时内层没有满足的j；i=2时j=1，2*1%2==0输出2#；i=3时j=2输出3#。continue只结束当前内层轮次，最后循环外输出0，因此是2#3#0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "外层i取1到9。i为2、4、6、8时，内层第一次j=1就满足偶数条件，使cnt加1并break；奇数i与奇数j乘积为奇数不计数。外层结束i=10，先输出4#，随后输出4，合为4#4。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "N从100开始，为偶数且不被3整除，先减20到80，再到60。60能被3整除，减5变55；55为奇数触发break，最后输出55。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "x=1先输出1,并加2成3。x=3不输出，因3/10为0走else加5再加2成10；10输出10,后变12；12的整数商非零而break，最后输出12，合为1,10,12。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "i取0、1、2、3、4时，内层j<i分别执行0、1、2、3、4次。计数和为10，不是外层五轮乘固定内层五次。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq11": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B",
+      "C"
+    ],
+    "explanation": "令r=int(sqrt(i))，r*r==i是常用的完全平方数判据，所以官方给C。对本题1到100的小整数，B比较截断平方根与原平方根，也会恰好筛出平方数；因此本课程承认B与C都可行，原单选题不唯一，不把官方C说成唯一语言结论。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq12": {
+    "topic": "G",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "一行的所有字符应先由内层循环输出，结束内层后再换行。第9行是内层右大括号，在其后输出endl才能分开每一行；放进内层会变成每个字符一行。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq13": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "声控接收目的地需要输入，告知路线需要输出，感知环境需要传感器。油量表服务车辆能源监测，不是这道题抽象的声控选路流程必需的部件，按题设选C。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq14": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "冯·诺依曼体系结构的核心思想包括存储程序，即程序与数据放在存储器中，由处理器按指令运行。它是本题问的经典计算机体系结构名称。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.mcq15": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "官方给B：它从i=2开始，必然漏掉可能的(1,2)。但原题只约定N为正整数，C在N=6时漏(2,3)，D在N=2时漏(1,2)，也有边界缺陷；本课程接受能指出这些反例的B/C/D，不教“其他选项对所有正整数都正确”。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf01": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "整数除法向零截断。-7/2的数学商是-3.5，C++整数结果为-3，而不是向下取整到-4。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "字符'9'的ASCII码是57，不是整数9。2*int('9')*2为2×57×2=228，因此不是36。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "先算加减，3+2得到5为真，5-5得到0为假。真&&假为false，逻辑结果不是两个算术结果之和。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "srand设置伪随机序列的起点，同一个种子可用于重现整个序列。连续两次rand取序列的相邻项，不保证彼此相同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf05": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "条件位置允许把整数转换成bool，非零的1为true。while(1)合法，通常表示持续循环，再由break等路径退出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "整数i从-500加到499，共1000项。首末和为-1，所以和为-500；如果把500也包含进来才会出现另一种抵消，原条件不含500。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf07": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "C++允许多种隐式类型转换，例如int与double相加时自动按规则转换。不是所有运算都要求程序员显式先写成相同类型；也不能因此认为任何类型组合都合法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "变量的声明类型不会随赋值改变，但不同类型的右值可按规则转换后赋入。例如double值3.8赋给int变量会存成3；要区分右值类型和变量本身类型。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf09": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "Dev-C++是集成开发环境，帮助编辑、编译和调试程序。操作系统负责进程、内存、设备等资源管理，二者层级不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202312.tf10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "while(条件){循环体}可写为for(;条件;){循环体}，检查时机相同。转换时必须保留状态更新和continue的语义，不能随意移动语句。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq01": {
+    "topic": "C",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "流程图先令cj=75，检查cj>=60为真，再检查cj>=90为假。沿第二个判断的否分支输出良好；必须按箭头顺序，不能因为75没到90就直接判不及格。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "2_from以数字开头，违反标识符首字符规则。下划线可以用于标识符，字母大小写都能使用，因此其他三个名字的基本写法合法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq03": {
+    "topic": "C",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "if、else、switch都是用于按条件选择执行路线的语法关键字。return结束当前函数并可返回值，它本身不是分支结构关键字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "C++没有拼作foreach的语言关键字。C++11有基于范围的for，写法仍是for(... : ...)，不能把别的语言的关键字直接搬来；break和continue可用于这里的循环。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "max(8,9)先得到9，再与10取min仍是9，不是8。abs(-8)、int(8.88)、sqrt(64)的数值均为8；这里比较数值，不是说各表达式类型全相同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "先由a=5算m=(5-1)*2=8。循环执行n-1=2次，m依次变成(8-1)*2=14，再变成(14-1)*2=26，输出26。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq07": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "程序枚举i，只要i*i是81的因子就更新result。i依次检查到9，其中平方因子1、9、81会更新，最后保存81；result并不是保存i本身。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "从t=10向s=2回退：10为偶数且减半不小于2，变5；5为奇数，减1变4；4减半变2。三次变化后相等，ans为3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "cur依次为2、3、4、5、6时每天只消耗1，口罩从10降到5。cur=0、1两天各净增加6，依次到11、17，总共7天；要把补充与消耗的执行顺序一起记录。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq10": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A",
+      "C"
+    ],
+    "explanation": "发现奇数数位时Flag已经置false。A用break立即结束，当然可行；C继续N/=10也最终结束，而且Flag从不恢复true，仍能正确输出否。官方给A，但本题所给程序中C也能实现功能，本课程保留两种合法实现。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq11": {
+    "topic": "C",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "每5天为一组，余数1、2、3对应打渔，余数4和0对应晒网。两个可能值用||连接；同一个i不可能同时等于0和4，所以&&不合适。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq12": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "a存已经反转的部分，新取到个位n%10时应先把原a左移一位，即乘10，再加新个位。k保存原数，循环结束比较a与k，不能拿已变为0的n比较。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "各段在同一行，先输出一个加号，再输出本段减号，最后补末端加号。横线不能带endl或空格，否则会多行或多出字符，因此选单独cout<<'+'。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq14": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "鸿蒙在这道设备题中指操作系统，负责管理设备资源并给应用提供运行环境。它不是单个计时器或普通小程序；题目问的是软件层级。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.mcq15": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "王选的代表性贡献是汉字激光照排系统，推动中文出版印刷技术发展。成立公司与技术贡献不是同一个问题，题干所问应对应激光照排。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf01": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "int(18.5)先向零截断为18，再加10得到整数28。t是int，cout不会输出28.5，不能在转换之后还保留原小数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "C++标识符区分大小写。Xyz、xYz、xyZ中大写字母的位置不同，因此是三个不同名字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "8<9先得到true即1，再算1<10也为true。未启用boolalpha的cout输出bool是1，不是单词true；同时这也不是数学式三数连比。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf04": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "循环体执行时i只取0、2、4直到98，不包含奇数99。最后一次更新后i变100才退出；必须区分循环体中的值与退出后的值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "2022是整数，而单引号内多个字符'2022'是多字符字面量，其数值由实现规定，不等于十进制整数2022。不能用多字符字面量代替数字或字符串。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf06": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "ASCII中'C'比'A'大2，所以int('C')=67。对double的abs(-5.8)得到5.8，相加是72.8；这里需使用正确的数学函数声明/重载。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf07": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "转换为bool时，0为false，所有非零数都为true，包括负数-1。bool(-1)因此是真，不按正负号区分真假。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "sqrt(a)=abs(a)不只在a=0成立，a=1时两边也都为1。举出这个合法反例就足以推翻“则a必为0”。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf09": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "设备经Wi-Fi连接并配置IP后访问网络，家用Wi-Fi盒子通常兼有路由器功能。无线接入与路由是可由同一设备承担的不同功能，不能因此把电视本身当作路由器。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202403.tf10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "for的初始化先执行一次，之后按条件、循环体、更新重复，可写成等价while。若循环体有continue，转换时必须保证原更新仍执行；简单机械地把更新放在末尾可能改变语义。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "按这份2024年试卷所问的GESP一级语言设置，C++、Python、图形化编程共三类选择，对应C。这是在解释该场次的历史题目，不作为现行报名规则承诺。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq02": {
+    "topic": "C",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "闰年条件是能被400整除，或能被4整除且不能被100整除。2024走后半条；1900只满足被4整除却不闰，可用来排除漏掉世纪年限制的选项。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "five-Star中的减号是运算符，会被分为两个名字和减法。下划线与大小写字母可用于标识符，所以A不是一个完整合法变量名。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq04": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "原循环从0开始，在i<10时执行，每次加1。i+=1与i++在本更新位置效果相同；从1开始或递减都会改变依次经历的状态。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "5%2为1、5%3为2，两个非零操作数参与逻辑与，结果是bool真。cout默认以1显示真值，不返回2，也不直接输出文字true。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "输入1进入case 1先输出Jan。因为这个分支没有break，继续贯穿到case 3输出Mar，再遇break退出，因此得到Jan Mar。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq07": {
+    "topic": "C",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "输入0、0时a&&b是假，但!(a||b)是真，会输出2。后续else分支不再执行，所以说输出4的D错误；两个分支条件的先后很关键。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq08": {
+    "topic": "A",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "先用N/5张5元，已经花M5*5元。剩余金额再除2求2元张数，最后余数N-M5*5-M2*2才是1元张数；不能把张数直接当金额扣除。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "i=0和1时j从1开始却不小于i，内层零次。i=2到9分别贡献1到8次，总和36，所以不能按0到9的完整三角和45计算。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "loopCount+=1在内层循环结束后、外层大括号内。内层的break只影响内层，外层i=0到9总共十轮，每轮最后都加1，因此输出10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq11": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "每轮先把非零N加到Sum，再读取新的N。读到0就不再进入下一轮，首次即0时Sum保持0；并非必然死循环，改成N==0反而改变了终止含义。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq12": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "原Flag默认true，会把负数、0、1误认为素数；先令Flag=(N>=2)修正这个入口问题，这是官方D的意图。但若讨论int全部大整数，i*i还可能溢出，例如46341的平方超出32位有符号范围；严谨程序还应使用i<=N/i或更宽类型，不能把D当成无任何范围限制的完整保证。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "内层输出一整行的i*j，随后在外层内换行。i从1到5分别输出1到i个乘积，正好形成目标图形；把换行移入内层会一项一行。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq14": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "偶数i在第一条continue直接跳过。剩下1、3、5、7、9均使i%2为真，cnt1增加五次；else if不会再执行，cnt2仍为0，输出5 0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.mcq15": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "程序不断把M除10，打印时用的是当时的M而非保存的原数。输入63、N=3时个位立刻命中，仍打印63；输入36要缩到3才命中，输入21则最终M=0，因此只有D的完整输出叙述正确。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf01": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "字符'9'和'1'在ASCII中分别是57和49。相加发生整数提升，cout输出106，不是把它们当数字9与1相加得到10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "C++整数余数的符号随被除数，-12/10向零截断为-1。由-12=(-1)*10+余数得余数-2，不是2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "浮点转int直接向零截断小数部分。12.56变为12，不会按四舍五入规则得到13。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "10/3为整数商3，10%3为余数1。中间输出的是字符串-，因此整个输出恰为3-1，不是算术减法2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf05": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "scanf是标准库函数名，不是语言关键字。在合适作用域可声明同名变量，但会遮蔽函数造成阅读或调用问题，不建议这样命名。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "for中的continue会转到更新部分i++，不是跳过更新。i仍从0走到10并停止，所以这段循环会结束。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf07": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "i=0内层零次；i=1到9时内层第一次就加1并break。共增加9次，输出9而不是10，漏算的常见点是外层第一次没有内层轮次。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i=1时j为1、2、3、4，偶积两次；i=2时j为2、4，偶积两次；i=3时只有3乘3为奇数；i=4时4乘4计一次。总计2+2+0+1=5。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf09": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "每轮N%10取出当前个位并累加，N/=10去掉这一位。正整数最终缩到0，所有数位恰好各处理一次，所以得到各位数字之和。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202406.tf10": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "等级关注的是相应层次的算法与编程能力，语言是表达这些能力的工具。不同语言仍有语法和库差异，不能由此推断每道题的语法完全通用。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "题干磁心元件在运算控制过程中快速保存和读取工作数据，扮演当时主存储器的角色。因此更接近现代内存，不是负责计算控制的CPU或显示器，也不是大容量外存磁盘。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "按历史分类地址约定，A类网络号有7个可变位，先有128种组合。排除网络号0和127的保留用途，传统可用A类网络数为126；现代网络主要采用无类别编址，不能把旧分类当作当前分配方式。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "减号会被当作运算符，所以ccf-gesp不是一个变量标识符。下划线、大小写字母可用于名字，且其余选项均不以数字开头。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq04": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "在for更新部分不使用自增表达式的返回值，因此i++与++i都只把i加1。保持起点1和条件i<10，经历的i序列相同；从0开始会多一轮。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "先分别计算整数除法5/2=2与余数5%3=2，再做加法得到4。不能把整数商当2.5，也不要把余数当作小数部分。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq06": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "若两变量是int，读入整数部分可得到-2和3，相加为1；若用浮点可得1.14。若先用char读到'-'，再读剩下的2，编码45加2可得47；默认输入流不会仅因此自动抛异常，所以D不是所列正常输出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq07": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "十进制正整数除以10的余数正好是个位，范围0到9。N/10是去掉个位后的高位，逻辑与则只产生真假值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i=0时余数为0，不break，输出0#。i更新为1时余数非零立即break，i并未到10，末尾if也不输出，所以只有0#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq09": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "输入1和0，a&&b是假，!(a||b)也是假，而a||b是真。依次排除前两条分支后输出3，不会再执行末尾else。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "i从1起每次加2且要求小于5，因此只取1、3两次。loopCount每轮加1，最后等于2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq11": {
+    "topic": "G",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "第i行从i起，连续输出i个数，末项为2i-1。令j=i，条件j<2*i正好覆盖这些数；从1起或上界i都不符合逐行的起点和长度。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq12": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "每次把rst乘10为新个位留位置，再加N%10，随后N/=10去掉已处理位。123依次生成3、32、321；120生成0、2、21，整数表示自然不保留前导零。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq13": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "while(1)合法，非零条件转为true，所以官方指出A错误。另一个真实边界是第一次就输入负数：cnt仍为0，最后不能得到有效平均分，因此B的无条件“正确输出”也不成立；应先判断至少读到一名学生。整数score也不适合直接读取小数成绩。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq14": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "找到2到num-1之间的因子，就说明num不是素数。余数num%i等于0才表示整除；按题所填空应为B。原框架还应额外处理num=1，不能声称这段代码已覆盖所有正整数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.mcq15": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "发现数字7后Flag置true，即使没有break，下一轮while的!Flag也为false，仍会停止并给出相同判断。break可少做一次后续语句，却不会在这里改变正确结果，因此A错误；去掉M/=10才可能不再缩小数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "C++支持类、对象等面向对象机制，也支持其他编程范式。它是高级语言，支持面向对象不表示只能用面向对象方法写程序。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "括号里的逗号表达式先后计算3、4、5，整个表达式的值取最后的5。cout只收到一个值5，不会自动插入空格依次输出前三项。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "%同级运算从左往右计算，12%10先得2，再算2%10仍得2。不要把它当作12对100取余。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf04": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "rand产生伪随机序列，相邻两项没有保证递增。第二次可能大、可能小或相等，不能由调用顺序判断大小。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "变量ch声明为int，但初始化字符'1'时保存的是其编码49。再用int(ch)转换不会把编码解释成十进制数字1，输出仍为49。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "continue结束本轮后仍执行for的i++。i最终更新到10而退出，再满足i==10输出10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "Sum是局部int且没有初始化，第一次Sum+=i就读取了未初始化值。即使端点交换与循环区间都正确，也不能保证得到和；应先令Sum=0，不能用某次偶然输出作证明。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "原外层i=1到4，内层次数和为1+2+3+4=10。改从0开始只额外增加一次内层0轮的情况，所以总数和输出不变。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "每轮用前两项求新项tmp，再把窗口依次向后移动。i从2到N-1共N-2次，结束start2正是第N项；计算范围还需保证所用整数类型不溢出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202409.tf10": {
+    "topic": "D",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "flag在0与1之间交替，只在flag为0的轮次打印个位。2024的取位顺序是4、2、0、2，实际只输出第1和第3个，即40，不是完整逆序4202。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "题干两位科学家的相关获奖工作涉及神经网络、机器学习等人工智能基础。这里应选人工智能；题目引用的是2024年的历史事件，不说明所有物理学研究都等同计算机科学。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "大写B通常表示Byte即字节，常用一个字节为8个bit。小写b常表示位，照片大小3MB的B不是Block或Bit。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "先计算同级的%与乘法：3%3=0，0*2=0。再算3+0-1=2，不能把加法提前到取余之前。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq04": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "i从0开始，条件i<10使最后一次为9。printf没有额外空格，连续输出0123456789，既不从1开始，也不包含10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq05": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "局部变量tnt没有初始化，tnt+=i先读取了未初始化的值。按C++11这是未定义行为，不能保证任何确定结果；官方D的“不确定”应理解为程序有错误，不能通过观察一次输出推断初值为0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "i=1为奇数，continue转到i++。i=2为偶数进入else并break，跳过之后的更新，循环外保留i=2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "0、3、6、9能被3整除，分别打印一次0#，共四组。for正常结束i=10，随后if输出1#，所以是四组0#接1#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq08": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "要被7整除，应要求i%7==0；不被3整除应要求i%3!=0。C却要求两个余数都非零，方向相反；其余选项分别用!或==表达相同逻辑。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq09": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "求和需要保留累计值tnt再加本次个位，A、B、C只是写法不同。D每轮覆盖tnt，最后只剩最高位，无法得到各位之和。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i=0内层没有输出；i=1输出0；i=2输出01；i=3输出012；i=4输出0123。按顺序直接拼接是0010120123，循环中没有换行或空格。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq11": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A",
+      "B"
+    ],
+    "explanation": "把行末换行移入内层，会每输出一项就换行，A确实错误，官方给A。但原卷B写的是print而非标准C函数printf；若照原字面执行且未自定义print，B也不能编译。若把它视为printf的排版笔误，B才等效。本课程保留原图并明确这个区别。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq12": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "阶乘需要nowNum乘当前i，再把它累加到tnt。A、B、C都是这两个更新的等价写法；D却把nowNum加i并让初值为0的tnt不断乘，无法实现阶乘和。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq13": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "第二个素数是i+2，不能超过M，所以第一个最大是M-2。循环使用严格小于，应写i<M-1；填M-2会漏掉端点M-2，填M会检查越界配对。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq14": {
+    "topic": "G",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "第i行从0编号，左侧空格数是height-i-1，星号数是2*i+1。首行一个星，最后一行没有前导空格；同时核对两端即可排除多一格的选项。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.mcq15": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "max(10,20,30)=30，min(10+20,30)=30，(10+20+30)/2=30。sqrt(60)约为7.746，不是30，所以不能填C。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "选中文件后复制，再在目标位置粘贴，可建立副本，这是题设Windows资源管理器的常规快捷操作。移动与复制不同，Ctrl+X才是剪切操作。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf02": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "正整数除以10的整数商是去掉个位后的部分，乘10得到原数去掉个位的整十部分。原数减去它只剩个位，与N%10相同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "N=12时先算10<=12，得到1，再算1<=12仍为真。默认cout把真输出为1；成立不代表这是正确的区间写法，其他N也可能使它真。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "对非负数，先取平方根整数部分r，再检查r*r是否正好等于N，能判断是否是完全平方数。实际程序还要保证乘法类型足够宽、负数先排除；本题给的是4、9、25这类非负数语境。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "printf中%%输出字面字符%，其后的a与b也是普通文本。唯一的%d才把a*b的值6代入，因此输出%a*%b=6，不是2*3=6。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf06": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "单个下划线可作为这里的局部循环变量名，不违反基本标识符语法。虽然不易读，不建议常用，但不能把风格问题当编译错误。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "continue在break之前，每一轮都直接跳到for更新。break永远到不了，i从0走到10，最后输出10而不是0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "外层i依次为8、6、4，内层各执行相应次数。合计8+6+4=18次，每次printf带换行，所以输出18行OK。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "只对奇数i计数，1到4内命中1和3。改从0开始只增加不计数的偶数0，不改变最终cnt=2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202412.tf10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "两段都先把和置0，再把i从1累加到10，结果55。while版本在循环体最后更新i，与for更新部分相对应；这份具体转换没有遗漏更新。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "DeepSeek所代表的生成模型能根据描述辅助产生文本脚本，但生成内容仍需人核对。动画电影不是操作系统，模型也不是由名字中的deep推断为深海钻探软件。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "流程图中输入和输出通常放在平行四边形框。菱形用于判断条件，不能因为输出依赖判断就把输出动作也放进菱形。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "a==b和b==a都只比较，不赋值，表达式结果也没有保存。a仍为3、b仍为4，输出3 4；一个等号与两个等号含义不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq04": {
+    "topic": "C",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "余数1到5为红，6到8为绿，正整数编号剩下的余数只可能9或0为蓝。因此最后分支可改为else；若把红色条件改成remainder<=5，则余数0会被错误归为红色。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq05": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "i=0到9中，3的倍数是0、3、6、9四个，每个加2；其余六个加1。总和4*2+6=14，注意0也满足余数为0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "第一轮初值i=10就执行break，立即离开循环。更新i-=2没有机会执行，所以循环外仍为10，不是8。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "0、3、6、9四轮被continue跳过，其余六轮输出0#。循环正常结束i=10后再输出1#，结果是六组0#接1#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i=0无输出；i=1倒数输出1-；i=2输出2-1-，再依次输出3-2-1-和4-3-2-1-。每次格式都带末尾短横线，不能把最后一条漏掉。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq09": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "要求除以7余2，而C的!(i%7)却要求余数0。0到99为非负数，A、B、D中对偶数的判断等价，因此只有C不能筛出目标集合。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq10": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "某个数遇到一位3后只应计一次，break离开该数的取位循环。未遇到时j/=10才能去掉一位并终止；continue不改变命中的j会重复计数。但原卷外层j=i<N不含N，若真要包含N，还须把外层改为<=N，本空本身不能修复该端点问题。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq11": {
+    "topic": "A",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "实现1把上一轮阶乘last乘i就得到当前阶乘，每轮一次乘法。实现2每轮从1重新乘到i，重复计算已有结果；前者总计约N次，后者1+2+...+N次，所以C正确。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq12": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "找到一对素数后才应break，以便保留已经证明的这一对。把break移出if会在第一个j无论是否成功都结束搜索，不能完成验证；有限范围验证也不是数学上对所有偶数的证明，原代码上界还不含1000。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "last+=1等价于last=last+1。原代码每次输出后递增，超过9重置1，保留跨行连续计数；printf可以输出换行，减少内层上界或改初值0都会改变图形。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq14": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "rand()%10的余数范围是0到9，加1后变1到10。%11含0和11种结果，%9+1只有1到9；这保证范围，不保证五次互不重复或严格均匀。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.mcq15": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "要衡量相差大小，先取abs(b-a)，再与容差比较。只看b-a可能把很大的负差误判为接近，sqrt(b-a)还可能遇到负数；容差是本题人为约定，不是浮点数天然相等规则。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "高级语言程序需由编译器、解释器或运行时等实现转换或驱动为机器指令执行。语句不是直接由CPU按高级语言文字理解，但具体实现路径可以不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf02": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "对正整数先做N/10的整数除法，再乘10，去掉个位部分。N减去它就是个位，与取余N%10相同，例如123-12*10=3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "先算10<=12得到true即1，再算1<=12得到true。三目运算选择字符串true输出；这是指定N=12的结果，不证明链式比较能判断一个区间。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "sqrt与乘法使用有限精度浮点数，开方后再平方未必与原整数精确相等。判断整数平方数可求近似整数根后用足够宽的整数乘法核对，不能依赖浮点严格==恒成立。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "初始a=2,b=3；a=a-b后为-1；b=a+b后为2；a=b-a后为3。最后a=3,b=2，printf确实输出3*2=6，这次中间值均未溢出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "continue仍让for执行更新i++。完成i=9那一轮后加到10，条件不成立离开，输出10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i初始为1，第一轮立刻break，后面的continue和更新都没有执行机会。循环外输出保留下来的1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i从0到4，内层分别执行0、1、2、3、4次。总计10次，每次一行OK，所以是10行。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "原来相加1+2+3+4=10。改从0开始只多加一个0，对和没有影响，仍为10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202503.tf10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "内外层错误地共用i。内层初始化把i重置为0，条件i<i总是假；外层更新到1后又被重置0，使外层反复进行，正常执行不会到达循环后的printf，更不会输出0123。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "传感器把姿态、环境等现实信息转换为系统可处理的数据，是信息进入控制程序的入口。处理器根据这些输入计算调整，输出设备再执行动作，因此传感器类比输入设备。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "通常所说安装内存条以增加运行内存，指RAM。ROM用于固化信息，Cache是处理器附近的高速缓存，EPROM也不是普通可升级运行内存条。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "a*=b会先算3*3.5=10.5，再转换为a的int类型赋回，存成10。该复合赋值表达式的结果对应赋回后的a，因此cout输出10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "题中第3位指从右数的百位。N%1000先只保留末三位，再整数除100留下百位；不足三位自然得到0，例如1234取234/100=2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "ISSUE"
+    ],
+    "explanation": "b用逗号表达式(6,28)初始化为28，但a还没有初始化。接着b==a会使用未初始化的a，按独立局部变量代码属于未定义行为，不能保证输出28 28；若删去这条无用比较或先初始化a，最后a=b才会得到官方D所示结果。本课程保留原题和官方D，要求先识别这条不安全读取。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "以星期天为0、星期一到六为1到6，今天星期六的基准编号为6。过N天后的编号为(N+6)%7，N=1得到0即星期天；取商不能表示7天循环。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "i=1先把Sum加到1，奇数触发continue；i=2再加2得到3。2%7非零，执行break，因此停止在和3，不会把后面各数相加。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "最后一轮外层i=11，内层j=1时11*1为奇数，break保留j=1。外层更新后i=12退出，循环外输出i*j=12；内层break不终止外层。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "从-99到99按2递增，含首末两项。项数为(99-(-99))/2+1=100，cnt每项加1，结果100。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i=1、2都不是3的倍数，各打印A#并continue。i=3进入else break；中间的0#在continue或break之后无法到达，末尾i也不是10，所以只有A#A#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq11": {
+    "topic": "N",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "i=0内层零次，i=1只有j=0，i=2有j=0、1。依次输出1#0-2#0-2#1-，再接循环外END；不要把j=i也包含进来。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq12": {
+    "topic": "C",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "不能被3整除要求余数非零。D的!(i%3)却要求余数为0，恰好相反；B直接把非零余数当真，C对余5不等于2取反，均符合题设。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq13": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "每处理一个十进制位就计数一次，然后N/=10。条件必须是N>0，才能把最高位1也处理；若写N>1，输入1就得到0位，出现边界错误。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq14": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "取位过程中变化的是副本N1和M1，原N始终保持输入值。若改成while(N>0)，自守数所有位匹配后副本都为0，N却仍正，会无限继续；所以条件不能换成未变化的原数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.mcq15": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "now_number在外层之前初始化，才能跨行接着数。移到每行内部会每行重新从0开始，改变目标图形；其余加1、超过9复位、换行写法在这里等效。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "智能手机、平板和许多智能手表都具备运算、存储及通信能力，也常运行嵌入式操作系统。题述是解释闭卷考试限制这些设备的常见原因，具体考试仍按当场规则执行。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf02": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "正整数整数除10会丢掉个位，小于10得到0。例如1234/10=123；10本身也得到1，题目省略这个单独等号情形不改变取位规律。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "两个==比较确实没有改动a和b。可是cout<<(a,b)中的逗号表达式只取最后的b，因此输出20，不是10 20；要分开两件事实核对。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf04": {
+    "topic": "C",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "两整数的最大值与最小值相同，说明二者没有大小差。若a<b，max=b而min=a必不同，所以相同正好推出a=b。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "赋值语句允许把浮点值转换后存入char，45.6会先截断为45，在本题环境显示对应字符。它不是列表初始化的禁止窄化情形，因此不能说仅因赋了浮点值就编译报错。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf06": {
+    "topic": "C",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "score是int，读取59.99时整数提取先得到59，小数点后的内容仍留在流中。59<60，所以输出不及格；读取到整数不等于四舍五入成60。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "continue只影响循环中的当前轮次，for仍更新i直到10。循环后的if(i==10)会执行并输出END，所以不是完全没有输出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "循环条件i<5使i只取0、1、2、3、4。总和10，不包含5，15是多加了边界5的结果。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "原循环求5+4+3+2=14，不含1；新循环求1+2+3+4=10，不含5。求和交换顺序可保持结果，但这里连集合端点都变了。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202506.tf10": {
+    "topic": "G",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "N为奇数时N/2与(N-1)/2相等，命中唯一中列。N为偶数时两值相邻，命中两列；j从0编号，因此该判断覆盖题示两种宽度。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "在这道谈论对话式生成AI的题目语境中，四个选项里“大语言模型”最贴切。更广泛的“大模型”还可包括视觉、多模态等模型，不能把这个单选语境当成所有大模型只处理语言的定义。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "TCP经典连接建立交换SYN、SYN+ACK、ACK三次报文，常称三次握手。它与连接关闭时可能出现的四次挥手不是同一过程。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "xingming由字母组成，可作为新变量名，但要把所有引用一起改名。名字不能含空格或减号；汉语拼音用字母写出并不违法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "div从1乘10共M-1次，得到10的M-1次方。N/div先去掉右侧M-1位，再%10取出当前个位；1234、M=2时123%10=3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "逗号不是同时赋值语法，a,b=3,4只把3赋给b，最后的4被丢弃，a没有被这句初始化。随后c=a==b依赖a的前置状态，若a为未初始化局部变量则行为未定义，不能保证A/B/C中的任何确定三元输出，因此选以上都不对。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq06": {
+    "topic": "D",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "XX按12种状态00到11循环，Y按10种状态0到9循环，因此两个取余模数分别12和10，空格选择A。但原题说第1个为00-0，而代码直接用N取余有整体偏移；若按第1个编号从N=1输入，应先令位置=N-1再取余，不能把原代码当完整正确程序。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq07": {
+    "topic": "N",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "i<=0时j=0不满足j<i，内层零次。只有i=1到9分别贡献1到9次，相加45；负的外层轮次不会让计数变成负数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "偶数i直接跳过，最后实际执行内层的是i=11。j=0时乘积偶数不break，j=1时奇数break，保留j=1；外层最后i=12，因此输出12。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq09": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "b=0时根本不进入while，不执行取余，A不成立。a=0且b非零时第一轮余数0，a变为原b后停止，输出绝对值为abs(b)；a=b=0时也输出0。通常欧几里得算法用于正数，扩到有符号极值仍需注意INT_MIN/-1的溢出边界。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "条件检查的是更新前num。num=2进入后加到3，continue跳过输出；num=5仍可进入并加到6输出6#，随后才退出。结果1#2#4#5#6#，带末尾#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq11": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "原程序先读首项并用它初始化最小、最大，再在循环尾读下一项。把读取移到循环开头，会在更新之前读入终止标记并把-999当作数据，结果可能改变；初始化与哨兵检查的顺序不能随意交换。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq12": {
+    "topic": "D",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "命中含5的某一位后，cnt只应加一次，原break立即结束该数检查。改令j=0也会让下一次while条件失败，效果相同；删continue可能重复计数，把j>=0作条件则0无法继续缩小而死循环。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "第i行应有N-i个前导空格、i个数字。两个循环的计数变量都从1开始而条件用<，所以分别填N-i+1和i+1；要把计数起点也算进边界。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq14": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "单引号内'a'、'b'是字符，ASCII分别97、98。a先变195，b变-1，再执行a=a-b得到196，最后输出196 -1，和原初值9、27已经无关。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "每个完整组有4个3克、3个4克、2个6克，共9环36克，L1/L2正确。R=5到7时应加12+4*(R-4)，R=8时应加24+6*(R-7)；错误在L4和L5，而A/B/C均不是这个组合，所以D正确。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "调试中发现错误通常可编辑源文件并重新构建、重新启动调试。可能需要结束旧进程，但没有必须关闭再重新打开文件的语言或IDE通用规定。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf02": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "正整数整数除100去掉个位和十位，例如1234/100=12。小于100时商为0；这是取整数商，不是保留两位小数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf03": {
+    "topic": "C",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "代码实际输出1：先算a<10得到true，再与非零常量20做逻辑与。但20并未与a比较，题目给出的“因为同时小于20和10”不是这段表达式的含义；应写a<10 && a<20。本题须区分输出正确与解释正确。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "ISSUE"
+    ],
+    "explanation": "原卷官方给真，但x,y,z=5,10,15不是同时赋值：它只把5赋给z，x和y未被这句改变。若x/y此前合法初始化，(x<y)产生0或1，再与z=5比较，结果为1；若按独立局部变量代码理解则读取未初始化x/y，行为未定义。原题未交代前置状态，不能无条件保证输出；课程要求指出条件缺失，而不把它教成Python式多重赋值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf05": {
+    "topic": "C",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "整数score读取99.99时先得到99，满足score>=60，输出及格。小数点及其后字符留在输入流中，这不是score真的存了99.99，也不是自动取整到100。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf06": {
+    "topic": "D",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "取位顺序为3、2、1，但'A'+个位得到整数编码68、67、66。没有转换成char，cout按整数连续输出686766，而不是字符DCB。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i=0、1时各打印+#，i=2被continue跳过。循环更新后i=3，外面再输出3#，合成+#+#3#。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "每轮先输出a，再令b为两数之和，最后a=b-a取得更新前的b。由(0,1)依次得到(1,1)、(1,2)等，输出n项斐波那契数；结果范围需能装进所用整数类型。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf09": {
+    "topic": "G",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "原cout<<0在continue之后不可到达，非对角格又没有输出。移到if外，非对角格打印0，对角格先打印i+1再continue跳过0，正好得到图示矩阵。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202509.tf10": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "字符'5'的编码为53，加4后表达式是整数57。cout输出57，不是把字符转换成数字5再加4得到9。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "题目问根据数据执行判断的部件，属于处理器的计算和控制职责。传感器负责输入，内存保存数据，输出设备执行或展示结果；不用新闻背景替代部件功能分析。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "教学楼内较小地理范围的网络通常属于LAN局域网。PAN是个人区域，MAN是城域，WAN是广域，要按覆盖范围而非设备数量判断。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "for是保留关键字，不能作为普通变量名。_tnt等形式在此局部基本语法下可用；printf不是关键字，D把库函数名说成关键字因此整句也错误。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "第1、2、3位分别要映射到余数0、1、2。先减1再对3取余即可每三位循环；直接N%3会整体错一位。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "%g默认精度通常为6位有效数字，6.1415926535按该格式显示成6.14159。主要是输出格式截取位数，不是CPU算错；严格说B中的“默认小数点位数”应改称这里的有效数字精度。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq06": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "题干要求每一位先除以3取整数商，所以L1填N/3。累加得到校验和后对10取余得到末位，L2填rst%10，不能把商与余数弄反。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i为-2、-1、0、1，只有-1与1的余数非零，条件为真。负数余数-1也作为真，因此打印-1#1#，不包含终点2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "外层i取1、3、5、7、9，内层各执行i次。总数1+3+5+7+9=25，不能把它当1到9全体的和45。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "只处理奇数外层i；内层j从0起，i*0%2=0立即break，每次j都留0。没有一次满足j>=i的行内输出，最终i=12、j=0，输出0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "原程序先输出0再加1，打印0到9。B先加1再打印，会输出1到10；A、C、D均保持了检查、输出和更新的相应时机。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq11": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "num先加1，仅到3和6时余数为0而输出3#、6#。6是从旧值5进入那轮得到的，退出后num>5再输出6，合为3#6#6。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq12": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "i=0、1、2、3、4时，内层j从i起到3，次数分别4、3、2、1、0。合计10，不能把端点4再算一次。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq13": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "N在取位循环里最终为0，后面判断N%M==0失去原数含义，输出也变成0。应在循环前保存old_num，并在最后判断和输出中使用它；Flag一旦见到M就应保持1，不能被后面不等的数位清零。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq14": {
+    "topic": "G",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "第i行从0编号，先输出n-i-1个空格，再输出2*i+1个星号。输入5时星号数1、3、5、7、9构成居中三角形，最后一行无前导空格，对应B。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "寻找单个最大和最小值无需排序，可用比较或三目表达式更新，C成立。每位选手必须重新初始化其最大、最小与总分，不能移到外层之外；+=也可展开为普通赋值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "把源程序翻译成目标程序主要由编译器完成。操作系统提供运行和资源管理环境，不能因为系统能运行应用就把编译器功能归给系统自身。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf02": {
+    "topic": "C",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "先比较5<10得到真，再与非零整数20进行逻辑与，仍为true。这里20只转成真假，没有与5再做一次大小比较。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "1/3是整数除法，结果为0，右侧成为整数除以0，属于未定义行为，根本不能保证产生一个布尔真值。左侧使用浮点近似0.333333是另一种运算，不可用数学分数直觉替换程序类型规则。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf04": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "整数除10向零截断，正数、负数的绝对值都会逐位缩小，最终成为0。输入0时循环零次，也直接输出0，所以三类输入在这里都终止为0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "先把a赋为4，再算a==5为false，把bool假转换成int赋给b得到0。比较没有改变a，因此输出4 0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf06": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "ASCII中Z-A=25，而z-A=57。25<57为真，默认输出1，不是0；大小写两组字符的编码区间不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf07": {
+    "topic": "D",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "在较小正整数范围，这段比较N与10的各次幂的方法能计位数，这是官方判真的意图。但N10是int，遇到10位正整数时乘10会有符号溢出，无法保证完成；例如32位int的2147483647需要10^10，已超范围。原题没有给这个限制，严谨判断应指出边界，可改用反复N/=10计数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "Flag=-Flag会在1与-1间交替，实现加减交替。Flag-=Flag等于把自己减自己，第一次就变0，后续也一直0，无法保持原结果。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i从0到9时，内层j=i到9分别执行10、9、8直到1次。总数10*11/2=55，注意j从i开始包含对角线那一项。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202512.tf10": {
+    "topic": "G",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "换行符本身就是输出格式的一部分，用来分开矩阵的各行。删除后各行会接在同一行，即使数字仍相同，图形与原输出格式已经不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "传感器、遥控器和摄像头都能把外部信息送进机器人系统。预装的AI算法程序是处理这些信息的软件，不是负责取得外部信息的输入设备。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "L1是val>max的条件判断，结果决定是否执行更新最大值。流程图用菱形表示判断，平行四边形才表示输入输出动作。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq03": {
+    "topic": "B",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "变量名由程序员选取，可在声明和所有引用处一致改成Pai。C++区分大小写，PI、pi、Pi不是自动相同的名字，PI也不是禁止使用的关键字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq04": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "对“x>5且y<=10”整体取反，等价于“x<=5或y>10”。这是德摩根律：各比较分别取反，同时把&&换成||，不能只给变量前加!。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "0.1、0.2、0.3在常见二进制浮点格式中只能近似存储。两次近似运算后的表示可能不等于0.3的表示，因此严格==得到0，不是数学上的0.1+0.2不等于0.3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq06": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i从0到4，内层分别增加0、1、2、3、4次，累计tnt为0、1、3、6、10。每个外层末尾都打印tnt和#，循环后再打印10，得到0#1#3#6#10#10。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq07": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "not与!相同，优先级高于%，所以not i % 3按(!i)%3计算。只有i=0时!i为1，其余为0，因此在-2、-1、0、1中只打印0#；它不是判断i能否被3整除的一般写法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "外层第一轮i=1，内层j只取0，输出0#。随后的break在外层大括号中，立刻结束外层，i仍为1，最后if(i>=5)不成立，因此没有别的输出。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "i=1和3时，j=1、2、4各计一次，j=3被continue跳过。i=2在j=1就break，贡献0；总数3+0+3=6。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq10": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "while版本先令i=0，i<5时先输出再加1，得到01234。对应for必须保持同样起点、严格上界与更新，只有A满足。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq11": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "n先从10减到9，9是3的倍数continue；之后到8、7，继续减到6又continue。到5不被3整除且命中break，所以输出5。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq12": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "外层每轮先把当前i取反，内层从-i的原绝对值位置数到正值之前，共2*i轮。之后再把i取反恢复，for正常更新；原外层0到4贡献0、2、4、6、8，共20。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq13": {
+    "topic": "D",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "先用N/10取得前五位，循环逐次加order_num%10并去掉个位。累加和最后应对10取余与check_num比较，不能用除法取商或每轮覆盖累加值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq14": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "第i行内层j从1到i，打印的是j而非i。四行依次为1、12、123、1234，方向从小到大，对应A。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "每次把当前score加进total_score；只有score>=6时把人数high_count加1，人数不能加上分值。最后按代码给出的high_count>=5决定输出；原文字对不满足该条件的中间人数情况表述不完全，课程按这段核心规则说明，不把它补写成另一套计分规则。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "能计时、通话和收发信息的电话手表通常由嵌入式操作系统管理其硬件和应用。它是一个计算设备，不只是一块机械表盘。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "ASCII中'4'=52，'2'=50。左侧52%50=2，右侧50*50%2=0，2==0为false，默认输出0而不是1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "bool参与整数加法时可提升为int，true变为1。10+a合法且结果11，类型不同并不自动导致编译错误。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf04": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i%3非零的轮次被continue跳过，余数0的i为0、3、6、9。每次输出数字与短横线，得到0-3-6-9-，包含起点0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf05": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "循环体只输出N，不改变N。输入0时条件为假执行零次；非零值在题设正常输入下始终为真而重复执行，若要有限次就必须另有状态变化或退出路径。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "continue位于循环体最后，后面本来没有别的语句。删去它仍转到for更新，所以输出不变；循环体中的i+=1与更新i++仍都会执行。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf07": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i来自正整数k，逐位除10后只会是正数或0。对这些值，i!=0与abs(i)转换成bool的结果一致，所以替换不改变取位次数；这里不涉及负极值abs的溢出问题。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "break只离开内层循环，不会终止外层i。每一轮j=0都立刻break，外层最终仍更新到10，所以if成立，输出i*j=10*0=0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "内层正常结束时j是i+1，不是i。外层i=1、2、3、4后分别输出2#、6#、12#、20#，最后i=5、j=5输出25；原叙述把退出后的j错当成循环中的最后值。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202603.tf10": {
+    "topic": "G",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "%3d把整数在至少宽3的字段内右对齐，一位数前多填空格，二位数也对齐。它改变的是显示宽度，不是乘法结果；数值超过字段宽度时不会截断数字。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "湿度传感器把土壤状态转为数字信号送入控制器，承担输入作用。控制器判断是否灌溉属于处理，水泵执行则属于输出方向，不能把三个环节混在一起。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "需要增加运行中的物理内存，通常购买与主板兼容的内存条。硬盘提供持久存储，显卡负责图形运算，单纯增加它们不等于增加系统RAM。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "3与3.5相加时先按浮点规则计算为6.5，赋给float仍能表示这个值。该混合运算合法，cout输出6.5，不会先把3.5截断为3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq04": {
+    "topic": "C",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "not(A or B)等价于not A and not B。分别把x>5取反为x<=5，把y<=10取反为y>10，用and连接得到C；D没有给各比较加括号，运算含义不同。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "2.5、2.25可在二进制中精确表示，2.2、2.1通常只能近似存储。较高输出精度会暴露微小舍入差异；题目显示的很多位需要相应精度设置，默认cout并不一定显示所有这些位数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq06": {
+    "topic": "G",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "外层i从4降到1，每行内层输出1到i。最后一行i=1，仅输出j=0对应的1，因此选B。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq07": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "外层i取1、4两次。第一次内层加1后输出1#，第二次再加4得到5并输出5#，循环外再输出5，合为1#5#5。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq08": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "not优先于%，比较又在其后，所以条件按((!i)%3)==0解释。i非零时!i=0而条件真，i=0时为假，循环中打印-2#-1#1#；结束i=2再输出2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq09": {
+    "topic": "N",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "i=0、1、2时，j各自从i减到0，计数分别0、1、2次。for结束i=3，最后j=0，cnt=3，输出3 0 3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq10": {
+    "topic": "N",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "每次内层从j=0开始，余数0不continue，count加1后立即break。因此i=1、2、3各计一次且j保留0；结束i=4，输出4 0 3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq11": {
+    "topic": "L",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "num从1逐次增加到11，只有已经大于10时才除2，11/2整数商回到5。再由+=1向11前进形成重复；=+1是直接赋值正1，%=2也不是减半。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq12": {
+    "topic": "G",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "一个格子只要位于主对角线或四条边中任一处就输出1。因此各条件用or连接，且行列编号是1到N；用and不可能同时落在互相矛盾的两边。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq13": {
+    "topic": "A",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "若第一个输入就是-1，cnt保持0，而最后做tnt/cnt成为整数除0，是实际错误路径。边角案例通常也是合法范围内少见的边界组合，不应把“正常范围以外”当成完整定义。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq14": {
+    "topic": "G",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "每行先打印n-i个0，再打印1到i。输入4时依次为1 2 3 4、0 1 2 3、0 0 1 2、0 0 0 1，与B相符。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "每名选手先把总分置0、最大值置0、最小值置100，再读八个合法分数。累计总和并更新极值后各减一个最高和最低即可，不需要先排序，A符合给定计分方式。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "智能眼镜通常包含运算、通信与嵌入式软件环境，可作为信息设备。题述用于理解设备能力与闭卷管理的关联，具体考试携带规则仍看当场要求。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "字符'5'的ASCII码53为奇数，左侧not(53%2==0)为1。右侧先not '5'得到0，再0%2==0也为1；两边相等，默认输出1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "int(3.5)先向零截断得到3，再乘整数2得到6。转换发生在乘法之前，不能先算7再决定显示格式。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i依次1、4、7，均非零，所以not i为0，0%3为0，if为假不break。随后i加到10退出，依次输出1-4-7-；这条条件不是not(i%3)的写法。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf05": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "正N时最后i=N+1，可使末尾比较为1。负N时打印N到-1后i=0，i-1为-1，不等于abs(N)，所以最后输出0；取N=-2即可反驳“总输出1”。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf06": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "外层第一轮i=0，内层条件j<i为假，不执行。紧接着外层break，i仍为0，cout输出0，不是9。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf07": {
+    "topic": "N",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "每个i的j从-i到i-1，共2*i次。N=10时i=0到9，次数和为2*(0+1+...+9)=90，不是100。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "i,j各取0、1、2，满足i+j>=3的只有(1,2)、(2,1)、(2,2)。正好三次计数，所以输出3。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf09": {
+    "topic": "D",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "每轮用N%10取个位并乘当前位权，再把N除10、位权乘10，已取得的各位回到原来的位置，正常小整数例子会还原原数。若推广到int最大位数，最后多做的Nbase*=10也可能溢出；工程代码应采用更宽类型或避免无用的最终更新，不能把题中小范围推演当无范围保证。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202606.tf10": {
+    "topic": "G",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "第i行两侧各有n-i个0，中间先升到i再降回1，共2*i-1个数字。n=5得到000010000直到123454321的五行，左右补零和中间峰值均与图示一致。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "IDE提供编辑、补全、语法高亮、调试等开发辅助。电机转动要由实际运行的控制程序和硬件接口执行，不能把IDE本身的基本职责说成直接驱动电机。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq02": {
+    "topic": "B",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "Cache利用局部性暂存CPU常访问的数据，减少访问较慢主存的等待。其容量通常小于主存、断电易失，寄存器通常又比Cache更快。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "比较时整数3可转换成浮点数3.0，两者数值相等。==结果是bool真，默认cout输出1，不是浮点外观1.0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "5、-5、5.0都是非零，分别转成bool真。参与加法后提升为整数1，三项相加得到3；负数也转为真。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq05": {
+    "topic": "C",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "4的倍数还要排除100的倍数，但400的倍数另行保留。用&&组成普通闰年条件，再与400倍数条件||连接，正是A；1900与2000可作对照边界。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "i=0时if(i)是假，不计数；i=1到9均非零，每轮加1。共计九次，tot最后为9。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq07": {
+    "topic": "N",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "输入4时外层i为1、2、3。内层j从1到i-1，次数分别0、1、2，相加为3，不包含外层i=4的三次。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq08": {
+    "topic": "L",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "只有i%3非零的i被相加。0到9里这些数为1、2、4、5、7、8，总和27；0、3、6、9全部跳过。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq09": {
+    "topic": "L",
+    "semanticAnswers": [
+      "B"
+    ],
+    "explanation": "not(i%3!=0)等价于余数等于0。-5到4中能被3整除的是-3、0、3，共三项，负数和0都应包含。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq10": {
+    "topic": "D",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "把上界任意增大可能把素数自身也作为试除因子。例如n=3，若sqrt(n)后加3，循环就会试到3并误报非素数。原来试到平方根附近即可，不能说任意更大常量都不改变正确性。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq11": {
+    "topic": "N",
+    "semanticAnswers": [
+      "D"
+    ],
+    "explanation": "i=1时贡献1；i=2时贡献2*(1+2)=6；i=3时贡献3*(1+2+3)=18。总和1+6+18=25，不能只算内层j的和。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq12": {
+    "topic": "N",
+    "semanticAnswers": [
+      "C"
+    ],
+    "explanation": "j=0被continue跳过。i=1无计数；i=2在j=1计一次后乘积达2而break；i=3同样在j=1计一次后break。结束i=4、j=1、count=2，输出4 1 2。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq13": {
+    "topic": "G",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "行号j从0开始，首行应有line-1个空格，最后一行0个。line-j-1随行逐个减少，正好符合两端与中间各行；多一个会使末行也带空格。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq14": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "先比较距离，更近就更新；距离相同则只在新身高更矮时更新。两种更新原因用||连接，第二种内部用&&；身高完全相同则不更新，保留先遇到的人。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.mcq15": {
+    "topic": "A",
+    "semanticAnswers": [
+      "A"
+    ],
+    "explanation": "进入else if说明距离已经相同，只需比较h与当前best_height。h更小时才替换成更矮者；相同身高不替换，才能保留题目要求的第一个。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf01": {
+    "topic": "B",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "cin和scanf把输入数据读到程序变量，常见来源是键盘。也可从重定向文件或管道读取，因此题目“通常”不应被理解为只能有键盘。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf02": {
+    "topic": "E",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "5和2都非零，转换为bool都是真，逻辑与得到真。cout未开启boolalpha时显示1，不是返回任一原操作数。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf03": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "ASCII中'2'=50，单目负号得-50。2*(-50)/4=-25，是整数运算；不能把带引号的字符当成数字2，结果并非-1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf04": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "a==+5是比较，不会给a加5或赋新值。前一句已令a=5，比较结果被丢弃，所以最后仍输出5。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf05": {
+    "topic": "E",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "not 5先得到false即0，再not 0得到true即1。两次取反把数值转换为真假，不会恢复原数5，cout输出1。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf06": {
+    "topic": "L",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "括号里i%3为0时，not为真。1到9中命中3、6、9，连续输出无分隔，恰为369。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf07": {
+    "topic": "L",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "代码只适用于非负N的向上枚举。若N为负，例如-2，循环从0开始已经不满足i<N+1，输出0，不能求0到-2所有整数的和；原题未限制N非负。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf08": {
+    "topic": "N",
+    "semanticAnswers": [
+      "T"
+    ],
+    "explanation": "continue在内层循环之前，每个外层轮次都直接跳到更新。cnt始终0，最后i虽到10，但i*cnt仍为0。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf09": {
+    "topic": "A",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "循环会枚举所有兔头数量并可能打印正确方案，但退出后tu_tou是tou+1，末尾tu_tou==tou永不成立。无解时不能按预期报告无解；应单独记录是否找到方案，而不是拿退出变量猜测。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  },
+  "gesp2.202609.tf10": {
+    "topic": "D",
+    "semanticAnswers": [
+      "F"
+    ],
+    "explanation": "int(sqrt(N))只取平方根整数部分。例如N=10、M=3时该比较为真，但10不是3的平方。应核对足够宽的M*M==N，而不是只比较截断根。",
+    "semanticReview": "authored-from-question-and-language-semantics"
+  }
+}

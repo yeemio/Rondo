@@ -1,0 +1,138 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m2.diag.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "INDEPENDENT",
+  "title": "先修诊断 · 长方形面积与面积单位",
+  "boardView": "RECT",
+  "givens": {
+    "rows": 3,
+    "cols": 5,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.m2diag.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "先修小诊断：长方形面积与面积单位（共 4 小题）"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "题号"
+        },
+        {
+          "label": "已知"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "(1)",
+          "长方形长 5、宽 3（每格是边长 1 cm 的小正方形）",
+          "cm"
+        ],
+        [
+          "(4)",
+          "1 平方分米等于多少平方厘米",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 这个长方形的面积是多少？(2) 边长 1 cm 的正方形，面积是多少？(3) 面积单位为什么叫\"平方\"厘米？(4) 1 dm² = ? cm²"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-area",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "长 5 cm、宽 3 cm 求面积；1 cm 边长正方形的面积；面积单位名字的由来；1 dm² 换算成 cm²。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "面积就是铺满图形需要多少个\"单位小正方形\"。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "每行铺 5 个、铺 3 行；换算先想 1 dm = 10 cm，再想正方形 10×10。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m2.why",
+        "prompt": "为什么面积单位带\"平方\"？",
+        "options": [
+          {
+            "id": "opt-length-times-length",
+            "label": "长度 × 长度，两个长度相乘"
+          },
+          {
+            "id": "opt-just-name",
+            "label": "只是一种叫法"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人说说你是怎么数出长方形面积的。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "5×3 格点长方形（SVG，每格 1 cm²）静态呈现。",
+    "boardTable": "行×列读数表；同一任务卡与判分接口。"
+  }
+}

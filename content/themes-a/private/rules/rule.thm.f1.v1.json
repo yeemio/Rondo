@@ -1,0 +1,264 @@
+{
+  "ruleId": "rule.thm.f1.v1",
+  "file": "rule.thm.f1.v1.json",
+  "boundTasks": [
+    "thm.f1.g1.partition-circle.v1",
+    "thm.f1.g2.partition-bar.v1",
+    "thm.f1.i1.represent.v1",
+    "thm.f1.s1.stranger-relabel.v1",
+    "thm.f1.d1.delayed-transfer.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.f1.g1.partition-circle.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "circle-fraction",
+            "label": "涂色部分的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "分母 4 的含义",
+            "selectionId": "sel.denom-meaning",
+            "correctOptionId": "opt-total-parts"
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "未平均分反例判断",
+            "selectionId": "sel.unequal-parts",
+            "correctOptionId": "opt-no"
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 4,
+          "filled": 3
+        },
+        "scenarioFeedback": "请先把圆盘调成平均 4 份、涂 3 份（各行/涂色都需确认），再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-num-den-swapped",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_SWAPPED"
+            },
+            "feedback": "再检查：分母（下面的数）是总份数，分子（上面的数）是涂色份数——好像写反了。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "平均 4 份、涂 3 份 → 3/4。"
+          },
+          {
+            "checkId": "c2",
+            "text": "分母 4 = 平均分成的总份数。"
+          },
+          {
+            "checkId": "c3",
+            "text": "不能——没有平均分就不能用分数这样表示。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再数一遍：一共平均分成几份？涂色几份？分母写总数、分子写涂色数。"
+        }
+      },
+      "thm.f1.g2.partition-bar.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "bar-fraction",
+            "label": "涂色部分的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "与 1/2 比大小",
+            "selectionId": "sel.compare-half",
+            "correctOptionId": "opt-58-bigger"
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 8,
+          "filled": 5
+        },
+        "scenarioFeedback": "请先把条带调成平均 8 份、涂 5 份并确认，再提交。",
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "8 份涂 5 份 → 5/8。"
+          },
+          {
+            "checkId": "c2",
+            "text": "5/8 > 1/2：5 超过 8 的一半，点越过中点。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再看看数轴：点过中点了吗？分子超过分母的一半了吗？"
+        }
+      },
+      "thm.f1.i1.represent.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "bar-fraction",
+            "label": "涂色部分的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "分子的含义",
+            "selectionId": "sel.num-meaning",
+            "correctOptionId": "opt-num-taken"
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 10,
+          "filled": 7
+        },
+        "scenarioFeedback": "本题图板已给出：10 格涂 7 格。",
+        "diagnostics": [
+          {
+            "tag": "mis-num-den-swapped",
+            "checkId": "c1",
+            "when": {
+              "kind": "FRACTION_SWAPPED"
+            },
+            "feedback": "再检查：分母是总格数 10，分子是涂色格数——好像写反了。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "涂 7 格、共 10 格 → 7/10。"
+          },
+          {
+            "checkId": "c2",
+            "text": "分子 7 = 涂色（取走）的份数。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再数一遍：总格数写分母，涂色格数写分子。"
+        }
+      },
+      "thm.f1.s1.stranger-relabel.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "choice",
+            "label": "未平均分能否说 1/4",
+            "selectionId": "sel.can-say-quarter",
+            "correctOptionId": "opt-no-not-equal"
+          },
+          {
+            "id": "c2",
+            "kind": "fraction",
+            "quantityId": "circle-fraction",
+            "label": "重新切好后的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 4,
+          "filled": 1
+        },
+        "scenarioFeedback": "请先把圆盘重新切成平均 4 份、涂 1 份并确认，再提交。",
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "不能——4 块大小不一，不是平均分。"
+          },
+          {
+            "checkId": "c2",
+            "text": "平均 4 份涂 1 份 → 1/4。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "记住前提：分数说的是\"平均分之后的份数\"。"
+        }
+      },
+      "thm.f1.d1.delayed-transfer.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "fraction",
+            "quantityId": "morning-fraction",
+            "label": "上午吃的分数",
+            "source": {
+              "kind": "FROM_STATE"
+            },
+            "comparison": {
+              "kind": "EXACT"
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "fraction",
+            "quantityId": "whole-day-fraction",
+            "label": "全天吃的分数",
+            "source": {
+              "kind": "AUTHORED",
+              "numerator": 5,
+              "denominator": 8
+            },
+            "comparison": {
+              "kind": "REDUCED_EQUALS"
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "cols": 8,
+          "filled": 3
+        },
+        "scenarioFeedback": "请先在圆盘上把上午吃的 3 份涂色并确认，再提交。",
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "上午 3 块 → 3/8。"
+          },
+          {
+            "checkId": "c2",
+            "text": "3+2 = 5 块 → 5/8。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：分母始终是总块数 8；全天要先把块数合起来。"
+        }
+      }
+    }
+  }
+}

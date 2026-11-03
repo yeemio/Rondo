@@ -1,0 +1,148 @@
+{
+  "ruleId": "rule.thm.m4.v1",
+  "file": "rule.thm.m4.v1.json",
+  "boundTasks": [
+    "thm.m4.diag.v1",
+    "thm.m4.supp.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.m4.diag.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "mapping",
+            "label": "单位分类（cm 家族）",
+            "expectedPairs": [
+              {
+                "leftId": "unit-cm",
+                "rightId": "dim-length"
+              },
+              {
+                "leftId": "unit-cm2",
+                "rightId": "dim-area"
+              },
+              {
+                "leftId": "unit-cm3",
+                "rightId": "dim-volume"
+              }
+            ]
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "测量课桌面大小的单位类型",
+            "selectionId": "sel.desk",
+            "correctOptionId": "opt-area-unit"
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "1 m² 换算 dm²",
+            "selectionId": "sel.m2-to-dm2",
+            "correctOptionId": "opt-100"
+          },
+          {
+            "id": "c4",
+            "kind": "choice",
+            "label": "棱长 1 cm 正方体的体积",
+            "selectionId": "sel.cube",
+            "correctOptionId": "opt-1-cm3"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "cm 是长度；cm² 是面积；cm³ 是体积。"
+          },
+          {
+            "checkId": "c2",
+            "text": "面积单位（如平方分米 dm²）。"
+          },
+          {
+            "checkId": "c3",
+            "text": "1 m = 10 dm，1 m² = 10 × 10 = 100 dm²。"
+          },
+          {
+            "checkId": "c4",
+            "text": "1 立方厘米（cm³）。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再看一遍图例：线—长度、正方形—面积（平方）、正方体—体积（立方）。"
+        },
+        "diagnosis": {
+          "passRule": "ALL_CHECKS_FIRST_SUBMISSION_NO_ANSWER_HINT",
+          "supplementTaskId": "thm.m4.supp.v1"
+        }
+      },
+      "thm.m4.supp.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "mapping",
+            "label": "六个单位分类",
+            "expectedPairs": [
+              {
+                "leftId": "unit-mm",
+                "rightId": "dim-length"
+              },
+              {
+                "leftId": "unit-cm2",
+                "rightId": "dim-area"
+              },
+              {
+                "leftId": "unit-dm3",
+                "rightId": "dim-volume"
+              },
+              {
+                "leftId": "unit-m",
+                "rightId": "dim-length"
+              },
+              {
+                "leftId": "unit-m2",
+                "rightId": "dim-area"
+              },
+              {
+                "leftId": "unit-cm3",
+                "rightId": "dim-volume"
+              }
+            ]
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "字典所占空间单位",
+            "selectionId": "sel.dict",
+            "correctOptionId": "opt-cm3"
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "\"操场面积 300 米\"的错误",
+            "selectionId": "sel.playground",
+            "correctOptionId": "opt-area-needs-square-unit"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "毫米、米 → 长度；平方厘米、平方米 → 面积；立方分米、立方厘米 → 体积。"
+          },
+          {
+            "checkId": "c2",
+            "text": "立方厘米（cm³）——物体占的空间用体积单位。"
+          },
+          {
+            "checkId": "c3",
+            "text": "面积要用面积单位：应说\"操场的面积是 300 平方米\"。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再看一遍：带\"平方\"的是面积，带\"立方\"的是体积。"
+        }
+      }
+    }
+  }
+}

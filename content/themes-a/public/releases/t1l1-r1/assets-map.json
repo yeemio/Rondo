@@ -1,0 +1,13 @@
+{
+  "releaseId": "rondo.thm.t1l1-r1",
+  "note": "path -> sha256 of the public asset files hashed into publicAssetHashes; this map itself is not hashed",
+  "assets": {
+    "content/themes-a/public/lessons.json": "c86e4fbc3336de8f808ae38d4c13c2ce90d9d40728a8a4ccf9ece4302413d1a5",
+    "content/themes-a/public/schemas/response-schemas.registry.json": "24fa9cd2d25350f82264ec0b6355565c7b438f460087059abb5067cc02b7d46c",
+    "content/themes-a/public/tasks/thm.f1.d1.delayed-transfer.v1.json": "b4b797318872a20fc7197ef5c47f0312c54f2364a12b2e12b04fd78885a6adcf",
+    "content/themes-a/public/tasks/thm.f1.g1.partition-circle.v1.json": "1c25d06c70a0ae8e244e7ec5961f8ce38d3a9b644e2bf5cb716b3facc966bb00",
+    "content/themes-a/public/tasks/thm.f1.g2.partition-bar.v1.json": "21f0e5b1b9bd7ece7f322b1cd273c05345c2be566b582db5811c00c74b52d27b",
+    "content/themes-a/public/tasks/thm.f1.i1.represent.v1.json": "0d574e8a2fac89d48039da52a026704735f20fd1bb14b79faf2a6a19458c391d",
+    "content/themes-a/public/tasks/thm.f1.s1.stranger-relabel.v1.json": "12032bdd48785c351f00b79d258017e4ee4b010a9cbfa8e7c17d8241155a1fef"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "lessonsVersion": "1",
+  "lessons": [
+    {
+      "lessonId": "themes.micro.radiusDiameter",
+      "releaseId": "rondo.thm.m1-r1",
+      "title": "先修微课 · 半径与直径",
+      "taskFamily": "themes.micro.v1",
+      "lessonKind": "micro",
+      "taskOrder": [
+        "thm.m1.diag.v1",
+        "thm.m1.supp.v1"
+      ]
+    },
+    {
+      "lessonId": "themes.micro.rectArea",
+      "releaseId": "rondo.thm.m2-r1",
+      "title": "先修微课 · 长方形面积与面积单位",
+      "taskFamily": "themes.micro.v1",
+      "lessonKind": "micro",
+      "taskOrder": [
+        "thm.m2.diag.v1",
+        "thm.m2.supp.v1"
+      ]
+    },
+    {
+      "lessonId": "themes.micro.quantity",
+      "releaseId": "rondo.thm.m3-r1",
+      "title": "先修微课 · 乘除与数量关系",
+      "taskFamily": "themes.micro.v1",
+      "lessonKind": "micro",
+      "taskOrder": [
+        "thm.m3.diag.v1",
+        "thm.m3.supp.v1"
+      ]
+    },
+    {
+      "lessonId": "themes.micro.units",
+      "releaseId": "rondo.thm.m4-r1",
+      "title": "先修微课 · 长度、面积、体积的单位",
+      "taskFamily": "themes.micro.v1",
+      "lessonKind": "micro",
+      "taskOrder": [
+        "thm.m4.diag.v1",
+        "thm.m4.supp.v1"
+      ]
+    },
+    {
+      "lessonId": "themes.frac.lesson1",
+      "releaseId": "rondo.thm.t1l1-r1",
+      "title": "主题一 · 第 1 课 等分与表示",
+      "taskFamily": "themes.frac.v1",
+      "lessonKind": "theme",
+      "taskOrder": [
+        "thm.f1.g1.partition-circle.v1",
+        "thm.f1.g2.partition-bar.v1",
+        "thm.f1.i1.represent.v1",
+        "thm.f1.s1.stranger-relabel.v1"
+      ],
+      "delayedTransferTaskId": "thm.f1.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      }
+    },
+    {
+      "lessonId": "themes.frac.lesson2",
+      "releaseId": "rondo.thm.t1l2-r1",
+      "title": "主题一 · 第 2 课 等值与缩放",
+      "taskFamily": "themes.frac.v1",
+      "lessonKind": "theme",
+      "taskOrder": [
+        "thm.f2.g1.scale-bar.v1",
+        "thm.f2.g2.equivalent-find.v1",
+        "thm.f2.i1.numberline.v1",
+        "thm.f2.s1.stranger.v1"
+      ],
+      "delayedTransferTaskId": "thm.f2.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      }
+    },
+    {
+      "lessonId": "themes.frac.lesson3",
+      "releaseId": "rondo.thm.t1l3-r1",
+      "title": "主题一 · 第 3 课 分配或折扣情境的问题链",
+      "taskFamily": "themes.frac.v1",
+      "lessonKind": "theme",
+      "taskOrder": [
+        "thm.f3.g1.percent-board.v1",
+        "thm.f3.g2.discount-chain.v1",
+        "thm.f3.i1.allocate.v1",
+        "thm.f3.s1.stranger.v1"
+      ],
+      "delayedTransferTaskId": "thm.f3.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      }
+    }
+  ]
+}

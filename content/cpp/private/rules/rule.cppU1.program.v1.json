@@ -1,0 +1,234 @@
+{
+  "ruleId": "rule.cppU1.program.v1",
+  "ruleVersion": "1",
+  "body": {
+    "kind": "STEP_TASK_TRUTH",
+    "stepBudget": 200,
+    "entries": {
+      "cpp.u1.i1.fix-boundary.v1": {
+        "visibleCase": {
+          "caseId": "i1-F1",
+          "inputs": {
+            "n": 10
+          },
+          "expectedLines": [
+            "55"
+          ]
+        },
+        "hiddenCases": [
+          {
+            "caseId": "i1-EXB",
+            "inputs": {
+              "n": 20
+            },
+            "expectedLines": [
+              "210"
+            ]
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.i1.missed-loop",
+            "correctOptionId": "opt-loop10"
+          }
+        ],
+        "structural": {
+          "requiredConstructs": [
+            "FOR"
+          ],
+          "maxProgramSteps": 12,
+          "maxOutputLines": 8
+        },
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "diagnostics": {
+          "offByOneBound": "再看一眼循环的界限：最后该进循环的那一圈，进去了吗？",
+          "samplePassedHiddenFailed": "可见这一问对了，换一组编号复跑就不对——再检查循环到不到 n、从几开始。"
+        }
+      },
+      "cpp.u1.i2.enum-count.v1": {
+        "visibleCase": {
+          "caseId": "i2-F1",
+          "inputs": {
+            "n": 40
+          },
+          "expectedLines": [
+            "10"
+          ]
+        },
+        "hiddenCases": [
+          {
+            "caseId": "i2-H0",
+            "inputs": {
+              "n": 0
+            },
+            "expectedLines": [
+              "0"
+            ]
+          },
+          {
+            "caseId": "i2-H4",
+            "inputs": {
+              "n": 4
+            },
+            "expectedLines": [
+              "1"
+            ]
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.i2.range-check",
+            "correctOptionId": "opt-exact"
+          }
+        ],
+        "structural": {
+          "requiredConstructs": [
+            "FOR",
+            "IF"
+          ],
+          "maxProgramSteps": 12,
+          "maxOutputLines": 8
+        },
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "diagnostics": {
+          "samplePassedHiddenFailed": "可见这问对了，换个编号范围就不对——再检查循环到不到 n、从几开始（n=0 时一次都不该数）。"
+        }
+      },
+      "cpp.u1.i3.build-digits.v1": {
+        "visibleCase": {
+          "caseId": "i3-F1",
+          "inputs": {
+            "n": 358
+          },
+          "expectedLines": [
+            "8",
+            "5",
+            "3"
+          ]
+        },
+        "hiddenCases": [
+          {
+            "caseId": "i3-H0",
+            "inputs": {
+              "n": 207
+            },
+            "expectedLines": [
+              "7",
+              "0",
+              "2"
+            ]
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.i3.order-first",
+            "correctOptionId": "opt-shrink-after"
+          }
+        ],
+        "structural": {
+          "requiredConstructs": [],
+          "maxProgramSteps": 12,
+          "maxOutputLines": 8
+        },
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "feedback": {
+          "reviseGeneric": "按 358→35→3 的顺序检查：每一步先取位再缩小，结束时 n 应该是 3。"
+        }
+      },
+      "cpp.u1.s1.stranger-transfer.v1": {
+        "visibleCase": {
+          "caseId": "s1-F1",
+          "inputs": {
+            "n": 60
+          },
+          "expectedLines": [
+            "20",
+            "60"
+          ]
+        },
+        "hiddenCases": [
+          {
+            "caseId": "s1-H25",
+            "inputs": {
+              "n": 25
+            },
+            "expectedLines": [
+              "8",
+              "24"
+            ]
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.s1.count-last-diff",
+            "correctOptionId": "opt-roles-split"
+          }
+        ],
+        "structural": {
+          "requiredConstructs": [
+            "FOR",
+            "IF"
+          ],
+          "maxProgramSteps": 20,
+          "maxOutputLines": 8
+        },
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "diagnostics": {
+          "samplePassedHiddenFailed": "可见这问对了，换个报数范围就不对——检查条件两件事是否都在拍手的大括号里。"
+        }
+      },
+      "cpp.u1.d1.delayed-transfer.v1": {
+        "visibleCase": {
+          "caseId": "d1-F1",
+          "inputs": {
+            "lo": 260,
+            "hi": 299
+          },
+          "expectedLines": [
+            "13"
+          ]
+        },
+        "hiddenCases": [
+          {
+            "caseId": "d1-H289",
+            "inputs": {
+              "lo": 260,
+              "hi": 289
+            },
+            "expectedLines": [
+              "12"
+            ]
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.d1.or-both",
+            "correctOptionId": "opt-add-once"
+          }
+        ],
+        "structural": {
+          "requiredConstructs": [
+            "FOR",
+            "IF"
+          ],
+          "maxProgramSteps": 20,
+          "maxOutputLines": 8
+        },
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "feedback": {
+          "reviseGeneric": "两个位都查了吗？重叠的编号只数一次。"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "title": "算一算新罐子",
+  "taskId": "cyl.layers.i1.volume-value-unit.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.volumeValue.v1",
+  "allowedOperationIds": [
+    "SetLayerCount",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetLayerCount",
+      "min": 1,
+      "max": 40
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "算一算新罐子"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个新的圆罐，尺寸见场景标注。它最多能装多少立方厘米的东西？"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "4.0"
+        ],
+        [
+          "高度 h",
+          "7.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测，再算并提交。可以切换层数、逐层推进帮助思考。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "隐藏数值期间仅显示层号/层厚两列"
+    },
+    {
+      "material": "table.cumulative-values",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "累计表数值列（该层/累计）REVIEW 前隐藏"
+    },
+    {
+      "material": "card.formula-base",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "可反推读数 REVIEW 前全通道隐藏"
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "读标注 r=4.0 cm、h=7.0 cm。答体积，两位小数，单位立方厘米。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "体积看两件事：底面有多大、叠多高。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算底面积 π×r×r，再乘高 h；单位是立方厘米。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersi1.base-is",
+        "prompt": "算体积时用到的「底面积」是：",
+        "options": [
+          {
+            "id": "opt-circle-area",
+            "label": "底面圆的面积 πr²"
+          },
+          {
+            "id": "opt-circumference",
+            "label": "底面圆的周长 2πr"
+          },
+          {
+            "id": "opt-lateral",
+            "label": "侧面积"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写出算式，说明每个数是什么。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同基线；数字/单位表单两表达同控件同判分；SVG 层条/横截面受同一投影约束（数值列隐藏）。",
+    "svgDom": "同基线。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 40,
+    "heightMm": 70,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 7,
+    "visibleLayerCount": 0
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f2.g2.equivalent-find.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "找出 6/8：把 3/4 放大",
+  "boardView": "BAR",
+  "givens": {
+    "rows": 1,
+    "cols": 4,
+    "filled": 3
+  },
+  "givenLocks": [
+    "rows"
+  ],
+  "responseSchemaId": "resp.thm.f2g2.v1",
+  "allowedOperationIds": [
+    "ScaleBoth"
+  ],
+  "operationConstraints": [
+    {
+      "type": "ScaleBoth",
+      "multipliers": [
+        2
+      ]
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把 3/4 写成分母是 8 的等值分数"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧条带现在是 3/4。任务：用一次\"同乘 2\"把它变成分子是 6 的等值分数，确认。"
+    },
+    {
+      "type": "TEXT",
+      "text": "回答：现在的分数是几分之几？它和 3/4 相等的原因是什么？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-equivalence",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "3/4 同乘 2 得到分子是 6 的分数，写出它并说明相等的原因。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "等值分数：分子分母同乘一个数，大小不变。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "分母 4×2=8，分子 3×2=6；两个数要\"一起\"乘。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f2g2.mistake",
+        "prompt": "有同学写成了 6/4，他可能哪里错了？",
+        "options": [
+          {
+            "id": "opt-only-num",
+            "label": "只把分子乘了 2，分母没乘"
+          },
+          {
+            "id": "opt-only-den",
+            "label": "只把分母乘了 2"
+          },
+          {
+            "id": "opt-both",
+            "label": "两个都乘了"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "再写一个和 3/4 相等的分数，并说说你是怎么得到的。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "条带（SVG）随同乘确认重绘。",
+    "boardTable": "份数/涂色份数读数表；同一判分。"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "compilerContractId": "rondo.gesp.gcc13.2.cpp11.linux-arm64.v1",
+  "compilerVersion": "13.2.0",
+  "imageId": "sha256:00f70585809a285945fc3e4c2f01712214df58eeefa7499cd220d306f528c980",
+  "platform": "linux/arm64",
+  "baseImage": "gcc:13.2.0@sha256:15c73bc59ae88b3fd563ef2ec4a8743a8848a9f74362b6d116c4543c4844b6e0",
+  "workerSourceSha256": "78ce8bd540f8ba1a02fca272b70a18e005643b5ff4237a900719667d6c56a570"
+}

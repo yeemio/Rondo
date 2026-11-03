@@ -1,0 +1,27 @@
+{
+  "taskId": "thm.f3.d1.delayed-transfer.v1",
+  "file": "thm.f3.d1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "thm.f3.d1.F1",
+      "initial": {
+        "rows": 10,
+        "cols": 10,
+        "filled": 0
+      },
+      "truth": {
+        "percent": "90",
+        "pay": "45.00",
+        "save": "5.00",
+        "story": "原价 50 元打九折"
+      },
+      "answerHint": "九折=90%；50×90%=45.00 元；50−45=5.00 元。",
+      "migration": {
+        "plannedAt": "lesson FinishAttempt",
+        "availableAfterDays": 7,
+        "nominalWindowEndDays": 14
+      }
+    }
+  ]
+}

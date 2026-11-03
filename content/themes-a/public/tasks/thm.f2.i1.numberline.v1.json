@@ -1,0 +1,106 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f2.i1.numberline.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "INDEPENDENT",
+  "title": "独立练习 · 数轴上的点",
+  "boardView": "NUMBERLINE",
+  "givens": {
+    "rows": 1,
+    "cols": 6,
+    "filled": 2
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.f2i1.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "独立练习：读出数轴上的点"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧数轴上，0 到 1 被平均分成 6 格，有一个点停在第 2 格的刻度线上。"
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 这个点表示的分数是几分之几？(2) 下面哪个分数和它相等？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "6 格走到第 2 格，写出分数，再选出与它相等的分数。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "总格数作分母、走过格数作分子；等值要分子分母同除一个数。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "2/6 的 2 和 6 都能除以 2。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f2i1.reduce",
+        "prompt": "把分数变简单（约分）时，分子分母要？",
+        "options": [
+          {
+            "id": "opt-divide-same",
+            "label": "除以同一个数"
+          },
+          {
+            "id": "opt-subtract",
+            "label": "各减去 1"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "数轴上再找一个位置，写出它的两个等值分数。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "数轴（SVG）静态呈现点位置。",
+    "boardTable": "份数/走过格数读数表；同一判分。"
+  }
+}

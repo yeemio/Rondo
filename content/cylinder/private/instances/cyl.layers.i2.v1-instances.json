@@ -1,0 +1,44 @@
+{
+  "taskId": "cyl.layers.i2.height-vs-radius-choice.v1",
+  "file": "cyl.layers.i2.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.layers.i2.F1",
+      "initial": {
+        "radiusMm": 30,
+        "heightMm": 60
+      },
+      "variants": {
+        "planA": {
+          "radiusMm": 30,
+          "heightMm": 100
+        },
+        "planB": {
+          "radiusMm": 40,
+          "heightMm": 60
+        }
+      },
+      "truth": {
+        "bigger": "opt-plan-b",
+        "valueACm3": "282.60",
+        "valueBCm3": "301.44"
+      },
+      "answerHint": "B 装得多：A=28.26×10=282.60，B=50.24×6=301.44；半径只加 1.0 cm，但底面积从 28.26 涨到 50.24。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径；互斥总清单 L34-12（底罐与两变体组合同入排除）；已服务实例"
+    ]
+  }
+}

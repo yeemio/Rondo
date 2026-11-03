@@ -1,0 +1,205 @@
+{
+  "title": "一层层装圆片",
+  "taskId": "cyl.layers.g1.stack-invariant.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.stackInvariant.v1",
+  "allowedOperationIds": [
+    "SetLayerCount",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetLayerCount",
+      "values": [
+        8,
+        16
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "一层层装圆片"
+    },
+    {
+      "type": "TEXT",
+      "text": "往罐子里装等厚的圆片：罐身半径 3.0 cm，高 8.0 cm，正好装 8 层，每层厚 1.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ],
+        [
+          "层数 n",
+          "8"
+        ],
+        [
+          "每层厚",
+          "1.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先猜一猜：如果把层数改成 16 层（每层就更薄了），这个罐子装的东西总体积会变大、变小还是不变？"
+    },
+    {
+      "type": "TEXT",
+      "text": "先写下猜测，再一层一层推进看看累计表。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "层数输入/切换 + 逐层/复位按钮；SetLayerCount ∈ {8,16}"
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "L34-8：行（第 k 层：层厚/该层/累计）只在确认 visibleLayerCount ≥ k 后呈现；两表达渲染同一 DOM CumulativeTable，同步揭示"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "含 8 层 vs 16 层对照"
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=3.0 cm、h=8.0 cm、8 层每层 1.0 cm。答：改成 16 层时总体积怎么变、每层厚度怎么变，以及 8 层装满的总体积。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "罐子还是那么大——切法变了，罐子装的东西总量会跟着变吗？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "把 8 层一层层推满、看最后一行；再切 16 层推满、看最后一行；两次比一比。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersg1.why-invariant",
+        "prompt": "层数变多而总体积不变，是因为：",
+        "options": [
+          {
+            "id": "opt-n-times-t-h",
+            "label": "层数×层厚始终等于高度"
+          },
+          {
+            "id": "opt-squashed",
+            "label": "圆片被压扁了"
+          },
+          {
+            "id": "opt-can-grew",
+            "label": "罐子变大了"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "用「层数、每层厚度、高度」三个词说一说它们的关系。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "罐内等厚圆片逐层升起（动画帧属 ViewState，权威位为确认的 visibleLayerCount）；层数切换按确认层厚重绘；累计表为 DOM 表挂接场景。",
+    "svgDom": "二维层条（侧视堆叠矩形，逐层填充）+ 横截面圆（示意每层形状）+ 同一累计表与表单；层数输入、逐层/复位按钮与 3D 同一 typed intent；同一判分。aria：层推进播报「第 k 层已装，累计 X.XX 立方厘米」（适度 live region，不逐帧）。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 8,
+    "visibleLayerCount": 0
+  }
+}

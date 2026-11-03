@@ -1,0 +1,152 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f3.s1.stranger.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "STRANGER",
+  "title": "陌生情境 · 第二件半价还是全店八折",
+  "boardView": "HUNDRED",
+  "givens": {
+    "rows": 10,
+    "cols": 10,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.f3s1.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "陌生情境：两店比价"
+    },
+    {
+      "type": "TEXT",
+      "text": "买 2 支同款钢笔，每支 40.00 元。甲店促销\"第二件半价\"（第二支按 50% 价钱）；乙店促销\"全店八折\"（每件都按 80% 价钱）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "钢笔单价",
+          "40.00",
+          "元"
+        ],
+        [
+          "购买数量",
+          "2",
+          "支"
+        ],
+        [
+          "甲店优惠",
+          "第二件半价（50%）",
+          "—"
+        ],
+        [
+          "乙店优惠",
+          "全店八折（80%）",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "依次回答：(1) 在甲店买 2 支共付多少元？(2) 在乙店买 2 支共付多少元？(3) 哪家店更便宜？(4) 便宜多少元？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-percent",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "陌生任务复测百分数概念"
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "同款 2 支、每支 40 元：分别算两店总价、比较、算差价。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "半价 = 50%；八折 = 80%。两店的优惠作用在不同的支数上。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "甲店：40 + 40×50%；乙店：(40+40)×80%；最后相减。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f3s1.key",
+        "prompt": "这道题的关键在哪？",
+        "options": [
+          {
+            "id": "opt-apply-to-what",
+            "label": "看清优惠作用在哪一件/哪几件上，再算百分比"
+          },
+          {
+            "id": "opt-bigger-percent",
+            "label": "百分比大的店一定便宜"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果只买 1 支，哪家便宜？为什么？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "百格板（SVG）图例：50% 与 80% 的面积直观对照（静态）。",
+    "boardTable": "单价/数量/百分比对照表；同一判分。"
+  }
+}

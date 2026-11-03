@@ -1,0 +1,224 @@
+{
+  "title": "算一算侧面",
+  "taskId": "cyl.net.i3.area-value-unit.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.areaValue.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "算一算侧面"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个圆筒，尺寸见场景标注（r、h 以 cm 显示）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "2.5"
+        ],
+        [
+          "高度 h",
+          "10.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "侧面展开后，侧面的面积是多少？先预测，再算并提交。π 取 3.14，四舍五入保留两位小数，并选择单位。你可以展开侧面帮助思考。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "公开公式卡，不含数值"
+    },
+    {
+      "material": "card.formula-S",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "公开公式卡，不含数值"
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-S",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=2.5 cm、h=10.0 cm。求侧面面积；π 取 3.14，四舍五入保留两位小数并选单位。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "侧面摊开是长方形，面积是两条边长相乘——两条边长各从哪里来？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算 C=2×3.14×r，再乘 h；面积单位用平方厘米。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.neti3.base-included",
+        "prompt": "算侧面积时两个底面要不要算进去：",
+        "options": [
+          {
+            "id": "opt-yes",
+            "label": "要"
+          },
+          {
+            "id": "opt-no",
+            "label": "不要"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.neti3.unit-why",
+        "prompt": "面积单位为什么是平方厘米：",
+        "options": [
+          {
+            "id": "opt-length-times-length",
+            "label": "长度×长度"
+          },
+          {
+            "id": "opt-task-rule",
+            "label": "题目规定"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写给你的算式和理由。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "数字/单位表单与提交按钮在两种表达为同一控件、同一服务端判分。",
+    "svgDom": "SVG 尺寸表显示 givens，测量读数受同一投影约束。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 25,
+    "heightMm": 100,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

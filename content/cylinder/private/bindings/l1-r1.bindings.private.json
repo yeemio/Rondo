@@ -1,0 +1,53 @@
+{
+  "releaseId": "rondo.cyl.l1-r1",
+  "taskBindings": [
+    {
+      "taskId": "cyl.param.g1.view-invariance.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylParam.changeClassify.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylParam.changeClassify.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.param.g2.radius-change.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylParam.readback.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylParam.readback.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.param.g3.height-section.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylParam.readback.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylParam.readback.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.param.i1.identify-changes.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylParam.identify.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylParam.identify.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.param.i1.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "cyl.param.i2.predict-single-change.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylParam.identify.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylParam.identify.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.param.i2.v1-instances.json"
+      }
+    }
+  ]
+}

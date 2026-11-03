@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-10-19T06:59:12.992Z",
+  "status": "local-unpublished-candidate",
+  "source": {
+    "repository": "yeemio/deepseek-harness",
+    "branch": "dsh-021rc2-trial-uncommitted",
+    "commit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+    "headCommit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+    "headTree": "f127f0f96a815eac4dea336a2ae0d9cd0f2aa82d",
+    "officialBaseCommit": "687f282e8625c6b8d11ff58211a90524be2e4317",
+    "requiredDownstreamPatchCommit": "261756b3056eac991d161dca014e5d15ba0dc7e4",
+    "legacyForkBase": "5ca3e49467fbdd5206c522c6654c0d4ad7e5a897",
+    "commitMode": "official-plus-downstream-uncommitted",
+    "candidateSourceSha256": "c4387d4e75fe827697069cbdb41e2b6d1148e0f57b00613e64d19b226024f2ab",
+    "baseDownstreamCommit": "237429cc7deabc03d4de066d10bdbb36e1cde07f"
+  },
+  "packageFamily": {
+    "version": "0.2.1-rc.2.owlcoda.1",
+    "dshTarballs": 343,
+    "vendorTarballs": 9,
+    "landlockEntryTarballs": 0,
+    "nativeEntryTarballs": 2,
+    "totalTarballs": 354,
+    "packMode": "upstream-release-pack"
+  },
+  "integrity": {
+    "checksumsFileSha256": "3eefcf14307b4702d9b4a8a25f6e1728e6e655816a5a2e227e0f57418aad87de",
+    "inventoryFileSha256": "551fb8ad4305c8cb7462f8d12fa401f4ae3ddcd06e04626d6fea0a70a776a2a2",
+    "buildMetadata": [
+      {
+        "path": "dsh/publish-order.txt",
+        "bytes": 20321,
+        "sha256": "a1ee842ce2e750f37042558e24e97aa5252bae607897d2b31cbe5569fd0f0cdd"
+      },
+      {
+        "path": "vendor/publish-order.txt",
+        "bytes": 359,
+        "sha256": "0437f2665bd159837023c126951ddaad1e1464441a514b59abd1970ac282e912"
+      },
+      {
+        "path": "native/publish-order.txt",
+        "bytes": 93,
+        "sha256": "473d63db95fb7a9522974b32d8252b023a64ae8061007c7c409dadb65fc989dd"
+      }
+    ]
+  },
+  "implementationDelta": {
+    "assignment": "a-dsh-021rc2-upgrade-20261019",
+    "previousFamily": "0.2.0-rc.2.owlcoda.1",
+    "note": "Recovered exact prior downstream source and merged official rc.2 without committing; full source inventory and patch retained.",
+    "legacyForkBase": "5ca3e49467fbdd5206c522c6654c0d4ad7e5a897"
+  },
+  "verification": {
+    "downstreamSync": "ready",
+    "installedDshVersion": "0.2.1-rc.2.owlcoda.1",
+    "officialBuild": "passed-merge-forward-uncommitted",
+    "packedInstallTarballCount": 354
+  },
+  "authority": {
+    "tagCreated": false,
+    "packagePublished": false,
+    "productDependencyAdopted": false,
+    "deployed": false,
+    "runtimeActivated": false
+  }
+}

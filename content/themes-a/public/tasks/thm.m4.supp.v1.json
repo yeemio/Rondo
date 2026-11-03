@@ -1,0 +1,116 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m4.supp.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "GUIDED",
+  "title": "补充活动 · 单位回家",
+  "boardView": "UNIT_TRIO",
+  "givens": {
+    "rows": 1,
+    "cols": 1,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.m4supp.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "补充活动：把六个单位送回自己的家"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧图例保持可见。把下面六个单位分别放入\"长度 / 面积 / 体积\"三个家：mm、cm²、dm³、m、m²、cm³。"
+    },
+    {
+      "type": "TEXT",
+      "text": "然后回答：一本字典占的空间大小，用哪个单位最合适？小明说\"操场的面积是 300 米\"，这句话哪里不对？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-units",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "六个单位分三类；选字典体积的单位；找出\"操场面积 300 米\"的错误。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "长度量线、面积量面（带平方）、体积量体（带立方）。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先看名字里的平方/立方，再想它量的是什么；面积要带\"平方\"单位。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m4supp.trap",
+        "prompt": "\"面积 300 米\"错在哪？",
+        "options": [
+          {
+            "id": "opt-area-needs-square-unit",
+            "label": "面积应该用面积单位（平方米），不能用长度单位"
+          },
+          {
+            "id": "opt-number-wrong",
+            "label": "数字 300 太小了"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "把\"操场面积 300 米\"改成一句对的话。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "单位图例三联 + 分类选择联动高亮（SVG）；选择经表单提交，服务端判分。",
+    "boardTable": "单位—量纲对照表；同一判分接口。"
+  }
+}

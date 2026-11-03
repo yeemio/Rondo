@@ -1,0 +1,182 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f3.i1.allocate.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "INDEPENDENT",
+  "title": "独立练习 · 按 3:2 分珠子",
+  "boardView": "DOTARRAY",
+  "givens": {
+    "rows": 3,
+    "cols": 12,
+    "filled": 36
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.thm.f3i1.v1",
+  "allowedOperationIds": [
+    "SetGridSize",
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetGridSize",
+      "rowsValues": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "colsValues": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "type": "SetFilled",
+      "maxCount": 144
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "独立练习：按 3:2 分 60 颗珠子"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "珠子总数",
+          "60",
+          "颗"
+        ],
+        [
+          "甲 : 乙",
+          "3 : 2",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧点阵当前摆出了甲分到的珠子（3 行、每行 12 颗），可以用它检查你的计算，也可以自己调整。依次回答：(1) 一份是多少颗？(2) 甲分到多少颗？(3) 乙分到多少颗？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "60 颗按 3:2 分给甲乙：先求一份，再求各自分到的。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "3:2 说明总共分成 3+2=5 份，每份同样多。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "每份 = 60 ÷ 5；甲 = 每份 × 3；乙 = 每份 × 2。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f3i1.first",
+        "prompt": "解按比例分配，第一步先求什么？",
+        "options": [
+          {
+            "id": "opt-one-share",
+            "label": "先求一份是多少（总数 ÷ 份数和）"
+          },
+          {
+            "id": "opt-half-first",
+            "label": "先对半分"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果改成按 3:2 分 100 颗，甲分到多少？写出算式。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "点阵（SVG）呈现/调整甲乙的份数建模。",
+    "boardTable": "行/每行/总数读数表；同一判分。"
+  }
+}

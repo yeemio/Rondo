@@ -1,0 +1,112 @@
+{
+  "releaseId": "rondo.cyl.l4-r1",
+  "taskBindings": [
+    {
+      "taskId": "cyl.layers.g1.stack-invariant.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.stack.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.stack.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.layers.g2.layer-volume.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.stack.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.stack.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.layers.g3.height-vs-radius.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.volume.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.volume.v1.json"
+      },
+      "enabledSegments": [
+        "bigger",
+        "valueA",
+        "valueB",
+        "ratio"
+      ]
+    },
+    {
+      "taskId": "cyl.layers.i1.volume-value-unit.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.volume.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.volume.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.layers.i1.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "cyl.layers.i2.height-vs-radius-choice.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.volume.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.volume.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.layers.i2.v1-instances.json"
+      },
+      "enabledSegments": [
+        "bigger",
+        "valueA",
+        "valueB"
+      ]
+    },
+    {
+      "taskId": "cyl.layers.i3.accumulate-count.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.stack.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.stack.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.layers.i3.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "cyl.layers.s1.stranger-package.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.transfer.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.transfer.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.layers.s1.v1-instances.json"
+      },
+      "enabledSegments": [
+        "paramRead",
+        "faceSet",
+        "paperArea",
+        "volume"
+      ]
+    },
+    {
+      "taskId": "cyl.layers.d1.delayed-transfer.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylLayers.transfer.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylLayers.transfer.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.layers.d1.v1-instances.json"
+      },
+      "enabledSegments": [
+        "paramRead",
+        "faceSet",
+        "paperArea",
+        "volume"
+      ]
+    }
+  ]
+}

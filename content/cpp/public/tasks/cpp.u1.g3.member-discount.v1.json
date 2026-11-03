@@ -1,0 +1,190 @@
+{
+  "taskId": "cpp.u1.g3.member-discount.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "GUIDED",
+  "title": "会员价的边界",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "小店满 30 元减 5 元。收银台程序用一条判断决定走哪边：满足条件走大括号里的优惠价，否则走另一边按原价。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "total >= 30 满足时：pay := total - 5；否则 pay := total"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测输出；再动手验证边界：把 total 改成 30，看看「>=」把恰好 30 归到了哪边。"
+    }
+  ],
+  "givens": {
+    "inputs": {},
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "total",
+        "expr": "47"
+      },
+      {
+        "checkpointId": "if-1",
+        "kind": "IF",
+        "cond": "total >= 30",
+        "then": [
+          {
+            "kind": "ASSIGN",
+            "var": "pay",
+            "expr": "total - 5"
+          }
+        ],
+        "else": [
+          {
+            "kind": "ASSIGN",
+            "var": "pay",
+            "expr": "total"
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "pay"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.branch.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[0].expr",
+        "step[1].cond"
+      ],
+      "slotDomains": {
+        "step[0].expr": [
+          24,
+          30,
+          47
+        ]
+      },
+      "insertableKinds": [],
+      "deletableSteps": [],
+      "maxProgramSteps": 8,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "动手任务：① 把 total 改成 30，单步看走进哪个大括号；② 再把条件里的 >= 改成 > 对照：恰好 30 时走哪边？",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "满 30 减 5；现在买了 47 元的东西。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "total >= 30 包含「恰好 30」这个点；total > 30 不包含。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "把 total 改成 30，单步看走进哪个大括号。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g3.ge-gt-diff",
+        "prompt": "「>=」和「>」差在哪？",
+        "options": [
+          {
+            "id": "opt-boundary-in",
+            "label": "差在恰好等于的那个点：>= 把它归进优惠，> 把它排除"
+          },
+          {
+            "id": "opt-same-thing",
+            "label": "没有差别"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "举一个让两种写法结果不同的 total 值，并说说那时的输出。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

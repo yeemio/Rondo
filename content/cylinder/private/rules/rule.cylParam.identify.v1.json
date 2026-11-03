@@ -1,0 +1,66 @@
+{
+  "ruleId": "rule.cylParam.identify.v1",
+  "file": "rule.cylParam.identify.v1.json",
+  "boundTasks": [
+    "cyl.param.i1.identify-changes.v1",
+    "cyl.param.i2.predict-single-change.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "rules": [
+      {
+        "ruleKind": "PARAMETER_IDENTIFICATION_V1",
+        "expectedJudgments": [
+          {
+            "propertyId": "radius",
+            "direction": "DECREASE"
+          },
+          {
+            "propertyId": "diameter",
+            "direction": "DECREASE"
+          },
+          {
+            "propertyId": "height",
+            "direction": "UNCHANGED"
+          }
+        ]
+      },
+      {
+        "ruleKind": "PARAMETER_IDENTIFICATION_V1",
+        "expectedJudgments": [
+          {
+            "propertyId": "radius",
+            "direction": "UNCHANGED"
+          },
+          {
+            "propertyId": "diameter",
+            "direction": "UNCHANGED"
+          },
+          {
+            "propertyId": "height",
+            "direction": "INCREASE"
+          }
+        ]
+      }
+    ],
+    "note": "rules[0]=I1 冻结实例 EX-B（脚本 RADIUS 45→30）；rules[1]=I2 冻结实例 EX-B 的方向真值（脚本 HEIGHT 70→130，直径不变）。changedSet 完全一致且方向一致才 CORRECT。"
+  },
+  "pendingDsl": {
+    "reasons": [
+      "L1_NUMERIC_READBACK_FAMILY: I2 的数值新直径判定（=2×r，等价写法/单位换算归一）无法用冻结两族表达"
+    ],
+    "numericReadback": {
+      "cyl.param.i2.predict-single-change.v1": {
+        "quantityId": "diameter",
+        "acceptedUnitIds": [
+          "cm",
+          "mm"
+        ],
+        "expectedCm": "4.0"
+      }
+    },
+    "feedback": {
+      "numericRevise": "直径和半径是什么关系？用现在的半径再算一遍。"
+    }
+  }
+}

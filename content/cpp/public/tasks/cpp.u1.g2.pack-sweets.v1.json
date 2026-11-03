@@ -1,0 +1,201 @@
+{
+  "taskId": "cpp.u1.g2.pack-sweets.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "GUIDED",
+  "title": "分装糖果",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "店里进了 75 颗糖，每袋装 8 颗。bags 是装满的袋数，left 是剩下的颗数。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "bags := n / k （整数除法：只取装满的整数袋）"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "left := n % k （取余：装不完剩下的颗数）"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测两行输出；再把 n 改成 100（每袋仍是 8 颗）看一看；最后完成第二问：每袋装 12 颗、100 颗糖，输出两行各是多少？"
+    }
+  ],
+  "givens": {
+    "inputs": {},
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "n",
+        "expr": "75"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "k",
+        "expr": "8"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "bags",
+        "expr": "n / k"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "left",
+        "expr": "n % k"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "bags"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "left"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.divrem.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[0].expr",
+        "step[1].expr"
+      ],
+      "slotDomains": {
+        "step[0].expr": [
+          75,
+          100
+        ],
+        "step[1].expr": [
+          8,
+          12
+        ]
+      },
+      "insertableKinds": [],
+      "deletableSteps": [],
+      "maxProgramSteps": 8,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "动手任务：① 把 n 从 75 改成 100（每袋仍是 8），单步看两行输出；② 再把 k 改成 12，完成第二问。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "75 颗糖每袋装 8 颗：装满几袋、剩几颗。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "/ 只取装满的整数袋，剩下的用 %。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "用乘法回头验：8×9=72，75−72=3。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g2.why-not-10",
+        "prompt": "75 颗为什么不是装 10 袋？",
+        "options": [
+          {
+            "id": "opt-notenough",
+            "label": "装满 9 袋后余 3 颗，不够再装满一袋"
+          },
+          {
+            "id": "opt-used72",
+            "label": "9 袋只用 72 颗（这是验证，不是原因）"
+          },
+          {
+            "id": "opt-round",
+            "label": "四舍五入应该是 9 或 10"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写出一个 bags 和 left 都满足的等式（用 n 和 k 表示）。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

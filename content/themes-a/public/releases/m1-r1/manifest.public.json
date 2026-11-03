@@ -1,0 +1,53 @@
+{
+  "releaseId": "rondo.thm.m1-r1",
+  "taskIds": [
+    "thm.m1.diag.v1",
+    "thm.m1.supp.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.cylinder",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    },
+    {
+      "rendererId": "rondo.gridboard",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "209ea18bec7b9bd83a0ac2e523c2e3ea10fcdbffd0aab00d54b60c49dcd32ca7",
+    "24fa9cd2d25350f82264ec0b6355565c7b438f460087059abb5067cc02b7d46c",
+    "4d7d50f09f91974c7015b81566bee6b3c09298a1fccb85a61896ce8a59ab6274",
+    "c86e4fbc3336de8f808ae38d4c13c2ce90d9d40728a8a4ccf9ece4302413d1a5"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "WEBGL2",
+      "allowedOperationIds": [
+        "SetDimension"
+      ]
+    },
+    {
+      "expression": "SVG_DOM",
+      "allowedOperationIds": [
+        "SetDimension"
+      ]
+    },
+    {
+      "expression": "BOARD_SVG",
+      "allowedOperationIds": [
+        "SetDimension"
+      ]
+    },
+    {
+      "expression": "BOARD_TABLE",
+      "allowedOperationIds": [
+        "SetDimension"
+      ]
+    }
+  ],
+  "publicManifestHash": "4c485f50851114e66759eb288848400a447386c82e92baa8faf8fe08df8052a4"
+}

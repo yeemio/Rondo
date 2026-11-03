@@ -1,0 +1,534 @@
+[
+  {
+    "id": "gesp2.202303.p01",
+    "session": "202303",
+    "kind": "program",
+    "number": 1,
+    "title": "1. 画三角形 ",
+    "sourceSha256": "2b85fea3b515c118aaf945d5534bb30473daee05289bae423f085e0f7bcc6a05",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202303.p01-0.png",
+      "/gesp/gesp2.202303.p01-1.png"
+    ],
+    "extractedText": "7 \n \n1. 画三角形 \n【问题描述】 \n输入一个正整数n，请使用大写字母拼成一个这样的三角形图案（参考样例\n输入输出）：三角形图案的第1 行有1 个字母，第2 行有2 个字母，以此类推；\n在三角形图案中，由上至下、由左至右依次由大写字母A-Z 填充，每次使用大写\n字母Z 填充后，将从头使用大写字母A 填充。 \n【输入描述】 \n输入一行，包含一个正整数n。约定2≤n≤40。 \n【输出描述】 \n输出符合要求的三角形图案。注意每行三角形图案的右侧不要有多余的空格。 \n【样例输入1】 \n3 \n【样例输出1】 \nA \nBC \nDEF \n\n                                                                    \n \n【样例输入2】 \n7 \n【样例输出2】 \nA \nBC \nDEF \nGHIJ \nKLMNO \nPQRSTU \nVWXYZAB \n \n",
+    "sourceReference": "#include <iostream> \nusing namespace std; \nint main() { \n    int n; \n    cin >> n; \n    int ch = 0; \n    for (int i = 1; i <= n; i++) { \n        for (int j = 1; j <= i; j++) \n            cout << (char)('A' + (ch++) % 26); \n        cout << endl; \n    } \n    return 0; \n} "
+  },
+  {
+    "id": "gesp2.202303.p02",
+    "session": "202303",
+    "kind": "program",
+    "number": 2,
+    "title": "2. 百鸡问题 ",
+    "sourceSha256": "2b85fea3b515c118aaf945d5534bb30473daee05289bae423f085e0f7bcc6a05",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202303.p02-0.png",
+      "/gesp/gesp2.202303.p02-1.png"
+    ],
+    "extractedText": "8 \n \n2. 百鸡问题 \n【问题描述】 \n“百鸡问题”是出自我国古代《张丘建算经》的著名数学问题。大意为：“每\n只公鸡5 元，每只母鸡3 元，每3 只小鸡1 元；现在有100 元，买了100 只鸡，\n共有多少种方案？” \n\n                                                                    \n小明很喜欢这个故事，他决定对这个问题进行扩展，并使用编程解决：如果\n每只公鸡x 元，每只母鸡y 元，每z 只小鸡1 元；现在有n 元，买了m 只鸡，共\n有多少种方案？ \n【输入描述】 \n输入一行，包含五个整数，分别为问题描述中的x、y、z、n、m。约定1≤\nx, y, z ≤10，1≤ n, m ≤1000。 \n【输出描述】 \n输出一行，包含一个整数C，表示有C 种方案。 \n【样例输入1】  \n5 3 3 100 100 \n【样例输出1】  \n4 \n \n【样例解释1】  \n这就是问题描述中的“百鸡问题”。4 种方案分别为：公鸡0 只、母鸡25 只、\n小鸡75 只；公鸡4 只、母鸡18 只、小鸡78 只；公鸡8 只、母鸡11 只、小鸡81\n只；公鸡12 只、母鸡4 只、小鸡84 只。。 \n【样例输入2】  \n1 1 1 100 100 \n【样例输出2】  \n5151 \n \n",
+    "sourceReference": "#include <iostream> \nusing namespace std; \nint main() { \n    int x, y, z, n, m, cnt = 0; \n    cin >> x >> y >> z >> n >> m; \n \n                                                                    \n    for (int gj = 0; gj * x <= n && gj <= m; gj++) \n        for (int mj = 0; mj * y + gj * x <= n && mj + gj <= m; mj++) { \n            int xj = (n - gj * x - mj * y) * z; \n            if (gj + mj + xj == m) \n                cnt++; \n        } \n    cout << cnt << endl; \n    return 0; \n} \n \n "
+  },
+  {
+    "id": "gesp2.202306.p01",
+    "session": "202306",
+    "kind": "program",
+    "number": 1,
+    "title": "1. 找素数",
+    "sourceSha256": "76efbbb0097cdc17b9ccaff2a06f44ed0072ec39628d59a0658f909bb0714a19",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202306.p01-0.png",
+      "/gesp/gesp2.202306.p01-1.png"
+    ],
+    "extractedText": "1. 找素数\n【问题描述】\n小明刚刚学习了素数的概念：如果一个大于1 的正整数，除了1 和它自身外，\n不能被其他正整数整除，则这个正整数是素数。现在，小明想找到两个正整数�\n和�之间（包括�和�）有多少个素数？\n【输入描述】\n输入2 行，第一行包含正整数�，第二行包含正整数�。约定2 ≤�≤�≤\n1000。\n【输出描述】\n输出一行，包含一个整数�，表示找到�个素数。\n【样例输入1】\n\n2\n10\n【样例输出1】\n4\n【样例解释1】\n在2 和10 之间有4 个素数，分别为：2、3、5、7。\n【样例输入2】\n98\n100\n【样例输出2】\n0\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\nint a = 0, b = 0, cnt = 0;\ncin >> a >> b;\nfor (int n = a; n <= b; n++) {\nbool isPrime = true;\nfor (int i = 2; i * i <= n; i++) {\nif (n % i == 0) {\nisPrime = false;\nbreak;\n}\n}\nif (isPrime)\ncnt++;\n}\ncout << cnt << endl;\nreturn 0;\n}"
+  },
+  {
+    "id": "gesp2.202306.p02",
+    "session": "202306",
+    "kind": "program",
+    "number": 2,
+    "title": "2. 自幂数判断",
+    "sourceSha256": "76efbbb0097cdc17b9ccaff2a06f44ed0072ec39628d59a0658f909bb0714a19",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202306.p02-0.png",
+      "/gesp/gesp2.202306.p02-1.png"
+    ],
+    "extractedText": "2. 自幂数判断\n【问题描述】\n自幂数是指，一个�位数，满足各位数字�次方之和是本身。例如，153 是3\n位数，其每位数的3 次方之和，13 + 53 + 33 = 153，因此153 是自幂数；1634\n是4 位数，其每位数的4 次方之和，14 + 64 + 34 + 44 = 1634，因此1634 是自\n幂数。\n现在，输入若干个正整数，请判断它们是否是自幂数。\n【输入描述】\n输入第一行是一个正整数�，表示有�个待判断的正整数。约定1 ≤�≤100。\n从第2 行开始的�行，每行一个待判断的正整数。约定这些正整数均小于108。\n【输出描述】\n输出�行，如果对应的待判断正整数为自幂数，则输出英文大写字母'T'，\n否则输出英文大写字母'F'。\n提示：不需要等到所有输入结束在依次输出，可以输入一个数就判断一个数\n并输出，再输入下一个数。\n【样例输入1】\n3\n152\n111\n153\n【样例输出1】\nF\nF\nT\n【样例输入2】\n\n5\n8208\n548834\n88593477\n12345\n5432\n【样例输出2】\nT\nT\nT\nF\nF\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\nint m = 0;\ncin >> m;\nfor (int i = 0; i < m; i++) {\nint n = 0;\ncin >> n;\n// 数一下n 有多少位数，记为l\nint t = n, l = 0;\nwhile (t > 0) {\nt /= 10;\nl++;\n}\n// 每位数l 次方求和，记为sum\nint sum = 0;\nt = n;\nwhile (t > 0) {\nint d = t % 10;\nt /= 10;\nint mul = 1;\nfor (int j = 0; j < l; j++)\nmul *= d;\nsum += mul;\n}\n// 根据sum 和n 是否相等，判断是否为自幂数\nif (sum == n)\ncout << \"T\" << endl;\nelse\ncout << \"F\" << endl;\n}\nreturn 0;\n}"
+  },
+  {
+    "id": "gesp2.202309.p01",
+    "session": "202309",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：小杨的 X 字矩阵",
+    "sourceSha256": "5f37e0cd794a4cca114f3b686ecab7480f4693541d03ef5cbfa6543e9da9a2fd",
+    "pdfPages": [
+      7,
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202309.p01-0.png",
+      "/gesp/gesp2.202309.p01-1.png",
+      "/gesp/gesp2.202309.p01-2.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题编号：2023-09-23-02-C-01\n试题名称：小杨的 X 字矩阵\n时间限制：1.0 s\n内存限制：128.0 MB\n\n3.1.1\n问题描述\n \n小杨想要构造一个 \n 的 X 字矩阵（\n 为奇数），这个矩阵的两条对角线都是半角加号 + ，其余都是半角减号 \n- 。例如，一个 \n 的 X 字矩阵如下：\n请你帮小杨根据给定的 \n 打印出对应的“X 字矩阵”。\n3.1.2\n输入描述\n \n一行一个整数 \n（\n，保证 \n 为奇数）。\n3.1.3\n输出描述\n \n输出对应的“X 字矩阵”。\n请严格按格式要求输出，不要擅自添加任何空格、标点、空行等任何符号。你应该恰好输出 \n 行，每行除了换行符\n外恰好包含 \n 个字符，这些字符要么是 + ，要么是 - 。\n3.1.4\n特别提醒\n \n在常规程序中，输入、输出时提供提示是好习惯。但在本场考试中，由于系统限定，请不要在输入、输出中附带任\n何提示信息。\n3.1.5\n样例输入 1\n \n3.1.6\n样例输出 1\n \n3.1.7\n样例输入 2\n \n3.1.8\n样例输出 2\n \n+---+\n-+-+-\n--+--\n-+-+-\n+---+\n1\n2\n3\n4\n5\n5\n1\n+---+\n-+-+-\n--+--\n-+-+-\n+---+\n1\n2\n3\n4\n5\n7\n1\n+-----+\n-+---+-\n--+-+--\n---+---\n--+-+--\n-+---+-\n+-----+\n1\n2\n3\n4\n5\n6\n7\n\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;\n    cin >> n;\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j || i + j == n - 1) {\n                cout << \"+\";\n            } else {\n                cout << \"-\";\n            }\n        }\n        cout << endl;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202309.p02",
+    "session": "202309",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：数字黑洞",
+    "sourceSha256": "5f37e0cd794a4cca114f3b686ecab7480f4693541d03ef5cbfa6543e9da9a2fd",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202309.p02-0.png",
+      "/gesp/gesp2.202309.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题编号：2023-09-23-02-C-02\n试题名称：数字黑洞\n时间限制：1.0 s\n内存限制：128.0 MB\n3.2.1\n问题描述\n \n给定一个三位数，要求各位不能相同。例如，\n是符合要求的，\n是不符合要求的。将这个三位数的三个数字重\n新排列，得到的最大的数，减去得到的最小的数，形成一个新的三位数。对这个新的三位数可以重复上述过程。神\n奇的是，最终一定会得到\n！\n试试看，重新排列\n，得到的最大数为\n，最小数为\n，它们的差是\n；变换\n，得到\n；变换\n，\n；变换\n，\n。因此，\n经过4次变换得到了\n。\n现在，输入的三位数，你能通过编程得出，这个三位数经过多少次变换能够得到495吗？\n3.2.2\n输入描述\n \n输入一行，包含一个符合要求的三位数\n。\n3.2.3\n输出描述\n \n输出一行，包含一个整数，表示经过次变换得到\n。\n3.2.4\n样例输入1\n \n352\n1\n\n3.2.5\n样例输出1\n \n4\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n = 0;\n    cin >> n;\n    for (int t = 0; ; t++) {\n        if (n == 495) {\n            cout << t << endl;\n            break;\n        }\n        int m0 = n % 10, m1 = n / 10 % 10, m2 = n / 100;\n        int tmax = 0, tmin = 0;\n        if (m0 >= m1 && m1 >= m2) {\n            tmax = m0 * 100 + m1 * 10 + m2;\n            tmin = m2 * 100 + m1 * 10 + m0;\n        } else if (m0 >= m2 && m2 >= m1) {\n            tmax = m0 * 100 + m2 * 10 + m1;\n            tmin = m1 * 100 + m2 * 10 + m0;\n        } else if (m1 >= m0 && m0 >= m2) {\n            tmax = m1 * 100 + m0 * 10 + m2;\n            tmin = m2 * 100 + m0 * 10 + m1;\n        } else if (m1 >= m2 && m2 >= m0) {\n            tmax = m1 * 100 + m2 * 10 + m0;\n            tmin = m0 * 100 + m2 * 10 + m1;\n        } else if (m2 >= m0 && m0 >= m1) {\n            tmax = m2 * 100 + m0 * 10 + m1;\n            tmin = m1 * 100 + m0 * 10 + m2;\n        } else { // m2 >= m1 && m1 >= m0\n            tmax = m2 * 100 + m1 * 10 + m0;\n            tmin = m0 * 100 + m1 * 10 + m2;\n        }\n        n = tmax - tmin;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202312.p01",
+    "session": "202312",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：小杨做题",
+    "sourceSha256": "f673f72dbbe1b546c1f159ab33a31414b77c32eb98f3044fcc51fe9375d42009",
+    "pdfPages": [
+      6,
+      7
+    ],
+    "clips": [
+      "/gesp/gesp2.202312.p01-0.png",
+      "/gesp/gesp2.202312.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：小杨做题\n时间限制：1.0 s\n内存限制：128.0 MB\n3.1.1\n问题描述\n \n为了准备考试，小杨每天都要做题。第 1 天，小杨做了  道题；第 2 天，小杨做了  道题；从第 3 天起，小杨每天\n做的题目数量是前两天的总和。\n此外，小杨还规定，当自己某一天做了大于或等于 \n 题时，接下来的所有日子里，他就再也不做题了。\n请问，到了第 \n 天，小杨总共做了多少题呢？\n3.1.2\n输入描述\n \n总共 4 行。第一行一个整数 ，第二行一个整数 ，第三行一个整数 \n，第四行一个整数 \n。\n保证 \n；\n；\n。\n3.1.3\n输出描述\n \n一行一个整数，表示小杨 \n 天里总共做了多少题目。\n3.1.4\n特别提醒\n \n在常规程序中，输入、输出时提供提示是好习惯。但在本场考试中，由于系统限定，请不要在输入、输出中附带任\n何提示信息。\n3.1.5\n样例输入 1\n \n3.1.6\n样例输出 1\n \n3.1.7\n样例解释 1\n \n小杨第一天做  题，第二天做  题，第三天做 \n 题，第四天做 \n 题，第五天做 \n 题。因此\n他总共做了 \n 题。\n3.1.8\n样例输入 2\n \n1\n2\n10\n5\n1\n2\n3\n4\n19\n1\n1\n1\n5\n8\n1\n2\n3\n4\n\n3.1.9\n样例输出 2\n \n3.1.10\n样例解释 2\n \n小杨前 5 天分别做了 \n 题，由于第 5 天小杨做了  题，而 \n，于是小杨从此以后不再做题。因此小杨\n总共做了 \n 题。\n12\n1\n",
+    "sourceReference": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    long long a=0, b=0, m=0, n=0, ans=0, c=0, i;\n    scanf(\"%lld%lld%lld%lld\", &a, &b, &m, &n);\n    ans = a+b;\n    for(i=3; i<=n; i++)\n    {\n        c = a+b;\n        ans += c;\n        a = b;\n        b = c;\n        if(c>=m) break;\n    }\n    printf(\"%lld\\n\", ans);\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202312.p02",
+    "session": "202312",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：小杨的 H 字矩阵",
+    "sourceSha256": "f673f72dbbe1b546c1f159ab33a31414b77c32eb98f3044fcc51fe9375d42009",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202312.p02-0.png",
+      "/gesp/gesp2.202312.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：小杨的 H 字矩阵\n时间限制：1.0 s\n内存限制：128.0 MB\n3.2.1\n问题描述\n \n小杨想要构造一个 \n 的 H 字矩阵（\n 为奇数），具体来说，这个矩阵共有 \n 行，每行 \n 个字符，其中最左\n列、最右列都是 | ，而中间一行（即第 \n 行）的第 \n 个字符都是 - ，其余所有字符都是半角小写字母 \na 。例如，一个 \n 的 H 字矩阵如下：\n请你帮小杨根据给定的 \n 打印出对应的“H 字矩阵”。\n|aaa|\n|aaa|\n|---|\n|aaa|\n|aaa|\n1\n2\n3\n4\n5\n\n3.2.2\n输入描述\n \n一行一个整数 \n（\n，保证 \n 为奇数）。\n3.2.3\n输出描述\n \n输出对应的“H 字矩阵”。\n请严格按格式要求输出，不要擅自添加任何空格、标点、空行等任何符号。你应该恰好输出 \n 行，每行除了换行符\n外恰好包含 \n 个字符，这些字符要么是 - ，要么是 | ，要么是 a 。你的输出必须和标准答案完全一致才能得分，\n请在提交前仔细检查。\n3.2.4\n特别提醒\n \n在常规程序中，输入、输出时提供提示是好习惯。但在本场考试中，由于系统限定，请不要在输入、输出中附带任\n何提示信息。\n3.2.5\n样例输入 1\n \n3.2.6\n样例输出 1\n \n3.2.7\n样例输入 2\n \n3.2.8\n样例输出 2\n \n5\n1\n|aaa|\n|aaa|\n|---|\n|aaa|\n|aaa|\n1\n2\n3\n4\n5\n7\n1\n|aaaaa|\n|aaaaa|\n|aaaaa|\n|-----|\n|aaaaa|\n|aaaaa|\n|aaaaa|\n1\n2\n3\n4\n5\n6\n7\n",
+    "sourceReference": "#include <stdio.h>\nint main(int argc, char **argv)\n{\n    int n, i, j;\n    scanf(\"%d\", &n);\n    for(i=1; i<=(n+1)/2-1; i++)\n    {\n        printf(\"|\");\n        for(j=2; j<=n-1; j++)\n        {\n            printf(\"a\");\n        }\n        printf(\"|\\n\");\n    }\n    printf(\"|\");\n    for(j=2; j<=n-1; j++)\n    {\n        printf(\"-\");\n    }\n    printf(\"|\\n\");\n    for(i=(n+1)/2+1; i<=n; i++)\n    {\n        printf(\"|\");\n        for(j=2; j<=n-1; j++)\n        {\n            printf(\"a\");\n        }\n        printf(\"|\\n\");\n    } \n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202403.p01",
+    "session": "202403",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：乘法问题",
+    "sourceSha256": "41b30de07bc877e2e53c5f1f468816451b7c922a3a26fea6ab8b8f060f183253",
+    "pdfPages": [
+      6,
+      7
+    ],
+    "clips": [
+      "/gesp/gesp2.202403.p01-0.png",
+      "/gesp/gesp2.202403.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：乘法问题\n3.1.1\n问题描述\n \n小 A 最近刚刚学习了乘法，为了帮助他练习，我们给他若干个正整数，并要求他将这些数乘起来。\n对于大部分题目，小 A 可以精准地算出答案，不过，如果这些数的乘积超过 \n，小 A 就不会做了。\n请你写一个程序，告诉我们小 A 会如何作答。\n3.1.2\n输入描述\n \n第一行一个整数 ，表示正整数的个数。\n接下来  行，每行一个整数 。小 A 需要将所有的  乘起来。\n保证 \n，\n。\n3.1.3\n输出描述\n \n输出一行，如果乘积超过 \n，则输出 >1000000 ；否则输出所有数的乘积。\n3.1.4\n特别提醒\n \n在常规程序中，输入、输出时提供提示是好习惯。但在本场考试中，由于系统限定，请不要在输入、输出中附带任\n何提示信息。\n3.1.5\n样例输入 1\n \n2\n3\n5\n1\n2\n3\n\n3.1.6\n样例输出 1\n \n3.1.7\n样例输入 2\n \n3.1.8\n样例输出 2\n \n3.1.9\n样例输入 3\n \n3.1.10\n样例输出 2\n \n15\n1\n3\n100\n100\n100\n1\n2\n3\n4\n1000000\n1\n4\n100\n100\n100\n2\n1\n2\n3\n4\n5\n>1000000\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    long long product = 1;\n    for (int i = 0; i < n; ++i) {\n        int a;\n        cin >> a;\n        if (product * a > 1000000) {\n            cout << \">1000000\" << endl;\n            return 0;\n        }\n        product *= a;\n    }\n    cout << product << endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202403.p02",
+    "session": "202403",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：小杨的日字矩阵",
+    "sourceSha256": "41b30de07bc877e2e53c5f1f468816451b7c922a3a26fea6ab8b8f060f183253",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202403.p02-0.png",
+      "/gesp/gesp2.202403.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：小杨的日字矩阵\n3.2.1\n问题描述\n \n小杨想要构造一个 \n 的日字矩阵（\n 为奇数），具体来说，这个矩阵共有 \n 行，每行 \n 个字符，其中最左\n列、最右列都是 | ，而第一行、最后一行、以及中间一行（即第 \n 行）的第 \n 个字符都是 - ，其余所\n有字符都是半角小写字母 x 。例如，一个 \n 的日字矩阵如下：\n请你帮小杨根据给定的 \n 打印出对应的“日字矩阵”。\n3.2.2\n输入描述\n \n一行一个整数 \n（\n，保证 \n 为奇数）。\n3.2.3\n输出描述\n \n输出对应的“日字矩阵”。\n请严格按格式要求输出，不要擅自添加任何空格、标点、空行等任何符号。你应该恰好输出 \n 行，每行除了换行符\n外恰好包含 \n 个字符，这些字符要么是 - ，要么是 | ，要么是 x 。你的输出必须和标准答案完全一致才能得分，\n请在提交前仔细检查。\n3.2.4\n特别提醒\n \n在常规程序中，输入、输出时提供提示是好习惯。但在本场考试中，由于系统限定，请不要在输入、输出中附带任\n何提示信息。\n3.2.5\n样例输入 1\n \n3.2.6\n样例输出 1\n \n3.2.7\n样例输入 2\n \n|---|\n|xxx|\n|---|\n|xxx|\n|---|\n1\n2\n3\n4\n5\n5\n1\n|---|\n|xxx|\n|---|\n|xxx|\n|---|\n1\n2\n3\n4\n5\n7\n1\n\n3.2.8\n样例输出 2\n \n|-----|\n|xxxxx|\n|xxxxx|\n|-----|\n|xxxxx|\n|xxxxx|\n|-----|\n1\n2\n3\n4\n5\n6\n7\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    for (int i = 0; i < n; ++i) {\n        for (int j = 0; j < n; ++j) {\n            char ch;\n            if (j == 0 || j == n - 1) {\n                ch = '|';\n            } else if (i == 0 || i == n - 1 || i == n / 2) {\n                ch = '-';\n            } else {\n                ch = 'x';\n            }\n            cout << ch;\n        }\n        cout << endl;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202406.p01",
+    "session": "202406",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：平方之和",
+    "sourceSha256": "267e6031c9b99372f8333785d69588820ad2c20e26225723227d8f1584b1f709",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202406.p01-0.png",
+      "/gesp/gesp2.202406.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：平方之和\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题面描述\n \n小杨有  个正整数 \n，他想知道对于所有的  (\n)，是否存在两个正整数  和  满足 \n。\n3.1.2\n输入格式\n \n第一行包含一个正整数 ，代表正整数数量。\n之后  行，每行包含一个正整数，代表 \n。\n\n3.1.3\n输出格式\n \n对于每个正整数 \n，如果存在两个正整数  和  满足 \n，输出 Yes，否则输出 No。\n3.1.4\n样例1\n \n3.1.5\n样例解释\n \n对于第一个正整数，存在 \n，因此答案为 Yes。\n3.1.6\n数据范围\n \n对于全部数据，保证有 \n。\n2\n5\n4\n1\n2\n3\nYes\nNo\n1\n2\n",
+    "sourceReference": "#include<bits/stdc++.h>\nusing namespace std;\nbool check(int x){\n    int y = sqrt(x);\n    return y*y==x;\n}\nint main(){\n    int t;\n    cin>>t;\n    while(t--){\n        int n;\n        cin>>n;\n        int fl=0;\n        for(int i=1;i*i<n;i++){\n            int j=n-i*i;\n            if(check(j))fl=1;\n        }\n        if(fl)cout<<\"Yes\\n\";\n        else cout<<\"No\\n\";\n    }\n}"
+  },
+  {
+    "id": "gesp2.202406.p02",
+    "session": "202406",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：计数",
+    "sourceSha256": "267e6031c9b99372f8333785d69588820ad2c20e26225723227d8f1584b1f709",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202406.p02-0.png",
+      "/gesp/gesp2.202406.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：计数\n时间限制：1.0 s\n内存限制：512.0 MB\n\n3.2.1\n题面描述\n \n小杨认为自己的幸运数是正整数 （注：保证 \n）。小杨想知道，对于从  到  的所有正整数中， 出现了\n多少次。\n3.2.2\n输入格式\n \n第一行包含一个正整数 。\n第二行包含一个正整数 。\n3.2.3\n输出格式\n \n输出从  到  的所有正整数中， 出现的次数。\n3.2.4\n样例1\n \n3.2.5\n样例解释\n \n从  到 \n 中， 出现的正整数有 \n，一共出现了  次。\n3.2.6\n数据范围\n \n对于全部数据，保证有 \n。\n25\n2\n1\n2\n9\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint check(int x, int y) {\n    int cnt = 0;\n    while (x > 0) {\n        int tmp = x % 10;\n        if (tmp == y) {\n            cnt++;\n        }\n        x = x / 10;\n    }\n    return cnt;\n}\nint main() {\n    int n, k;\n    cin >> n >> k;\n    int ans = 0;\n    for (int i = 1; i <= n; i++) {\n        ans += check(i, k);\n    }\n    cout << ans << endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202409.p01",
+    "session": "202409",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：数位之和",
+    "sourceSha256": "e3c6dabc897f517697a18f1013eb14efaed9d0bd91d71aef1d6a9f183a270507",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202409.p01-0.png",
+      "/gesp/gesp2.202409.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：数位之和\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题面描述\n \n小杨有  个正整数，他认为一个正整数是美丽数字当且仅当该正整数每一位数字的总和是  的倍数。\n小杨想请你编写一个程序判断  个正整数哪些是美丽数字。\n3.1.2\n输入格式\n \n第一行包含一个正整数 ，代表正整数个数。\n之后  行，每行包含一个正整数。\n3.1.3\n输出格式\n \n对于每个正整数，如果是美丽数字则输出 Yes，否则输出 No。\n3.1.4\n样例1\n \n3\n7\n52\n103\n1\n2\n3\n4\n\n 的各位数字之和为 ，是  的倍数。\n 的各位数字之和为 \n，是  的倍数。\n 的各位数字之和为 \n，不是  的倍数。\n对于全部数据，保证有 \n。\nYes\nYes\nNo\n1\n2\n3\n",
+    "sourceReference": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    int ans=0;\n    for(int i=1;i<=n;i++){\n        int x;\n        cin>>x;\n        int tot=0;\n        while(x){\n            tot+=(x%10);\n            x/=10;\n        }\n        if(tot%7==0)cout<<\"Yes\\n\";\n        else cout<<\"No\\n\";\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202409.p02",
+    "session": "202409",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：小杨的",
+    "sourceSha256": "e3c6dabc897f517697a18f1013eb14efaed9d0bd91d71aef1d6a9f183a270507",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202409.p02-0.png",
+      "/gesp/gesp2.202409.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：小杨的\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题面描述\n \n小杨想要构造一个 \n 的 N 字矩阵（\n 为奇数），这个矩阵的从左上角到右下角的对角线、第  列和第 \n 列都\n是半角加号 + ，其余都是半角减号 - 。例如，一个 \n 的 N 字矩阵如下：\n请你帮小杨根据给定的 \n 打印出对应的 N 字矩阵。\n+---+\n++--+\n+-+-+\n+--++\n+---+\n1\n2\n3\n4\n5\n\n3.2.2\n输入格式\n \n第一行包含一个正整数 \n。\n3.2.3\n输出格式\n \n输出对应的 N 字矩阵。\n3.2.4\n样例1\n \n对于全部数据，保证有 \n 且 \n 为奇数。\n5\n1\n+---+\n++--+\n+-+-+\n+--++\n+---+\n1\n2\n3\n4\n5\n",
+    "sourceReference": "#include<bits/stdc++.h>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    for(int i=1;i<=n;i++){\n        for(int j=1;j<=n;j++){\n            if(j==1||j==n)cout<<\"+\";\n            else{\n                if(i==j)cout<<\"+\";\n                else cout<<\"-\";\n            }\n        }\n        cout<<\"\\n\";\n    }\n}"
+  },
+  {
+    "id": "gesp2.202412.p01",
+    "session": "202412",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：寻找数字",
+    "sourceSha256": "ec944b829a5033076ed9a9ffa077d4fc247b5a8bcaea15851fde0e79abea80f6",
+    "pdfPages": [
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202412.p01-0.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：寻找数字\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题面描述\n \n小杨有一个正整数 ，小杨想知道是否存在一个正整数  满足 \n。\n3.1.2\n输入格式\n \n第一行包含一个正整数 ，代表测试数据组数。\n对于每组测试数据，第一行包含一个正整数代表 。\n3.1.3\n输出格式\n \n对于每组测试数据，如果存在满足条件的正整数 ，则输出 ，否则输出 \n。\n3.1.4\n样例\n \n对于全部数据，保证有 \n。\n3\n16\n81\n10\n1\n2\n3\n4\n2\n3\n-1\n1\n2\n3\n",
+    "sourceReference": "#include <iostream>\n#include <cmath>  \nusing namespace std;\nint main() {\n    int t;\n    cin >> t; \n    while (t--) {\n        int a;\n        cin >> a;\n        int b = (int)(sqrt(sqrt(a))); \n        if (b * b * b * b == a) {\n            cout << b << endl;\n        } else {\n            cout << -1 << endl;\n        }\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202412.p02",
+    "session": "202412",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：数位和",
+    "sourceSha256": "ec944b829a5033076ed9a9ffa077d4fc247b5a8bcaea15851fde0e79abea80f6",
+    "pdfPages": [
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202412.p02-0.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：数位和\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题面描述\n \n小杨有  个正整数，小杨想知道这些正整数的数位和中最大值是多少。\n“数位和”指的是一个数字中所有数位的和。例如：\n对于数字 \n，它的各个数位分别是 , , , , 。将这些数位相加，得到：\n因此，\n 的数位和是 \n。\n3.2.2\n输入格式\n \n第一行包含一个正整数 ，代表正整数个数。\n之后  行，每行包含一个正整数。\n3.2.3\n输出格式\n \n输出这些正整数的数位和的最大值。\n3.2.4\n样例\n \n对于全部数据，保证有 \n，每个正整数不超过 \n。\n3\n16\n81\n10\n1\n2\n3\n4\n9\n1\n",
+    "sourceReference": "#include <bits/stdc++.h>\nusing namespace std;\n#define ll long long\nint main() {\n    int n;\n    cin >> n; \n    int x = 0;\n    \n    for (int i = 0; i < n; i++) {\n        int smu = 0;\n        ll tmp;\n        cin >> tmp; \n        while (tmp > 0) {\n            smu += tmp % 10;  \n            tmp /= 10; \n        }\n        \n        x = max(x, smu);\n    }\n    \n    cout << x << endl; \n    \n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202503.p01",
+    "session": "202503",
+    "kind": "program",
+    "number": 1,
+    "title": "",
+    "sourceSha256": "795bc8c8d785ff4831cbe51d1d4942812d595e6341909f6b84fa993028041532",
+    "pdfPages": [
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202503.p01-0.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n等差矩阵\n \n3.1.2\n题目描述\n \n小 A 想构造一个  行 \n 列的矩阵，使得矩阵的每一行与每一列均是等差数列。小 A 发现，在矩阵的第  行第  列填\n入整数 \n，得到的矩阵能满足要求。你能帮小 A 输出这个矩阵吗？\n3.1.3\n输入格式\n \n一行，两个正整数 \n。\n3.1.4\n输出格式\n \n共  行，每行 \n 个由空格分割的整数，表示小 A 需要构造的矩阵。\n3.1.5\n样例\n \n3.1.5.1\n输入样例 1\n \n3.1.5.2\n输出样例 1\n \n3.1.6\n数据范围\n \n对于所有测试点，保证 \n，\n。\n3 4\n1\n1 2 3 4\n2 4 6 8\n3 6 9 12\n1\n2\n3\n",
+    "sourceReference": "#include <bits/stdc++.h>\nusing namespace std;\nint n, m;\nint main() {\n    scanf(\"%d%d\", &n, &m);\n    assert(1 <= n && n <= 50 && 1 <= m && m <= 50);\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            printf(\"%d%c\", i * j, \" \\n\"[j == m]);\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202503.p02",
+    "session": "202503",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：时间跨越",
+    "sourceSha256": "795bc8c8d785ff4831cbe51d1d4942812d595e6341909f6b84fa993028041532",
+    "pdfPages": [
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202503.p02-0.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：时间跨越\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.8\n题面描述\n \n假设现在是  年 \n 月  日  时而  小时后是  年 \n 月 \n 日 \n 时，对于给定的 \n，小杨想请你帮他计算\n出对应的 \n 是多少。\n3.2.9\n输入格式\n \n输入包含五行，每行一个正整数，分别代表 \n。\n3.2.10\n输出格式\n \n输出四个正整数，代表 \n 。\n3.2.11\n样例\n \n3.2.12\n数据范围\n \n对于全部数据，保证有 \n。数据保证为合法时间。\n3.2.13\n提示\n \n闰年判断规则\n普通闰年：年份能被 4 整除，但不能被 100 整除。\n世纪闰年：年份能被 400 整除。\n满足以上任意一条规则的年份就是闰年，否则是平年。\n2008\n2\n28\n23\n1\n1\n2\n3\n4\n5\n2008 2 29 0\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int y, m, d, h, k;\n    cin >> y >> m >> d >> h >> k;\n    h += k;\n    if (h >= 24) {\n        h -= 24;\n        d += 1;\n        int days = 0;\n        if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {\n            days = 31;\n        } else if (m == 4 || m == 6 || m == 9 || m == 11) {\n            days = 30;\n        } else if (m == 2) {\n            if ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)) {\n                days = 29;\n            } else {\n                days = 28;\n            }\n        }\n        if (d > days) {\n            d -= days;\n            m += 1;\n            if (m > 12) {\n                m = 1;\n                y += 1;\n            }\n        }\n    }\n    cout << y << \" \" << m << \" \" << d << \" \" << h << \"\\n\";\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202506.p01",
+    "session": "202506",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：数三角形",
+    "sourceSha256": "9a638e93aff769b7ead155fa4481cc665d5b8c52ee1b1123fc047101103e8a3b",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202506.p01-0.png",
+      "/gesp/gesp2.202506.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：数三角形\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题目描述\n \n直角三角形有两条直角边与一条斜边，设两条直角边的长度分别为 \n，则直角三角形的面积为 \n。\n请你计算当直角边长 \n 均取不超过  的正整数时，有多少个不同的面积为整数的直角三角形。直角边长分别为 \n \n和 \n 的两个直角三角形相同，当且仅当 \n 或者 \n。\n\n3.1.2\n输入格式\n \n一行，一个整数 ，表示直角边长的最大值。\n3.1.3\n输出格式\n \n输出一行，一个整数，表示不同的直角三角形数量。\n3.1.4\n样例\n \n3.1.4.1\n输入样例 1\n \n3.1.4.2\n输出样例 1\n \n3.1.4.3\n输入样例 2\n \n3.1.4.4\n输出样例 2\n \n3.1.5\n数据范围\n \n对于所有测试点，保证 \n。\n3\n1\n3\n1\n5\n1\n9\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main()\n{\n    int n, a, b, cnt=0;\n    cin >> n;\n    for(a=1; a<=n; a++)\n    {\n        for(b=a; b<=n; b++)\n        {\n            if(a*b%2==0) cnt++;\n        }\n    }\n    cout << cnt <<endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202506.p02",
+    "session": "202506",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：幂和数",
+    "sourceSha256": "9a638e93aff769b7ead155fa4481cc665d5b8c52ee1b1123fc047101103e8a3b",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202506.p02-0.png",
+      "/gesp/gesp2.202506.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：幂和数\n时间限制：1.0 s\n内存限制：512.0 MB\n\n3.2.1\n题目描述\n \n对于正整数 ，如果  可以表为两个  的次幂之和，即 \n（\n 均为非负整数），那么称  为幂和数。\n给定正整数 \n，请你求出满足 \n 的整数  中有多少个幂和数。\n3.2.2\n输入格式\n \n一行，两个正整数 \n，含义如上。\n3.2.3\n输出格式\n \n输出一行，一个整数，表示 \n 之间幂和数的数量。\n3.2.4\n样例\n \n3.2.4.1\n输入样例 1\n \n3.2.4.2\n输出样例 1\n \n3.2.4.3\n输入样例 2\n \n3.2.4.4\n输出样例 2\n \n3.2.5\n数据范围\n \n对于所有测试点，保证 \n。\n2 8\n1\n6\n1\n10 100\n1\n20\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main()\n{\n    int l, r, a, b, n, cnt = 0;\n    cin >> l >> r;\n    a = 1;\n    while(a<=r)\n    {\n        b = a;\n        while(b<=r)\n        {\n            n = a+b;\n            if(n>=l && n<=r) cnt++;\n            b *= 2;\n        }\n        a *= 2;\n    }\n    cout << cnt <<endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202509.p01",
+    "session": "202509",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：优美的数字",
+    "sourceSha256": "971907c6ba9e65e30fcf44893a02310331c9cfc3120e128044f9d0b83cafdc96",
+    "pdfPages": [
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202509.p01-0.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：优美的数字\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题目描述\n \n如果一个正整数在十进制下的所有数位都相同，小 A 就会觉得这个正整数很优美。例如，正整数  的数位都是 ，\n所以  是优美的。正整数 \n 的数位都是 ，所以 \n 是优美的。正整数 \n 的数位不都相同，所以 \n 并不优美。\n小 A 想知道不超过  的正整数中有多少优美的数字。你能帮他数一数吗？\n3.1.2\n输入格式\n \n一行，一个正整数 。\n3.1.3\n输出格式\n \n一行，一个正整数，表示不超过  的优美正整数的数量。\n3.1.4\n样例\n \n3.1.4.1\n输入样例 1\n \n3.1.4.2\n输出样例 1\n \n3.1.4.3\n输入样例 2\n \n3.1.4.4\n输出样例 2\n \n3.1.5\n数据范围\n \n对于所有测试点，保证 \n。\n6\n1\n6\n1\n2025\n1\n28\n1\n",
+    "sourceReference": "#include <algorithm>\n#include <cstdio>\nusing namespace std;\nint n, ans;\nint main() {\n    scanf(\"%d\", &n);\n    for (int i = 1; i <= n; i++) {\n        \n     \n     \n \n  \nint v = i % 10, t = i / 10, chk = 1;\n        \n \n \nwhile (t) {\n            if (t % 10 != v) chk = 0;\n            t /= 10;\n        }\n        ans += chk;\n    }\n    printf(\"%d\\n\", ans);\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202509.p02",
+    "session": "202509",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：菱形",
+    "sourceSha256": "971907c6ba9e65e30fcf44893a02310331c9cfc3120e128044f9d0b83cafdc96",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202509.p02-0.png",
+      "/gesp/gesp2.202509.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：菱形\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题目描述\n \n小 A 想绘制一个菱形。具体来说，需要绘制的菱形是一个  行  列的字符画， 是一个大于  的奇数。菱形的四个\n顶点依次位于第  行、第  列、第  行、第  列的正中间，使用 # 绘制。相邻顶点之间也用 # 连接。其余位置都\n是 . 。例如，一个  行  列的菱形字符画是这样的：\n给定 ，请你帮小 A 绘制对应的菱形。\n3.2.2\n输入格式\n \n一行，一个正整数 。\n3.2.3\n输出格式\n \n输出共  行，表示对应的菱形。\n3.2.4\n样例\n \n3.2.4.1\n输入样例 1\n \n3.2.4.2\n输出样例 1\n \n3.2.4.3\n输入样例 2\n \n..#..\n.#.#.\n#...#\n.#.#.\n..#..\n1\n2\n3\n4\n5\n3\n1\n.#.\n#.#\n.#.\n1\n2\n3\n9\n1\n\n3.2.4.4\n输出样例 2\n \n3.2.5\n数据范围\n \n对于所有测试点，保证 \n 并且  为奇数。\n....#....\n...#.#...\n..#...#..\n.#.....#.\n#.......#\n.#.....#.\n..#...#..\n...#.#...\n....#....\n1\n2\n3\n4\n5\n6\n7\n8\n9\n",
+    "sourceReference": "#include <algorithm>\n#include <cstdio>\nusing namespace std;\nint main() {\n    int n, i, j, k;\n    scanf(\"%d\", &n);\n    k = n / 2;\n    for (i = 1; i <= n; i++) {\n        for (j = 1; j <= n; j++) {\n            if (abs(k - i + 1) + abs(k - j + 1) == k)\n                printf(\"#\");\n            else\n                printf(\".\");\n        }\n        printf(\"\\n\");\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202512.p01",
+    "session": "202512",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：环保能量球",
+    "sourceSha256": "dc4e684940c2b614388f6ee7ea34a6c76c40435566df3f97f471004459582982",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202512.p01-0.png",
+      "/gesp/gesp2.202512.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：环保能量球\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题目描述\n \n小杨最近在玩一个环保主题的游戏。在游戏中，小杨每行走 1 公里就可以获得 1 点“环保能量”。\n为了激励玩家，游戏设置了“里程奖励”：小杨每行走  公里，游戏就会额外奖励 1 点能量。\n现在已知小杨总共行走了  公里，请你帮他计算，他一共能获得多少点环保能量？\n3.1.2\n输入格式\n \n第一行包含一个正整数 ，代表测试数据组数。\n对于每组测试数据：\n第一行包含一个正整数 ，代表行走的公里数。\n第二行包含一个正整数 ，代表奖励触发的间隔。\n3.1.3\n输出格式\n \n对于每组测试数据，输出一个整数，代表小杨获得的环保能量总数。\n3.1.4\n样例\n \n3.1.4.1\n输入样例\n \n3\n5\n2\n10\n3\n2\n5\n1\n2\n3\n4\n5\n6\n7\n\n3.1.4.2\n输出样例\n \n3.1.4.3\n样例解释\n \n对于第 1 组数据，\n：小杨行走获得 5 点能量。此外，他在第 2 公里和第 4 公里时各获得 1 点额外奖\n励，总共 \n 点。\n对于第 2 组数据，\n：行走获得 10 点。他在第 3、6、9 公里时各获得 1 点额外奖励，总共 \n 点。\n对于第 3 组数据，\n：行走获得 2 点。由于行走路程不足 5 公里，没有额外奖励，总共 2 点。\n3.1.5\n数据范围\n \n对于全部数据，保证：\n，\n。\n7\n13\n2\n1\n2\n3\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int t, n, x;\n    if (!(cin >> t)) return 0;\n    while (t--) {\n        cin >> n >> x;\n        int ans = 0;\n        for (int i = 1; i <= n; i++) {\n            ans += 1;        // 基础能量\n            if (i % x == 0) {\n                ans += 1;    // 额外奖励\n            }\n        }\n        cout << ans << endl;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202512.p02",
+    "session": "202512",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：黄金格",
+    "sourceSha256": "dc4e684940c2b614388f6ee7ea34a6c76c40435566df3f97f471004459582982",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202512.p02-0.png",
+      "/gesp/gesp2.202512.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：黄金格\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题目描述\n \n小杨在探险时发现了一张神奇的矩形地图，地图有 \n 行和 \n 列。每个格子的坐标是 (\n)，其中  表示行号从  到 \n， 表示列号  到 \n。\n小杨听说地图中隐藏着一些“黄金格”，这些格子满足一个神秘的数学挑战：当格子坐标 \n 代入特定的不等式关系\n成立时，该格子就是黄金格。具体来说，黄金格的条件是：\n 。\n例如，如果参数 \n ，那么格子 \n 就是黄金格。因为左边坐标平方和的平方根 \n 算出来是 ，而右边 \n 算出来是 ， 小于等于 ，符合条件。\n\n3.2.2\n输入格式\n \n三行，每行一个正整数，分别表示 \n。含义如题面所示。\n3.2.3\n输出格式\n \n一行一个整数，代表黄金格数量。\n3.2.4\n样例\n \n3.2.4.1\n输入样例 1\n \n3.2.4.2\n输出样例 1\n \n3.2.4.3\n样例解释\n \n图中标注为黄色的四个格子是黄金格，坐标分别为 \n，\n，\n，\n。\n3.2.5\n数据范围\n \n对于所有测试点，保证给出的正整数不超过 \n。\n4\n4\n2\n1\n2\n3\n4\n1\n",
+    "sourceReference": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() {\n    int H, W, x;\n    cin >> H >> W >> x;\n    int ans = 0;\n    for (int r = 1; r <= H; ++r) {\n        for(int c = 1; c <= W; ++c) {\n            if (sqrt(r * r + c * c) <= x + r - c) {\n                // cout << r << \" \" << c << endl;\n                ans++;\n            }\n        }\n    }\n    cout << ans << \"\\n\";\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202603.p01",
+    "session": "202603",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：数数",
+    "sourceSha256": "baa3fd95cff964df3ce0b4d93dae70bc4dc4363ab6692fa2a8cd2a917136d9bb",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202603.p01-0.png",
+      "/gesp/gesp2.202603.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：数数\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题目描述\n \n对于正整数 ，如果  的所有数位中包含恰好  个 ，Alice 会认为这个正整数是美丽的。例如，正整数 \n 中包\n含  个 ，所以 \n 是美丽的；正整数 \n 中包含  个 ，所以 \n 不是美丽的；正整数 \n 中包含  个 ，\n所以 \n 不是美丽的。\nAlice 想知道正整数  到正整数  （包括  和 ）中有多少美丽的正整数，你能帮她数一数吗？\n3.1.2\n输入格式\n \n输入共  行，第一行为正整数 ，第二行为正整数 。\n3.1.3\n输出格式\n \n输出一行，包含一个整数 ，表示  到  中  美丽数的数量。\n\n3.1.4\n样例\n \n3.1.4.1\n输入样例\n \n3.1.4.2\n输出样例\n \n3.1.5\n样例解释\n \n 到 \n 中，\n 与 \n 是美丽的，\n 不是美丽的。\n3.1.6\n数据范围\n \n保证 \n。\n2221\n2223\n1\n2\n2\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int l, r, ans = 0;\n    cin >> l >> r;\n    for(int i = l; i <= r; i++) {\n        int c = 0, t = i;\n        while(t) {\n            if(t % 10 == 2)\n                c++;\n            t /= 10;\n        }\n        if(c == 3)\n            ans++;\n    }\n    cout << ans;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202603.p02",
+    "session": "202603",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：画画",
+    "sourceSha256": "baa3fd95cff964df3ce0b4d93dae70bc4dc4363ab6692fa2a8cd2a917136d9bb",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202603.p02-0.png",
+      "/gesp/gesp2.202603.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：画画\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题目描述\n \n输入一个正整数 ，你需要绘制一个  行  列的正方形，绘制规则如下：\n正方形的四个顶点使用 + 绘制；\n除顶点外，第  行与第  行使用 - 绘制；\n除顶点外，第  列与第  列使用 | 绘制；\n正方形内部使用 * 绘制。\n\n3.2.2\n输入格式\n \n一行，一个正整数 。\n3.2.3\n输出格式\n \n输出共  行，表示对应的正方形。\n3.2.4\n样例\n \n3.2.4.1\n输入样例\n \n3.2.4.2\n输出样例\n \n3.2.5\n数据范围\n \n保证 \n。\n5\n1\n+---+\n|***|\n|***|\n|***|\n+---+\n1\n2\n3\n4\n5\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    for(int i = 0; i < n; i++) {\n        for(int j = 0; j < n; j++) {\n            if(j == 0 || j == n - 1) {\n                if(i == 0 || i == n - 1)\n                    cout << '+';\n                else\n                    cout << '|';\n            } else {\n                if(i == 0 || i == n - 1)\n                    cout << '-';\n                else\n                    cout << '*';\n            }\n        }\n        if(i + 1 != n)\n            cout << endl;\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202606.p01",
+    "session": "202606",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：完全平方数计数",
+    "sourceSha256": "2a03b774c5b22b85da5183a7a325984db217d40d7f6a0ef53c989c3f7fe24fcb",
+    "pdfPages": [
+      8,
+      9
+    ],
+    "clips": [
+      "/gesp/gesp2.202606.p01-0.png",
+      "/gesp/gesp2.202606.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n \n试题名称：完全平方数计数\n时间限制：1.0 s\n内存限制：512.0 MB\n3.1.1\n题目描述\n \n小杨同学正在研究完全平方数。\n平方：一个数的平方等于这个数乘以这个数本身。\n完全平方数：指可以恰好表示为某个正整数的平方的数。\n例如， 是完全平方数，因为 \n；但 \n 不是，因为 \n 不能表示为任何正整数的平方。\n给定两个正整数  和 （保证 \n），小杨同学想知道  到  之间的所有正整数中（包含  和 ），有多少个数是完\n全平方数。\n\n3.1.2\n输入格式\n \n输入两行，第一行为一个正整数 ，第二行为一个正整数 。\n3.1.3\n输出格式\n \n输出一个非负整数，表示  到  中，有多少个正整数是完全平方数。如果  到  中没有完全平方数，则输出 0 。\n3.1.4\n样例\n \n3.1.5\n输入样例 1\n \n3.1.6\n输出样例 1\n \n3.1.7\n样例解释 1\n \n在  到 \n 中，有以下  个整数是完全平方数：\n3.1.8\n数据范围\n \n。\n1\n21\n1\n2\n4\n1\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int ans = 0, l, r;\n    cin >> l >> r;\n    for (int i = 1; i * i <= r; ++i)\n    {\n        if (i * i >= l) \n            ans++;\n    }\n    cout << ans << endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202606.p02",
+    "session": "202606",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：菱形",
+    "sourceSha256": "2a03b774c5b22b85da5183a7a325984db217d40d7f6a0ef53c989c3f7fe24fcb",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202606.p02-0.png",
+      "/gesp/gesp2.202606.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n \n试题名称：菱形\n时间限制：1.0 s\n内存限制：512.0 MB\n3.2.1\n题目描述\n \n给定正整数 ，在 \n 个网格的画布中，使用字符画一个边长为  个网格的菱形。其中，空白网格\n使用 . 表示，菱形边所在的网格用 + 表示。\n例如当 \n 时，图形如下：\n\n3.2.2\n输入格式\n \n输入一个正整数 ；  \n3.2.3\n输出格式\n \n输出 \n 行，表示按要求画的菱形。\n3.2.4\n样例\n \n3.2.5\n输入样例 1\n \n3.2.6\n输出样例 1\n \n3.2.7\n数据范围\n \n。\n..+..\n.+.+.\n+...+\n.+.+.\n..+..\n1\n2\n3\n4\n5\n4\n1\n...+...\n..+.+..\n.+...+.\n+.....+\n.+...+.\n..+.+..\n...+...\n1\n2\n3\n4\n5\n6\n7\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int n;\n    cin >> n;\n    for (int i = 1; i <= 2 * n - 1; ++i) {\n        for (int j = 1; j <= 2 * n - 1; ++j) {\n            if (i + j == n + 1 || i + j == 3 * n - 1)\n                cout << '+';\n            else if (i - j == n - 1 || j - i == n - 1)\n                cout << '+';\n            else\n                cout << '.';\n        }\n        cout << '\\n';\n    }\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202609.p01",
+    "session": "202609",
+    "kind": "program",
+    "number": 1,
+    "title": "试题名称：直角三角形",
+    "sourceSha256": "e632ef90317edef777d5693ea4e8e71aaf8b811136da69d84d44012c2fa73993",
+    "pdfPages": [
+      7,
+      8
+    ],
+    "clips": [
+      "/gesp/gesp2.202609.p01-0.png",
+      "/gesp/gesp2.202609.p01-1.png"
+    ],
+    "extractedText": "3.1\n编程题 1\n3.1.1\n题目描述\n小双刚学会勾股定理，得知直角三角形的斜边的平方等于两直角边的平方和。\n小双创造了直角三角形数列：数列前两项由小双指定，从第三项开始，数列中的每个数字的平方等于前两项的平方\n和。\n例如，第一项是 \n，第二项是 \n，则第三项是 \n。\n其中 \n 表示  的算术平方根，可以使用 C/C++/Python 标准库中对应函数计算。\n小双给定了数列的前两项，并给定一个数列上限，想让你算算数列的第几项会超过小双给定的数列上限？\n \n试题名称：直角三角形\n时间限制：1.0 s\n内存限制：512.0 MB\n \n\n3.1.2\n输入格式\n输入三行，第一行一个浮点数是数列第一项，第二行一个浮点数是数列第二项，第三行一个浮点数表示数列上限。\n3.1.3\n输出格式\n输出一个正整数，表示第几项开始会超过小双给定的数列上限。\n3.1.4\n样例\n3.1.5\n输入样例 1\n3.1.6\n输出样例 1\n3.1.7\n样例解释 1\n数列依次为：\n因此第  项会超过上限。\n3.1.8\n数据范围\n输入均为不超过 \n 的正数。\n题目保证给定第一项小于第二项。\n \n \n \n \n \n \n，\n，\n，\n，\n，\n，\n \n3.0\n4.0\n10.0\n1\n2\n3\n6\n1\n",
+    "sourceReference": "#include <iostream>\n#include <cmath>\nusing namespace std;\nint main() {\n    double a, b, U;\n    cin >> a >> b >> U;\n    int ans = 1;\n    if (a <= U) ans++;\n    while (b <= U) {\n        ans++;\n        double t = sqrt(a * a + b * b);\n        a = b, b = t;\n    }\n    cout << ans << endl;\n    return 0;\n}"
+  },
+  {
+    "id": "gesp2.202609.p02",
+    "session": "202609",
+    "kind": "program",
+    "number": 2,
+    "title": "试题名称：字符变换",
+    "sourceSha256": "e632ef90317edef777d5693ea4e8e71aaf8b811136da69d84d44012c2fa73993",
+    "pdfPages": [
+      9,
+      10
+    ],
+    "clips": [
+      "/gesp/gesp2.202609.p02-0.png",
+      "/gesp/gesp2.202609.p02-1.png"
+    ],
+    "extractedText": "3.2\n编程题 2\n3.2.1\n题目描述\n小明有一个 \n 的画布（8 行 16 列），画布中的格子从上到下从左到右编号，左上的编号为 ，第一排最后一个\n的编号为 \n，最后一排第一个编号为 \n，右下为 \n。\n初始画布中的每个格子都是 * ，随后小明会给定三个正整数，小明会将对应编号的格子变为该正整数对应的 ASCII \n编码字符。\n最后请帮小明输出整个画布。\n3.2.2\n输入格式\n输入包含三行，每行一个正整数，表示需要替换的画布格子编号。\n3.2.3\n输出格式\n输出 \n 的画布。\n3.2.4\n样例\n3.2.5\n输入样例 1\n3.2.6\n输出样例 1\n3.2.7\n数据范围\n输入范围是 \n 到 \n，\n 到 \n，以及 \n 到 \n（即 ASCII 编码的 0 到 9 ，A 到 Z ，以及 a 到 z ）。\n \n试题名称：字符变换\n时间限制：1.0 s\n内存限制：512.0 MB\n \n \n \n \n \n \n \n48\n65\n97\n1\n2\n3\n****************\n****************\n***************0\n****************\nA***************\n****************\na***************\n****************\n1\n2\n3\n4\n5\n6\n7\n8\n\n",
+    "sourceReference": "#include <iostream>\nusing namespace std;\nint main() {\n    int a, b, c, p = 0;\n    cin >> a >> b >> c;\n    for (int i = 1; i <= 8; ++i) {\n        for (int j = 1; j <= 16; ++j) {\n            ++p;\n            if (p == a)\n                cout << (char)a;\n            else if (p == b)\n                cout << (char)b;\n            else if (p == c)\n                cout << (char)c;\n            else\n                cout << '*';\n        }\n        cout << '\\n';\n    }\n    return 0;\n}"
+  }
+]

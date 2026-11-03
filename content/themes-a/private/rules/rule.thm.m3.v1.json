@@ -1,0 +1,195 @@
+{
+  "ruleId": "rule.thm.m3.v1",
+  "file": "rule.thm.m3.v1.json",
+  "boundTasks": [
+    "thm.m3.diag.v1",
+    "thm.m3.supp.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.m3.diag.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "total-mul",
+            "label": "总数（每盒 6 支 × 4 盒）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "24"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "count-div-per",
+            "label": "盒数（24 支 ÷ 每盒 6 支）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "4"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "per-div-count",
+            "label": "每盒支数（24 支 ÷ 4 盒）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "6"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c4",
+            "kind": "choice",
+            "label": "总数/每份数/份数关系",
+            "selectionId": "sel.relation",
+            "correctOptionId": "opt-total-eq-per-times-count"
+          }
+        ],
+        "diagnostics": [
+          {
+            "tag": "mis-add-for-total",
+            "checkId": "c1",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "ge",
+              "value": "10"
+            },
+            "feedback": "再检查：6+10 是把两个数加起来；\"每盒 6 支装 4 盒\"要用乘法。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "6 × 4 = 24（支）。"
+          },
+          {
+            "checkId": "c2",
+            "text": "24 ÷ 6 = 4（盒）。"
+          },
+          {
+            "checkId": "c3",
+            "text": "24 ÷ 4 = 6（支）。"
+          },
+          {
+            "checkId": "c4",
+            "text": "总数 = 每份数 × 份数。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：求总数用乘，求每份数或份数用除。"
+        },
+        "diagnosis": {
+          "passRule": "ALL_CHECKS_FIRST_SUBMISSION_NO_ANSWER_HINT",
+          "supplementTaskId": "thm.m3.supp.v1"
+        }
+      },
+      "thm.m3.supp.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "total-now",
+            "label": "当前点阵总数",
+            "source": {
+              "kind": "FROM_STATE",
+              "derive": "GRID_CELLS"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "total-8-3",
+            "label": "总数（每行 8 个 × 3 行）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "24"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "rows-36-9",
+            "label": "行数（36 个 ÷ 每行 9 个）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "4"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "rows": 4,
+          "cols": 6
+        },
+        "scenarioFeedback": "请先把点阵调成 4 行、每行 6 个并确认，再提交。",
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "4 × 6 = 24（个）。"
+          },
+          {
+            "checkId": "c2",
+            "text": "8 × 3 = 24（个）。"
+          },
+          {
+            "checkId": "c3",
+            "text": "36 ÷ 9 = 4（行）。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：总数 = 每行个数 × 行数；行数 = 总数 ÷ 每行个数。"
+        }
+      }
+    }
+  }
+}

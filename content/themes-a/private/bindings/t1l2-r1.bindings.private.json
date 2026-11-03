@@ -1,0 +1,57 @@
+{
+  "releaseId": "rondo.thm.t1l2-r1",
+  "taskBindings": [
+    {
+      "taskId": "thm.f2.g1.scale-bar.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.f2.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.f2.v1.json"
+      }
+    },
+    {
+      "taskId": "thm.f2.g2.equivalent-find.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.f2.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.f2.v1.json"
+      }
+    },
+    {
+      "taskId": "thm.f2.i1.numberline.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.f2.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.f2.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/thm.f2.i1.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "thm.f2.s1.stranger.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.f2.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.f2.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/thm.f2.s1.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "thm.f2.d1.delayed-transfer.v1",
+      "ruleRef": {
+        "ruleId": "rule.thm.f2.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.thm.f2.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/thm.f2.d1.v1-instances.json"
+      }
+    }
+  ]
+}

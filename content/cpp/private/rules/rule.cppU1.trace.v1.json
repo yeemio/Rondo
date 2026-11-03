@@ -1,0 +1,91 @@
+{
+  "ruleId": "rule.cppU1.trace.v1",
+  "ruleVersion": "1",
+  "body": {
+    "kind": "STEP_TASK_TRUTH",
+    "stepBudget": 200,
+    "entries": {
+      "cpp.u1.g1.receipt-trace.v1": {
+        "visibleCase": {
+          "caseId": "g1-canonical",
+          "inputs": {},
+          "expectedLines": [
+            "25",
+            "12"
+          ]
+        },
+        "hiddenCases": [],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.g1.total-old-new",
+            "correctOptionId": "opt-old"
+          }
+        ],
+        "judging": {
+          "outputSource": "SNAPSHOT_RERUN"
+        },
+        "feedback": {
+          "reviseGeneric": "逐行核对：每行来自一条输出语句；再单步看一遍变量时间线。"
+        }
+      },
+      "cpp.u1.g2.pack-sweets.v1": {
+        "visibleCase": {
+          "caseId": "g2-second-question",
+          "inputs": {},
+          "expectedLines": [
+            "8",
+            "4"
+          ]
+        },
+        "hiddenCases": [],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.g2.neg-div",
+            "correctOptionId": "opt-neg-div-a"
+          },
+          {
+            "selectionId": "sel.g2.neg-rem",
+            "correctOptionId": "opt-neg-rem-sign"
+          }
+        ],
+        "judging": {
+          "outputSource": "AUTHORED"
+        },
+        "diagnostics": {
+          "divRounding": "整数除法不是四舍五入，也不出小数：/ 只取装满的整数份，余数用 %。负数的除和余按 C++ 规则：商向 0 取整，余数符号跟被除数。"
+        },
+        "feedback": {
+          "reviseGeneric": "先检查改动是否完成（n=100、k=12），再逐行核对输出。"
+        }
+      },
+      "cpp.u1.g4.sales-sum.v1": {
+        "visibleCase": {
+          "caseId": "g4-canonical",
+          "inputs": {},
+          "expectedLines": [
+            "15"
+          ]
+        },
+        "hiddenCases": [],
+        "numberChecks": [
+          {
+            "itemId": "g4.trip-count",
+            "expected": 5
+          }
+        ],
+        "conceptChecks": [
+          {
+            "selectionId": "sel.g4.while-equiv",
+            "correctOptionId": "opt-same"
+          }
+        ],
+        "judging": {
+          "outputSource": "SNAPSHOT_RERUN"
+        },
+        "feedback": {
+          "reviseGeneric": "按当前卡片逐行核对输出；执行次数和退出值都能从时间线里数出来。"
+        }
+      }
+    }
+  }
+}

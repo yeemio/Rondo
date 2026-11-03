@@ -1,0 +1,67 @@
+{
+  "ruleId": "rule.cylLayers.volume.v1",
+  "file": "rule.cylLayers.volume.v1.json",
+  "boundTasks": [
+    "cyl.layers.g3.height-vs-radius.v1",
+    "cyl.layers.i1.volume-value-unit.v1",
+    "cyl.layers.i2.height-vs-radius-choice.v1"
+  ],
+  "note": "V=πr²h 一步有理（π=157/50），两位小数；G3/I2 按任务脚本变体重算（判分不依赖当前快照，改场景不能把错答变对）；诊断签名按公式模式匹配，反馈不带数值。原 VOLUME_COMPARE_FAMILY pendingDsl 已正式化为 VOLUME_COMPARE_TRUTH（H0-DELTA-INTEGRATION-20261027-3）。",
+  "body": {
+    "kind": "VOLUME_COMPARE_TRUTH",
+    "entries": {
+      "cyl.layers.g3.height-vs-radius.v1": {
+        "taskForm": "VAR_COMPARE",
+        "variants": {
+          "planA": {
+            "radiusMm": 30,
+            "heightMm": 160
+          },
+          "planB": {
+            "radiusMm": 60,
+            "heightMm": 80
+          }
+        },
+        "bigger": "opt-plan-b",
+        "valueACm3": "452.16",
+        "valueBCm3": "904.32",
+        "ratio": "opt-ratio-4",
+        "recheck": {
+          "baseCm3": "12.56",
+          "recheckBCm3": "50.24",
+          "recheckACm3": "25.12"
+        },
+        "activity": {
+          "setDimensionAxes": [
+            "RADIUS",
+            "HEIGHT"
+          ]
+        }
+      },
+      "cyl.layers.i1.volume-value-unit.v1": {
+        "taskForm": "VOLUME_VALUE",
+        "fromInstance": "cyl.layers.i1.F1",
+        "diagnostics": {
+          "misCircumferenceTimesH": "175.84",
+          "misPiRh": "87.92"
+        }
+      },
+      "cyl.layers.i2.height-vs-radius-choice.v1": {
+        "taskForm": "VAR_COMPARE",
+        "fromInstance": "cyl.layers.i2.F1",
+        "diagnostics": {
+          "misLinearChoice": "bigger=A 且两数值正确时记 mis-linear-choice"
+        }
+      }
+    },
+    "feedback": {
+      "misCircumferenceTimesH": "先想底面：罐子靠哪个面站着？那一面是圆的什么量",
+      "misPiRh": "底面积里半径用了几次？",
+      "misLinearChoice": "两个方案各算一遍底面积再比——别只看加的厘米数",
+      "unitMismatch": "数值对了，再看看单位",
+      "numericRevise": "先算底面积，再乘高",
+      "ratioRevise": "半径加倍时底面积怎么变？再乘同一个高看看",
+      "activityRevise": "两个方案都要在罐子上试一遍"
+    }
+  }
+}

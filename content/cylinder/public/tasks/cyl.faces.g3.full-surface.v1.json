@@ -1,0 +1,247 @@
+{
+  "title": "封口罐的表面积，和一张建议单",
+  "taskId": "cyl.faces.g3.full-surface.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.comboArea.v1",
+  "allowedOperationIds": [
+    "SelectFaces",
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    },
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "封口罐的表面积，和一张建议单"
+    },
+    {
+      "type": "TEXT",
+      "text": "商店要做一个封口罐（有底有盖）：半径 3.0 cm，高 8.0 cm。仓库的小张写了一张下单建议单，说他不太确定，请你检查。"
+    },
+    {
+      "type": "TEXT",
+      "text": "建议单（人工编写，可能有错，供检查）：「罐身纸按侧面下料 150.72 cm²；上下两个圆一样大，圆纸样照一份剪就行，面积 28.26 cm²。合计 178.98 cm²。」"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ],
+        [
+          "包装条件",
+          "有底有盖（封口）"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "① 这张建议单能用吗？问题最可能出在哪？② 封口罐到底要多少平方厘米的纸？先猜再动手验证。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "card.advice-flagged",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "L34-9：显式标注「人工编写，可能有错」的建议卡；视觉弱于权威读数，DOM 可聚焦全文朗读"
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "unroll.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-full",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "S表 = S侧 + 2×S圆"
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.surface-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "表面积目标值 REVIEW 前任何通道不下发"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "含建议单数值 vs 规范值的漏算修正对照"
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "条件是封口（有底有盖）。两问：检查建议单；封口罐的表面积（两位小数+单位）。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "建议是人写的，可能漏条件——检查时先问「这个包装到底有几个面」。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "在场景里把三个面都选上、展开摊平，数一数有几个圆；建议单里的「照一份剪」对应几个圆？"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesg3.fix-advice",
+        "prompt": "帮小张改建议单，最需要补上的一句是？",
+        "options": [
+          {
+            "id": "opt-add-one-circle",
+            "label": "再加一份同样的圆纸样"
+          },
+          {
+            "id": "opt-double-side",
+            "label": "侧面积改成两倍"
+          },
+          {
+            "id": "opt-shrink-height",
+            "label": "把高度改小一点"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "你是怎么发现建议单漏了条件的？写出你检查时问自己的问题。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "三面全选高亮 + 展开摊平（矩形+两个圆），其余同 G2。",
+    "svgDom": "展开 SVG 面片（矩形+两圆）+ 面清单 + 建议单为 DOM 卡片（可聚焦朗读，aria 全文可读）；同一表单与判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

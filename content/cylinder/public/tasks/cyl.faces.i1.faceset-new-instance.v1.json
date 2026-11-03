@@ -1,0 +1,186 @@
+{
+  "title": "爆米花桶的纸样",
+  "taskId": "cyl.faces.i1.faceset-new-instance.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.faceSet.v1",
+  "allowedOperationIds": [
+    "SelectFaces"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "爆米花桶的纸样"
+    },
+    {
+      "type": "TEXT",
+      "text": "一家小店卖桶装爆米花：桶身是圆柱形，半径 5.0 cm，高 10.0 cm。桶有底、没有盖（顶部敞开方便拿）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "5.0"
+        ],
+        [
+          "高度 h",
+          "10.0"
+        ],
+        [
+          "包装条件",
+          "有底、无盖"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "这个桶的纸样要算哪些面？在场景里把要用的面选出来，再提交你的答案。"
+    },
+    {
+      "type": "TEXT",
+      "text": "每个面都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [],
+      "note": "独立集合题：任何面积数值全档隐藏（含 aria），REVIEW 由比对卡解禁"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "新桶 r=5.0 cm、h=10.0 cm，条件有底无盖。答面集合并在场景里选出来。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "包装条件决定面集合——「无盖」说的是哪一端开口？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "逐面问：侧面要不要？上面的圆要不要？下面的圆要不要？最后数圆的个数（不给结论）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesi1.add-lid",
+        "prompt": "如果这批桶要加盖（变成封口桶），多算几个圆面？",
+        "options": [
+          {
+            "id": "opt-0",
+            "label": "0 个"
+          },
+          {
+            "id": "opt-1",
+            "label": "1 个"
+          },
+          {
+            "id": "opt-2",
+            "label": "2 个"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人说明「这个桶为什么还要一张圆纸」。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "无面积标注的面选择场景（面积数值 REVIEW 前不渲染，含 aria）；checkbox+键盘同 G1。",
+    "svgDom": "面片 SVG + 面清单；测量卡 REVIEW 前不注入 DOM；同一表单与判分。aria 不播报任何面积数值。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 50,
+    "heightMm": 100,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "ruleId": "rule.cylLayers.transfer.v1",
+  "file": "rule.cylLayers.transfer.v1.json",
+  "boundTasks": [
+    "cyl.layers.s1.stranger-package.v1",
+    "cyl.layers.d1.delayed-transfer.v1"
+  ],
+  "note": "四段复合（paramRead/faceSet/paperArea/volume）分别判分、分别反馈；段间不互相提示正确值；面集合段 REVISE 反馈不点名行。原 TRANSFER4_FAMILY pendingDsl 已正式化为 TRANSFER4_TRUTH（H0-DELTA-INTEGRATION-20261027-3）；四段真值经冻结实例真值解析。",
+  "body": {
+    "kind": "TRANSFER4_TRUTH",
+    "entries": {
+      "cyl.layers.s1.stranger-package.v1": {
+        "fromInstance": "cyl.layers.s1.F1",
+        "snapshotMustEqualDeclaration": true
+      },
+      "cyl.layers.d1.delayed-transfer.v1": {
+        "fromInstance": "cyl.layers.d1.F1",
+        "snapshotMustEqualDeclaration": true
+      }
+    },
+    "feedback": {
+      "paramReadRevise": "半径和直径/周长的关系再倒过来用一次。",
+      "faceSetRevise": "再读一遍条件：上面开口吗？底下要不要纸？",
+      "paperRevise": "先分面，再把每个面的面积加起来。",
+      "volumeRevise": "先算底面积，再乘高。",
+      "policy": "任一段 REVISE 反馈不得携带其他段真值（LIFE §11 反例清单增列，delta §10-5）"
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "taskId": "cpp.u1.d1.delayed-transfer.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "DELAYED_TRANSFER",
+  "title": "储物室里藏 7 的柜子（延迟迁移）",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "储物室的柜子编号从 lo 到 hi（现在是 260 到 299）。要数编号里含有数字 7 的柜子：十位是 7，或者个位是 7。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "十位：i / 10 % 10；个位：i % 10；满足任意一个就算：||"
+    },
+    {
+      "type": "TEXT",
+      "text": "卡里的条件只查了十位。把它补成「十位是 7 或个位是 7」。先口算猜一个数（记录不判分），再改对提交。"
+    }
+  ],
+  "givens": {
+    "inputs": {
+      "lo": 260,
+      "hi": 299
+    },
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "count",
+        "expr": "0"
+      },
+      {
+        "kind": "FOR",
+        "var": "i",
+        "from": "lo",
+        "bound": "hi",
+        "cmp": "<=",
+        "body": [
+          {
+            "kind": "IF",
+            "cond": "i / 10 % 10 == 7",
+            "then": [
+              {
+                "kind": "ASSIGN",
+                "var": "count",
+                "expr": "count + 1"
+              }
+            ],
+            "else": []
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "count"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.program.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[1].body[0].cond"
+      ],
+      "insertableKinds": [],
+      "deletableSteps": [],
+      "maxProgramSteps": 20,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "回看练习：只允许改判断条件。注意 277 十位和个位都是 7——它只能被数一次。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "编号 260 到 299，看十位和个位有没有 7。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "十位用 i/10%10，个位用 i%10；满足任意一个就算，用 || 连起来。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先手数 270–279 有几个，再看个位是 7 的，最后想想重叠的。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.d1.or-to-and",
+        "prompt": "把「||」换成「&&」，答案会变吗？",
+        "options": [
+          {
+            "id": "opt-and-shrink",
+            "label": "会变：&& 要求十位和个位同时是 7，只剩 277 一个"
+          },
+          {
+            "id": "opt-and-same",
+            "label": "不会变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么 277 只被数一次？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

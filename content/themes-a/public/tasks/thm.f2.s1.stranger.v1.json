@@ -1,0 +1,143 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f2.s1.stranger.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "STRANGER",
+  "title": "陌生情境 · 折纸比赛",
+  "boardView": "BAR",
+  "givens": {
+    "rows": 1,
+    "cols": 2,
+    "filled": 1
+  },
+  "givenLocks": [
+    "rows"
+  ],
+  "responseSchemaId": "resp.thm.f2s1.v1",
+  "allowedOperationIds": [
+    "ScaleBoth"
+  ],
+  "operationConstraints": [
+    {
+      "type": "ScaleBoth",
+      "multipliers": [
+        2,
+        4
+      ]
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "陌生情境：谁涂的纸大？"
+    },
+    {
+      "type": "TEXT",
+      "text": "折纸活动：小明把一张纸对折一次，涂了 1 份（他说涂了 1/2）；小红把同样大的纸对折两次，涂了 2 份（她说涂了 2/4）。两张纸一样大。"
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 谁涂的面积大？(2) 右侧条带现在是 1/2：用\"同乘\"把它变成分母是 8 的分数（分子分母一起乘），确认后写出这个分数。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-equivalence",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "陌生任务复测等值概念"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "判断 1/2 和 2/4 谁大；再把 1/2 用同乘变成分母是 8 的分数。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "对折两次只是把每份切得更细，涂的比例没变。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "1/2 分子分母同乘 4。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f2s1.same",
+        "prompt": "1/2 和 2/4 为什么一样大？",
+        "options": [
+          {
+            "id": "opt-same-proportion",
+            "label": "分子分母同乘 2，涂的比例不变"
+          },
+          {
+            "id": "opt-lucky",
+            "label": "碰巧相等"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人解释折纸比赛的结果。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "条带（SVG）同乘操作经确认重绘。",
+    "boardTable": "份数/涂色份数读数表；同一判分。"
+  }
+}

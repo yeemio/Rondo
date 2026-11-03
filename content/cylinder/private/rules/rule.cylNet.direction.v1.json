@@ -1,0 +1,41 @@
+{
+  "ruleId": "rule.cylNet.direction.v1",
+  "file": "rule.cylNet.direction.v1.json",
+  "boundTasks": [
+    "cyl.net.g1.unroll-observe.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "note": "方向真值与 rule.cylNet.pairing.v1 同源（由配对推导）。"
+  },
+  "pendingDsl": {
+    "reasons": [
+      "NUMERIC_RELATION_V1_QUANTITY_MIN1: 纯方向映射任务（边→底面圆周/高）无法以冻结族表达"
+    ],
+    "numericRelationShape": {
+      "ruleKind": "NUMERIC_RELATION_V1",
+      "expectedEdgeMapping": [
+        {
+          "cylinderObjectId": "cyl-part-base-circle",
+          "netEdgeId": "net-edge-2"
+        },
+        {
+          "cylinderObjectId": "cyl-part-base-circle",
+          "netEdgeId": "net-edge-4"
+        },
+        {
+          "cylinderObjectId": "cyl-part-height-line",
+          "netEdgeId": "net-edge-1"
+        },
+        {
+          "cylinderObjectId": "cyl-part-height-line",
+          "netEdgeId": "net-edge-3"
+        }
+      ],
+      "quantityChecks": null
+    },
+    "feedback": {
+      "reviseGeneric": "回卷一小段，盯住一条编号边看它贴着谁。"
+    }
+  }
+}

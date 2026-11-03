@@ -1,0 +1,116 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m4.diag.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "INDEPENDENT",
+  "title": "先修诊断 · 长度、面积、体积的单位",
+  "boardView": "UNIT_TRIO",
+  "givens": {
+    "rows": 1,
+    "cols": 1,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.m4diag.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "先修小诊断：三种单位（共 4 小题）"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧图例：一条 1 cm 的线段（量长度）、一个 1 cm² 的正方形（量面积）、一个 1 cm³ 的正方体（量体积）。"
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 把 cm、cm²、cm³ 分别归到长度、面积、体积。(2) 测量课桌面的大小，用哪类单位？(3) 1 m² = ? dm²。(4) 棱长 1 cm 的正方体，体积是多少？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-units",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "给三个 cm 家族单位分类；选出测桌面用的单位类型；换算 1 m²；说出棱长 1 cm 正方体的体积。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "量线用长度单位；量面铺正方形；量体堆正方体。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "单位名字里有\"平方\"是面积、\"立方\"是体积；1 m = 10 dm，所以 1 m² = 10×10 dm²。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m4.tell",
+        "prompt": "你怎么区分这三类单位？",
+        "options": [
+          {
+            "id": "opt-name-shape",
+            "label": "看名字（平方/立方）和它量什么（线/面/体）"
+          },
+          {
+            "id": "opt-guess",
+            "label": "靠感觉猜"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "举一个生活中分别用 cm、cm²、cm³ 的例子。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "单位图例三联（SVG）：1 cm 线段、1 cm² 正方形、1 cm³ 正方体（等距示意）。",
+    "boardTable": "单位—量纲对照表；同一任务卡与判分接口。"
+  }
+}

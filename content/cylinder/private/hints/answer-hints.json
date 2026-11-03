@@ -1,0 +1,184 @@
+{
+  "cyl.param.i1.identify-changes.v1": [
+    {
+      "instanceId": "cyl.param.i1.EX-B",
+      "level": 4,
+      "text": "改变的是半径（4.5→3.0 cm）。半径和直径都变小了，直径从 9.0 cm 变成 6.0 cm；高度没变。"
+    }
+  ],
+  "cyl.param.i2.predict-single-change.v1": [
+    {
+      "instanceId": "cyl.param.i2.EX-B",
+      "level": 4,
+      "text": "直径不变。直径 = 2 × 2.0 cm = 4.0 cm，高度变化不改变直径。"
+    }
+  ],
+  "cyl.net.i3.area-value-unit.v1": [
+    {
+      "instanceId": "cyl.net.i3.F1",
+      "level": 4,
+      "text": "C = 2×3.14×2.5 = 15.70 cm；S侧 = 15.70×10.0 = 157.00 cm²。"
+    }
+  ],
+  "cyl.net.s1.stranger-relabel.v1": [
+    {
+      "instanceId": "cyl.net.s1.F1",
+      "level": 4,
+      "text": "半径 = 3.0÷2 = 1.5 cm；配对：边1→高、边2→上底圆、边3→高、边4→下底圆；圆周={2,4}、高={1,3}；面积 = 9.42×9.0 = 84.78 cm²。"
+    }
+  ],
+  "cyl.net.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "cyl.net.d1.F1",
+      "level": 4,
+      "text": "半径 = 12.56÷(2×3.14) = 12.56÷6.28 = 2.0 cm；配对与方向同标准真值表。"
+    }
+  ],
+  "cyl.faces.i1.faceset-new-instance.v1": [
+    {
+      "instanceId": "cyl.faces.i1.F1",
+      "level": 4,
+      "text": "爆米花桶纸样 = 侧面 + 下盖面（1 个盖面）；顶部敞开，上盖面不算。"
+    }
+  ],
+  "cyl.faces.i2.lid-count-condition.v1": [
+    {
+      "instanceId": "cyl.faces.i2.F1",
+      "level": 4,
+      "text": "多用的纸 = 新加的两个盖面 = 2×πr² = 2×12.56 = 25.12 cm²；侧面原来就有，不用重算。"
+    }
+  ],
+  "cyl.faces.i3.surface-value-unit.v1": [
+    {
+      "instanceId": "cyl.faces.i3.F1",
+      "level": 4,
+      "text": "C=37.68，S侧=150.72；一个圆=113.04，两个圆=226.08；S表=150.72+226.08=376.80 cm²。"
+    }
+  ],
+  "cyl.layers.i1.volume-value-unit.v1": [
+    {
+      "instanceId": "cyl.layers.i1.F1",
+      "level": 4,
+      "text": "S底=3.14×4×4=50.24；V=50.24×7.0=351.68 cm³。"
+    }
+  ],
+  "cyl.layers.i2.height-vs-radius-choice.v1": [
+    {
+      "instanceId": "cyl.layers.i2.F1",
+      "level": 4,
+      "text": "B 装得多：A=28.26×10=282.60，B=50.24×6=301.44；半径只加 1.0 cm，但底面积从 28.26 涨到 50.24。"
+    }
+  ],
+  "cyl.layers.i3.accumulate-count.v1": [
+    {
+      "instanceId": "cyl.layers.i3.F1",
+      "level": 4,
+      "text": "每层 12.56；第 7 层累计 87.92 还没到，第 8 层 100.48 第一次超过 100——答案：第 8 层，100.48 cm³。"
+    }
+  ],
+  "cyl.layers.s1.stranger-package.v1": [
+    {
+      "instanceId": "cyl.layers.s1.F1",
+      "level": 4,
+      "text": "r=5.0 cm；面=侧面+上盖+下盖；纸板 345.40 cm²；衬垫 471.00 cm³。"
+    }
+  ],
+  "cyl.layers.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "cyl.layers.d1.F1",
+      "level": 4,
+      "text": "r=25.12÷6.28=4.0 cm；纸板=侧面+下盖面；213.52 cm²；灌蜡 326.56 cm³。"
+    }
+  ],
+  "cyl.param.g1.view-invariance.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "不会改变。只转动观察时，半径仍是 3.0 cm、高度仍是 8.0 cm；要改变它们必须修改尺寸设置。"
+    }
+  ],
+  "cyl.param.g2.radius-change.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "直径是 8.0 cm（80 mm），因为 2 × 4.0 cm = 8.0 cm。"
+    }
+  ],
+  "cyl.param.g3.height-section.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "轴截面（沿轴切开）能看到高——切出的矩形一条边就是 10.0 cm；横截面是圆，显示的是半径/直径，看不到高。新的高是 10.0 cm。"
+    }
+  ],
+  "cyl.net.g1.unroll-observe.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "卷回后边 2、边 4 形成底面圆周；边 1、边 3 成为高。C = 2×3.14×3.0 = 18.84 cm，与条带周长方向边长相等；高 8.0 cm 与高度方向边长相等。"
+    }
+  ],
+  "cyl.net.g2.edge-pairing.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "边 1→高；边 2→上底圆；边 3→高；边 4→下底圆。"
+    }
+  ],
+  "cyl.net.i1.pair-normal.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "边 1→高；边 2→上底圆；边 3→高；边 4→下底圆。"
+    }
+  ],
+  "cyl.net.i2.pair-tall-thin.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "边 1→高；边 2→上底圆；边 3→高；边 4→下底圆。这个圆筒很细：周长 3.14 cm 比高 12.0 cm 短——长的边是高，不是圆周。"
+    }
+  ],
+  "cyl.faces.g1.face-inventory.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "笔筒要侧面和下盖面，共 1 个盖面；封口罐要全部三个面、2 个盖面；标签筒只要侧面。"
+    }
+  ],
+  "cyl.faces.g2.one-lid-area.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "笔筒纸 = 150.72 + 28.26 = 178.98 cm²；面集合 = 侧面+下盖面。"
+    }
+  ],
+  "cyl.faces.g3.full-surface.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "建议单不能用——封口罐有上、下两个圆面，各 28.26 cm²；S表 = 150.72 + 28.26×2 = 150.72 + 56.52 = 207.24 cm²。"
+    }
+  ],
+  "cyl.layers.g1.stack-invariant.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "总体积不变，都是 226.08 cm³；每层从 1.0 cm 变 0.5 cm，层数×层厚始终等于高 8.0 cm。"
+    }
+  ],
+  "cyl.layers.g2.layer-volume.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "层厚 1.0 cm；每层 = 3.14×3.0×3.0×1.0 = 28.26 cm³；总量 = 28.26×8 = 226.08 cm³。"
+    }
+  ],
+  "cyl.layers.g3.height-vs-radius.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "乙装得多：甲=28.26×16=452.16，乙=113.04×8=904.32；半径加倍→底面积 4 倍→体积 4 倍；高度加倍只把体积变 2 倍。"
+    }
+  ]
+}

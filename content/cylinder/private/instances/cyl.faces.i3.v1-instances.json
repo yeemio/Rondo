@@ -1,0 +1,46 @@
+{
+  "taskId": "cyl.faces.i3.surface-value-unit.v1",
+  "file": "cyl.faces.i3.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.faces.i3.F1",
+      "initial": {
+        "radiusMm": 60,
+        "heightMm": 40
+      },
+      "condition": "sealed",
+      "truth": {
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-upper": "opt-include",
+          "cyl-face-lower": "opt-include"
+        },
+        "surfaceCm2": "376.80",
+        "circumferenceCm": "37.68",
+        "lateralAreaCm2": "150.72",
+        "circleAreaCm2": "113.04",
+        "diagnostics": {
+          "misLidsMissingValue": "150.72",
+          "misOneLidValue": "263.76",
+          "misDoubleSideValue": "301.44"
+        }
+      },
+      "answerHint": "C=37.68，S侧=150.72；一个圆=113.04，两个圆=226.08；S表=150.72+226.08=376.80 cm²。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径；r∉{1,2} cm；互斥总清单 L34-12；已服务实例"
+    ]
+  }
+}

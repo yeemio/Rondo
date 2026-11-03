@@ -1,0 +1,44 @@
+{
+  "releaseId": "rondo.thm.t1l3-r1",
+  "taskIds": [
+    "thm.f3.g1.percent-board.v1",
+    "thm.f3.g2.discount-chain.v1",
+    "thm.f3.i1.allocate.v1",
+    "thm.f3.s1.stranger.v1",
+    "thm.f3.d1.delayed-transfer.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.gridboard",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "1d5f348cc28831717c519da3eb0af48c024cee1109585c88aedff385c7c50c94",
+    "22b6160377be7687d72ceb83ea2ca0c187fb4669e348d19585c5bff2d35cef62",
+    "24fa9cd2d25350f82264ec0b6355565c7b438f460087059abb5067cc02b7d46c",
+    "6fd3533e92fd1cc8ed99a32a8573b706834bfdd72dc39ab56a41fc81d5738822",
+    "c6133f3d73f82f36de5f87aea3417b1d848bb3b5e42622a1cf97a9f9ddf019d2",
+    "c86e4fbc3336de8f808ae38d4c13c2ce90d9d40728a8a4ccf9ece4302413d1a5",
+    "d3b2ae7054e58c1ba82050ed3a8c836bdabf77061f8dae34cf21b81bdbbe6102"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "BOARD_SVG",
+      "allowedOperationIds": [
+        "SetFilled",
+        "SetGridSize"
+      ]
+    },
+    {
+      "expression": "BOARD_TABLE",
+      "allowedOperationIds": [
+        "SetFilled",
+        "SetGridSize"
+      ]
+    }
+  ],
+  "publicManifestHash": "4594f293fd76995863832fcb0b85b2b78f74bddb89448a7aa132ea99e5974cae"
+}

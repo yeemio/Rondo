@@ -1,0 +1,143 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f2.g1.scale-bar.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "同乘一个数：1/2 变 2/4",
+  "boardView": "BAR",
+  "givens": {
+    "rows": 1,
+    "cols": 2,
+    "filled": 1
+  },
+  "givenLocks": [
+    "rows"
+  ],
+  "responseSchemaId": "resp.thm.f2g1.v1",
+  "allowedOperationIds": [
+    "ScaleBoth"
+  ],
+  "operationConstraints": [
+    {
+      "type": "ScaleBoth",
+      "multipliers": [
+        2,
+        3
+      ]
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把条带\"整体放大\""
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧条带现在平均分成 2 份、涂 1 份（1/2）。操作\"同乘\"：把份数和涂色份数同时乘 2（×2 按钮），确认后观察涂色部分的大小。"
+    },
+    {
+      "type": "TEXT",
+      "text": "回答：现在的分数是几分之几？放大前后涂色部分的大小变了吗？为什么两个分数相等？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-equivalence",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "1/2 的条带做一次\"同乘 2\"，写出新分数，并回答大小是否变化、为什么相等。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "同乘只是把每份切得更细，涂色的区域没有变。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "分子分母各乘 2：1/2 → 2/4；看图上涂色的长度。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f2g1.why",
+        "prompt": "1/2 = 2/4 的原因是？",
+        "options": [
+          {
+            "id": "opt-both-scaled",
+            "label": "分子和分母乘了同一个数，大小不变"
+          },
+          {
+            "id": "opt-num-bigger",
+            "label": "分子变大了所以分数变大"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果同乘 3，分数会变成几？大小呢？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "条带（SVG）：×2/×3 按钮与键盘（+ 键 ×2）经确认后重绘份数与涂色。",
+    "boardTable": "份数/涂色份数读数表；同一状态与判分。"
+  }
+}

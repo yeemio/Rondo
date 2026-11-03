@@ -1,0 +1,220 @@
+{
+  "title": "算一算封口罐的纸",
+  "taskId": "cyl.faces.i3.surface-value-unit.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.comboArea.v1",
+  "allowedOperationIds": [
+    "SelectFaces"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "算一算封口罐的纸"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个封口罐（有底有盖），尺寸见场景标注。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "6.0"
+        ],
+        [
+          "高度 h",
+          "4.0"
+        ],
+        [
+          "包装条件",
+          "有底有盖"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "封口罐一共要用多少平方厘米的纸？先预测，再算并提交。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "构造辅助：选面观察"
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-full",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "单面面积读数 REVIEW 前全通道隐藏"
+    },
+    {
+      "material": "card.surface-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "读标注 r=6.0 cm、h=4.0 cm，条件封口。答表面积，两位小数+单位。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "封口罐的面集合有哪几类？每类的面积公式是什么？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算 C=2×3.14×r 得侧面那份，再算 πr² 得一个圆，封口罐有几个圆就加几份（给步骤不给数值）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesi3.included",
+        "prompt": "算封口罐用纸时，下面哪些量要算进去？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "opt-side",
+            "label": "侧面那份"
+          },
+          {
+            "id": "opt-upper",
+            "label": "上盖面那份"
+          },
+          {
+            "id": "opt-lower",
+            "label": "下盖面那份"
+          },
+          {
+            "id": "opt-height",
+            "label": "高度本身"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写出你的算式（顺序不限），说明每个数是哪个面的。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同基线（数字/单位表单两表达同控件同判分；SVG 尺寸表显示 givens，测量读数受同一投影约束）。",
+    "svgDom": "同基线；单面面积读数 REVIEW 前不注入 DOM。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 60,
+    "heightMm": 40,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

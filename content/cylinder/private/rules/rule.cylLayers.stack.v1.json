@@ -1,0 +1,66 @@
+{
+  "ruleId": "rule.cylLayers.stack.v1",
+  "file": "rule.cylLayers.stack.v1.json",
+  "boundTasks": [
+    "cyl.layers.g1.stack-invariant.v1",
+    "cyl.layers.g2.layer-volume.v1",
+    "cyl.layers.i3.accumulate-count.v1"
+  ],
+  "note": "层不变量（层数改变不改变总体积）；层厚/每层/总量与累计边界全部一步有理；活动校验以确认操作事件为准（动画帧/相机不计）。原 LAYER_ACCUM_FAMILY pendingDsl 已正式化为 LAYER_STACK_TRUTH（H0-DELTA-INTEGRATION-20261027-3）。",
+  "body": {
+    "kind": "LAYER_STACK_TRUTH",
+    "entries": {
+      "cyl.layers.g1.stack-invariant.v1": {
+        "taskForm": "STACK_INVARIANT",
+        "snapshot": {
+          "radiusMm": 30,
+          "heightMm": 80
+        },
+        "directions": {
+          "layerThickness": "DECREASE",
+          "totalVolume": "UNCHANGED"
+        },
+        "volumeCm3": "226.08",
+        "compare16": {
+          "perLayerCm3": "14.13",
+          "totalCm3": "226.08"
+        },
+        "activity": {
+          "setLayerCountValues": [
+            8,
+            16
+          ],
+          "setVisibleLayerCountAppliesMin": 1
+        }
+      },
+      "cyl.layers.g2.layer-volume.v1": {
+        "taskForm": "LAYER_VOLUME",
+        "snapshot": {
+          "radiusMm": 30,
+          "heightMm": 80,
+          "layerCount": 8
+        },
+        "thicknessCm": "1.0",
+        "perLayerCm3": "28.26",
+        "totalCm3": "226.08",
+        "activity": {
+          "visibleLayerCountReached": 8
+        }
+      },
+      "cyl.layers.i3.accumulate-count.v1": {
+        "taskForm": "ACCUMULATE",
+        "fromInstance": "cyl.layers.i3.F1",
+        "targetCm3": "100.00",
+        "activity": {
+          "setVisibleLayerCountAppliesMin": 1
+        }
+      }
+    },
+    "feedback": {
+      "invariantRevise": "层数只是把同样的东西切得更薄——累计表最后一行变了没有？",
+      "activityRevise": "先把两种层数都装一遍看看。",
+      "boundaryRevise": "超过 100 的那一层和还没超过的上一层，各再看一眼。",
+      "cumulativeRevise": "累计要数到你自己选的那一层。"
+    }
+  }
+}

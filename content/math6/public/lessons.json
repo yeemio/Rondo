@@ -1,0 +1,3592 @@
+[
+  {
+    "id": "math6.u1-00",
+    "placementId": "U1-00",
+    "top": 1,
+    "pages": "1",
+    "title": "单元导入",
+    "objectives": [
+      "结合“单元导入”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 60,
+      "b": 40
+    },
+    "mode": "observe",
+    "concept": "小数不是把整数变小的装饰；数位决定每一份的大小。",
+    "challenge": "调节面积模型的两条边，各留一次不同大小的记录。比较一条边不到1时，积怎样变化。",
+    "questions": [],
+    "explain": "用自己保存的两次模型记录说明：你看见了什么、还不能据此断言什么。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第1页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-01",
+    "placementId": "U1-01",
+    "top": 1,
+    "pages": "2",
+    "title": "一个数乘小数的意义",
+    "objectives": [
+      "能把一个数乘小数解释为求这个数的几分之几，并联系乘法交换律理解算式。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 400,
+      "b": 90
+    },
+    "mode": "score",
+    "concept": "4×0.9表示4的十分之九；乘法交换律让0.9×4有相同结果。",
+    "challenge": "彩带每米4元，买0.9米。用分格模型联系单位“1”，再计算。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "彩带总价",
+        "kind": "quantity",
+        "unit": "元"
+      },
+      {
+        "id": "q2",
+        "label": "0.9是1的几分之几（可用分数）",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“一个数乘小数的意义”，引用模型记录说明彩带总价的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第2页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-02",
+    "placementId": "U1-02",
+    "top": 1,
+    "pages": "2-3",
+    "title": "小数乘法与分数、整数乘法的联系",
+    "objectives": [
+      "能把有限小数写成分数，说明小数乘法与分数乘法、整数乘法的联系。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 60,
+      "b": 40
+    },
+    "mode": "score",
+    "concept": "长度单位相乘会变成面积单位。0.6米×0.4米等于6分米×4分米。",
+    "challenge": "在10×10面积格中对应6列4行；把小数、分数和整数乘法联系起来。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "黄瓜苗育苗区面积",
+        "kind": "quantity",
+        "unit": "平方米"
+      },
+      {
+        "id": "q2",
+        "label": "同一面积是多少平方分米",
+        "kind": "quantity",
+        "unit": "平方分米"
+      }
+    ],
+    "explain": "结合这次“小数乘法与分数、整数乘法的联系”，引用模型记录说明黄瓜苗育苗区面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第2-3页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-03",
+    "placementId": "U1-03",
+    "top": 1,
+    "pages": "3-4",
+    "title": "积的小数位数",
+    "objectives": [
+      "能根据两个因数的小数位数确定积的小数位数，并用估算检查合理性。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 80,
+      "b": 3
+    },
+    "mode": "score",
+    "concept": "积的计数单位是两个乘数计数单位的积；末尾的0可以再化简。",
+    "challenge": "比较0.8×0.03与0.07×0.05，先估计再算。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "0.8×0.03",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "0.07×0.05",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“积的小数位数”，引用模型记录说明0.8×0.03的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第3-4页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-04",
+    "placementId": "U1-04",
+    "top": 1,
+    "pages": "3-4",
+    "title": "小数乘法竖式",
+    "objectives": [
+      "能先按整数乘法计算，再依据小数位数正确点出积的小数点。"
+    ],
+    "family": "decimal",
+    "variant": "vertical",
+    "parameters": {
+      "a": 240,
+      "b": 160
+    },
+    "mode": "score",
+    "concept": "竖式先计算整数积，再根据乘数的计数单位确定小数点。",
+    "challenge": "胡萝卜地长2.4米、宽1.6米。记录24×16的分步积，再还原面积单位。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "24×16",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "2.4×1.6",
+        "kind": "quantity",
+        "unit": "平方米"
+      }
+    ],
+    "explain": "结合这次“小数乘法竖式”，引用模型记录说明24×16的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第3-4页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-05",
+    "placementId": "U1-05",
+    "top": 1,
+    "pages": "4",
+    "title": "小数乘法近似值与实际应用",
+    "objectives": [
+      "能在实际情境中计算小数乘法，并按题目要求用四舍五入法取近似值。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 625,
+      "b": 150
+    },
+    "mode": "score",
+    "concept": "近似数要先有准确积，再按实际要求四舍五入。",
+    "challenge": "苹果6.25元/千克，买1.5千克。准确金额按分付款；另算7.2×0.09保留一位小数。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "应付金额（保留两位小数）",
+        "kind": "quantity",
+        "unit": "元"
+      },
+      {
+        "id": "q2",
+        "label": "7.2×0.09保留一位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“小数乘法近似值与实际应用”，引用模型记录说明应付金额（保留两位小数）的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第4页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-06",
+    "placementId": "U1-06",
+    "top": 1,
+    "pages": "5-6",
+    "title": "练习一",
+    "objectives": [
+      "能把一个数乘小数解释为求这个数的几分之几，并联系乘法交换律理解算式。",
+      "能把有限小数写成分数，说明小数乘法与分数乘法、整数乘法的联系。",
+      "能根据两个因数的小数位数确定积的小数位数，并用估算检查合理性。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 70,
+      "b": 30
+    },
+    "mode": "score",
+    "concept": "练习把模型意义、估计与计算互相检验。",
+    "challenge": "对应练习一的喷洒面积、小数点与大小比较，逐项核对。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "每小时12公顷，0.5小时喷洒",
+        "kind": "quantity",
+        "unit": "公顷"
+      },
+      {
+        "id": "q2",
+        "label": "0.7×0.3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "正数4.9乘0.99后与4.9比较",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "较大"
+          },
+          {
+            "id": "1",
+            "label": "相等"
+          },
+          {
+            "id": "2",
+            "label": "较小"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“练习一”，引用模型记录说明每小时12公顷，0.5小时喷洒的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第5-6页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-07",
+    "placementId": "U1-07",
+    "top": 1,
+    "pages": "7",
+    "title": "一个数除以小数的意义",
+    "objectives": [
+      "能联系除法意义解释一个数除以小数表示的数量关系。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 120,
+      "b": 24
+    },
+    "mode": "score",
+    "concept": "包含除是在问一个量中有几个同样大的小段。",
+    "challenge": "0.6米彩带每段0.3米；1.2米彩带每段0.24米。用分段数轴表示。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "红彩带段数",
+        "kind": "quantity",
+        "unit": "段"
+      },
+      {
+        "id": "q2",
+        "label": "绿彩带段数",
+        "kind": "quantity",
+        "unit": "段"
+      }
+    ],
+    "explain": "结合这次“一个数除以小数的意义”，引用模型记录说明红彩带段数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第7页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-08",
+    "placementId": "U1-08",
+    "top": 1,
+    "pages": "7-8",
+    "title": "转化为整数除法并计算",
+    "objectives": [
+      "能运用商不变规律把除数转化为整数并正确计算。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 34,
+      "b": 17,
+      "bDen": 1000
+    },
+    "mode": "score",
+    "concept": "商不变规律要求被除数和除数同时乘同一个非零数。",
+    "challenge": "把0.34÷0.017转化为整数除法；再算0.21÷0.3。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "同时扩大1000倍后的被除数",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "0.34÷0.017",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "0.21÷0.3",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“转化为整数除法并计算”，引用模型记录说明同时扩大1000倍后的被除数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第7-8页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-09",
+    "placementId": "U1-09",
+    "top": 1,
+    "pages": "9",
+    "title": "求商的近似值",
+    "objectives": [
+      "能按指定精确度用四舍五入法求商的近似值。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 350,
+      "b": 110
+    },
+    "mode": "score",
+    "concept": "求商的近似值通常多除一位再四舍五入。",
+    "challenge": "海狮40千米/时，换算米/分，结果保留两位小数。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "平均每分钟米数（保留两位）",
+        "kind": "quantity",
+        "unit": "米/分"
+      },
+      {
+        "id": "q2",
+        "label": "3.5÷1.1保留两位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“求商的近似值”，引用模型记录说明平均每分钟米数（保留两位）的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第9页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-10",
+    "placementId": "U1-10",
+    "top": 1,
+    "pages": "10",
+    "title": "根据实际问题合理取商的近似值",
+    "objectives": [
+      "能根据实际情境选择进一法、去尾法或四舍五入法处理商。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 30000,
+      "b": 350
+    },
+    "mode": "score",
+    "concept": "“最多买”不能超过预算，“至少装完”不能丢下余量。",
+    "challenge": "300元买每支3.5元的笔；40千克油用每壶3千克的壶装完。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "最多买笔",
+        "kind": "quantity",
+        "unit": "支"
+      },
+      {
+        "id": "q2",
+        "label": "至少需要油壶",
+        "kind": "quantity",
+        "unit": "个"
+      }
+    ],
+    "explain": "结合这次“根据实际问题合理取商的近似值”，引用模型记录说明最多买笔的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第10页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-11",
+    "placementId": "U1-11",
+    "top": 1,
+    "pages": "11-12",
+    "title": "练习二",
+    "objectives": [
+      "能联系除法意义解释一个数除以小数表示的数量关系。",
+      "能运用商不变规律把除数转化为整数并正确计算。",
+      "能按指定精确度用四舍五入法求商的近似值。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 90,
+      "b": 45
+    },
+    "mode": "score",
+    "concept": "综合练习要区分准确商与按情境处理后的整数。",
+    "challenge": "算0.9÷0.045并验算；13.6吨橘子用载重4吨卡车运输。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "0.9÷0.045",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "至少运输次数",
+        "kind": "quantity",
+        "unit": "次"
+      },
+      {
+        "id": "q3",
+        "label": "3.5÷1.1保留三位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习二”，引用模型记录说明0.9÷0.045的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第11-12页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-12",
+    "placementId": "U1-12",
+    "top": 1,
+    "pages": "12",
+    "title": "商与被除数大小关系",
+    "objectives": [
+      "能联系除法意义解释一个数除以小数表示的数量关系。",
+      "能运用商不变规律把除数转化为整数并正确计算。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 780,
+      "b": 30
+    },
+    "mode": "score",
+    "concept": "被除数为正数时，除数大于1商变小，小于1商变大，等于1不变。",
+    "challenge": "对同一个7.8分别除以1.3、1、0.3，在数轴上比较。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "7.8÷1.3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "7.8÷0.3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "“除法总使数变小”",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "正确"
+          },
+          {
+            "id": "1",
+            "label": "不正确"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“商与被除数大小关系”，引用模型记录说明7.8÷1.3的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第12页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u1-13",
+    "placementId": "U1-13",
+    "top": 1,
+    "pages": "13",
+    "title": "有限小数、无限小数和循环小数阅读",
+    "objectives": [
+      "能按指定精确度用四舍五入法求商的近似值。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 2500,
+      "b": 2200
+    },
+    "mode": "score",
+    "concept": "有限小数会除尽；循环小数的余数重复，循环节不一定从第一位开始。",
+    "challenge": "比较5÷3与25÷22的竖式余数，把循环写法和近似值分开。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "25÷22的循环节",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "1"
+          },
+          {
+            "id": "1",
+            "label": "13"
+          },
+          {
+            "id": "2",
+            "label": "36"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "5÷3保留两位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“有限小数、无限小数和循环小数阅读”，引用模型记录说明25÷22的循环节的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第13页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-00",
+    "placementId": "A-U2-00",
+    "top": 2,
+    "pages": "14",
+    "title": "单元开篇情境",
+    "objectives": [
+      "结合“单元开篇情境”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 80,
+      "part": 1,
+      "den": 8
+    },
+    "mode": "observe",
+    "concept": "线段图先确定作为单位“1”的整体，再标变化部分。",
+    "challenge": "用80分贝与“降低1/8”的教材情境建图；这里只观察数量关系，不把分贝的物理意义推广为一般线性声强。",
+    "questions": [],
+    "explain": "标出整体、降低部分与剩余部分，说明模型描述的是教材给定的数值关系。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第14页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-01",
+    "placementId": "A-U2-01",
+    "top": 2,
+    "pages": "15、17-18；页 16 的苹果练习同时要求小数与分数相乘",
+    "title": "分数、小数四则混合运算顺序与运算律",
+    "objectives": [
+      "能按运算顺序计算分数和小数混合运算，并选择合适的运算律简便计算。"
+    ],
+    "family": "relation",
+    "variant": "expression",
+    "parameters": {
+      "total": 18,
+      "part": 2,
+      "den": 5
+    },
+    "mode": "score",
+    "concept": "同级运算从左往右；乘法分配律对分数同样成立。",
+    "challenge": "两种中国结分别用2/5米与3/5米绳，各做18个。比较两种算法，并算小数分数混合题。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "共用彩绳",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "3.5×4/5",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "0.45÷0.6÷0.5",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“分数、小数四则混合运算顺序与运算律”，引用模型记录说明共用彩绳的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第15、17-18；页 16 的苹果练习同时要求小数与分数相乘页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-02",
+    "placementId": "A-U2-02",
+    "top": 2,
+    "pages": "16-18、25",
+    "title": "定向估算判断“够不够”",
+    "objectives": [
+      "能根据问题方向选择放大估计或缩小估计，判断钱、材料或数量是否够用。"
+    ],
+    "family": "relation",
+    "variant": "expression",
+    "parameters": {
+      "total": 100,
+      "part": 20,
+      "den": 100
+    },
+    "mode": "score",
+    "concept": "要证明“够”，可估计至少剩余；要证明“不够”，可估计至多剩余。",
+    "challenge": "100元已买19.6元鸡蛋和两箱30.4元牛奶，比较16.8元面粉与21.6元大米。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "实际剩余",
+        "kind": "quantity",
+        "unit": "元"
+      },
+      {
+        "id": "q2",
+        "label": "选择正确的判断",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "两样都够"
+          },
+          {
+            "id": "1",
+            "label": "面粉够，大米不够"
+          },
+          {
+            "id": "2",
+            "label": "两样都不够"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“定向估算判断“够不够””，引用模型记录说明实际剩余的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第16-18、25页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-03",
+    "placementId": "A-U2-03",
+    "top": 2,
+    "pages": "19、21-22",
+    "title": "已知总量及部分占比求另一部分",
+    "objectives": [
+      "能识别单位“1”，由总量和已用部分的分率求剩余量。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 45,
+      "part": 5,
+      "den": 9
+    },
+    "mode": "score",
+    "concept": "剩余=总量×(1−已用分率)，总量是单位“1”。",
+    "challenge": "45名运动员，男生占5/9。补全线段图并求女生人数。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "女生人数",
+        "kind": "quantity",
+        "unit": "人"
+      },
+      {
+        "id": "q2",
+        "label": "女生占总人数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“已知总量及部分占比求另一部分”，引用模型记录说明女生人数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第19、21-22页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-04",
+    "placementId": "A-U2-04",
+    "top": 2,
+    "pages": "20-22、24-25",
+    "title": "求比一个量多或少几分之几的量",
+    "objectives": [
+      "能区分增加量、减少量与变化后的量，建立正确的分数数量关系。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 14,
+      "part": 3,
+      "den": 7
+    },
+    "mode": "score",
+    "concept": "“多几分之几”以原量为标准，变化后是1加该分率。",
+    "challenge": "风信子花期14天，水仙比它长3/7；再比较9000立方米用水减少13/25。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "水仙花期",
+        "kind": "quantity",
+        "unit": "天"
+      },
+      {
+        "id": "q2",
+        "label": "节水后的用水量",
+        "kind": "quantity",
+        "unit": "立方米"
+      }
+    ],
+    "explain": "结合这次“求比一个量多或少几分之几的量”，引用模型记录说明水仙花期的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第20-22、24-25页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-05",
+    "placementId": "A-U2-05",
+    "top": 2,
+    "pages": "23-25",
+    "title": "把总工作量看作 1 的工程问题",
+    "objectives": [
+      "能把工作总量看作单位“1”，用工作效率和时间解决合作工程问题。"
+    ],
+    "family": "relation",
+    "variant": "work",
+    "parameters": {
+      "first": 6,
+      "second": 3,
+      "elapsed": 1
+    },
+    "mode": "score",
+    "concept": "把工作总量看作1，效率为单独完成时间的倒数，合作效率相加。",
+    "challenge": "一个人6小时完成，另一个人3小时完成，合作时每小时完成几分之几？需要多久？",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "合做每小时完成总量的份额",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "合做时间",
+        "kind": "quantity",
+        "unit": "小时"
+      }
+    ],
+    "explain": "结合这次“把总工作量看作 1 的工程问题”，引用模型记录说明合做每小时完成总量的份额的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第23-25页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-06",
+    "placementId": "A-U2-06",
+    "top": 2,
+    "pages": "17-18、21-22、24-25",
+    "title": "练习三至练习五的混合巩固",
+    "objectives": [
+      "能按运算顺序计算分数和小数混合运算，并选择合适的运算律简便计算。",
+      "能根据问题方向选择放大估计或缩小估计，判断钱、材料或数量是否够用。",
+      "能识别单位“1”，由总量和已用部分的分率求剩余量。"
+    ],
+    "family": "relation",
+    "variant": "work",
+    "parameters": {
+      "first": 12,
+      "second": 18,
+      "elapsed": 3
+    },
+    "mode": "score",
+    "concept": "巩固题要先辨认单位“1”和运算顺序，再选择简算。",
+    "challenge": "菜地840米已完成5/6；12天和18天单独完成同一工程；比较两种关系。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "尚未完成的长度",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "两队合做天数",
+        "kind": "quantity",
+        "unit": "天"
+      },
+      {
+        "id": "q3",
+        "label": "7.6×0.8+0.2×7.6",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习三至练习五的混合巩固”，引用模型记录说明尚未完成的长度的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第17-18、21-22、24-25页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u2-07",
+    "placementId": "A-U2-07",
+    "top": 2,
+    "pages": "18、22",
+    "title": "“你知道吗”应用阅读",
+    "objectives": [
+      "能根据问题方向选择放大估计或缩小估计，判断钱、材料或数量是否够用。",
+      "能识别单位“1”，由总量和已用部分的分率求剩余量。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 81,
+      "part": 1,
+      "den": 3
+    },
+    "mode": "score",
+    "concept": "文化和应用阅读也要核对所依据的计算规则，不把读过当作掌握。",
+    "challenge": "用教材“三分去一、三分益一”对管长作纸面推演，从81到54，再从54到72。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "81去掉1/3后的长度",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "54增加1/3后的长度",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次““你知道吗”应用阅读”，引用模型记录说明81去掉1/3后的长度的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第18、22页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-sp-01",
+    "placementId": "A-SP-01",
+    "top": 3,
+    "pages": "26-29",
+    "title": "理解并计算分段计费规则",
+    "objectives": [
+      "能识别分段计费边界，按各段规则计算总费用。"
+    ],
+    "family": "billing",
+    "variant": "",
+    "parameters": {
+      "minutes": 121
+    },
+    "mode": "score",
+    "concept": "分段收费先定位区间，再分清整段收费与超出部分收费。",
+    "challenge": "按书内28页停车示例：30分钟内免费，超过30至60分钟3元，超过60至120分钟6元，超过120分钟每新增小时5元，不足小时进一。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "停车30分钟",
+        "kind": "quantity",
+        "unit": "元"
+      },
+      {
+        "id": "q2",
+        "label": "停车61分钟",
+        "kind": "quantity",
+        "unit": "元"
+      },
+      {
+        "id": "q3",
+        "label": "停车121分钟",
+        "kind": "quantity",
+        "unit": "元"
+      }
+    ],
+    "explain": "结合这次“理解并计算分段计费规则”，引用模型记录说明停车30分钟的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第26-29页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-sp-02",
+    "placementId": "A-SP-02",
+    "top": 3,
+    "pages": "26-28",
+    "title": "调查、记录并比较计费规则",
+    "objectives": [
+      "能识别分段计费边界，按各段规则计算总费用。"
+    ],
+    "family": "billing",
+    "variant": "water",
+    "parameters": {
+      "usage": 17,
+      "threshold": 15
+    },
+    "mode": "observe",
+    "concept": "调查记录要有来源、时间、适用条件和边界，不能只抄价格。",
+    "challenge": "使用合成家庭的六个月用水量12、14、16、13、18、17立方米。比较两种自己拟定的阶梯门槛，记录各段覆盖人数与费用；不要输入真实家庭数据。",
+    "questions": [],
+    "explain": "指出你选择的门槛、观察到的影响、尚需补充的调查信息；这是一份方案记录，不是唯一正确收费政策。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第26-28页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-sp-03",
+    "placementId": "A-SP-03",
+    "top": 3,
+    "pages": "28-29",
+    "title": "用数据设计、评价和改进分段标准",
+    "objectives": [
+      "能识别分段计费边界，按各段规则计算总费用。"
+    ],
+    "family": "billing",
+    "variant": "water",
+    "parameters": {
+      "usage": 18,
+      "threshold": 15
+    },
+    "mode": "observe",
+    "concept": "评价方案既要看费用，也要看规则目的、数据代表性与不同人群。",
+    "challenge": "合成阶梯：前15立方米每立方米2元，超出部分3元。试改第一段门槛，比较12与18立方米两户，设计一项改进。",
+    "questions": [],
+    "explain": "说明你改了哪个标准，哪类用量受影响，有什么仍无法从这组数据断定。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第28-29页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-sp-04",
+    "placementId": "A-SP-04",
+    "top": 3,
+    "pages": "29",
+    "title": "项目反思与评价",
+    "objectives": [
+      "结合“项目反思与评价”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "billing",
+    "variant": "",
+    "parameters": {
+      "minutes": 120
+    },
+    "mode": "observe",
+    "concept": "反思把已知、证据和待调查问题分开。",
+    "challenge": "回看停车或合成用水的两次记录，写出一个边界错误及修正办法。",
+    "questions": [],
+    "explain": "引用一次具体时间或用量，说明当时落入哪一段；不要写真实住址、账单或联系方式。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第29页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-00",
+    "placementId": "A-U3-00",
+    "top": 4,
+    "pages": "30",
+    "title": "单元开篇与数位表",
+    "objectives": [
+      "结合“单元开篇与数位表”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 336,
+      "denominator": 100
+    },
+    "mode": "observe",
+    "concept": "计数单位与单位个数相乘得到一个数；数位表示约定需要写清。",
+    "challenge": "拨动数位计数器，记录一个整数和一个小数，把它们都解释成若干个相同单位。",
+    "questions": [],
+    "explain": "说明两次记录中“一个单位”分别是多少，哪些位值不同。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第30页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-01",
+    "placementId": "A-U3-01",
+    "top": 4,
+    "pages": "31、33、40",
+    "title": "整数、分数、小数计数单位的一致性",
+    "objectives": [
+      "能从计数单位的角度解释整数、小数和分数的组成。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 336,
+      "denominator": 100
+    },
+    "mode": "score",
+    "concept": "整数、小数、分数都由计数单位计数；3/20是3个1/20。",
+    "challenge": "把3.36按百分之一计数，4.05按百分之一计数，再看3/20。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "3.36中有几个百分之一",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "4.05中有几个百分之一",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "3/20的计数单位",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“整数、分数、小数计数单位的一致性”，引用模型记录说明3.36中有几个百分之一的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第31、33、40页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-02",
+    "placementId": "A-U3-02",
+    "top": 4,
+    "pages": "32",
+    "title": "分数基本性质与小数性质的联系",
+    "objectives": [
+      "能说明分数基本性质与小数末尾添零、去零之间的一致性。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 30,
+      "denominator": 100
+    },
+    "mode": "score",
+    "concept": "改变分数单位与单位个数可以保值；小数末尾添0不变。",
+    "challenge": "比较3/10、30/100与0.300，说明份的大小和份数怎样相互补偿。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "3/10换成百分之一的个数",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "0.3与0.300",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "前者大"
+          },
+          {
+            "id": "1",
+            "label": "相等"
+          },
+          {
+            "id": "2",
+            "label": "后者大"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“分数基本性质与小数性质的联系”，引用模型记录说明3/10换成百分之一的个数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第32页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-03",
+    "placementId": "A-U3-03",
+    "top": 4,
+    "pages": "32-33、40",
+    "title": "用相同计数单位统一比较数的大小",
+    "objectives": [
+      "能把不同形式的数统一计数单位后比较大小。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 334,
+      "denominator": 100
+    },
+    "mode": "score",
+    "concept": "大小比较是在相同单位下比较单位个数。",
+    "challenge": "把2/3与5/8通分比较，再比较3.34与3.4。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "2/3换成二十四分之一的个数",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "5/8换成二十四分之一的个数",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "3.34与3.4",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "3.34大"
+          },
+          {
+            "id": "1",
+            "label": "相等"
+          },
+          {
+            "id": "2",
+            "label": "3.34小"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“用相同计数单位统一比较数的大小”，引用模型记录说明2/3换成二十四分之一的个数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第32-33、40页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-04",
+    "placementId": "A-U3-04",
+    "top": 4,
+    "pages": "33-35、40-41",
+    "title": "加法、减法意义和计算本质的一致性",
+    "objectives": [
+      "能从合并、比较和逆运算关系解释整数、小数、分数加减法。"
+    ],
+    "family": "relation",
+    "variant": "expression",
+    "parameters": {
+      "total": 135,
+      "part": 24,
+      "den": 100
+    },
+    "mode": "score",
+    "concept": "加减都要对齐相同计数单位；减法是加法的逆运算。",
+    "challenge": "比较135+24、1/5+2/7与3.4+1.25，选择适合的单位完成计算。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "135+24",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "1/5+2/7",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "3.4+1.25",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“加法、减法意义和计算本质的一致性”，引用模型记录说明135+24的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第33-35、40-41页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-05",
+    "placementId": "A-U3-05",
+    "top": 4,
+    "pages": "35-37、40-41",
+    "title": "乘法意义、积的计数单位与运算律",
+    "objectives": [
+      "能用倍、几分之几和重复相加解释不同数域中的乘法。"
+    ],
+    "family": "decimal",
+    "variant": "vertical",
+    "parameters": {
+      "a": 240,
+      "b": 350
+    },
+    "mode": "score",
+    "concept": "乘法同时计算计数单位的乘积和个数的乘积，分配律可以拆开解释。",
+    "challenge": "计算24×35的四部分积，再看2/5×3/4与0.3×0.6。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "24×35",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "2/5×3/4",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "0.3×0.6",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“乘法意义、积的计数单位与运算律”，引用模型记录说明24×35的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第35-37、40-41页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-06",
+    "placementId": "A-U3-06",
+    "top": 4,
+    "pages": "38-39、41",
+    "title": "除法意义、商的计数单位与转化为乘倒数",
+    "objectives": [
+      "能用平均分、包含除和乘除互逆解释不同数域中的除法。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 30,
+      "b": 40
+    },
+    "mode": "score",
+    "concept": "除以非零数等于乘它的倒数；除法与乘法互逆。",
+    "challenge": "将3/10÷2/5统一为十分之一计数，再用乘倒数核对。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "3/10÷2/5",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "4÷0.2",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "除法转乘倒数时除数能否为0",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "能"
+          },
+          {
+            "id": "1",
+            "label": "不能"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“除法意义、商的计数单位与转化为乘倒数”，引用模型记录说明3/10÷2/5的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第38-39、41页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-u3-07",
+    "placementId": "A-U3-07",
+    "top": 4,
+    "pages": "40-41",
+    "title": "练习六与单元反思",
+    "objectives": [
+      "能从计数单位的角度解释整数、小数和分数的组成。",
+      "能说明分数基本性质与小数末尾添零、去零之间的一致性。",
+      "能把不同形式的数统一计数单位后比较大小。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 49,
+      "denominator": 100
+    },
+    "mode": "score",
+    "concept": "练习六把不同数域中的计算联系起来，但保留计数单位差异。",
+    "challenge": "0.49÷0.07与49÷7；0.07×0.4；3030.03中百分之一的个数。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "0.49÷0.07",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "0.07×0.4",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "3030.03有几个百分之一",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习六与单元反思”，引用模型记录说明0.49÷0.07的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第40-41页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-bin-01",
+    "placementId": "A-BIN-01",
+    "top": 5,
+    "pages": "42",
+    "title": "二进制表示与“满二进一”",
+    "objectives": [
+      "能理解二进制只使用零和一，并按满二进一规则表示数量。"
+    ],
+    "family": "place",
+    "variant": "base",
+    "parameters": {
+      "base": 2,
+      "digits": 9
+    },
+    "mode": "score",
+    "concept": "二进制只用0与1，每相邻数位满二进一。",
+    "challenge": "用位值开关摆出十进制9，观察从7加1的进位。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "二进制1001表示十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "十进制8的二进制写作（按数码输入）",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“二进制表示与“满二进一””，引用模型记录说明二进制1001表示十进制的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第42页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-bin-02",
+    "placementId": "A-BIN-02",
+    "top": 5,
+    "pages": "43",
+    "title": "二进制计数单位及与十进制互化",
+    "objectives": [
+      "能依据二进制位值在二进制数和十进制数之间转换。"
+    ],
+    "family": "place",
+    "variant": "base",
+    "parameters": {
+      "base": 2,
+      "digits": 21
+    },
+    "mode": "score",
+    "concept": "二进制各位权从右向左依次是1、2、4、8、16……。",
+    "challenge": "把10101₂与110101₂改写成十进制，并反过来摆出21。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "10101₂对应十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "110101₂对应十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“二进制计数单位及与十进制互化”，引用模型记录说明10101₂对应十进制的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第43页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-bin-03",
+    "placementId": "A-BIN-03",
+    "top": 5,
+    "pages": "43",
+    "title": "五进制、八进制与一般进制规律",
+    "objectives": [
+      "能理解二进制只使用零和一，并按满二进一规则表示数量。",
+      "能依据二进制位值在二进制数和十进制数之间转换。"
+    ],
+    "family": "place",
+    "variant": "base",
+    "parameters": {
+      "base": 5,
+      "digits": 25
+    },
+    "mode": "score",
+    "concept": "满几进一决定每一位的权值，不只二进制遵守位值思想。",
+    "challenge": "分别选五进制、八进制，比较100与10的值。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "100₅对应十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "100₈对应十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "10₈对应十进制",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“五进制、八进制与一般进制规律”，引用模型记录说明100₅对应十进制的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第43页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.a-bin-04",
+    "placementId": "A-BIN-04",
+    "top": 5,
+    "pages": "43",
+    "title": "回顾反思",
+    "objectives": [
+      "结合“回顾反思”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "place",
+    "variant": "base",
+    "parameters": {
+      "base": 2,
+      "digits": 13
+    },
+    "mode": "observe",
+    "concept": "同一个量可用不同进制表示，写法不同不等于数量改变。",
+    "challenge": "在二、五、八、十进制间表示同一个合成数量，留两条记录并提出一个进位问题。",
+    "questions": [],
+    "explain": "比较你保存的两种表示，说明不变的数量与改变的数码位置。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第43页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b01",
+    "placementId": "B01",
+    "top": 6,
+    "pages": "45-46",
+    "title": "比的意义、方向和记法",
+    "objectives": [
+      "能根据两个数量的比较关系正确写比、读比并辨认前项和后项。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 3,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "比有方向：前项和后项对应的对象不能交换。",
+    "challenge": "3杯纯橙汁、2杯水；联系杯子模型，区分汁与水、汁与整份。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "汁与水的前项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "汁与水的后项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "汁占整份的分率",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“比的意义、方向和记法”，引用模型记录说明汁与水的前项的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第45-46页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b02",
+    "placementId": "B02",
+    "top": 6,
+    "pages": "46",
+    "title": "比与除法、分数的关系",
+    "objectives": [
+      "能说明比、除法和分数之间的对应关系，同时辨认各自表示的对象。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 2,
+      "second": 1,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "a∶b=a÷b=a/b（b≠0），记法相关但问题中的对象仍需解释。",
+    "challenge": "面粉与水2∶1，扩大配方；同时说清后项为什么不能为0。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "8千克面粉需要水",
+        "kind": "quantity",
+        "unit": "千克"
+      },
+      {
+        "id": "q2",
+        "label": "2∶1的比值",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "作为除法关系时后项0是否允许",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "允许"
+          },
+          {
+            "id": "1",
+            "label": "不允许"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“比与除法、分数的关系”，引用模型记录说明8千克面粉需要水的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第46页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b03",
+    "placementId": "B03",
+    "top": 6,
+    "pages": "47-48",
+    "title": "比值及其量纲意义",
+    "objectives": [
+      "能求比值，并结合单位判断比值表示倍数还是复合量比率。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 6,
+      "second": 1,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "同类量的比值可表示倍数；不同类量的比值形成带单位的率。",
+    "challenge": "比较无人机A的6000平方米/10分与B的7500平方米/15分。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "A每分钟喷洒面积",
+        "kind": "quantity",
+        "unit": "平方米/分"
+      },
+      {
+        "id": "q2",
+        "label": "B每分钟喷洒面积",
+        "kind": "quantity",
+        "unit": "平方米/分"
+      },
+      {
+        "id": "q3",
+        "label": "哪架快",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "A"
+          },
+          {
+            "id": "1",
+            "label": "B"
+          },
+          {
+            "id": "2",
+            "label": "相同"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“比值及其量纲意义”，引用模型记录说明A每分钟喷洒面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第47-48页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b04",
+    "placementId": "B04",
+    "top": 6,
+    "pages": "52",
+    "title": "比的基本性质",
+    "objectives": [
+      "能说明并使用比的前后项同时乘或除以同一非零数。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 1,
+      "second": 4,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "前后项同时乘除同一个非零数，比值不变。",
+    "challenge": "比较15∶60、30∶120与60∶240蜂蜜水；指出共同缩放和只改一项的差别。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "蜂蜜与水比值",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "蜂蜜占蜂蜜水的分率",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "三杯甜度（仅按配方比例）",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "第一杯最甜"
+          },
+          {
+            "id": "1",
+            "label": "一样"
+          },
+          {
+            "id": "2",
+            "label": "第三杯最甜"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“比的基本性质”，引用模型记录说明蜂蜜与水比值的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第52页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b05",
+    "placementId": "B05",
+    "top": 6,
+    "pages": "52-53",
+    "title": "化简比",
+    "objectives": [
+      "能把整数、小数和分数比化成最简单整数比。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 2,
+      "second": 3,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "最简整数比的两项为互质整数；小数和分数比也可先共同转成整数。",
+    "challenge": "化简12∶18、5/6∶3/4和1.8∶0.09。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "12∶18化简后前项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "12∶18化简后后项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "5/6∶3/4化简后前项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q4",
+        "label": "5/6∶3/4化简后后项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q5",
+        "label": "1.8∶0.09的比值",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“化简比”，引用模型记录说明12∶18化简后前项的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第52-53页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b06",
+    "placementId": "B06",
+    "top": 6,
+    "pages": "53-54",
+    "title": "按比分配",
+    "objectives": [
+      "能根据总量和各部分的比求各部分数量并检验总和。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 3,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "按比分配先把总量看作总份数，再分到各部分并检验总和。",
+    "challenge": "500克青团皮，糯米粉与草浆3∶2；再看含馅料5∶3∶2的500克青团。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "两种皮中糯米粉",
+        "kind": "quantity",
+        "unit": "克"
+      },
+      {
+        "id": "q2",
+        "label": "两种皮中草浆",
+        "kind": "quantity",
+        "unit": "克"
+      },
+      {
+        "id": "q3",
+        "label": "三种材料中豆沙",
+        "kind": "quantity",
+        "unit": "克"
+      }
+    ],
+    "explain": "结合这次“按比分配”，引用模型记录说明两种皮中糯米粉的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第53-54页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b07",
+    "placementId": "B07",
+    "top": 6,
+    "pages": "58",
+    "title": "比例的意义和项",
+    "objectives": [
+      "能判断两个比是否相等并组成比例。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 2,
+      "sy": 1,
+      "divisor": 1
+    },
+    "mode": "score",
+    "concept": "比例表示两个比相等，图形形状相同要看对应边的比一致。",
+    "challenge": "比较3∶2与6∶4，再用长宽联动图检验是否同比例。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "3∶2和6∶4能否组成比例",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "能"
+          },
+          {
+            "id": "1",
+            "label": "不能"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "label": "只把长扩大2倍、宽不变，形状是否保持",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "保持"
+          },
+          {
+            "id": "1",
+            "label": "不保持"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“比例的意义和项”，引用模型记录说明3∶2和6∶4能否组成比例的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第58页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b08",
+    "placementId": "B08",
+    "top": 6,
+    "pages": "59-60 上半",
+    "title": "比例的基本性质",
+    "objectives": [
+      "能运用内项积等于外项积判断比例和求未知项。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 4,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "比例a∶b=c∶d中ad=bc，分母b、d不为0。",
+    "challenge": "对4∶2=3∶1.5计算内外项积，再求8∶2=24∶x。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "外项积4×1.5",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "内项积2×3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "未知项x",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“比例的基本性质”，引用模型记录说明外项积4×1.5的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第59-60 上半页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b09",
+    "placementId": "B09",
+    "top": 6,
+    "pages": "60 下半",
+    "title": "用比例解决同倍率问题",
+    "objectives": [
+      "能识别情境中的相同比例关系并解决对应量问题。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 1,
+      "second": 8,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "同样甜指糖与水的比相同，水增加，糖按相同倍率增加。",
+    "challenge": "25克糖配200克水，改用300克水。用比例和单位份额两种思路求糖量。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "应加糖量",
+        "kind": "quantity",
+        "unit": "克"
+      },
+      {
+        "id": "q2",
+        "label": "糖与水的比值",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“用比例解决同倍率问题”，引用模型记录说明应加糖量的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第60 下半页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b10",
+    "placementId": "B10",
+    "top": 6,
+    "pages": "49-51",
+    "title": "练习七：比、比值和量纲综合",
+    "objectives": [
+      "能根据两个数量的比较关系正确写比、读比并辨认前项和后项。",
+      "能说明比、除法和分数之间的对应关系，同时辨认各自表示的对象。",
+      "能求比值，并结合单位判断比值表示倍数还是复合量比率。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 3,
+      "second": 5,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "练习七涉及单位统一、比值与单位量，不能只比总数。",
+    "challenge": "爸爸身高1.75米，孩子136厘米；再比较点球6/10与9/12。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "统一厘米后爸爸身高",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "第一名进球率",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "第二名进球率",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q4",
+        "label": "哪名进球率较高",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "第一名"
+          },
+          {
+            "id": "1",
+            "label": "第二名"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“练习七：比、比值和量纲综合”，引用模型记录说明统一厘米后爸爸身高的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第49-51页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b11",
+    "placementId": "B11",
+    "top": 6,
+    "pages": "55-57",
+    "title": "练习八：基本性质、化简与分配综合",
+    "objectives": [
+      "能说明并使用比的前后项同时乘或除以同一非零数。",
+      "能把整数、小数和分数比化成最简单整数比。",
+      "能根据总量和各部分的比求各部分数量并检验总和。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 1,
+      "second": 4,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "基本性质、分配和“部分对整体”的比要结合使用。",
+    "challenge": "300毫升饮料汁与水1∶4；36公顷按4∶5分大豆和玉米；化简0.32∶0.8。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "饮料中汁体积",
+        "kind": "quantity",
+        "unit": "毫升"
+      },
+      {
+        "id": "q2",
+        "label": "大豆种植面积",
+        "kind": "quantity",
+        "unit": "公顷"
+      },
+      {
+        "id": "q3",
+        "label": "化简0.32∶0.8后的比值",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习八：基本性质、化简与分配综合”，引用模型记录说明饮料中汁体积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第55-57页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b12",
+    "placementId": "B12",
+    "top": 6,
+    "pages": "61-63",
+    "title": "练习九：比例判断和应用综合",
+    "objectives": [
+      "能判断两个比是否相等并组成比例。",
+      "能运用内项积等于外项积判断比例和求未知项。",
+      "能识别情境中的相同比例关系并解决对应量问题。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 8,
+      "second": 1,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "比例应用要对应同一条件下的数量，不是任意两组数都成比例。",
+    "challenge": "汽车3小时240千米，速度不变；4小时路程和600千米所需时间是多少？再检查两杯蜂蜜水25∶200与30∶250。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "4小时路程",
+        "kind": "quantity",
+        "unit": "千米"
+      },
+      {
+        "id": "q2",
+        "label": "600千米所需时间",
+        "kind": "quantity",
+        "unit": "小时"
+      },
+      {
+        "id": "q3",
+        "label": "两杯蜂蜜水能否组成相同配方比例",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "能"
+          },
+          {
+            "id": "1",
+            "label": "不能"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“练习九：比例判断和应用综合”，引用模型记录说明4小时路程的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第61-63页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b13",
+    "placementId": "B13",
+    "top": 6,
+    "pages": "44《考工记》合金配比导语",
+    "title": "单元导语、文化阅读、动手调查和评价",
+    "objectives": [
+      "结合“单元导语、文化阅读、动手调查和评价”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 3,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "observe",
+    "concept": "教材的文化阅读说明比可记录配方；历史记载不替代今天的实践规范。",
+    "challenge": "用合成两色珠子3∶2、5∶2比较“每份相同”与“总数相同”。只在屏幕模型中记录，不进行真实配制。",
+    "questions": [],
+    "explain": "说明你的两个比各在比较什么，记录一次把“部分与部分”错写成“部分与整体”的可能误解。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第44《考工记》合金配比导语页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b14",
+    "placementId": "B14",
+    "top": 7,
+    "pages": "64-67",
+    "title": "黄金比探究与应用",
+    "objectives": [
+      "能求比值，并结合单位判断比值表示倍数还是复合量比率。",
+      "能判断两个比是否相等并组成比例。"
+    ],
+    "family": "golden",
+    "variant": "",
+    "parameters": {
+      "width": 62,
+      "step": 7
+    },
+    "mode": "score",
+    "concept": "斐波那契数列从1、1开始，后项为前两项之和；相邻比值接近0.618，不是有限小数精确值。",
+    "challenge": "接着1、1、2、3、5、8、13，计算21/34到三位小数，再对100×61.8长方形作切正方形观察。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "13后的一项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "21÷34保留三位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "61.8÷100",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“黄金比探究与应用”，引用模型记录说明13后的一项的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第64-67页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b15",
+    "placementId": "B15",
+    "top": 7,
+    "pages": "66-67",
+    "title": "资料收集、创作展示与反思评价",
+    "objectives": [
+      "结合“资料收集、创作展示与反思评价”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "golden",
+    "variant": "",
+    "parameters": {
+      "width": 62,
+      "step": 7
+    },
+    "mode": "observe",
+    "concept": "构图可以借助比例，也取决于目的、文化与个人偏好。",
+    "challenge": "改变长方形宽与长的比，保存两种构图。提出你更喜欢哪一种以及理由，也可以不喜欢0.618附近。",
+    "questions": [],
+    "explain": "引用两次模型宽长与比值的记录，区分测量事实和审美意见；不填写真人身体数据。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第66-67页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b16",
+    "placementId": "B16",
+    "top": 8,
+    "pages": "69-71",
+    "title": "圆的认识、画圆和基本特征",
+    "objectives": [
+      "能辨认圆心、半径和直径，按要求画圆并运用同圆半径相等等特征。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 3,
+      "angle": 90,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "圆心确定位置，半径确定大小；同圆半径相等，直径是半径两倍。",
+    "challenge": "分别建半径3厘米的圆与直径3厘米的圆。用半径线和直径线核对。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "半径3厘米的圆直径",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "直径3厘米的圆半径",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“圆的认识、画圆和基本特征”，引用模型记录说明半径3厘米的圆直径的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第69-71页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b17",
+    "placementId": "B17",
+    "top": 8,
+    "pages": "72",
+    "title": "扇形、弧和圆心角",
+    "objectives": [
+      "能识别扇形及圆心角、半径和弧之间的关系。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 4,
+      "angle": 90,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "扇形由两条半径和一段弧围成；圆心角顶点在圆心。",
+    "challenge": "调节同一圆的扇形角度，比较90°与180°分别占整圆几分之几。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "90°扇形占整圆",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "180°扇形占整圆",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "弦与弧围成且不通过圆心的部分必为扇形吗",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "是"
+          },
+          {
+            "id": "1",
+            "label": "不是"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“扇形、弧和圆心角”，引用模型记录说明90°扇形占整圆的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第72页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b18",
+    "placementId": "B18",
+    "top": 8,
+    "pages": "73",
+    "title": "用圆和图形运动设计图案",
+    "objectives": [
+      "能辨认圆心、半径和直径，按要求画圆并运用同圆半径相等等特征。",
+      "能识别扇形及圆心角、半径和弧之间的关系。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 4,
+      "angle": 60,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "observe",
+    "concept": "圆的平移、旋转和对称可生成图案；构造依据是圆心与半径。",
+    "challenge": "选择半径与扇形角，在模型中设计并记录两种图案，说明它们之间的一种变化。",
+    "questions": [],
+    "explain": "指出哪些圆心/半径/角度保持，哪些改变；美观评价是你的意见，不作唯一判分。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第73页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b19",
+    "placementId": "B19",
+    "top": 8,
+    "pages": "74-75",
+    "title": "练习十：圆要素、扇形与图案",
+    "objectives": [
+      "能辨认圆心、半径和直径，按要求画圆并运用同圆半径相等等特征。",
+      "能识别扇形及圆心角、半径和弧之间的关系。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 4,
+      "angle": 90,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "圆要素与扇形可联合检验，运动位置不会改变半径。",
+    "challenge": "半径20厘米的圆直径是多少？钟面分针走15分钟扫过多少度、占整圆多少？",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "直径",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "扫过角度",
+        "kind": "quantity",
+        "unit": "度"
+      },
+      {
+        "id": "q3",
+        "label": "占整圆",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习十：圆要素、扇形与图案”，引用模型记录说明直径的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第74-75页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b20",
+    "placementId": "B20",
+    "top": 8,
+    "pages": "76-77",
+    "title": "圆的周长、圆周率与公式",
+    "objectives": [
+      "能根据半径或直径求圆周长并解释圆周率。"
+    ],
+    "family": "circle",
+    "variant": "perimeter",
+    "parameters": {
+      "radius": 7,
+      "angle": 360,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "周长是边界长度，周长÷直径等于π；测量有误差，公式与测量记录要分开。",
+    "challenge": "改变圆的半径观察滚动一周；计算半径14米喷水池的周长（本题π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "半径14米圆周长",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "周长31.4厘米圆的直径",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“圆的周长、圆周率与公式”，引用模型记录说明半径14米圆周长的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第76-77页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b21",
+    "placementId": "B21",
+    "top": 8,
+    "pages": "68、71、78、87",
+    "title": "圆的文化史、生活阅读和单元评价",
+    "objectives": [
+      "结合“圆的文化史、生活阅读和单元评价”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 3,
+      "angle": 120,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "observe",
+    "concept": "“一中同长”可联系同圆半径相等；文化材料和数学论证各有作用。 教材还介绍刘徽割圆术与祖冲之对圆周率的研究；本课用增加分割份数感受逼近思想，不宣称有限切拼就是严格极限证明。",
+    "challenge": "改变半径与角度，记录同一圆内两条半径的等长关系；再看圆周率的近似取值。",
+    "questions": [],
+    "explain": "用图示半径说明你的理解，并写清3.14是π近似值，不用“最美”给所有人下结论。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六上，书内68、71、78、87页，Rondo阅读与观察改编。"
+  },
+  {
+    "id": "math6.b22",
+    "placementId": "B22",
+    "top": 8,
+    "pages": "79-81 上半",
+    "title": "圆面积公式的推导与计算",
+    "objectives": [
+      "能根据半径或直径求圆面积并说明公式中的量。"
+    ],
+    "family": "circle",
+    "variant": "area",
+    "parameters": {
+      "radius": 5,
+      "angle": 360,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "把圆等分切拼，面积不变；份数增多时形状趋近长方形，长趋近πr、宽趋近r。",
+    "challenge": "分别观察8、16、32份切拼，再计算最远喷水5米的喷灌面积（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "半径5米的圆面积",
+        "kind": "quantity",
+        "unit": "平方米"
+      },
+      {
+        "id": "q2",
+        "label": "直径18米鸡圈面积保留整数",
+        "kind": "quantity",
+        "unit": "平方米"
+      }
+    ],
+    "explain": "结合这次“圆面积公式的推导与计算”，引用模型记录说明半径5米的圆面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第79-81 上半页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b23",
+    "placementId": "B23",
+    "top": 8,
+    "pages": "81 下半",
+    "title": "圆环、半圆和圆组合图形",
+    "objectives": [
+      "能把半圆、圆环或组合图形分解并求周长或面积。"
+    ],
+    "family": "circle",
+    "variant": "annulus",
+    "parameters": {
+      "radius": 10,
+      "inner": 6,
+      "angle": 180,
+      "slices": 16,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "组合面积可分解；圆环是外圆减内圆，半圆周长还包含直径。",
+    "challenge": "外半径10厘米、内半径6厘米圆环；边长1.8米正方形上接直径1.8米半圆（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "圆环面积",
+        "kind": "quantity",
+        "unit": "平方厘米"
+      },
+      {
+        "id": "q2",
+        "label": "组合窗面积",
+        "kind": "quantity",
+        "unit": "平方米"
+      },
+      {
+        "id": "q3",
+        "label": "半径2厘米的半圆完整周长",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“圆环、半圆和圆组合图形”，引用模型记录说明圆环面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第81 下半页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b24",
+    "placementId": "B24",
+    "top": 8,
+    "pages": "82-87",
+    "title": "练习十一、整理与练习：圆的综合巩固",
+    "objectives": [
+      "能根据半径或直径求圆周长并解释圆周率。",
+      "能根据半径或直径求圆面积并说明公式中的量。",
+      "能把半圆、圆环或组合图形分解并求周长或面积。"
+    ],
+    "family": "circle",
+    "variant": "annulus",
+    "parameters": {
+      "radius": 10,
+      "inner": 8,
+      "angle": 360,
+      "slices": 16,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "综合题把周长反求半径、单位换算、面积与边界分别处理。",
+    "challenge": "周长94.2厘米坐垫；半径8米水池外2米宽小路；两条直边各20米加两半圆半径5米跑道（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "坐垫面积",
+        "kind": "quantity",
+        "unit": "平方厘米"
+      },
+      {
+        "id": "q2",
+        "label": "小路面积",
+        "kind": "quantity",
+        "unit": "平方米"
+      },
+      {
+        "id": "q3",
+        "label": "跑道外边界长度",
+        "kind": "quantity",
+        "unit": "米"
+      }
+    ],
+    "explain": "结合这次“练习十一、整理与练习：圆的综合巩固”，引用模型记录说明坐垫面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第82-87页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b25",
+    "placementId": "B25",
+    "top": 9,
+    "pages": "88-91",
+    "title": "体育问题的数学化研究",
+    "objectives": [
+      "能求比值，并结合单位判断比值表示倍数还是复合量比率。",
+      "能根据半径或直径求圆周长并解释圆周率。",
+      "能根据半径或直径求圆面积并说明公式中的量。"
+    ],
+    "family": "relation",
+    "variant": "sports",
+    "parameters": {
+      "total": 50,
+      "part": 25,
+      "den": 50
+    },
+    "mode": "score",
+    "concept": "体育研究先限定赛制与指标，再用数学比较；单个指标不代表完整表现。",
+    "challenge": "按教材32队赛制，冠军小组赛3场再四轮淘汰；比较排球8号25/50与10号11/21的扣球成功率（后者保留两位）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "该赛制冠军比赛场数",
+        "kind": "quantity",
+        "unit": "场"
+      },
+      {
+        "id": "q2",
+        "label": "8号扣球成功率",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "10号扣球成功率保留两位",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“体育问题的数学化研究”，引用模型记录说明该赛制冠军比赛场数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第88-91页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b26",
+    "placementId": "B26",
+    "top": 9,
+    "pages": "88-91",
+    "title": "研究计划、展示和反思评价流程",
+    "objectives": [
+      "结合“研究计划、展示和反思评价流程”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "relation",
+    "variant": "sports",
+    "parameters": {
+      "total": 50,
+      "part": 25,
+      "den": 50
+    },
+    "mode": "observe",
+    "concept": "研究计划包含问题、数据、方法、局限和下一步，不需要收集真人隐私。",
+    "challenge": "围绕给定合成命中数据制定比较计划，留一次比值记录，提出一个可能影响判断但未记录的因素。",
+    "questions": [],
+    "explain": "说明研究问题、选用的指标及仍缺少的信息；这是研究记录，不判运动员优劣。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第88-91页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-00",
+    "placementId": "U6-00",
+    "top": 10,
+    "pages": "92",
+    "title": "放大与缩小：单元导入",
+    "objectives": [
+      "结合“放大与缩小：单元导入”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 2,
+      "sy": 1,
+      "divisor": 1
+    },
+    "mode": "observe",
+    "concept": "放大缩小讲的是对应边同比变化，地标照片大小不是实物大小。",
+    "challenge": "比较横向拉伸与等比放大的矩形，保存一组保持形状和一组改变形状的记录。",
+    "questions": [],
+    "explain": "指出两组横纵倍率，说明如何判断；不把改变大小等同改变角。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第92页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-01",
+    "placementId": "U6-01",
+    "top": 10,
+    "pages": "93-94",
+    "title": "按比放大缩小的意义与不变量",
+    "objectives": [
+      "能判断图形按比例放大或缩小，并说明形状不变、对应边成比例。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 1,
+      "sy": 1,
+      "divisor": 1
+    },
+    "mode": "score",
+    "concept": "对应边用相同倍率，角度不变；面积倍率是边长倍率的平方。",
+    "challenge": "原照片长6厘米、宽4厘米，按2∶1放大。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "新长",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "新宽",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q3",
+        "label": "面积变为原来的倍数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“按比放大缩小的意义与不变量”，引用模型记录说明新长的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第93-94页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-02",
+    "placementId": "U6-02",
+    "top": 10,
+    "pages": "95",
+    "title": "方格纸上按比放大或缩小图形",
+    "objectives": [
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 1,
+      "sy": 1,
+      "divisor": 1
+    },
+    "mode": "score",
+    "concept": "网格上按比构造要保持对应边的倍率与对应角。",
+    "challenge": "把模型中的底3格、高2格梯形按2∶1放大，横纵倍率都调好并保存模型记录。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "新底长度",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q2",
+        "label": "新高",
+        "kind": "quantity",
+        "unit": "格"
+      }
+    ],
+    "explain": "结合这次“方格纸上按比放大或缩小图形”，引用模型记录说明新底长度的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第95页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-03",
+    "placementId": "U6-03",
+    "top": 10,
+    "pages": "98-99",
+    "title": "比例尺的意义、表示与求法",
+    "objectives": [
+      "能解释图上距离与实际距离的比，并在数值比例尺和线段比例尺间转换。"
+    ],
+    "family": "scale",
+    "variant": "map",
+    "parameters": {
+      "mapCm": 5,
+      "denominator": 1000
+    },
+    "mode": "score",
+    "concept": "比例尺是图上距离∶实际距离，必须先统一单位。",
+    "challenge": "草坪图上4.8厘米，实际48米；解释数值比例尺和每1厘米代表多少米。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "比例尺1∶n中的n",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "图上1厘米表示实际",
+        "kind": "quantity",
+        "unit": "米"
+      }
+    ],
+    "explain": "结合这次“比例尺的意义、表示与求法”，引用模型记录说明比例尺1∶n中的n的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第98-99页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-04",
+    "placementId": "U6-04",
+    "top": 10,
+    "pages": "99-100",
+    "title": "比例尺三量换算与平面图定位",
+    "objectives": [
+      "能根据比例尺换算图上距离、实际距离并在平面图上确定位置。"
+    ],
+    "family": "position",
+    "variant": "map",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 0,
+      "distance": 20
+    },
+    "mode": "score",
+    "concept": "图上与实际距离换算后，还需要观测点和方向才能定位。",
+    "challenge": "比例尺1∶8000，学校到少年宫图上5厘米；医院在学校正北200米。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "少年宫实际距离",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "医院图上距离",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“比例尺三量换算与平面图定位”，引用模型记录说明少年宫实际距离的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第99-100页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-05",
+    "placementId": "U6-05",
+    "top": 10,
+    "pages": "96-97",
+    "title": "练习十二：识别、量比与画图",
+    "objectives": [
+      "能判断图形按比例放大或缩小，并说明形状不变、对应边成比例。",
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 1,
+      "sy": 1,
+      "divisor": 3
+    },
+    "mode": "score",
+    "concept": "放缩综合检验对应边、角和面积，不能只量一边。",
+    "challenge": "三角形按1∶3缩小，原边6厘米；原图对应另一边4.8厘米；等腰直角三角形按3∶1放大。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "6厘米边缩小后",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "4.8厘米边缩小后",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q3",
+        "label": "放大后面积倍数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习十二：识别、量比与画图”，引用模型记录说明6厘米边缩小后的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第96-97页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-06",
+    "placementId": "U6-06",
+    "top": 10,
+    "pages": "101-102",
+    "title": "练习十三：比例尺综合应用",
+    "objectives": [
+      "能解释图上距离与实际距离的比，并在数值比例尺和线段比例尺间转换。",
+      "能根据比例尺换算图上距离、实际距离并在平面图上确定位置。"
+    ],
+    "family": "scale",
+    "variant": "map",
+    "parameters": {
+      "mapCm": 3,
+      "denominator": 5000
+    },
+    "mode": "score",
+    "concept": "同一图上长度在不同尺度下代表不同实际长度。",
+    "challenge": "3厘米分别在1∶5000、1∶2000图上；原1∶2000图2厘米线段换到1∶5000图。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1∶5000图3厘米实际",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "1∶2000图3厘米实际",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q3",
+        "label": "换图后线段长",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“练习十三：比例尺综合应用”，引用模型记录说明1∶5000图3厘米实际的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第101-102页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-07",
+    "placementId": "U6-07",
+    "top": 10,
+    "pages": "102",
+    "title": "放大与缩小：评价与反思",
+    "objectives": [
+      "结合“放大与缩小：评价与反思”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1
+    },
+    "mode": "observe",
+    "concept": "评价基于自己的图形与换算记录，完成不等于掌握。",
+    "challenge": "选一次放缩记录，检查对应边倍率；再写一个自己仍容易弄错的单位换算。",
+    "questions": [],
+    "explain": "引用具体旧、新长度或倍率，提出下一次可执行的检查办法。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第102页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u6-08",
+    "placementId": "U6-08",
+    "top": 10,
+    "pages": "102",
+    "title": "国家基本比例尺阅读",
+    "objectives": [
+      "结合“国家基本比例尺阅读”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "scale",
+    "variant": "map",
+    "parameters": {
+      "mapCm": 3,
+      "denominator": 5000
+    },
+    "mode": "observe",
+    "concept": "教材的基本比例尺阅读是固定资料，不在此验证当下地图规范。",
+    "challenge": "在1∶5000与1∶2000两个教学模型间比较同一地块，记录细节与覆盖范围的取舍。",
+    "questions": [],
+    "explain": "写明你比较的两个比例尺与一个用途，不把“分母小”误说成图上物体小。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第102页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-00",
+    "placementId": "U7-00",
+    "top": 11,
+    "pages": "103",
+    "title": "确定位置：单元导入",
+    "objectives": [
+      "结合“确定位置：单元导入”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "position",
+    "variant": "grid",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 20
+    },
+    "mode": "observe",
+    "concept": "数对是一种约定，坐标的先后顺序必须说明。",
+    "challenge": "在方格棋盘中选两个不同点，约定先列后行，从左向右、从下向上计数；记录交换数对后的变化。",
+    "questions": [],
+    "explain": "写出两次数对，说明基准点和顺序，不输入真实住址。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第103页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-01",
+    "placementId": "U7-01",
+    "top": 11,
+    "pages": "104-105",
+    "title": "用有序数对确定方格位置",
+    "objectives": [
+      "能按先列后行的约定用数对表示和读取方格中的位置。"
+    ],
+    "family": "position",
+    "variant": "grid",
+    "parameters": {
+      "col": 1,
+      "row": 1,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 20
+    },
+    "mode": "score",
+    "concept": "数对（列，行）确定一点；交换顺序通常得到不同位置。",
+    "challenge": "在模型标出第3列第4行，再比较（6，2）与（2，6）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "第3列第4行的第一项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "第3列第4行的第二项",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "（6，2）与（2，6）是否同点",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "是"
+          },
+          {
+            "id": "1",
+            "label": "不是"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“用有序数对确定方格位置”，引用模型记录说明第3列第4行的第一项的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第104-105页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-02",
+    "placementId": "U7-02",
+    "top": 11,
+    "pages": "105-107",
+    "title": "用方向、角度和距离描述位置",
+    "objectives": [
+      "能以观测点为中心，用方向、夹角和实际距离准确描述位置。"
+    ],
+    "family": "position",
+    "variant": "",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 10
+    },
+    "mode": "score",
+    "concept": "只有方向得到射线，方向加距离才能在给定平面中确定一点。",
+    "challenge": "以O为观测点，标出北偏东30°、20千米处，比较同方向不同距离。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "从正北向东偏角",
+        "kind": "quantity",
+        "unit": "度"
+      },
+      {
+        "id": "q2",
+        "label": "离O距离",
+        "kind": "quantity",
+        "unit": "千米"
+      },
+      {
+        "id": "q3",
+        "label": "只说东北方向能否唯一定位",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "能"
+          },
+          {
+            "id": "1",
+            "label": "不能"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“用方向、角度和距离描述位置”，引用模型记录说明从正北向东偏角的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第105-107页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-03",
+    "placementId": "U7-03",
+    "top": 11,
+    "pages": "107-108",
+    "title": "按方向、角度和距离画出位置",
+    "objectives": [
+      "能根据方向、夹角和距离条件在平面图上确定并标出位置。"
+    ],
+    "family": "position",
+    "variant": "",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 10
+    },
+    "mode": "score",
+    "concept": "构造位置可先画方向射线再取距离，也可先定距离圆弧再定方向。",
+    "challenge": "清凉岛在O南偏西40°方向20千米处，图上1厘米代表10千米。请操作定位并记录。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "图上距离",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "南向西偏角",
+        "kind": "quantity",
+        "unit": "度"
+      }
+    ],
+    "explain": "结合这次“按方向、角度和距离画出位置”，引用模型记录说明图上距离的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第107-108页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-04",
+    "placementId": "U7-04",
+    "top": 11,
+    "pages": "109-111",
+    "title": "练习十四：位置综合应用",
+    "objectives": [
+      "能按先列后行的约定用数对表示和读取方格中的位置。",
+      "能以观测点为中心，用方向、夹角和实际距离准确描述位置。",
+      "能根据方向、夹角和距离条件在平面图上确定并标出位置。"
+    ],
+    "family": "position",
+    "variant": "grid",
+    "parameters": {
+      "col": 6,
+      "row": 2,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 30
+    },
+    "mode": "score",
+    "concept": "综合定位把数对路线、方向距离和观测点转换分开。",
+    "challenge": "路线（6，2）到（9，2）再到（9，4）；另把北偏东30°方向30千米目标反向描述回O。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "先向东走的格数",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q2",
+        "label": "再向北走的格数",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q3",
+        "label": "从目标看O的方向",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "北偏东30°"
+          },
+          {
+            "id": "1",
+            "label": "南偏西30°"
+          },
+          {
+            "id": "2",
+            "label": "南偏东30°"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“练习十四：位置综合应用”，引用模型记录说明先向东走的格数的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第109-111页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-05",
+    "placementId": "U7-05",
+    "top": 11,
+    "pages": "111",
+    "title": "确定位置：评价与反思",
+    "objectives": [
+      "结合“确定位置：评价与反思”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "position",
+    "variant": "",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 20
+    },
+    "mode": "observe",
+    "concept": "反思要指出表示方法的条件与局限。",
+    "challenge": "保存同一位置的方格数对与方向距离记录，比较两种方法需要哪些信息。",
+    "questions": [],
+    "explain": "说明原点/观测点、轴方向、比例尺，提出一次误差检查；不要记录真实家庭位置。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第111页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-01",
+    "placementId": "R-01",
+    "top": 12,
+    "pages": "112",
+    "title": "回顾与整理：数的认识与运算",
+    "objectives": [
+      "能把一个数乘小数解释为求这个数的几分之几，并联系乘法交换律理解算式。",
+      "能联系除法意义解释一个数除以小数表示的数量关系。",
+      "能从计数单位的角度解释整数、小数和分数的组成。"
+    ],
+    "family": "place",
+    "variant": "decimal",
+    "parameters": {
+      "count": 42,
+      "denominator": 100
+    },
+    "mode": "score",
+    "concept": "数与运算复习把意义和计数单位联系，而不是只背口诀。",
+    "challenge": "将0.6×0.7、0.21÷0.3、0.12÷3/4用计数单位或逆运算解释。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "0.6×0.7",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "0.21÷0.3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "0.12÷3/4",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“回顾与整理：数的认识与运算”，引用模型记录说明0.6×0.7的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第112页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-02",
+    "placementId": "R-02",
+    "top": 12,
+    "pages": "113",
+    "title": "回顾与整理：数量关系与比和比例",
+    "objectives": [
+      "能识别单位“1”，由总量和已用部分的分率求剩余量。",
+      "能区分增加量、减少量与变化后的量，建立正确的分数数量关系。",
+      "能把工作总量看作单位“1”，用工作效率和时间解决合作工程问题。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 40,
+      "part": 2,
+      "den": 5
+    },
+    "mode": "score",
+    "concept": "数量关系复习要先辨单位“1”，再区分总量、部分与效率。",
+    "challenge": "60平方米菜地先用20平方米，余下2/5种黄瓜；4.5小时阅读再增加2/9。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "黄瓜面积",
+        "kind": "quantity",
+        "unit": "平方米"
+      },
+      {
+        "id": "q2",
+        "label": "增加后的阅读时间",
+        "kind": "quantity",
+        "unit": "小时"
+      }
+    ],
+    "explain": "结合这次“回顾与整理：数量关系与比和比例”，引用模型记录说明黄瓜面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第113页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-03",
+    "placementId": "R-03",
+    "top": 12,
+    "pages": "113",
+    "title": "回顾与整理：图形的认识与测量",
+    "objectives": [
+      "能辨认圆心、半径和直径，按要求画圆并运用同圆半径相等等特征。",
+      "能根据半径或直径求圆周长并解释圆周率。",
+      "能根据半径或直径求圆面积并说明公式中的量。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 3,
+      "angle": 360,
+      "slices": 16,
+      "assembled": 1
+    },
+    "mode": "score",
+    "concept": "圆复习同时检查r、d、C、S的单位与关系，不能把长度当面积。",
+    "challenge": "半径3分米的圆，求直径、周长、面积（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "直径",
+        "kind": "quantity",
+        "unit": "分米"
+      },
+      {
+        "id": "q2",
+        "label": "周长",
+        "kind": "quantity",
+        "unit": "分米"
+      },
+      {
+        "id": "q3",
+        "label": "面积",
+        "kind": "quantity",
+        "unit": "平方分米"
+      }
+    ],
+    "explain": "结合这次“回顾与整理：图形的认识与测量”，引用模型记录说明直径的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第113页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-04",
+    "placementId": "R-04",
+    "top": 12,
+    "pages": "113",
+    "title": "回顾与整理：图形的位置与运动",
+    "objectives": [
+      "能判断图形按比例放大或缩小，并说明形状不变、对应边成比例。",
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。",
+      "能解释图上距离与实际距离的比，并在数值比例尺和线段比例尺间转换。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1
+    },
+    "mode": "score",
+    "concept": "图形运动复习区分放缩、平移、旋转；对应关系比外观更可靠。",
+    "challenge": "按2∶1放大底3格高2格梯形，再看平移7格是否改变面积。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "新底",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q2",
+        "label": "新高",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q3",
+        "label": "平移是否改变面积",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "改变"
+          },
+          {
+            "id": "1",
+            "label": "不改变"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“回顾与整理：图形的位置与运动”，引用模型记录说明新底的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第113页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-05",
+    "placementId": "R-05",
+    "top": 12,
+    "pages": "114",
+    "title": "练习与应用：运算",
+    "objectives": [
+      "能根据两个因数的小数位数确定积的小数位数，并用估算检查合理性。",
+      "能运用商不变规律把除数转化为整数并正确计算。",
+      "能按运算顺序计算分数和小数混合运算，并选择合适的运算律简便计算。"
+    ],
+    "family": "decimal",
+    "variant": "",
+    "parameters": {
+      "a": 370,
+      "b": 46
+    },
+    "mode": "score",
+    "concept": "运算复习同时检查估计范围、运算顺序和近似精度。",
+    "challenge": "3.7×0.46、2.4÷0.26均保留两位小数，再算0.36+9.6÷3.2。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "3.7×0.46近似值",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "2.4÷0.26近似值",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "混合算式结果",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习与应用：运算”，引用模型记录说明3.7×0.46近似值的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第114页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-06",
+    "placementId": "R-06",
+    "top": 12,
+    "pages": "114-115",
+    "title": "练习与应用：数量关系",
+    "objectives": [
+      "能识别单位“1”，由总量和已用部分的分率求剩余量。",
+      "能把工作总量看作单位“1”，用工作效率和时间解决合作工程问题。",
+      "能根据总量和各部分的比求各部分数量并检验总和。"
+    ],
+    "family": "relation",
+    "variant": "work",
+    "parameters": {
+      "first": 8,
+      "second": 10,
+      "elapsed": 1
+    },
+    "mode": "score",
+    "concept": "综合应用区分按总量分配、已知部分反求总量、合作效率。",
+    "challenge": "0.78公顷按5∶1分水田旱地；两人8小时、10小时单独整理同批书。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "水田面积",
+        "kind": "quantity",
+        "unit": "公顷"
+      },
+      {
+        "id": "q2",
+        "label": "旱地面积",
+        "kind": "quantity",
+        "unit": "公顷"
+      },
+      {
+        "id": "q3",
+        "label": "合做时间",
+        "kind": "quantity",
+        "unit": "小时"
+      }
+    ],
+    "explain": "结合这次“练习与应用：数量关系”，引用模型记录说明水田面积的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第114-115页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-07",
+    "placementId": "R-07",
+    "top": 12,
+    "pages": "115-116",
+    "title": "练习与应用：圆、坐标与放缩",
+    "objectives": [
+      "能根据半径或直径求圆周长并解释圆周率。",
+      "能根据半径或直径求圆面积并说明公式中的量。",
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 2,
+      "angle": 90,
+      "slices": 16,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "圆、坐标与放缩综合练习保持各自的约定。",
+    "challenge": "在（4，3）处半径2格圆中作面积占1/4的扇形；直径45厘米车轮滚40圈（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "扇形圆心角",
+        "kind": "quantity",
+        "unit": "度"
+      },
+      {
+        "id": "q2",
+        "label": "车轮滚过长度",
+        "kind": "quantity",
+        "unit": "米"
+      }
+    ],
+    "explain": "结合这次“练习与应用：圆、坐标与放缩”，引用模型记录说明扇形圆心角的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第115-116页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-08",
+    "placementId": "R-08",
+    "top": 12,
+    "pages": "117",
+    "title": "练习与应用：比例尺与图形运动",
+    "objectives": [
+      "能解释图上距离与实际距离的比，并在数值比例尺和线段比例尺间转换。",
+      "能根据比例尺换算图上距离、实际距离并在平面图上确定位置。",
+      "能按先列后行的约定用数对表示和读取方格中的位置。"
+    ],
+    "family": "scale",
+    "variant": "motion",
+    "parameters": {
+      "sx": 1,
+      "sy": 1,
+      "divisor": 1,
+      "dx": 0,
+      "dy": 0,
+      "turn": 0,
+      "mirror": 0
+    },
+    "mode": "score",
+    "concept": "地图比例尺与网格变换应分步处理：先统一单位，再按坐标规则移动。",
+    "challenge": "1∶1000000图上表示173千米；点（9，2）向左移7格；绕原点旋转的角与长度分开比较。 延伸在合成网格中，以C为原点，点A相对C为(0,3)，顺时针转90°；点B相对C为(2,0)，关于纵轴对称。操作并记录。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "173千米的图上距离",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "平移后的列",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "平移后的行",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q4",
+        "label": "A旋转后相对C的横坐标",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q5",
+        "label": "B对称后相对C的横坐标",
+        "kind": "quantity",
+        "unit": "格"
+      }
+    ],
+    "explain": "结合这次“练习与应用：比例尺与图形运动”，引用模型记录说明173千米的图上距离的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第117页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-09",
+    "placementId": "R-09",
+    "top": 12,
+    "pages": "117-118",
+    "title": "探索与实践",
+    "objectives": [
+      "能用倍、几分之几和重复相加解释不同数域中的乘法。",
+      "能根据两个数量的比较关系正确写比、读比并辨认前项和后项。",
+      "能根据总量和各部分的比求各部分数量并检验总和。"
+    ],
+    "family": "ratio",
+    "variant": "color",
+    "parameters": {
+      "first": 1,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "探索的规律需要说明适用条件，再用新例检验；颜色混合还需实际材料验证。",
+    "challenge": "比较1/2−1/3与1/2×1/3；三堆各60枚棋子，第一堆1/3白子，第二堆黑子与第三堆白子相等。 另用合成两色色块按1∶1、1∶2记录份数，颜色只作屏幕预览，不当真实调色结论。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "1/2−1/3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "1/2×1/3",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q3",
+        "label": "三堆白子总数",
+        "kind": "quantity",
+        "unit": "枚"
+      }
+    ],
+    "explain": "结合这次“探索与实践”，引用模型记录说明1/2−1/3的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第117-118页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-10",
+    "placementId": "R-10",
+    "top": 12,
+    "pages": "118",
+    "title": "全册评价与反思",
+    "objectives": [
+      "结合“全册评价与反思”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "relation",
+    "variant": "",
+    "parameters": {
+      "total": 60,
+      "part": 1,
+      "den": 3
+    },
+    "mode": "observe",
+    "concept": "全册反思应有具体证据和可执行的补缺计划，完成课表不等于掌握。",
+    "challenge": "选一条自己保存的模型记录，写“已理解的一点、仍不足的一点、下一步怎样验证”。可选择调配颜色、设计贺卡等实践，不填真实个人信息。",
+    "questions": [],
+    "explain": "引用具体数量或图形关系，区别观察、推测与有规则的核对；为自己选一个下一次练习目标。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第118页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  }
+]

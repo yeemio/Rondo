@@ -1,0 +1,4 @@
+[
+  { "id": "rondo-ipc-router", "name": "./services/ipc-router.mjs" },
+  { "id": "rondo-learning", "name": "./services/learning-wiring.mjs" }
+]

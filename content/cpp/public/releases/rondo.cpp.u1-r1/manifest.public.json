@@ -1,0 +1,52 @@
+{
+  "releaseId": "rondo.cpp.u1-r1",
+  "taskIds": [
+    "cpp.u1.g1.receipt-trace.v1",
+    "cpp.u1.g2.pack-sweets.v1",
+    "cpp.u1.g3.member-discount.v1",
+    "cpp.u1.g4.sales-sum.v1",
+    "cpp.u1.i1.fix-boundary.v1",
+    "cpp.u1.i2.enum-count.v1",
+    "cpp.u1.i3.build-digits.v1",
+    "cpp.u1.s1.stranger-transfer.v1",
+    "cpp.u1.d1.delayed-transfer.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.steps",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "0c152e8ae2804ea92aedab58a1f8fd450c91586974e94fcdc294feff4a13708c",
+    "0d12350b4f7897cdf7923ab7f1ea629c0cfa9f7769107dd6bbcd98269e6b7133",
+    "0ed1d52b4a9b639425789ce402724f80fcba97a5e6a912feb1e5ecd1607fd49d",
+    "7b0142cb555a5034a160fd60f52c6eaec9bc6dd244b62f783976ba252cf0aa4e",
+    "7e2d4a7997e7e1cfc42cb1b85a9348efc37824c5e12f20e9df1cd1e8316751f1",
+    "8429e126ec2bc187de3f38ac0fc64684bc757e1b8e136175b77a1661b55de7c7",
+    "ad864f2c34c36b6b4e85655e8af481434359ed16e562a9211a2f557bc3cbf5a9",
+    "c818094493dd9835e98e75559fa0c134aa8024fa932d9fd876b7b742c43a9757",
+    "ca5803035916d3099e19139c78037dc5ffea2eb5a5b2d6a9afa1922134fb7694",
+    "f261bf96227e4bbba801cbb03c6e7a56c0784eb00310a78b5a0f14d5c02264c7",
+    "ffd7b5bd9ac7f293ff360d14bc6fa33909a1ece7c6e19f87f42e74e217da2f00"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "STEP_TABLE",
+      "allowedOperationIds": [
+        "EditStepProgram",
+        "SetTraceCursor"
+      ]
+    },
+    {
+      "expression": "STATE_TRACE",
+      "allowedOperationIds": [
+        "EditStepProgram",
+        "SetTraceCursor"
+      ]
+    }
+  ],
+  "publicManifestHash": "3c65c097726386d493485459b62733003ff1b6c4ea8c0b7b1b6d2486c349878a"
+}

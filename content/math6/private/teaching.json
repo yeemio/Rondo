@@ -1,0 +1,2697 @@
+{
+  "math6.u1-00": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-00",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "用自己保存的两次模型记录说明：你看见了什么、还不能据此断言什么。",
+    "hints": [
+      "先保持一条边不动，只改变另一条边。",
+      "比较长、宽和覆盖面积，注明“观察到”与“猜想”。"
+    ]
+  },
+  "math6.u1-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "3.6",
+        "unit": "元",
+        "feedback": "彩带总价：先核对数量所指的对象、运算和单位。 把0.9米看成9个0.1米。",
+        "label": "彩带总价"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "9/10",
+        "unit": "unitless",
+        "feedback": "0.9是1的几分之几（可用分数）：先核对数量所指的对象、运算和单位。 先算4×9，再想每一份的大小。",
+        "label": "0.9是1的几分之几（可用分数）"
+      }
+    ],
+    "construction": {},
+    "explanation": "先把1米平均分10份，取9份；4×9÷10=3.6元。总价不能写成36元。",
+    "hints": [
+      "把0.9米看成9个0.1米。",
+      "先算4×9，再想每一份的大小。"
+    ]
+  },
+  "math6.u1-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "0.24",
+        "unit": "平方米",
+        "feedback": "黄瓜苗育苗区面积：先核对数量所指的对象、运算和单位。 每个小格边长是0.1米。",
+        "label": "黄瓜苗育苗区面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "24",
+        "unit": "平方分米",
+        "feedback": "同一面积是多少平方分米：先核对数量所指的对象、运算和单位。 平方单位的进率要从两条边一起考虑。",
+        "label": "同一面积是多少平方分米"
+      }
+    ],
+    "construction": {},
+    "explanation": "6×4=24平方分米，1平方米=100平方分米，所以是24/100平方米。",
+    "hints": [
+      "每个小格边长是0.1米。",
+      "平方单位的进率要从两条边一起考虑。"
+    ]
+  },
+  "math6.u1-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "0.024",
+        "unit": "unitless",
+        "feedback": "0.8×0.03：先核对数量所指的对象、运算和单位。 先用8×3、7×5得到单位个数。",
+        "label": "0.8×0.03"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.0035",
+        "unit": "unitless",
+        "feedback": "0.07×0.05：先核对数量所指的对象、运算和单位。 分别想10×100与100×100作分母。",
+        "label": "0.07×0.05"
+      }
+    ],
+    "construction": {},
+    "explanation": "十分之一乘百分之一是千分之一；百分之一乘百分之一是万分之一。不要按显示位数机械漏掉占位0。",
+    "hints": [
+      "先用8×3、7×5得到单位个数。",
+      "分别想10×100与100×100作分母。"
+    ]
+  },
+  "math6.u1-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "384",
+        "unit": "unitless",
+        "feedback": "24×16：先核对数量所指的对象、运算和单位。 把16拆成10与6。",
+        "label": "24×16"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "3.84",
+        "unit": "平方米",
+        "feedback": "2.4×1.6：先核对数量所指的对象、运算和单位。 不是把384除以10；两条边都经历了单位转化。",
+        "label": "2.4×1.6"
+      }
+    ],
+    "construction": {},
+    "explanation": "24×6=144，24×10=240，总计384；两条边都扩大10倍，面积扩大100倍，故还原为3.84平方米。",
+    "hints": [
+      "把16拆成10与6。",
+      "不是把384除以10；两条边都经历了单位转化。"
+    ]
+  },
+  "math6.u1-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "9.38",
+        "unit": "元",
+        "feedback": "应付金额（保留两位小数）：先核对数量所指的对象、运算和单位。 先别在中间步骤提前舍入。",
+        "label": "应付金额（保留两位小数）"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.6",
+        "unit": "unitless",
+        "feedback": "7.2×0.09保留一位小数：先核对数量所指的对象、运算和单位。 保留哪一位，就观察它右边紧邻的一位。",
+        "label": "7.2×0.09保留一位小数"
+      }
+    ],
+    "construction": {},
+    "explanation": "6.25×1.5=9.375，百分位后是5，进一到9.38元；0.648保留一位是0.6。不是每个题都保留同一精度。",
+    "hints": [
+      "先别在中间步骤提前舍入。",
+      "保留哪一位，就观察它右边紧邻的一位。"
+    ]
+  },
+  "math6.u1-06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "公顷",
+        "feedback": "每小时12公顷，0.5小时喷洒：先核对数量所指的对象、运算和单位。 面积格中的交叠不是两条边相加。",
+        "label": "每小时12公顷，0.5小时喷洒"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.21",
+        "unit": "unitless",
+        "feedback": "0.7×0.3：先核对数量所指的对象、运算和单位。 比较题可用是否超过1来检查，不必先做长计算。",
+        "label": "0.7×0.3"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "2"
+        ],
+        "feedback": "正数4.9乘0.99后与4.9比较：先判断乘数与1的关系。 面积格中的交叠不是两条边相加。",
+        "label": "正数4.9乘0.99后与4.9比较"
+      }
+    ],
+    "construction": {},
+    "explanation": "一半时间是6公顷；7个十分之一乘3个十分之一为21个百分之一；正数乘小于1的正数会缩小。",
+    "hints": [
+      "面积格中的交叠不是两条边相加。",
+      "比较题可用是否超过1来检查，不必先做长计算。"
+    ]
+  },
+  "math6.u1-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "段",
+        "feedback": "红彩带段数：先核对数量所指的对象、运算和单位。 被除数是总长，除数是每段长。",
+        "label": "红彩带段数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "5",
+        "unit": "段",
+        "feedback": "绿彩带段数：先核对数量所指的对象、运算和单位。 两者都换成厘米或分米，不能只换其中一个。",
+        "label": "绿彩带段数"
+      }
+    ],
+    "construction": {},
+    "explanation": "同一长度单位下分别为6÷3、120÷24。改变长度单位不改变可以分出的段数。",
+    "hints": [
+      "被除数是总长，除数是每段长。",
+      "两者都换成厘米或分米，不能只换其中一个。"
+    ]
+  },
+  "math6.u1-08": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-08",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "340",
+        "unit": "unitless",
+        "feedback": "同时扩大1000倍后的被除数：先核对数量所指的对象、运算和单位。 选能让除数成为整数的倍数。",
+        "label": "同时扩大1000倍后的被除数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "unitless",
+        "feedback": "0.34÷0.017：先核对数量所指的对象、运算和单位。 用“商×原除数=原被除数”验算。",
+        "label": "0.34÷0.017"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.7",
+        "unit": "unitless",
+        "feedback": "0.21÷0.3：先核对数量所指的对象、运算和单位。 选能让除数成为整数的倍数。",
+        "label": "0.21÷0.3"
+      }
+    ],
+    "construction": {},
+    "explanation": "0.34×1000=340，0.017×1000=17，商20；0.21÷0.3=2.1÷3=0.7，不能只把除数变成3。",
+    "hints": [
+      "选能让除数成为整数的倍数。",
+      "用“商×原除数=原被除数”验算。"
+    ]
+  },
+  "math6.u1-09": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-09",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "666.67",
+        "unit": "米/分",
+        "feedback": "平均每分钟米数（保留两位）：先核对数量所指的对象、运算和单位。 先统一小时和分钟、千米和米。",
+        "label": "平均每分钟米数（保留两位）"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "3.18",
+        "unit": "unitless",
+        "feedback": "3.5÷1.1保留两位小数：先核对数量所指的对象、运算和单位。 第三位小数决定第二位是否进一。",
+        "label": "3.5÷1.1保留两位小数"
+      }
+    ],
+    "construction": {},
+    "explanation": "40000÷60=666.666…，保留两位为666.67；3.1818…保留两位为3.18。循环商不等于它的近似数。",
+    "hints": [
+      "先统一小时和分钟、千米和米。",
+      "第三位小数决定第二位是否进一。"
+    ]
+  },
+  "math6.u1-10": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-10",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "85",
+        "unit": "支",
+        "feedback": "最多买笔：先核对数量所指的对象、运算和单位。 先说明余下的小数部分在情境中代表什么。",
+        "label": "最多买笔"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "14",
+        "unit": "个",
+        "feedback": "至少需要油壶：先核对数量所指的对象、运算和单位。 把85/86支、13/14壶分别乘回去检验。",
+        "label": "至少需要油壶"
+      }
+    ],
+    "construction": {},
+    "explanation": "300÷3.5约85.714，86支超预算，取85；40÷3约13.333，13壶装不完，取14。情境决定去尾或进一。",
+    "hints": [
+      "先说明余下的小数部分在情境中代表什么。",
+      "把85/86支、13/14壶分别乘回去检验。"
+    ]
+  },
+  "math6.u1-11": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-11",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "unitless",
+        "feedback": "0.9÷0.045：先核对数量所指的对象、运算和单位。 把两个数一起乘1000。",
+        "label": "0.9÷0.045"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "次",
+        "feedback": "至少运输次数：先核对数量所指的对象、运算和单位。 运输次数不是简单按四舍五入。",
+        "label": "至少运输次数"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "3.182",
+        "unit": "unitless",
+        "feedback": "3.5÷1.1保留三位小数：先核对数量所指的对象、运算和单位。 把两个数一起乘1000。",
+        "label": "3.5÷1.1保留三位小数"
+      }
+    ],
+    "construction": {},
+    "explanation": "0.9÷0.045=900÷45=20；13.6÷4=3.4，剩余也需一次；3.1818…看第四位舍入。",
+    "hints": [
+      "把两个数一起乘1000。",
+      "运输次数不是简单按四舍五入。"
+    ]
+  },
+  "math6.u1-12": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-12",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "unitless",
+        "feedback": "7.8÷1.3：先核对数量所指的对象、运算和单位。 把“有几个0.3”与“有几个1.3”比较。",
+        "label": "7.8÷1.3"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "26",
+        "unit": "unitless",
+        "feedback": "7.8÷0.3：先核对数量所指的对象、运算和单位。 用乘法检验两次商。",
+        "label": "7.8÷0.3"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "“除法总使数变小”：找一个除数在0与1之间的反例。 把“有几个0.3”与“有几个1.3”比较。",
+        "label": "“除法总使数变小”"
+      }
+    ],
+    "construction": {},
+    "explanation": "7.8÷0.3=26是反例；比较结论需要正数且除数不为0的条件。",
+    "hints": [
+      "把“有几个0.3”与“有几个1.3”比较。",
+      "用乘法检验两次商。"
+    ]
+  },
+  "math6.u1-13": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u1-13",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "choice",
+        "accepted": [
+          "2"
+        ],
+        "feedback": "25÷22的循环节：追踪重复出现的余数，不只看前两位。 观察25/22的小数前几位。",
+        "label": "25÷22的循环节"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1.67",
+        "unit": "unitless",
+        "feedback": "5÷3保留两位小数：先核对数量所指的对象、运算和单位。 保留两位要看第三位。",
+        "label": "5÷3保留两位小数"
+      }
+    ],
+    "construction": {},
+    "explanation": "25/22=1.13636…，循环节36；5/3=1.666…，它与1.67不完全相等，只是近似。",
+    "hints": [
+      "观察25/22的小数前几位。",
+      "保留两位要看第三位。"
+    ]
+  },
+  "math6.a-u2-00": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-00",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "标出整体、降低部分与剩余部分，说明模型描述的是教材给定的数值关系。",
+    "hints": [
+      "把80作为图示总量。",
+      "区分减少了多少与减少后是多少。"
+    ]
+  },
+  "math6.a-u2-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "18",
+        "unit": "米",
+        "feedback": "共用彩绳：先核对数量所指的对象、运算和单位。 先把每一对中国结用绳合起来。",
+        "label": "共用彩绳"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2.8",
+        "unit": "unitless",
+        "feedback": "3.5×4/5：先核对数量所指的对象、运算和单位。 同级连续除法不要自行添括号。",
+        "label": "3.5×4/5"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "1.5",
+        "unit": "unitless",
+        "feedback": "0.45÷0.6÷0.5：先核对数量所指的对象、运算和单位。 先把每一对中国结用绳合起来。",
+        "label": "0.45÷0.6÷0.5"
+      }
+    ],
+    "construction": {},
+    "explanation": "(2/5+3/5)×18=18；3.5×4/5=2.8；连续除法从左向右，不等于除以两个除数的差。",
+    "hints": [
+      "先把每一对中国结用绳合起来。",
+      "同级连续除法不要自行添括号。"
+    ]
+  },
+  "math6.a-u2-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "19.6",
+        "unit": "元",
+        "feedback": "实际剩余：先核对数量所指的对象、运算和单位。 总花费要算两箱牛奶。",
+        "label": "实际剩余"
+      },
+      {
+        "id": "q2",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "选择正确的判断：估计方向必须能支持结论。 把花费往大估与往小估分别写成上下界。",
+        "label": "选择正确的判断"
+      }
+    ],
+    "construction": {},
+    "explanation": "100−19.6−2×30.4=19.6；至少剩18元可证明够16.8元，至多剩21元可证明不够21.6元。",
+    "hints": [
+      "总花费要算两箱牛奶。",
+      "把花费往大估与往小估分别写成上下界。"
+    ]
+  },
+  "math6.a-u2-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "人",
+        "feedback": "女生人数：先核对数量所指的对象、运算和单位。 把整体平均分9份。",
+        "label": "女生人数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4/9",
+        "unit": "unitless",
+        "feedback": "女生占总人数：先核对数量所指的对象、运算和单位。 女生是剩余的4份，不是5份。",
+        "label": "女生占总人数"
+      }
+    ],
+    "construction": {},
+    "explanation": "男生25人，女生45−25=20；女生占1−5/9=4/9。检验人数和45、分率和1。",
+    "hints": [
+      "把整体平均分9份。",
+      "女生是剩余的4份，不是5份。"
+    ]
+  },
+  "math6.a-u2-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "天",
+        "feedback": "水仙花期：先核对数量所指的对象、运算和单位。 先求增加或减少的量。",
+        "label": "水仙花期"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4320",
+        "unit": "立方米",
+        "feedback": "节水后的用水量：先核对数量所指的对象、运算和单位。 用“原量±改变量”检验。",
+        "label": "节水后的用水量"
+      }
+    ],
+    "construction": {},
+    "explanation": "14×(1+3/7)=20；9000×(1−13/25)=4320。增加量与变化后的总量不能混淆。",
+    "hints": [
+      "先求增加或减少的量。",
+      "用“原量±改变量”检验。"
+    ]
+  },
+  "math6.a-u2-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1/2",
+        "unit": "unitless",
+        "feedback": "合做每小时完成总量的份额：先核对数量所指的对象、运算和单位。 先把两个时间改成每小时完成的份额。",
+        "label": "合做每小时完成总量的份额"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "小时",
+        "feedback": "合做时间：先核对数量所指的对象、运算和单位。 用工作效率之和乘所需时间检查是否为1。",
+        "label": "合做时间"
+      }
+    ],
+    "construction": {},
+    "explanation": "1/6+1/3=1/2，1÷1/2=2小时；不是6与3的平均数。",
+    "hints": [
+      "先把两个时间改成每小时完成的份额。",
+      "用工作效率之和乘所需时间检查是否为1。"
+    ]
+  },
+  "math6.a-u2-06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "140",
+        "unit": "米",
+        "feedback": "尚未完成的长度：先核对数量所指的对象、运算和单位。 余量求整体的剩余份额。",
+        "label": "尚未完成的长度"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "36/5",
+        "unit": "天",
+        "feedback": "两队合做天数：先核对数量所指的对象、运算和单位。 效率相加，时间不相加；简算中识别公共乘数。",
+        "label": "两队合做天数"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "7.6",
+        "unit": "unitless",
+        "feedback": "7.6×0.8+0.2×7.6：先核对数量所指的对象、运算和单位。 余量求整体的剩余份额。",
+        "label": "7.6×0.8+0.2×7.6"
+      }
+    ],
+    "construction": {},
+    "explanation": "剩1/6为140米；合效率5/36，时间36/5天；分配律提取7.6。三道题不能套同一算式。",
+    "hints": [
+      "余量求整体的剩余份额。",
+      "效率相加，时间不相加；简算中识别公共乘数。"
+    ]
+  },
+  "math6.a-u2-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u2-07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "54",
+        "unit": "unitless",
+        "feedback": "81去掉1/3后的长度：先核对数量所指的对象、运算和单位。 每一步重新说明谁是单位“1”。",
+        "label": "81去掉1/3后的长度"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "72",
+        "unit": "unitless",
+        "feedback": "54增加1/3后的长度：先核对数量所指的对象、运算和单位。 增加1/3不是乘1/3。",
+        "label": "54增加1/3后的长度"
+      }
+    ],
+    "construction": {},
+    "explanation": "先81×2/3=54，再54×4/3=72；第二次单位“1”已换成54。模型只表示长度数量关系，不模拟音高物理机制。",
+    "hints": [
+      "每一步重新说明谁是单位“1”。",
+      "增加1/3不是乘1/3。"
+    ]
+  },
+  "math6.a-sp-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-sp-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "0",
+        "unit": "元",
+        "feedback": "停车30分钟：先核对数量所指的对象、运算和单位。 先在表上找30、60、120三个分界。",
+        "label": "停车30分钟"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "元",
+        "feedback": "停车61分钟：先核对数量所指的对象、运算和单位。 超出2小时后的不足1小时按1小时算，不是全部时长按5元。",
+        "label": "停车61分钟"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "11",
+        "unit": "元",
+        "feedback": "停车121分钟：先核对数量所指的对象、运算和单位。 先在表上找30、60、120三个分界。",
+        "label": "停车121分钟"
+      }
+    ],
+    "construction": {},
+    "explanation": "61分钟落在第二小时区间，收6元；121分钟为前2小时6元加新增1小时5元。边界“以内”包含端点。",
+    "hints": [
+      "先在表上找30、60、120三个分界。",
+      "超出2小时后的不足1小时按1小时算，不是全部时长按5元。"
+    ]
+  },
+  "math6.a-sp-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-sp-02",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "指出你选择的门槛、观察到的影响、尚需补充的调查信息；这是一份方案记录，不是唯一正确收费政策。",
+    "hints": [
+      "保持价格不变，先只改第一门槛。",
+      "在记录中注明这些是合成数据，不把一次班级数据当普遍标准。"
+    ]
+  },
+  "math6.a-sp-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-sp-03",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明你改了哪个标准，哪类用量受影响，有什么仍无法从这组数据断定。",
+    "hints": [
+      "同一户在两种规则下比较，避免混用用量。",
+      "“更便宜”不等于“对所有人更公平”。"
+    ]
+  },
+  "math6.a-sp-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-sp-04",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "引用一次具体时间或用量，说明当时落入哪一段；不要写真实住址、账单或联系方式。",
+    "hints": [
+      "检查你是否把121分钟当120分钟。",
+      "提出一个还需要知道的规则条件。"
+    ]
+  },
+  "math6.a-u3-00": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-00",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明两次记录中“一个单位”分别是多少，哪些位值不同。",
+    "hints": [
+      "先固定单位，再改单位个数。",
+      "0所在的数位也占位置。"
+    ]
+  },
+  "math6.a-u3-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "336",
+        "unit": "unitless",
+        "feedback": "3.36中有几个百分之一：先核对数量所指的对象、运算和单位。 把1也换成100个百分之一。",
+        "label": "3.36中有几个百分之一"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "405",
+        "unit": "unitless",
+        "feedback": "4.05中有几个百分之一：先核对数量所指的对象、运算和单位。 分母给出平均分成多少份。",
+        "label": "4.05中有几个百分之一"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "1/20",
+        "unit": "unitless",
+        "feedback": "3/20的计数单位：先核对数量所指的对象、运算和单位。 把1也换成100个百分之一。",
+        "label": "3/20的计数单位"
+      }
+    ],
+    "construction": {},
+    "explanation": "3.36=336×1/100，4.05=405×1/100；3/20=3×1/20。不同计数单位不能只比较个数。",
+    "hints": [
+      "把1也换成100个百分之一。",
+      "分母给出平均分成多少份。"
+    ]
+  },
+  "math6.a-u3-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "30",
+        "unit": "unitless",
+        "feedback": "3/10换成百分之一的个数：先核对数量所指的对象、运算和单位。 让整体的大小保持不变。",
+        "label": "3/10换成百分之一的个数"
+      },
+      {
+        "id": "q2",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "0.3与0.300：末尾添0不是把数乘100。 可以把两个小数都写成分母1000的分数。",
+        "label": "0.3与0.300"
+      }
+    ],
+    "construction": {},
+    "explanation": "1/10缩小成1/100，单位个数扩大10倍；0.300与0.3同值。",
+    "hints": [
+      "让整体的大小保持不变。",
+      "可以把两个小数都写成分母1000的分数。"
+    ]
+  },
+  "math6.a-u3-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "16",
+        "unit": "unitless",
+        "feedback": "2/3换成二十四分之一的个数：先核对数量所指的对象、运算和单位。 找到两个分母的公倍数。",
+        "label": "2/3换成二十四分之一的个数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "15",
+        "unit": "unitless",
+        "feedback": "5/8换成二十四分之一的个数：先核对数量所指的对象、运算和单位。 把两个小数都换成百分之一。",
+        "label": "5/8换成二十四分之一的个数"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "2"
+        ],
+        "feedback": "3.34与3.4：先补成3.40再比较。 找到两个分母的公倍数。",
+        "label": "3.34与3.4"
+      }
+    ],
+    "construction": {},
+    "explanation": "2/3=16/24，5/8=15/24；3.4=3.40，大于3.34。不能看小数位数多就说大。",
+    "hints": [
+      "找到两个分母的公倍数。",
+      "把两个小数都换成百分之一。"
+    ]
+  },
+  "math6.a-u3-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "159",
+        "unit": "unitless",
+        "feedback": "135+24：先核对数量所指的对象、运算和单位。 分子和分母不能分别相加。",
+        "label": "135+24"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "17/35",
+        "unit": "unitless",
+        "feedback": "1/5+2/7：先核对数量所指的对象、运算和单位。 用“和减一个加数”检验。",
+        "label": "1/5+2/7"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "4.65",
+        "unit": "unitless",
+        "feedback": "3.4+1.25：先核对数量所指的对象、运算和单位。 分子和分母不能分别相加。",
+        "label": "3.4+1.25"
+      }
+    ],
+    "construction": {},
+    "explanation": "整数按数位对齐；异分母通分成7/35+10/35；小数点对齐即同一计数单位对齐。",
+    "hints": [
+      "分子和分母不能分别相加。",
+      "用“和减一个加数”检验。"
+    ]
+  },
+  "math6.a-u3-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "840",
+        "unit": "unitless",
+        "feedback": "24×35：先核对数量所指的对象、运算和单位。 将面积分成四块。",
+        "label": "24×35"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "3/10",
+        "unit": "unitless",
+        "feedback": "2/5×3/4：先核对数量所指的对象、运算和单位。 单位的乘积不能和单位个数的积混淆。",
+        "label": "2/5×3/4"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.18",
+        "unit": "unitless",
+        "feedback": "0.3×0.6：先核对数量所指的对象、运算和单位。 将面积分成四块。",
+        "label": "0.3×0.6"
+      }
+    ],
+    "construction": {},
+    "explanation": "(20+4)(30+5)=600+100+120+20=840；分数为6/20；小数为18/100。",
+    "hints": [
+      "将面积分成四块。",
+      "单位的乘积不能和单位个数的积混淆。"
+    ]
+  },
+  "math6.a-u3-06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "3/4",
+        "unit": "unitless",
+        "feedback": "3/10÷2/5：先核对数量所指的对象、运算和单位。 先统一份的大小。",
+        "label": "3/10÷2/5"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "unitless",
+        "feedback": "4÷0.2：先核对数量所指的对象、运算和单位。 用商乘除数检查回到被除数。",
+        "label": "4÷0.2"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "除法转乘倒数时除数能否为0：0没有乘法倒数。 先统一份的大小。",
+        "label": "除法转乘倒数时除数能否为0"
+      }
+    ],
+    "construction": {},
+    "explanation": "2/5=4/10，所以3个十分之一除以4个十分之一是3/4；4÷0.2=4×5。",
+    "hints": [
+      "先统一份的大小。",
+      "用商乘除数检查回到被除数。"
+    ]
+  },
+  "math6.a-u3-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-u3-07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "7",
+        "unit": "unitless",
+        "feedback": "0.49÷0.07：先核对数量所指的对象、运算和单位。 先换到同一单位再相除。",
+        "label": "0.49÷0.07"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.028",
+        "unit": "unitless",
+        "feedback": "0.07×0.4：先核对数量所指的对象、运算和单位。 别漏掉整数部分包含的百分之一。",
+        "label": "0.07×0.4"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "303003",
+        "unit": "unitless",
+        "feedback": "3030.03有几个百分之一：先核对数量所指的对象、运算和单位。 先换到同一单位再相除。",
+        "label": "3030.03有几个百分之一"
+      }
+    ],
+    "construction": {},
+    "explanation": "共同缩放不改商；百分之一乘十分之一是千分之一；整个数换成百分之一后单位个数为303003。",
+    "hints": [
+      "先换到同一单位再相除。",
+      "别漏掉整数部分包含的百分之一。"
+    ]
+  },
+  "math6.a-bin-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-bin-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "9",
+        "unit": "unitless",
+        "feedback": "二进制1001表示十进制：先核对数量所指的对象、运算和单位。 每个开关的权值依次是1、2、4、8。",
+        "label": "二进制1001表示十进制"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1000",
+        "unit": "unitless",
+        "feedback": "十进制8的二进制写作（按数码输入）：先核对数量所指的对象、运算和单位。 只用0和1拼出目标总量。",
+        "label": "十进制8的二进制写作（按数码输入）"
+      }
+    ],
+    "construction": {},
+    "explanation": "1001₂=8+1；7=111₂，加1后三位归0并向8位进1。二进制10读“一零”，不是十进制十。",
+    "hints": [
+      "每个开关的权值依次是1、2、4、8。",
+      "只用0和1拼出目标总量。"
+    ]
+  },
+  "math6.a-bin-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-bin-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "21",
+        "unit": "unitless",
+        "feedback": "10101₂对应十进制：先核对数量所指的对象、运算和单位。 把每一位数码乘对应位权。",
+        "label": "10101₂对应十进制"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "53",
+        "unit": "unitless",
+        "feedback": "110101₂对应十进制：先核对数量所指的对象、运算和单位。 不要把数码连成的十进制整数直接使用。",
+        "label": "110101₂对应十进制"
+      }
+    ],
+    "construction": {},
+    "explanation": "16+4+1=21；32+16+4+1=53。0位也决定后面各位的位置。",
+    "hints": [
+      "把每一位数码乘对应位权。",
+      "不要把数码连成的十进制整数直接使用。"
+    ]
+  },
+  "math6.a-bin-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-bin-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "25",
+        "unit": "unitless",
+        "feedback": "100₅对应十进制：先核对数量所指的对象、运算和单位。 先在模型里换进制再读位权。",
+        "label": "100₅对应十进制"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "64",
+        "unit": "unitless",
+        "feedback": "100₈对应十进制：先核对数量所指的对象、运算和单位。 100表示第三位有1个单位。",
+        "label": "100₈对应十进制"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "8",
+        "unit": "unitless",
+        "feedback": "10₈对应十进制：先核对数量所指的对象、运算和单位。 先在模型里换进制再读位权。",
+        "label": "10₈对应十进制"
+      }
+    ],
+    "construction": {},
+    "explanation": "五进制权值1、5、25；八进制1、8、64。数码必须小于进制数。",
+    "hints": [
+      "先在模型里换进制再读位权。",
+      "100表示第三位有1个单位。"
+    ]
+  },
+  "math6.a-bin-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.a-bin-04",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "比较你保存的两种表示，说明不变的数量与改变的数码位置。",
+    "hints": [
+      "选一个小于32的数方便逐位检查。",
+      "描述一次“归零并向左进一”的过程。"
+    ]
+  },
+  "math6.b01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "3",
+        "unit": "unitless",
+        "feedback": "汁与水的前项：先核对数量所指的对象、运算和单位。 先说“谁与谁”再写数。",
+        "label": "汁与水的前项"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "unitless",
+        "feedback": "汁与水的后项：先核对数量所指的对象、运算和单位。 整份包括两种杯数。",
+        "label": "汁与水的后项"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "3/5",
+        "unit": "unitless",
+        "feedback": "汁占整份的分率：先核对数量所指的对象、运算和单位。 先说“谁与谁”再写数。",
+        "label": "汁占整份的分率"
+      }
+    ],
+    "construction": {},
+    "explanation": "汁∶水=3∶2，汁∶整份=3∶5。两者比较的对象不同。",
+    "hints": [
+      "先说“谁与谁”再写数。",
+      "整份包括两种杯数。"
+    ]
+  },
+  "math6.b02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "千克",
+        "feedback": "8千克面粉需要水：先核对数量所指的对象、运算和单位。 保持面粉和水一起变化。",
+        "label": "8千克面粉需要水"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "unitless",
+        "feedback": "2∶1的比值：先核对数量所指的对象、运算和单位。 把比值与一对比的数分开。",
+        "label": "2∶1的比值"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "作为除法关系时后项0是否允许：后项对应除数。 保持面粉和水一起变化。",
+        "label": "作为除法关系时后项0是否允许"
+      }
+    ],
+    "construction": {},
+    "explanation": "按同一配方扩大4倍，水也扩大4倍；比值是2，后项为0时不能按除法求比值。",
+    "hints": [
+      "保持面粉和水一起变化。",
+      "把比值与一对比的数分开。"
+    ]
+  },
+  "math6.b03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "600",
+        "unit": "平方米/分",
+        "feedback": "A每分钟喷洒面积：先核对数量所指的对象、运算和单位。 求单位时间对应面积。",
+        "label": "A每分钟喷洒面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "500",
+        "unit": "平方米/分",
+        "feedback": "B每分钟喷洒面积：先核对数量所指的对象、运算和单位。 分母的分钟也进入比值单位。",
+        "label": "B每分钟喷洒面积"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "0"
+        ],
+        "feedback": "哪架快：总面积不能单独决定效率。 求单位时间对应面积。",
+        "label": "哪架快"
+      }
+    ],
+    "construction": {},
+    "explanation": "必须同时比较面积和时间。600>500，A快；这个比值的单位为平方米/分，不是无单位倍数。",
+    "hints": [
+      "求单位时间对应面积。",
+      "分母的分钟也进入比值单位。"
+    ]
+  },
+  "math6.b04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1/4",
+        "unit": "unitless",
+        "feedback": "蜂蜜与水比值：先核对数量所指的对象、运算和单位。 把每一杯分别约成相同整数比。",
+        "label": "蜂蜜与水比值"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1/5",
+        "unit": "unitless",
+        "feedback": "蜂蜜占蜂蜜水的分率：先核对数量所指的对象、运算和单位。 总质量是蜂蜜加水，不是只取水。",
+        "label": "蜂蜜占蜂蜜水的分率"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "三杯甜度（仅按配方比例）：质量增大不等于比例增大。 把每一杯分别约成相同整数比。",
+        "label": "三杯甜度（仅按配方比例）"
+      }
+    ],
+    "construction": {},
+    "explanation": "蜂蜜与水是1∶4，蜂蜜占总量1/5；前后项同时扩大不改变配方。",
+    "hints": [
+      "把每一杯分别约成相同整数比。",
+      "总质量是蜂蜜加水，不是只取水。"
+    ]
+  },
+  "math6.b05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "unitless",
+        "feedback": "12∶18化简后前项：先核对数量所指的对象、运算和单位。 两项必须做同一变化。",
+        "label": "12∶18化简后前项"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "3",
+        "unit": "unitless",
+        "feedback": "12∶18化简后后项：先核对数量所指的对象、运算和单位。 求比值与化简为一对整数的结果格式不同。",
+        "label": "12∶18化简后后项"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "10",
+        "unit": "unitless",
+        "feedback": "5/6∶3/4化简后前项：先核对数量所指的对象、运算和单位。 两项必须做同一变化。",
+        "label": "5/6∶3/4化简后前项"
+      },
+      {
+        "id": "q4",
+        "kind": "quantity",
+        "value": "9",
+        "unit": "unitless",
+        "feedback": "5/6∶3/4化简后后项：先核对数量所指的对象、运算和单位。 求比值与化简为一对整数的结果格式不同。",
+        "label": "5/6∶3/4化简后后项"
+      },
+      {
+        "id": "q5",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "unitless",
+        "feedback": "1.8∶0.09的比值：先核对数量所指的对象、运算和单位。 两项必须做同一变化。",
+        "label": "1.8∶0.09的比值"
+      }
+    ],
+    "construction": {},
+    "explanation": "12∶18同除6；分数比同乘12得10∶9；1.8∶0.09同乘100得180∶9=20∶1。",
+    "hints": [
+      "两项必须做同一变化。",
+      "求比值与化简为一对整数的结果格式不同。"
+    ]
+  },
+  "math6.b06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "300",
+        "unit": "克",
+        "feedback": "两种皮中糯米粉：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
+        "label": "两种皮中糯米粉"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "200",
+        "unit": "克",
+        "feedback": "两种皮中草浆：先核对数量所指的对象、运算和单位。 加入第三种材料后，整体与总份数都变了。",
+        "label": "两种皮中草浆"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "250",
+        "unit": "克",
+        "feedback": "三种材料中豆沙：先核对数量所指的对象、运算和单位。 先写所有份数的和。",
+        "label": "三种材料中豆沙"
+      }
+    ],
+    "construction": {},
+    "explanation": "两份皮共5份，每份100克；含馅料共10份，每份50克，豆沙5份250克。",
+    "hints": [
+      "先写所有份数的和。",
+      "加入第三种材料后，整体与总份数都变了。"
+    ]
+  },
+  "math6.b07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "choice",
+        "accepted": [
+          "0"
+        ],
+        "feedback": "3∶2和6∶4能否组成比例：分别求比值或交叉乘积。 比较两对对应边。",
+        "label": "3∶2和6∶4能否组成比例"
+      },
+      {
+        "id": "q2",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "只把长扩大2倍、宽不变，形状是否保持：对应边必须用同一倍率。 先固定原图，再分别改长与宽。",
+        "label": "只把长扩大2倍、宽不变，形状是否保持"
+      }
+    ],
+    "construction": {},
+    "explanation": "3/2=6/4；只拉长会改变长宽比。不能仅因一条边按倍数变化就称同比放大。",
+    "hints": [
+      "比较两对对应边。",
+      "先固定原图，再分别改长与宽。"
+    ]
+  },
+  "math6.b08": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b08",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "unitless",
+        "feedback": "外项积4×1.5：先核对数量所指的对象、运算和单位。 先标出两端外项和中间内项。",
+        "label": "外项积4×1.5"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "unitless",
+        "feedback": "内项积2×3：先核对数量所指的对象、运算和单位。 把求出的x代回原比例。",
+        "label": "内项积2×3"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "unitless",
+        "feedback": "未知项x：先核对数量所指的对象、运算和单位。 先标出两端外项和中间内项。",
+        "label": "未知项x"
+      }
+    ],
+    "construction": {},
+    "explanation": "4×1.5=2×3=6；8x=48，所以x=6。交叉积比较不能把相邻两项随意相乘。",
+    "hints": [
+      "先标出两端外项和中间内项。",
+      "把求出的x代回原比例。"
+    ]
+  },
+  "math6.b09": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b09",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "37.5",
+        "unit": "克",
+        "feedback": "应加糖量：先核对数量所指的对象、运算和单位。 保持比较对象顺序。",
+        "label": "应加糖量"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1/8",
+        "unit": "unitless",
+        "feedback": "糖与水的比值：先核对数量所指的对象、运算和单位。 用37.5∶300核对是否仍为1∶8。",
+        "label": "糖与水的比值"
+      }
+    ],
+    "construction": {},
+    "explanation": "300×25/200=37.5克；水扩大1.5倍，糖也扩大1.5倍。不能把“糖占糖水”的分率替代糖与水的比值。",
+    "hints": [
+      "保持比较对象顺序。",
+      "用37.5∶300核对是否仍为1∶8。"
+    ]
+  },
+  "math6.b10": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b10",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "175",
+        "unit": "厘米",
+        "feedback": "统一厘米后爸爸身高：先核对数量所指的对象、运算和单位。 不要写1.75∶136。",
+        "label": "统一厘米后爸爸身高"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "3/5",
+        "unit": "unitless",
+        "feedback": "第一名进球率：先核对数量所指的对象、运算和单位。 同样次数下再比较或分别算比值。",
+        "label": "第一名进球率"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "3/4",
+        "unit": "unitless",
+        "feedback": "第二名进球率：先核对数量所指的对象、运算和单位。 不要写1.75∶136。",
+        "label": "第二名进球率"
+      },
+      {
+        "id": "q4",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "哪名进球率较高：比较成功数占尝试数的份额。 同样次数下再比较或分别算比值。",
+        "label": "哪名进球率较高"
+      }
+    ],
+    "construction": {},
+    "explanation": "身高比先统一单位；6/10=0.6，9/12=0.75。样本场次不同，这里只比较所给数据。",
+    "hints": [
+      "不要写1.75∶136。",
+      "同样次数下再比较或分别算比值。"
+    ]
+  },
+  "math6.b11": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b11",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "60",
+        "unit": "毫升",
+        "feedback": "饮料中汁体积：先核对数量所指的对象、运算和单位。 总份数等于各部分份数之和。",
+        "label": "饮料中汁体积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "16",
+        "unit": "公顷",
+        "feedback": "大豆种植面积：先核对数量所指的对象、运算和单位。 先区分已知的是总量还是其中一部分。",
+        "label": "大豆种植面积"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "2/5",
+        "unit": "unitless",
+        "feedback": "化简0.32∶0.8后的比值：先核对数量所指的对象、运算和单位。 总份数等于各部分份数之和。",
+        "label": "化简0.32∶0.8后的比值"
+      }
+    ],
+    "construction": {},
+    "explanation": "饮料总5份，每份60毫升；土地总9份，每份4公顷；32∶80约为2∶5。",
+    "hints": [
+      "总份数等于各部分份数之和。",
+      "先区分已知的是总量还是其中一部分。"
+    ]
+  },
+  "math6.b12": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b12",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "320",
+        "unit": "千米",
+        "feedback": "4小时路程：先核对数量所指的对象、运算和单位。 先求每小时路程。",
+        "label": "4小时路程"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "7.5",
+        "unit": "小时",
+        "feedback": "600千米所需时间：先核对数量所指的对象、运算和单位。 交叉积可检验两个比是否相等。",
+        "label": "600千米所需时间"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "两杯蜂蜜水能否组成相同配方比例：25×250与30×200不相等。 先求每小时路程。",
+        "label": "两杯蜂蜜水能否组成相同配方比例"
+      }
+    ],
+    "construction": {},
+    "explanation": "单位速度80千米/时；路程320千米、时间7.5小时；蜂蜜水两比不等，不能只看两边都增加。",
+    "hints": [
+      "先求每小时路程。",
+      "交叉积可检验两个比是否相等。"
+    ]
+  },
+  "math6.b13": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b13",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明你的两个比各在比较什么，记录一次把“部分与部分”错写成“部分与整体”的可能误解。",
+    "hints": [
+      "把两个对象名称写在数的旁边。",
+      "先给每组珠子确定共同计量单位。"
+    ]
+  },
+  "math6.b14": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b14",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "21",
+        "unit": "unitless",
+        "feedback": "13后的一项：先核对数量所指的对象、运算和单位。 每次保留前两项。",
+        "label": "13后的一项"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.618",
+        "unit": "unitless",
+        "feedback": "21÷34保留三位小数：先核对数量所指的对象、运算和单位。 近似值与精确比值必须分别说明。",
+        "label": "21÷34保留三位小数"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.618",
+        "unit": "unitless",
+        "feedback": "61.8÷100：先核对数量所指的对象、运算和单位。 每次保留前两项。",
+        "label": "61.8÷100"
+      }
+    ],
+    "construction": {},
+    "explanation": "13+8=21；21/34约0.617647…，三位为0.618。61.8/100恰为0.618，但不是无限不循环的黄金比真值；不能推广为人人审美的定律。",
+    "hints": [
+      "每次保留前两项。",
+      "近似值与精确比值必须分别说明。"
+    ]
+  },
+  "math6.b15": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b15",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "引用两次模型宽长与比值的记录，区分测量事实和审美意见；不填写真人身体数据。",
+    "hints": [
+      "保持长为100，只改变宽。",
+      "说明你的偏好，不把它说成所有人的结论。"
+    ]
+  },
+  "math6.b16": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b16",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "厘米",
+        "feedback": "半径3厘米的圆直径：先核对数量所指的对象、运算和单位。 直径由两条半径组成。",
+        "label": "半径3厘米的圆直径"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1.5",
+        "unit": "厘米",
+        "feedback": "直径3厘米的圆半径：先核对数量所指的对象、运算和单位。 画圆时圆规开口是半径，不是直径。",
+        "label": "直径3厘米的圆半径"
+      }
+    ],
+    "construction": {},
+    "explanation": "两种要求并不是同一个圆。直径通过圆心、两端在圆上；任意弦不都是直径。",
+    "hints": [
+      "直径由两条半径组成。",
+      "画圆时圆规开口是半径，不是直径。"
+    ]
+  },
+  "math6.b17": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b17",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1/4",
+        "unit": "unitless",
+        "feedback": "90°扇形占整圆：先核对数量所指的对象、运算和单位。 先把一周360°作为整体。",
+        "label": "90°扇形占整圆"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1/2",
+        "unit": "unitless",
+        "feedback": "180°扇形占整圆：先核对数量所指的对象、运算和单位。 检查边界中有没有两条半径。",
+        "label": "180°扇形占整圆"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "弦与弧围成且不通过圆心的部分必为扇形吗：要有两条从圆心出发的半径。 先把一周360°作为整体。",
+        "label": "弦与弧围成且不通过圆心的部分必为扇形吗"
+      }
+    ],
+    "construction": {},
+    "explanation": "同圆内份额等于圆心角/360°；面积比较要同圆或半径相等。",
+    "hints": [
+      "先把一周360°作为整体。",
+      "检查边界中有没有两条半径。"
+    ]
+  },
+  "math6.b18": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b18",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "指出哪些圆心/半径/角度保持，哪些改变；美观评价是你的意见，不作唯一判分。",
+    "hints": [
+      "先固定半径，只改变圆心角。",
+      "描述一种可以复现图案的步骤。"
+    ]
+  },
+  "math6.b19": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b19",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "40",
+        "unit": "厘米",
+        "feedback": "直径：先核对数量所指的对象、运算和单位。 钟面扫过的是从圆心出发的扇形。",
+        "label": "直径"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "90",
+        "unit": "度",
+        "feedback": "扫过角度：先核对数量所指的对象、运算和单位。 时间占比与转过的角度占比对应。",
+        "label": "扫过角度"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "1/4",
+        "unit": "unitless",
+        "feedback": "占整圆：先核对数量所指的对象、运算和单位。 钟面扫过的是从圆心出发的扇形。",
+        "label": "占整圆"
+      }
+    ],
+    "construction": {},
+    "explanation": "直径40厘米；分针一圈60分钟，15分钟占1/4，对应90°扇形。",
+    "hints": [
+      "钟面扫过的是从圆心出发的扇形。",
+      "时间占比与转过的角度占比对应。"
+    ]
+  },
+  "math6.b20": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b20",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "87.92",
+        "unit": "米",
+        "feedback": "半径14米圆周长：先核对数量所指的对象、运算和单位。 先区分已知r还是d。",
+        "label": "半径14米圆周长"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "10",
+        "unit": "厘米",
+        "feedback": "周长31.4厘米圆的直径：先核对数量所指的对象、运算和单位。 测量比值不会每次恰好3.14，记录误差不能改写π的定义。",
+        "label": "周长31.4厘米圆的直径"
+      }
+    ],
+    "construction": {},
+    "explanation": "C=2πr=2×3.14×14=87.92米；d=C/π=10厘米。π不是3.14精确值，本练习按约定近似值计算。",
+    "hints": [
+      "先区分已知r还是d。",
+      "测量比值不会每次恰好3.14，记录误差不能改写π的定义。"
+    ]
+  },
+  "math6.b21": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b21",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "用图示半径说明你的理解，并写清3.14是π近似值，不用“最美”给所有人下结论。",
+    "hints": [
+      "同一圆中比较，不把不同圆的半径当相等。",
+      "区分定义、历史表述和自己的感受。"
+    ]
+  },
+  "math6.b22": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b22",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "78.5",
+        "unit": "平方米",
+        "feedback": "半径5米的圆面积：先核对数量所指的对象、运算和单位。 切拼前后没有增减扇形。",
+        "label": "半径5米的圆面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "254",
+        "unit": "平方米",
+        "feedback": "直径18米鸡圈面积保留整数：先核对数量所指的对象、运算和单位。 r²是r×r，不是2r。",
+        "label": "直径18米鸡圈面积保留整数"
+      }
+    ],
+    "construction": {},
+    "explanation": "S=πr²，5²先算成25；直径18米先求r=9，3.14×81=254.34，取整数254。有限扇形拼图只是近似长方形。",
+    "hints": [
+      "切拼前后没有增减扇形。",
+      "r²是r×r，不是2r。"
+    ]
+  },
+  "math6.b23": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b23",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "200.96",
+        "unit": "平方厘米",
+        "feedback": "圆环面积：先核对数量所指的对象、运算和单位。 圆环不能用外半径减内半径后再平方。",
+        "label": "圆环面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4.5117",
+        "unit": "平方米",
+        "feedback": "组合窗面积：先核对数量所指的对象、运算和单位。 半圆边界同时有弧和直径。",
+        "label": "组合窗面积"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "10.28",
+        "unit": "厘米",
+        "feedback": "半径2厘米的半圆完整周长：先核对数量所指的对象、运算和单位。 圆环不能用外半径减内半径后再平方。",
+        "label": "半径2厘米的半圆完整周长"
+      }
+    ],
+    "construction": {},
+    "explanation": "圆环3.14×(100−36)=200.96；窗3.24+3.14×0.9²/2=4.5117；半圆周长πr+2r=10.28。",
+    "hints": [
+      "圆环不能用外半径减内半径后再平方。",
+      "半圆边界同时有弧和直径。"
+    ]
+  },
+  "math6.b24": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b24",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "706.5",
+        "unit": "平方厘米",
+        "feedback": "坐垫面积：先核对数量所指的对象、运算和单位。 先画出要计算的边界或涂色部分。",
+        "label": "坐垫面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "113.04",
+        "unit": "平方米",
+        "feedback": "小路面积：先核对数量所指的对象、运算和单位。 跑道两个半圆不是两个整圆。",
+        "label": "小路面积"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "71.4",
+        "unit": "米",
+        "feedback": "跑道外边界长度：先核对数量所指的对象、运算和单位。 先画出要计算的边界或涂色部分。",
+        "label": "跑道外边界长度"
+      }
+    ],
+    "construction": {},
+    "explanation": "坐垫r=15厘米；小路外r=10米，面积3.14×(100−64)；两半圆合成整圆，边界40+31.4。",
+    "hints": [
+      "先画出要计算的边界或涂色部分。",
+      "跑道两个半圆不是两个整圆。"
+    ]
+  },
+  "math6.b25": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b25",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "7",
+        "unit": "场",
+        "feedback": "该赛制冠军比赛场数：先核对数量所指的对象、运算和单位。 把给定赛制每一阶段单列。",
+        "label": "该赛制冠军比赛场数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1/2",
+        "unit": "unitless",
+        "feedback": "8号扣球成功率：先核对数量所指的对象、运算和单位。 成功数除以尝试数，并说明指标覆盖范围。",
+        "label": "8号扣球成功率"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.52",
+        "unit": "unitless",
+        "feedback": "10号扣球成功率保留两位：先核对数量所指的对象、运算和单位。 把给定赛制每一阶段单列。",
+        "label": "10号扣球成功率保留两位"
+      }
+    ],
+    "construction": {},
+    "explanation": "教材这套赛制3+4=7场，不是所有赛事当前赛制；10号11/21约0.52高于0.50，但不能单凭扣球率断言总体更强。",
+    "hints": [
+      "把给定赛制每一阶段单列。",
+      "成功数除以尝试数，并说明指标覆盖范围。"
+    ]
+  },
+  "math6.b26": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.b26",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明研究问题、选用的指标及仍缺少的信息；这是研究记录，不判运动员优劣。",
+    "hints": [
+      "可以固定尝试次数再比较成功数。",
+      "考虑上场时间、位置或样本量，但不要编造未提供数据。"
+    ]
+  },
+  "math6.u6-00": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-00",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "指出两组横纵倍率，说明如何判断；不把改变大小等同改变角。",
+    "hints": [
+      "一次只改横向倍率。",
+      "再让纵向倍率与横向相同。"
+    ]
+  },
+  "math6.u6-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "12",
+        "unit": "厘米",
+        "feedback": "新长：先核对数量所指的对象、运算和单位。 分别写长和宽的新旧比。",
+        "label": "新长"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "8",
+        "unit": "厘米",
+        "feedback": "新宽：先核对数量所指的对象、运算和单位。 面积不是只乘一次倍率。",
+        "label": "新宽"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "unitless",
+        "feedback": "面积变为原来的倍数：先核对数量所指的对象、运算和单位。 分别写长和宽的新旧比。",
+        "label": "面积变为原来的倍数"
+      }
+    ],
+    "construction": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1
+    },
+    "explanation": "每条边乘2，面积乘2×2=4。只把长翻倍不会保持形状。",
+    "hints": [
+      "分别写长和宽的新旧比。",
+      "面积不是只乘一次倍率。"
+    ]
+  },
+  "math6.u6-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "格",
+        "feedback": "新底长度：先核对数量所指的对象、运算和单位。 把每个顶点相对基点的位置一起放大。",
+        "label": "新底长度"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "格",
+        "feedback": "新高：先核对数量所指的对象、运算和单位。 检查横纵倍率是否相同。",
+        "label": "新高"
+      }
+    ],
+    "construction": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1
+    },
+    "explanation": "图中各坐标相对于基点都乘2，底6格、高4格，斜边方向不变。",
+    "hints": [
+      "把每个顶点相对基点的位置一起放大。",
+      "检查横纵倍率是否相同。"
+    ]
+  },
+  "math6.u6-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1000",
+        "unit": "unitless",
+        "feedback": "比例尺1∶n中的n：先核对数量所指的对象、运算和单位。 不能直接把4.8与48相除后省略单位。",
+        "label": "比例尺1∶n中的n"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "10",
+        "unit": "米",
+        "feedback": "图上1厘米表示实际：先核对数量所指的对象、运算和单位。 比例尺的两项单位相同。",
+        "label": "图上1厘米表示实际"
+      }
+    ],
+    "construction": {},
+    "explanation": "48米=4800厘米，4.8∶4800=1∶1000；1厘米对应1000厘米=10米。",
+    "hints": [
+      "不能直接把4.8与48相除后省略单位。",
+      "比例尺的两项单位相同。"
+    ]
+  },
+  "math6.u6-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "400",
+        "unit": "米",
+        "feedback": "少年宫实际距离：先核对数量所指的对象、运算和单位。 两次换算分别确定要求图上还是实际。",
+        "label": "少年宫实际距离"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2.5",
+        "unit": "厘米",
+        "feedback": "医院图上距离：先核对数量所指的对象、运算和单位。 先换单位，再用比例关系。",
+        "label": "医院图上距离"
+      }
+    ],
+    "construction": {},
+    "explanation": "5×8000=40000厘米=400米；200米=20000厘米，除8000为2.5厘米。北方是相对学校的方向。",
+    "hints": [
+      "两次换算分别确定要求图上还是实际。",
+      "先换单位，再用比例关系。"
+    ]
+  },
+  "math6.u6-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "厘米",
+        "feedback": "6厘米边缩小后：先核对数量所指的对象、运算和单位。 先标“新∶原”。",
+        "label": "6厘米边缩小后"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1.6",
+        "unit": "厘米",
+        "feedback": "4.8厘米边缩小后：先核对数量所指的对象、运算和单位。 面积倍率看两条边。",
+        "label": "4.8厘米边缩小后"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "9",
+        "unit": "unitless",
+        "feedback": "放大后面积倍数：先核对数量所指的对象、运算和单位。 先标“新∶原”。",
+        "label": "放大后面积倍数"
+      }
+    ],
+    "construction": {},
+    "explanation": "边长除3，角不变；放大3倍面积9倍。不同变化不可共用同一个线性倍数作面积倍数。",
+    "hints": [
+      "先标“新∶原”。",
+      "面积倍率看两条边。"
+    ]
+  },
+  "math6.u6-06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "150",
+        "unit": "米",
+        "feedback": "1∶5000图3厘米实际：先核对数量所指的对象、运算和单位。 中间经过实际距离。",
+        "label": "1∶5000图3厘米实际"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "60",
+        "unit": "米",
+        "feedback": "1∶2000图3厘米实际：先核对数量所指的对象、运算和单位。 比例尺分母越大，同一实物画得越小。",
+        "label": "1∶2000图3厘米实际"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.8",
+        "unit": "厘米",
+        "feedback": "换图后线段长：先核对数量所指的对象、运算和单位。 中间经过实际距离。",
+        "label": "换图后线段长"
+      }
+    ],
+    "construction": {},
+    "explanation": "先得到同一实际距离4000厘米，再除5000为0.8厘米。不可只按分母方向凭直觉放大。",
+    "hints": [
+      "中间经过实际距离。",
+      "比例尺分母越大，同一实物画得越小。"
+    ]
+  },
+  "math6.u6-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-07",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "引用具体旧、新长度或倍率，提出下一次可执行的检查办法。",
+    "hints": [
+      "从一条横边和一条竖边分别核对。",
+      "把图上厘米与实际米的转换分步写。"
+    ]
+  },
+  "math6.u6-08": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u6-08",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "写明你比较的两个比例尺与一个用途，不把“分母小”误说成图上物体小。",
+    "hints": [
+      "固定实物尺寸再换分母。",
+      "讨论需要看细节还是看更大区域。"
+    ]
+  },
+  "math6.u7-00": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-00",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "写出两次数对，说明基准点和顺序，不输入真实住址。",
+    "hints": [
+      "保持同一个原点。",
+      "找一个列与行不相等的点观察交换。"
+    ]
+  },
+  "math6.u7-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "3",
+        "unit": "unitless",
+        "feedback": "第3列第4行的第一项：先核对数量所指的对象、运算和单位。 先读横轴列，再读纵轴行。",
+        "label": "第3列第4行的第一项"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "unitless",
+        "feedback": "第3列第4行的第二项：先核对数量所指的对象、运算和单位。 比较两个数对每一项。",
+        "label": "第3列第4行的第二项"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "（6，2）与（2，6）是否同点：先列后行是有序的。 先读横轴列，再读纵轴行。",
+        "label": "（6，2）与（2，6）是否同点"
+      }
+    ],
+    "construction": {
+      "col": 3,
+      "row": 4
+    },
+    "explanation": "（3，4）先向右数3列再向上4行；（6，2）与（2，6）是不同点。",
+    "hints": [
+      "先读横轴列，再读纵轴行。",
+      "比较两个数对每一项。"
+    ]
+  },
+  "math6.u7-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "30",
+        "unit": "度",
+        "feedback": "从正北向东偏角：先核对数量所指的对象、运算和单位。 先确定起始的北或南方向。",
+        "label": "从正北向东偏角"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "20",
+        "unit": "千米",
+        "feedback": "离O距离：先核对数量所指的对象、运算和单位。 再根据比例尺取距离。",
+        "label": "离O距离"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "只说东北方向能否唯一定位：同一方向有无数个距离。 先确定起始的北或南方向。",
+        "label": "只说东北方向能否唯一定位"
+      }
+    ],
+    "construction": {
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 20
+    },
+    "explanation": "北偏东30°从北轴向东量30°，20千米沿射线取距离，不能从东轴误量30°。",
+    "hints": [
+      "先确定起始的北或南方向。",
+      "再根据比例尺取距离。"
+    ]
+  },
+  "math6.u7-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "厘米",
+        "feedback": "图上距离：先核对数量所指的对象、运算和单位。 南偏西位于左下象限。",
+        "label": "图上距离"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "40",
+        "unit": "度",
+        "feedback": "南向西偏角：先核对数量所指的对象、运算和单位。 20÷10得到图上厘米数。",
+        "label": "南向西偏角"
+      }
+    ],
+    "construction": {
+      "quadrant": 3,
+      "angle": 40,
+      "distance": 20
+    },
+    "explanation": "先从南方向朝西偏40°，沿射线取2厘米。O是唯一观测点；距离不能从画布边缘量。",
+    "hints": [
+      "南偏西位于左下象限。",
+      "20÷10得到图上厘米数。"
+    ]
+  },
+  "math6.u7-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "3",
+        "unit": "格",
+        "feedback": "先向东走的格数：先核对数量所指的对象、运算和单位。 每一步只看变化的那一项。",
+        "label": "先向东走的格数"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "格",
+        "feedback": "再向北走的格数：先核对数量所指的对象、运算和单位。 反向观察要换起始南北与东西。",
+        "label": "再向北走的格数"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "从目标看O的方向：交换观测点后方向相反，角度不变。 每一步只看变化的那一项。",
+        "label": "从目标看O的方向"
+      }
+    ],
+    "construction": {},
+    "explanation": "列增3表示向东3格，行增2表示向北2格；相反方向为南偏西30°，距离仍30千米。",
+    "hints": [
+      "每一步只看变化的那一项。",
+      "反向观察要换起始南北与东西。"
+    ]
+  },
+  "math6.u7-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.u7-05",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "说明原点/观测点、轴方向、比例尺，提出一次误差检查；不要记录真实家庭位置。",
+    "hints": [
+      "数对需要统一格距与坐标约定。",
+      "方向距离需要统一观测点和单位。"
+    ]
+  },
+  "math6.r-01": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-01",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "0.42",
+        "unit": "unitless",
+        "feedback": "0.6×0.7：先核对数量所指的对象、运算和单位。 可以把0.12写成12/100。",
+        "label": "0.6×0.7"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.7",
+        "unit": "unitless",
+        "feedback": "0.21÷0.3：先核对数量所指的对象、运算和单位。 用答案乘除数检验。",
+        "label": "0.21÷0.3"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "0.16",
+        "unit": "unitless",
+        "feedback": "0.12÷3/4：先核对数量所指的对象、运算和单位。 可以把0.12写成12/100。",
+        "label": "0.12÷3/4"
+      }
+    ],
+    "construction": {},
+    "explanation": "乘法为42个百分之一；除法同单位转化；除以3/4等于乘4/3。",
+    "hints": [
+      "可以把0.12写成12/100。",
+      "用答案乘除数检验。"
+    ]
+  },
+  "math6.r-02": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-02",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "16",
+        "unit": "平方米",
+        "feedback": "黄瓜面积：先核对数量所指的对象、运算和单位。 标出“余下的”四个字。",
+        "label": "黄瓜面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "5.5",
+        "unit": "小时",
+        "feedback": "增加后的阅读时间：先核对数量所指的对象、运算和单位。 把“多”转换为1加该分率。",
+        "label": "增加后的阅读时间"
+      }
+    ],
+    "construction": {},
+    "explanation": "黄瓜是(60−20)×2/5；阅读为4.5×(1+2/9)。两个分率所依据的整体不同。",
+    "hints": [
+      "标出“余下的”四个字。",
+      "把“多”转换为1加该分率。"
+    ]
+  },
+  "math6.r-03": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-03",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "分米",
+        "feedback": "直径：先核对数量所指的对象、运算和单位。 先列出已知r。",
+        "label": "直径"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "18.84",
+        "unit": "分米",
+        "feedback": "周长：先核对数量所指的对象、运算和单位。 每个公式带上量的意义与单位。",
+        "label": "周长"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "28.26",
+        "unit": "平方分米",
+        "feedback": "面积：先核对数量所指的对象、运算和单位。 先列出已知r。",
+        "label": "面积"
+      }
+    ],
+    "construction": {},
+    "explanation": "d=2r；C=2πr；S=πr²。面积的单位是平方分米，不能写分米。",
+    "hints": [
+      "先列出已知r。",
+      "每个公式带上量的意义与单位。"
+    ]
+  },
+  "math6.r-04": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-04",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "6",
+        "unit": "格",
+        "feedback": "新底：先核对数量所指的对象、运算和单位。 比较每一条对应边。",
+        "label": "新底"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "4",
+        "unit": "格",
+        "feedback": "新高：先核对数量所指的对象、运算和单位。 平移后各点的相对距离保持。",
+        "label": "新高"
+      },
+      {
+        "id": "q3",
+        "kind": "choice",
+        "accepted": [
+          "1"
+        ],
+        "feedback": "平移是否改变面积：平移改变位置，不改变形状和大小。 比较每一条对应边。",
+        "label": "平移是否改变面积"
+      }
+    ],
+    "construction": {},
+    "explanation": "放缩边长乘2、面积乘4；平移只对坐标加同一个位移。两种操作不同。",
+    "hints": [
+      "比较每一条对应边。",
+      "平移后各点的相对距离保持。"
+    ]
+  },
+  "math6.r-05": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-05",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1.70",
+        "unit": "unitless",
+        "feedback": "3.7×0.46近似值：先核对数量所指的对象、运算和单位。 先估计数量级。",
+        "label": "3.7×0.46近似值"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "9.23",
+        "unit": "unitless",
+        "feedback": "2.4÷0.26近似值：先核对数量所指的对象、运算和单位。 舍入只在最后要求的位置做。",
+        "label": "2.4÷0.26近似值"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "3.36",
+        "unit": "unitless",
+        "feedback": "混合算式结果：先核对数量所指的对象、运算和单位。 先估计数量级。",
+        "label": "混合算式结果"
+      }
+    ],
+    "construction": {},
+    "explanation": "准确积1.702；商9.230769…；先除得3再加0.36。1.7与1.70数值相同，本题界面仍应理解精确到百分位的要求。",
+    "hints": [
+      "先估计数量级。",
+      "舍入只在最后要求的位置做。"
+    ]
+  },
+  "math6.r-06": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-06",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "0.65",
+        "unit": "公顷",
+        "feedback": "水田面积：先核对数量所指的对象、运算和单位。 先确定0.78是总量。",
+        "label": "水田面积"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "0.13",
+        "unit": "公顷",
+        "feedback": "旱地面积：先核对数量所指的对象、运算和单位。 工程总量可设1。",
+        "label": "旱地面积"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "40/9",
+        "unit": "小时",
+        "feedback": "合做时间：先核对数量所指的对象、运算和单位。 先确定0.78是总量。",
+        "label": "合做时间"
+      }
+    ],
+    "construction": {},
+    "explanation": "总份数6，每份0.13；合作效率1/8+1/10=9/40，总时间40/9小时。不能把两个时间平均。",
+    "hints": [
+      "先确定0.78是总量。",
+      "工程总量可设1。"
+    ]
+  },
+  "math6.r-07": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-07",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "90",
+        "unit": "度",
+        "feedback": "扇形圆心角：先核对数量所指的对象、运算和单位。 面积占比在同一个圆中比较。",
+        "label": "扇形圆心角"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "56.52",
+        "unit": "米",
+        "feedback": "车轮滚过长度：先核对数量所指的对象、运算和单位。 先算厘米路程，最后换米。",
+        "label": "车轮滚过长度"
+      }
+    ],
+    "construction": {},
+    "explanation": "四分之一圆对应90°；每圈3.14×45厘米，40圈共5652厘米=56.52米。坐标只表示圆心位置。",
+    "hints": [
+      "面积占比在同一个圆中比较。",
+      "先算厘米路程，最后换米。"
+    ]
+  },
+  "math6.r-08": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-08",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "17.3",
+        "unit": "厘米",
+        "feedback": "173千米的图上距离：先核对数量所指的对象、运算和单位。 千米到厘米要乘100000。",
+        "label": "173千米的图上距离"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "unitless",
+        "feedback": "平移后的列：先核对数量所指的对象、运算和单位。 向左移动影响第一项。",
+        "label": "平移后的列"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "2",
+        "unit": "unitless",
+        "feedback": "平移后的行：先核对数量所指的对象、运算和单位。 千米到厘米要乘100000。",
+        "label": "平移后的行"
+      },
+      {
+        "id": "q4",
+        "kind": "quantity",
+        "value": "3",
+        "unit": "格",
+        "feedback": "顺时针转后，原来向上3格变成向右3格。"
+      },
+      {
+        "id": "q5",
+        "kind": "quantity",
+        "value": "-2",
+        "unit": "格",
+        "feedback": "关于纵轴对称，横坐标取相反数，纵坐标不变。"
+      }
+    ],
+    "construction": {},
+    "explanation": "173千米=17300000厘米，除1000000得17.3厘米；列减7、行不变。旋转不同于平移。 合成点A(0,3)顺时针90°为(3,0)，点B(2,0)关于纵轴对称为(-2,0)；这些相对坐标以C为原点。",
+    "hints": [
+      "千米到厘米要乘100000。",
+      "向左移动影响第一项。"
+    ]
+  },
+  "math6.r-09": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-09",
+    "mode": "score",
+    "checks": [
+      {
+        "id": "q1",
+        "kind": "quantity",
+        "value": "1/6",
+        "unit": "unitless",
+        "feedback": "1/2−1/3：先核对数量所指的对象、运算和单位。 把第二、第三堆合起来找不变量。",
+        "label": "1/2−1/3"
+      },
+      {
+        "id": "q2",
+        "kind": "quantity",
+        "value": "1/6",
+        "unit": "unitless",
+        "feedback": "1/2×1/3：先核对数量所指的对象、运算和单位。 选择1/4与1/5检验倒数关系。",
+        "label": "1/2×1/3"
+      },
+      {
+        "id": "q3",
+        "kind": "quantity",
+        "value": "80",
+        "unit": "枚",
+        "feedback": "三堆白子总数：先核对数量所指的对象、运算和单位。 把第二、第三堆合起来找不变量。",
+        "label": "三堆白子总数"
+      }
+    ],
+    "construction": {},
+    "explanation": "第二堆白子=60−第二堆黑子=60−第三堆白子，因此后二堆白子共60，连第一堆20得80。倒数差与积相等在相邻正整数倒数时成立，不能随意推广。",
+    "hints": [
+      "把第二、第三堆合起来找不变量。",
+      "选择1/4与1/5检验倒数关系。"
+    ]
+  },
+  "math6.r-10": {
+    "version": "math.truth.v1",
+    "lessonId": "math6.r-10",
+    "mode": "observe",
+    "checks": [],
+    "construction": {},
+    "explanation": "引用具体数量或图形关系，区别观察、推测与有规则的核对；为自己选一个下一次练习目标。",
+    "hints": [
+      "可以从数位、整体、单位、对应边、观测点中选一项。",
+      "改进计划写成可做的一步，而不是“更认真”。"
+    ]
+  }
+}

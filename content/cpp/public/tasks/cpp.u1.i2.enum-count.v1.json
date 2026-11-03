@@ -1,0 +1,186 @@
+{
+  "taskId": "cpp.u1.i2.enum-count.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "INDEPENDENT",
+  "title": "清点 4 的倍数",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "清点 1 到 40 号商品里，编号是 4 的倍数的有几件。程序已经搭好了循环和计数，但判断条件写错了。"
+    },
+    {
+      "type": "TEXT",
+      "text": "先口算猜一个数（记录不判分），再把条件修对，让程序逐个编号检查。"
+    },
+    {
+      "type": "TEXT",
+      "text": "注意：提交后服务端还会换编号范围复跑（比如数 1..4，甚至 1..0）。"
+    }
+  ],
+  "givens": {
+    "inputs": {
+      "n": 40
+    },
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "count",
+        "expr": "0"
+      },
+      {
+        "kind": "FOR",
+        "var": "i",
+        "from": "1",
+        "bound": "n",
+        "cmp": "<=",
+        "body": [
+          {
+            "kind": "IF",
+            "cond": "i % 4 == 4",
+            "then": [
+              {
+                "kind": "ASSIGN",
+                "var": "count",
+                "expr": "count + 1"
+              }
+            ],
+            "else": []
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "count"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.program.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[1].body[0].cond"
+      ],
+      "insertableKinds": [],
+      "deletableSteps": [],
+      "maxProgramSteps": 12,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "独立任务：只允许改循环体里那个判断条件。想想：一个数除以 4，余数是多少才算 4 的倍数？",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "挨个编号问一句：除以 4 余 0 吗？是就数进去。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "倍数判断用 %；数到了就让 count 加 1。注意 == 是比较，= 是赋值。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先手数 1..12 里 4 的倍数有几个，对照程序输出。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.i2.where-count",
+        "prompt": "「count := count + 1」要放在哪里才能只数倍数？",
+        "options": [
+          {
+            "id": "opt-in-if",
+            "label": "放在判断「是 4 的倍数」的大括号里，每圈只在满足时执行"
+          },
+          {
+            "id": "opt-in-loop",
+            "label": "直接放在循环体里，每圈都数"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "「40 ÷ 4 直接算」和「从 1 到 40 逐个枚举」各有什么好处？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

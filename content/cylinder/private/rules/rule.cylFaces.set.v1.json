@@ -1,0 +1,44 @@
+{
+  "ruleId": "rule.cylFaces.set.v1",
+  "file": "rule.cylFaces.set.v1.json",
+  "boundTasks": [
+    "cyl.faces.g1.face-inventory.v1",
+    "cyl.faces.i1.faceset-new-instance.v1"
+  ],
+  "note": "面集合真值按包装条件（有底/有盖）；分项反馈不点名行、不显示正确行数（沿 L2 配对反馈受限纪律）。原 FACE_SET_FAMILY pendingDsl 已正式化为 FACE_SET_TRUTH（H0-DELTA-INTEGRATION-20261027-3）。",
+  "body": {
+    "kind": "FACE_SET_TRUTH",
+    "entries": {
+      "cyl.faces.g1.face-inventory.v1": {
+        "condition": "has-bottom-no-lid",
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-lower": "opt-include",
+          "cyl-face-upper": "opt-exclude"
+        },
+        "lidCount": "opt-1",
+        "snapshotMustEqualDeclaration": true,
+        "compareOnly": {
+          "labelTube": [
+            "cyl-face-side"
+          ],
+          "sealedTube": [
+            "cyl-face-side",
+            "cyl-face-upper",
+            "cyl-face-lower"
+          ]
+        }
+      },
+      "cyl.faces.i1.faceset-new-instance.v1": {
+        "fromInstance": "cyl.faces.i1.F1",
+        "snapshotMustEqualDeclaration": true
+      }
+    },
+    "feedback": {
+      "reviseGeneric": "再读一遍条件：这个包装上面开口吗？底下要不要纸？",
+      "missingLowerVariant": "无盖说的是上面开口——再看看底下要不要纸。",
+      "snapshotMismatch": "先把场景里的选面改成你答案里的样子，再提交。",
+      "policy": "REVISE 反馈不点名行、不显示正确行数、不揭示正确集合"
+    }
+  }
+}

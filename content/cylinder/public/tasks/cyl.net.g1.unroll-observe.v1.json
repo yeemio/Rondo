@@ -1,0 +1,224 @@
+{
+  "title": "把圆筒的侧面摊开",
+  "taskId": "cyl.net.g1.unroll-observe.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.directionRelation.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把圆筒的侧面摊开"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个圆筒：底面半径 3.0 cm，高 8.0 cm。侧面（不含两个底面）可以沿接缝摊开成一张平面条带，四条边有编号 1–4。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先猜一猜：摊开后哪些长度没有变？条带里，哪条边对应原来底面的圆周？哪条边会成为高？每一项都可以选「不确定」。π 取 3.14。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "圆筒 r=3.0 cm、h=8.0 cm。摊开的是侧面，四条边有编号。你要判断：哪条边卷回去形成底面圆周、哪条边成为高。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "摊开只是换样子，纸没有被拉长也没有被剪掉——想想侧面原来是沿着什么绕了一圈、沿着什么从上走到下。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先完全摊开，再慢慢卷回去，盯着一条编号边看它回到哪里；对照测量卡上的两个长度。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.netg1.circle-edge",
+        "prompt": "卷回后，哪条边形成底面圆的圆周？",
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.netg1.length-source",
+        "prompt": "条带周长方向那条边的长度，和底面圆的什么一样？",
+        "options": [
+          {
+            "id": "opt-len-circle",
+            "label": "绕底面圆一圈的长度（圆周长）"
+          },
+          {
+            "id": "opt-len-radius",
+            "label": "底面圆的半径"
+          },
+          {
+            "id": "opt-len-diameter",
+            "label": "底面圆的直径"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么摊开后这条边的长度没有变？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "弧段随 permille 逐步展开为条带，编号标记锚定于四边随动画移动，测量卡挂接条带两方向边。",
+    "svgDom": "圆周按同参数分段、与展开条带一一点位联动，同一编号标记、同一测量卡、同一表单；slider/按钮/键盘入口与 3D 相同。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+ "deltaVersion": "h0-20261027-2",
+ "parent": "h0-20261027-1",
+ "createdAt": "2026-10-27",
+ "scope": "B-D10 closeout: rules DSL v2 (7 kinds) + private bindings v2 schema",
+ "changedFiles": {
+  "modules/contracts/server/rules.ts": "ca066511873368703ea14c92151ecb8cd553310119e92af0619b0d93dc1c501f",
+  "modules/contracts/server/content.ts": "88276de8c824b00fb9c4e36654f3d164a395c8cf77537a43f0c751e45efc312a"
+ },
+ "proof": "tests/contracts/rules-v2.test.ts -> dist/tests-rulesv2 4/4 pass (all 7 C rule files + 2 bindings parse loss-free deepEqual; unknown kind & out-of-domain rejected)",
+ "laneAbsorption": "B-learning/C-experience trees remain at h0-20261027-1; integrated is the consuming root for this batch"
+}

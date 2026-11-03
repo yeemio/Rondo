@@ -1,0 +1,722 @@
+{
+  "registryVersion": 1,
+  "representationNote": "cpp.steps.v1 响应注册表。predict 阶段的作答按 PREDICTION_CARRIER 决定序列化进 recordPrediction.explanation（记录不判分）；verify 阶段逐项进入 learning.submitResponse 的结构化载体。outputString 录入面为逐行结构化数字框（每行一个整数），不是自由文本。",
+  "schemas": [
+    {
+      "schemaId": "resp.cpp.u1.trace.v1",
+      "summary": "g1 顺序与变量重赋值：预测输出行 + 旧值/新值概念",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g1.output",
+            "kind": "outputLines",
+            "prompt": "预测：这张卡会输出什么？（每行一个数）",
+            "optionalUncertain": true,
+            "maxLines": 8
+          },
+          {
+            "id": "ask.g1.total-old-new",
+            "kind": "choice",
+            "prompt": "第 4 步「total := total + 4」右边的 total 用的是旧值还是新值？",
+            "options": [
+              {
+                "id": "opt-old",
+                "label": "旧值（先算右边再覆盖）"
+              },
+              {
+                "id": "opt-new",
+                "label": "新值"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "outputString",
+            "quantityId": "output",
+            "prompt": "现在这张卡（完成改动后）的输出是？每行一个数。",
+            "maxLines": 8
+          },
+          {
+            "kind": "finalVariables",
+            "prompt": "结束时各变量的值是？",
+            "variables": [
+              {
+                "id": "a",
+                "label": "a"
+              },
+              {
+                "id": "b",
+                "label": "b"
+              },
+              {
+                "id": "total",
+                "label": "total"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "selectionId": "sel.g1.total-old-new",
+            "prompt": "「total := total + 4」右边的 total 用的是？",
+            "options": [
+              {
+                "id": "opt-old",
+                "label": "旧值：右边先算完，再覆盖左边的变量"
+              },
+              {
+                "id": "opt-new",
+                "label": "新值"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.cpp.u1.divrem.v1",
+      "summary": "g2 整数除法与取余：两行输出 + 负数除/余概念",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g2.output",
+            "kind": "outputLines",
+            "prompt": "预测：75 颗糖每袋 8 颗，输出两行各是多少？",
+            "optionalUncertain": true,
+            "maxLines": 8
+          },
+          {
+            "id": "ask.g2.quotient",
+            "kind": "choice",
+            "prompt": "75 ÷ 8 等于多少（整数除法）？",
+            "options": [
+              {
+                "id": "opt-q9",
+                "label": "9"
+              },
+              {
+                "id": "opt-q-decimal",
+                "label": "9.375"
+              },
+              {
+                "id": "opt-q10",
+                "label": "10"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "outputString",
+            "quantityId": "output",
+            "prompt": "完成第二问的改动后（每袋 12 颗、100 颗糖），输出两行是？",
+            "maxLines": 8
+          },
+          {
+            "kind": "finalVariables",
+            "prompt": "结束时各变量的值是？",
+            "variables": [
+              {
+                "id": "n",
+                "label": "n"
+              },
+              {
+                "id": "k",
+                "label": "k"
+              },
+              {
+                "id": "bags",
+                "label": "bags"
+              },
+              {
+                "id": "left",
+                "label": "left"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "selectionId": "sel.g2.neg-div",
+            "prompt": "在 C++ 里 (-7) / 2 等于多少？",
+            "options": [
+              {
+                "id": "opt-neg-div-a",
+                "label": "-3"
+              },
+              {
+                "id": "opt-neg-div-decimal",
+                "label": "-3.5"
+              },
+              {
+                "id": "opt-neg-div-floor",
+                "label": "-4（向负无穷取整）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "selectionId": "sel.g2.neg-rem",
+            "prompt": "那 (-7) % 2 呢？",
+            "options": [
+              {
+                "id": "opt-neg-rem-sign",
+                "label": "-1"
+              },
+              {
+                "id": "opt-neg-rem-one",
+                "label": "1"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.cpp.u1.branch.v1",
+      "summary": "g3 结构化 if 与边界：分支走向 + 反事实概念",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g3.branch",
+            "kind": "choice",
+            "prompt": "total 是 47 时，哪个分支会执行？",
+            "options": [
+              {
+                "id": "opt-discount",
+                "label": "优惠分支（满 30 减 5）"
+              },
+              {
+                "id": "opt-original",
+                "label": "原价分支"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.g3.output",
+            "kind": "outputLines",
+            "prompt": "预测：这张卡会输出什么？",
+            "optionalUncertain": true,
+            "maxLines": 8
+          },
+          {
+            "id": "ask.g3.counterfactual",
+            "kind": "choice",
+            "prompt": "不运行，先猜：如果 total 是 24，pay 会是多少？",
+            "options": [
+              {
+                "id": "opt-19",
+                "label": "19"
+              },
+              {
+                "id": "opt-24",
+                "label": "24"
+              },
+              {
+                "id": "opt-29",
+                "label": "29"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "branchTrace",
+            "prompt": "标记的判断各走了哪边？",
+            "checkpoints": [
+              {
+                "checkpointId": "if-1",
+                "label": "满 30 判断"
+              }
+            ],
+            "options": [
+              {
+                "id": "TAKEN",
+                "label": "走了大括号这边（优惠）"
+              },
+              {
+                "id": "SKIPPED",
+                "label": "跳过了（原价）"
+              }
+            ]
+          },
+          {
+            "kind": "outputString",
+            "quantityId": "output",
+            "prompt": "现在这张卡的输出是？",
+            "maxLines": 8
+          },
+          {
+            "kind": "finalVariables",
+            "prompt": "结束时各变量的值是？",
+            "variables": [
+              {
+                "id": "total",
+                "label": "total"
+              },
+              {
+                "id": "pay",
+                "label": "pay"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "selectionId": "sel.g3.ge-vs-gt",
+            "prompt": "把 >= 改成 >，total 恰好是 30 时会走哪边？",
+            "options": [
+              {
+                "id": "opt-discount",
+                "label": "优惠"
+              },
+              {
+                "id": "opt-original",
+                "label": "原价"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.cpp.u1.loop.v1",
+      "summary": "g4 有界 for 与累加：执行次数 + 终值 + while 等价概念",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.g4.output",
+            "kind": "outputLines",
+            "prompt": "预测：sum 是多少？",
+            "optionalUncertain": true,
+            "maxLines": 8
+          },
+          {
+            "id": "ask.g4.trips",
+            "kind": "choice",
+            "prompt": "循环体会执行几次？",
+            "options": [
+              {
+                "id": "opt-4",
+                "label": "4 次"
+              },
+              {
+                "id": "opt-5",
+                "label": "5 次"
+              },
+              {
+                "id": "opt-6",
+                "label": "6 次"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "outputString",
+            "quantityId": "output",
+            "prompt": "现在这张卡的输出是？（若你在循环体里加了输出，按行数全写）",
+            "maxLines": 8
+          },
+          {
+            "kind": "finalVariables",
+            "prompt": "结束时各变量的值是？",
+            "variables": [
+              {
+                "id": "sum",
+                "label": "sum"
+              },
+              {
+                "id": "i",
+                "label": "i"
+              }
+            ]
+          },
+          {
+            "kind": "numberValue",
+            "quantityId": "g4.trip-count",
+            "prompt": "循环体执行了几次？",
+            "quantityLabel": "次数"
+          },
+          {
+            "kind": "singleChoice",
+            "selectionId": "sel.g4.while-equiv",
+            "prompt": "冻结卡：i = 1; while (i <= 5) { sum := sum + i; i := i + 1 } 的结果和 for 版？",
+            "options": [
+              {
+                "id": "opt-same",
+                "label": "一样"
+              },
+              {
+                "id": "opt-diff",
+                "label": "不一样"
+              },
+              {
+                "id": "opt-forever",
+                "label": "不会停"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.cpp.u1.program.v1",
+      "summary": "构造/修复/读程序复合响应（i1/i2/i3/s1/d1；enabledSegments 按任务启用）",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.cpp.output",
+            "kind": "outputLines",
+            "prompt": "先预测：这张卡现在运行会输出什么？（每行一个数）",
+            "optionalUncertain": true,
+            "maxLines": 8,
+            "tasks": [
+              "cpp.u1.i1.fix-boundary.v1",
+              "cpp.u1.i3.build-digits.v1"
+            ]
+          },
+          {
+            "id": "ask.cpp.oral",
+            "kind": "numberValue",
+            "prompt": "先口算猜一个数（记录下来，不判分）：",
+            "quantityLabel": "你的猜测",
+            "tasks": [
+              "cpp.u1.i2.enum-count.v1",
+              "cpp.u1.d1.delayed-transfer.v1"
+            ]
+          },
+          {
+            "id": "ask.cpp.oral2",
+            "kind": "numberValue",
+            "prompt": "先口算猜：拍手总次数大约是？",
+            "quantityLabel": "次数",
+            "tasks": [
+              "cpp.u1.s1.stranger-transfer.v1"
+            ]
+          },
+          {
+            "id": "ask.cpp.oral3",
+            "kind": "numberValue",
+            "prompt": "先口算猜：最后一次拍手的编号大约是？",
+            "quantityLabel": "编号",
+            "tasks": [
+              "cpp.u1.s1.stranger-transfer.v1"
+            ]
+          },
+          {
+            "id": "ask.i1.where",
+            "kind": "choice",
+            "prompt": "你觉得程序错在哪类地方？",
+            "tasks": [
+              "cpp.u1.i1.fix-boundary.v1"
+            ],
+            "options": [
+              {
+                "id": "opt-bound",
+                "label": "循环界限"
+              },
+              {
+                "id": "opt-oporder",
+                "label": "运算符顺序"
+              },
+              {
+                "id": "opt-varname",
+                "label": "变量名"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.i2.div38",
+            "kind": "choice",
+            "prompt": "38 是 4 的倍数吗？",
+            "tasks": [
+              "cpp.u1.i2.enum-count.v1"
+            ],
+            "options": [
+              {
+                "id": "opt-yes",
+                "label": "是"
+              },
+              {
+                "id": "opt-no",
+                "label": "不是"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.s1.self60",
+            "kind": "choice",
+            "prompt": "报数报到 60，60 自己会被拍手吗？",
+            "tasks": [
+              "cpp.u1.s1.stranger-transfer.v1"
+            ],
+            "options": [
+              {
+                "id": "opt-yes",
+                "label": "会"
+              },
+              {
+                "id": "opt-no",
+                "label": "不会"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "id": "ask.d1.double7",
+            "kind": "choice",
+            "prompt": "编号 277（十位和个位都是 7）会被数几次？",
+            "tasks": [
+              "cpp.u1.d1.delayed-transfer.v1"
+            ],
+            "options": [
+              {
+                "id": "opt-once",
+                "label": "1 次"
+              },
+              {
+                "id": "opt-twice",
+                "label": "2 次"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "segments": [
+          {
+            "id": "outputAnswer",
+            "label": "输出作答",
+            "item": {
+              "kind": "outputString",
+              "quantityId": "output",
+              "prompt": "程序（修好/补好后）的输出是？每行一个数。",
+              "maxLines": 8
+            }
+          },
+          {
+            "id": "finalVariables",
+            "label": "变量终值",
+            "item": {
+              "kind": "finalVariables",
+              "prompt": "结束时各变量的值是？",
+              "variables": [
+                {
+                  "id": "sum",
+                  "label": "sum"
+                },
+                {
+                  "id": "i",
+                  "label": "i"
+                },
+                {
+                  "id": "count",
+                  "label": "count"
+                },
+                {
+                  "id": "n",
+                  "label": "n"
+                },
+                {
+                  "id": "clapCount",
+                  "label": "clapCount"
+                },
+                {
+                  "id": "lastClap",
+                  "label": "lastClap"
+                },
+                {
+                  "id": "ones",
+                  "label": "ones"
+                },
+                {
+                  "id": "tens",
+                  "label": "tens"
+                },
+                {
+                  "id": "hundreds",
+                  "label": "hundreds"
+                }
+              ]
+            }
+          },
+          {
+            "id": "conceptCheck",
+            "label": "概念检查",
+            "item": {
+              "kind": "singleChoiceRegistry",
+              "prompt": "（按任务登记的选择题，见 bindings 概念段）"
+            }
+          }
+        ]
+      },
+      "perTaskConcept": {
+        "cpp.u1.i1.fix-boundary.v1": {
+          "kind": "singleChoice",
+          "selectionId": "sel.i1.missed-loop",
+          "prompt": "原来哪一圈被漏掉了？",
+          "options": [
+            {
+              "id": "opt-loop10",
+              "label": "第 10 圈（i = 10）"
+            },
+            {
+              "id": "opt-loop1",
+              "label": "第 1 圈"
+            },
+            {
+              "id": "opt-none",
+              "label": "没有漏"
+            },
+            {
+              "id": "opt-unsure",
+              "label": "不确定"
+            }
+          ]
+        },
+        "cpp.u1.i2.enum-count.v1": {
+          "kind": "singleChoice",
+          "selectionId": "sel.i2.range-check",
+          "prompt": "枚举 1..40 时，编号范围会漏或多吗？",
+          "options": [
+            {
+              "id": "opt-exact",
+              "label": "不重不漏：从 1 到 40 每个都查一次"
+            },
+            {
+              "id": "opt-miss40",
+              "label": "会漏掉 40"
+            },
+            {
+              "id": "opt-extra",
+              "label": "会把 41 也查进去"
+            },
+            {
+              "id": "opt-unsure",
+              "label": "不确定"
+            }
+          ]
+        },
+        "cpp.u1.i3.build-digits.v1": {
+          "kind": "singleChoice",
+          "selectionId": "sel.i3.order-first",
+          "prompt": "为什么要先取个位、再除以 10？",
+          "options": [
+            {
+              "id": "opt-shrink-after",
+              "label": "先取走个位，除以 10 才轮到十位变成新的个位"
+            },
+            {
+              "id": "opt-order-free",
+              "label": "顺序无所谓，结果一样"
+            },
+            {
+              "id": "opt-unsure",
+              "label": "不确定"
+            }
+          ]
+        },
+        "cpp.u1.s1.stranger-transfer.v1": {
+          "kind": "singleChoice",
+          "selectionId": "sel.s1.count-last-diff",
+          "prompt": "clapCount 和 lastClap 两个变量的作用差在哪？",
+          "options": [
+            {
+              "id": "opt-roles-split",
+              "label": "clapCount 记次数，lastClap 记最后一次的编号"
+            },
+            {
+              "id": "opt-roles-same",
+              "label": "两个记的是同一件事"
+            },
+            {
+              "id": "opt-unsure",
+              "label": "不确定"
+            }
+          ]
+        },
+        "cpp.u1.d1.delayed-transfer.v1": {
+          "kind": "singleChoice",
+          "selectionId": "sel.d1.or-both",
+          "prompt": "「||」两边都成立时（比如 277），计数加几次？",
+          "options": [
+            {
+              "id": "opt-add-once",
+              "label": "只加 1 次"
+            },
+            {
+              "id": "opt-add-twice",
+              "label": "加 2 次"
+            },
+            {
+              "id": "opt-unsure",
+              "label": "不确定"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

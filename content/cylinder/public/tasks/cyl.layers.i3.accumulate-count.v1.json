@@ -1,0 +1,228 @@
+{
+  "title": "数到第几层装满一百",
+  "taskId": "cyl.layers.i3.accumulate-count.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.accumulate.v1",
+  "allowedOperationIds": [
+    "SetLayerCount",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetLayerCount",
+      "values": [
+        10
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 10
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "数到第几层装满一百"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个罐子：半径 2.0 cm，高 10.0 cm，装 10 层、每层厚 1.0 cm。一层一层往上装，每装一层记录累计体积。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "2.0"
+        ],
+        [
+          "高度 h",
+          "10.0"
+        ],
+        [
+          "层数 n",
+          "10"
+        ],
+        [
+          "层厚",
+          "1.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "累计体积第一次超过 100 cm³ 是在第几层？那时候累计是多少立方厘米？先猜，再一层层推进检查。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "L34-8：行（第 k 层：层厚/该层/累计）只在确认 visibleLayerCount ≥ k 后呈现；两表达渲染同一 DOM CumulativeTable，同步揭示；本任务累计表为执行面：行随孩子逐层推进揭示（预测已先落库），表内无数值预填"
+    },
+    {
+      "material": "card.formula-base",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-Vlayer",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "底面积值卡为「每层=底面积×层厚」印证材料"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=2.0 cm、h=10.0 cm、10 层每层 1.0 cm。答：累计第一次超过 100 cm³ 的层号与当时的累计值。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "每装一层，累计就加一份同样的数。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算每层 = π×2×2×1.0，再一层层加：加到哪一层刚过 100？没过 100 的最后一层也要看清楚。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersi3.reach-or-exceed",
+        "prompt": "如果目标是「首次达到或超过 100」，答案会变吗：",
+        "options": [
+          {
+            "id": "opt-same-8",
+            "label": "不变，还是第 8 层"
+          },
+          {
+            "id": "opt-become-7",
+            "label": "变成第 7 层"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "你怎么确认自己没有数错层？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "圆片逐层升起与累计表行同步；复位一键回 0 层。",
+    "svgDom": "二维层条逐层填充 + 同一累计表 + 复位/逐层按钮；键盘（方向键逐层、Home 复位）与 3D 同一 typed intent；同一判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 20,
+    "heightMm": 100,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 10,
+    "visibleLayerCount": 0
+  }
+}

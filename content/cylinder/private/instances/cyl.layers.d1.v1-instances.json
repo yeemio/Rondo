@@ -1,0 +1,43 @@
+{
+  "taskId": "cyl.layers.d1.delayed-transfer.v1",
+  "file": "cyl.layers.d1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.layers.d1.F1",
+      "initial": {
+        "radiusMm": 40,
+        "heightMm": 65
+      },
+      "layer": {
+        "layerCount": 13,
+        "thicknessMm": 5
+      },
+      "givenCircumferenceCm": "25.12",
+      "condition": "has-bottom-no-lid",
+      "truth": {
+        "radiusCm": "4.0",
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-lower": "opt-include",
+          "cyl-face-upper": "opt-exclude"
+        },
+        "lateralAreaCm2": "163.28",
+        "circleAreaCm2": "50.24",
+        "paperAreaCm2": "213.52",
+        "volumeCm3": "326.56"
+      },
+      "answerHint": "r=25.12÷6.28=4.0 cm；纸板=侧面+下盖面；213.52 cm²；灌蜡 326.56 cm³。",
+      "migration": {
+        "plannedAt": "L4 attempt FinishAttempt",
+        "availableAfterDays": 7,
+        "nominalWindowEndDays": 14,
+        "observedRequires": [
+          "newTaskSubmission",
+          "actualIntervalDays",
+          "assistanceData"
+        ]
+      }
+    }
+  ]
+}

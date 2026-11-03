@@ -1,0 +1,45 @@
+{
+  "taskId": "cyl.layers.i3.accumulate-count.v1",
+  "file": "cyl.layers.i3.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.layers.i3.F1",
+      "initial": {
+        "radiusMm": 20,
+        "heightMm": 100
+      },
+      "layer": {
+        "layerCount": 10,
+        "thicknessMm": 10
+      },
+      "targetCm3": "100.00",
+      "truth": {
+        "firstExceedLayer": 8,
+        "cumulativeAtLayerCm3": "100.48",
+        "perLayerCm3": "12.56",
+        "boundary": {
+          "layer7Cm3": "87.92",
+          "layer9Cm3": "113.04"
+        },
+        "totalCm3": "125.60"
+      },
+      "answerHint": "每层 12.56；第 7 层累计 87.92 还没到，第 8 层 100.48 第一次超过 100——答案：第 8 层，100.48 cm³。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径；须存在登记层数 n∈[1,40] 使 heightMm%n==0 且每层两位小数精确（L4 §11-4）",
+      "r=2.0 时公式诊断签名退化，只判累计真值（L34-13）；互斥总清单；已服务实例"
+    ]
+  }
+}

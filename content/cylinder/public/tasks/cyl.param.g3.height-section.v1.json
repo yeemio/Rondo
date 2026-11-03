@@ -1,0 +1,201 @@
+{
+  "title": "只改高度，再看切面",
+  "taskId": "cyl.param.g3.height-section.v1",
+  "taskFamily": "cylinder.parameters.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm"
+  ],
+  "responseSchemaId": "resp.l1.dimensionRead.v1",
+  "allowedOperationIds": [
+    "SetDimension",
+    "SetSection"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetDimension",
+      "dimension": "HEIGHT",
+      "valuesMm": [
+        100
+      ]
+    },
+    {
+      "type": "SetSection",
+      "sections": [
+        "NONE",
+        "TRANSVERSE",
+        "AXIAL"
+      ]
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "mm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "把圆筒拉高，再切开看看"
+    },
+    {
+      "type": "TEXT",
+      "text": "这个圆筒半径 3.0 cm、高 8.0 cm。这一次我们只改高度：把高改成 10.0 cm，半径不动。"
+    },
+    {
+      "type": "TEXT",
+      "text": "切面小课堂：横截面是垂直于圆筒的轴切开后看到的切面；轴截面是沿着轴切开（切面穿过轴）看到的切面。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "现在",
+          "unitId": "cm"
+        },
+        {
+          "label": "改动后（脚本）",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "高度 h",
+          "8.0",
+          "10.0"
+        ],
+        [
+          "半径 r",
+          "3.0",
+          "3.0（不变）"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先猜一猜，再动手：① 改完之后圆筒的高是多少？② 横截面和轴截面中，哪一个切面里能看到高？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "card.section",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.before-after",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "只把高从 8.0 cm 改成 10.0 cm，半径不动。两个子问：新的高是多少；横截面和轴截面哪个切面里能看到高。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "切面是「切开之后露出的那个平面图形」；高是沿着轴方向的长度。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先切横截面，在这个图形里找一找有没有和高一样长的边；再切轴截面，同样找一找。哪个图形里有这样的边，哪个切面就能显示高。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g3.which-followed",
+        "prompt": "只改高度之后，下面哪些量变了？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "opt-radius",
+            "label": "半径"
+          },
+          {
+            "id": "opt-diameter",
+            "label": "直径"
+          },
+          {
+            "id": "opt-height",
+            "label": "高度"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "横截面和轴截面分别是什么形状？为什么轴截面里能看到高、横截面里看不到？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "三项 radio 切换 NONE/TRANSVERSE/AXIAL，切面高亮显示；高度输入/步进/确认控件同 G2 模式；切面状态用文字说明。",
+    "svgDom": "截面 radio（带文字标签与形状示意：圆/矩形/无）；SVG 绘制当前切面形状并与同一尺寸表联动。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

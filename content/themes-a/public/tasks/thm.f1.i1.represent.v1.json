@@ -1,0 +1,106 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f1.i1.represent.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "INDEPENDENT",
+  "title": "独立练习 · 巧克力条",
+  "boardView": "BAR",
+  "givens": {
+    "rows": 1,
+    "cols": 10,
+    "filled": 7
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.f1i1.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "独立练习：一条巧克力"
+    },
+    {
+      "type": "TEXT",
+      "text": "一条巧克力被平均分成 10 格，其中 7 格涂了颜色（右侧图）。"
+    },
+    {
+      "type": "TEXT",
+      "text": "不借助操作，直接回答：涂色部分是这条巧克力的几分之几？分数中的分子表示什么？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "10 格涂 7 格，写出分数并说明分子。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "总份数写分母，涂色份数写分子。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "数一数：一共几格？涂色几格？"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f1i1.num",
+        "prompt": "7/10 里的 7 表示什么？",
+        "options": [
+          {
+            "id": "opt-num-7",
+            "label": "涂色的 7 格（取的份数）"
+          },
+          {
+            "id": "opt-num-10",
+            "label": "总份数"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果再吃掉 2 格，剩下的是几分之几？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "10 格条带（SVG）静态呈现 7 格涂色。",
+    "boardTable": "份数/涂色份数读数表；同一判分。"
+  }
+}

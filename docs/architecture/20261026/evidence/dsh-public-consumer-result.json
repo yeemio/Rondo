@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "recordedAt": "2026-10-26T08:18:26.221Z",
+  "runtime": {
+    "node": "v24.18.0",
+    "executable": "/Users/yeemio/.nvm/versions/node/v24.18.0/bin/node",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "packageResolution": "READ_ONLY_DONOR_INSTALL_NOT_RONDO_INSTALL",
+  "identities": {
+    "@deepseek-ai/cordis": {
+      "version": "4.0.5",
+      "manifestPath": "/Users/yeemio/AI/gitrep/OwlcodaE/node_modules/@deepseek-ai/cordis/package.json",
+      "entry": "/Users/yeemio/AI/gitrep/OwlcodaE/node_modules/@deepseek-ai/cordis/lib/index.js"
+    },
+    "@deepseek-ai/dsh-host-webserver": {
+      "version": "0.2.1-rc.2.owlcoda.1",
+      "manifestPath": "/Users/yeemio/AI/gitrep/OwlcodaE/node_modules/@deepseek-ai/dsh-host-webserver/package.json",
+      "entry": "/Users/yeemio/AI/gitrep/OwlcodaE/node_modules/@deepseek-ai/dsh-host-webserver/lib/index.js"
+    }
+  },
+  "observations": {
+    "sqliteVersion": "3.53.1",
+    "commandDeliveries": 2,
+    "persistedRows": 1,
+    "afterDatabaseReopen": {
+      "id": "synthetic-command-1",
+      "value": 7
+    },
+    "unregisteredRoutes": {
+      "/api/terminal": 404,
+      "/api/remotes": 404,
+      "/api/settings": 404
+    },
+    "listenerClosed": true
+  },
+  "scope": "Public DSH HTTP composition and synthetic SQLite write/read/reopen only",
+  "notVerified": [
+    "independent dependency installation",
+    "product profile",
+    "React browser UI",
+    "family authorization",
+    "crash recovery",
+    "C++ isolation",
+    "model gateway",
+    "learning effect"
+  ],
+  "externalProviderCalls": 0,
+  "temporaryRootRemoved": true
+}

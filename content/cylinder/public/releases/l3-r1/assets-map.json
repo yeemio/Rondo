@@ -1,0 +1,14 @@
+{
+  "releaseId": "rondo.cyl.l3-r1",
+  "note": "path -> sha256 of the public asset files hashed into publicAssetHashes; this map itself is not hashed",
+  "assets": {
+    "content/cylinder/public/lessons.json": "52b89a0497c4981eb831ac30c23b714eac22c86e8851a3b875a090634d295e23",
+    "content/cylinder/public/schemas/response-schemas.registry.json": "8f6e3ac7b638585971da36dc1a954e5c57a90726ac812d3d82dec74881f12338",
+    "content/cylinder/public/tasks/cyl.faces.g1.face-inventory.v1.json": "4fde679846051d5e3606802c4217f87c7ca1eb98b5ceaa5fb5fb279178cf8db2",
+    "content/cylinder/public/tasks/cyl.faces.g2.one-lid-area.v1.json": "ae1db1349cfc3626bbdf5304e0bb779baac7121ddb3951f468c52dbba2c52ad3",
+    "content/cylinder/public/tasks/cyl.faces.g3.full-surface.v1.json": "d625455b458359578892832ff24e49cb37ce73108e15607e4fc4bfc786589faf",
+    "content/cylinder/public/tasks/cyl.faces.i1.faceset-new-instance.v1.json": "ba8135db070f7018bcdf05b8693422556e255e6a8085ed498d73f5e41291bd30",
+    "content/cylinder/public/tasks/cyl.faces.i2.lid-count-condition.v1.json": "ec2be356bf9297379bffc84eeae8773666f6aabf48715888493a1be13ec5c7ab",
+    "content/cylinder/public/tasks/cyl.faces.i3.surface-value-unit.v1.json": "8ed747c35cf69c8ab0256fde794d45d570104581d7db132600b2ac4ee4f3b600"
+  }
+}

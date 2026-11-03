@@ -1,0 +1,10 @@
+{
+  "releaseId": "rondo.thm.m1-r1",
+  "note": "path -> sha256 of the public asset files hashed into publicAssetHashes; this map itself is not hashed",
+  "assets": {
+    "content/themes-a/public/lessons.json": "c86e4fbc3336de8f808ae38d4c13c2ce90d9d40728a8a4ccf9ece4302413d1a5",
+    "content/themes-a/public/schemas/response-schemas.registry.json": "24fa9cd2d25350f82264ec0b6355565c7b438f460087059abb5067cc02b7d46c",
+    "content/themes-a/public/tasks/thm.m1.diag.v1.json": "209ea18bec7b9bd83a0ac2e523c2e3ea10fcdbffd0aab00d54b60c49dcd32ca7",
+    "content/themes-a/public/tasks/thm.m1.supp.v1.json": "4d7d50f09f91974c7015b81566bee6b3c09298a1fccb85a61896ce8a59ab6274"
+  }
+}

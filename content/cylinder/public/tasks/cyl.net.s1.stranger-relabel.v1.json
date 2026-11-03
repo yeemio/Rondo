@@ -1,0 +1,265 @@
+{
+  "title": "运动水壶的包裹贴纸",
+  "taskId": "cyl.net.s1.stranger-relabel.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "STRANGER",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.strangerComposite.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "运动水壶的包裹贴纸"
+    },
+    {
+      "type": "TEXT",
+      "text": "给一个运动水壶的瓶身贴一层包裹贴纸，只贴侧面，不贴上下底。瓶身是圆柱形：底面直径 3.0 cm，贴纸的高 9.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "底面直径 d",
+          "3.0"
+        ],
+        [
+          "贴纸的高 h",
+          "9.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 瓶身的半径是多少厘米？(2) 把贴纸摊开，四条边（编号 1–4）分别卷回去贴着谁（上底圆/下底圆/高）？(3) 卷回去以后，哪条边形成底面的圆周？哪条边成为高？(4) 这张贴纸的面积是多少平方厘米？"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，第 (4) 问四舍五入保留两位小数并选择单位。每项都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "diameter",
+        "height"
+      ],
+      "note": "故事 given：直径与高可见"
+    },
+    {
+      "material": "dim.radius",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "半径是参数识别作答目标，REVIEW 前隐藏（含 aria）"
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "陌生任务复测方法回忆，ASSESSMENT 档不主动展示"
+    },
+    {
+      "material": "card.formula-S",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-S",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "贴纸只包瓶身侧面。已知底面直径 3.0 cm、贴纸高 9.0 cm。四问：半径；四条边配对；哪条边成圆周/成高；贴纸面积（两位小数+单位）。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "贴纸只包侧面；摊开后是长方形，它的边和瓶身上的线一一对应。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先用直径算半径（r=d÷2），再算 C=2πr，再乘贴纸的高；配对可以回卷一小段验证。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.nets1.circle-edges",
+        "prompt": "卷回后哪条边形成底面圆的圆周？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.nets1.height-edges",
+        "prompt": "哪条边成为高？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "net-edge-1",
+            "label": "边 1"
+          },
+          {
+            "id": "net-edge-2",
+            "label": "边 2"
+          },
+          {
+            "id": "net-edge-3",
+            "label": "边 3"
+          },
+          {
+            "id": "net-edge-4",
+            "label": "边 4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.nets1.orientation-change",
+        "prompt": "如果贴纸条带竖着放改成横着放，形成圆周的边会变吗：",
+        "options": [
+          {
+            "id": "opt-yes",
+            "label": "会"
+          },
+          {
+            "id": "opt-no",
+            "label": "不会"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人说明这张贴纸怎么卷回瓶身、面积怎么算。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "条带竖放呈现（两种表达同一朝向策略）；边编号按展开参数化锚定，不随画面朝向改号。",
+    "svgDom": "竖放条带、参数锚定编号、四段复合表单（分段呈现、段内可选不确定）在两种表达下同构同判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 15,
+    "heightMm": 90,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

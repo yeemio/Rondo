@@ -1,0 +1,275 @@
+{
+  "title": "只够改一处",
+  "taskId": "cyl.layers.i2.height-vs-radius-choice.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [],
+  "responseSchemaId": "resp.l4.varCompare.v1",
+  "allowedOperationIds": [
+    "SetDimension",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetDimension",
+      "dimension": "RADIUS",
+      "valuesMm": [
+        30,
+        40
+      ]
+    },
+    {
+      "type": "SetDimension",
+      "dimension": "HEIGHT",
+      "valuesMm": [
+        60,
+        100
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "只够改一处"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个底罐：半径 3.0 cm，高 6.0 cm。加工预算只够改一处：方案 A 把高度加 4.0 cm（变成 10.0 cm）；方案 B 把半径加 1.0 cm（变成 4.0 cm）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "对象"
+        },
+        {
+          "label": "r（cm）"
+        },
+        {
+          "label": "h（cm）"
+        }
+      ],
+      "rows": [
+        [
+          "底罐",
+          "3.0",
+          "6.0"
+        ],
+        [
+          "方案 A（加高）",
+          "3.0",
+          "10.0"
+        ],
+        [
+          "方案 B（加宽）",
+          "4.0",
+          "6.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "哪个方案装得多？各装多少？先猜，再在罐子上试。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ]
+    },
+    {
+      "material": "dim.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-base",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "A/B 两案底面积差是本题核心推理，比 G3 更严：REVIEW 前不展示"
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative-values",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "底罐 r=3.0、h=6.0；A 只加高到 10.0；B 只加半径到 4.0。答哪个多、各多少。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "高度是乘一次，半径在底面积里乘两次——加的数字小不代表涨得少。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "分别算两个方案各自的底面积和体积：π×3×3×10 和 π×4×4×6，再比。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersi2.linear-error",
+        "prompt": "只看「加的厘米数」选方案（4.0 比 1.0 大所以选 A）错在：",
+        "options": [
+          {
+            "id": "opt-r-twice",
+            "label": "体积里半径被乘了两次"
+          },
+          {
+            "id": "opt-h-no-effect",
+            "label": "高度不影响体积"
+          },
+          {
+            "id": "opt-not-wrong",
+            "label": "没错"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.layersi2.proof-boundary",
+        "prompt": "再换三组尺寸试，都是「加宽小数字胜过加高大数字」——这能证明永远如此吗：",
+        "options": [
+          {
+            "id": "opt-yes",
+            "label": "能"
+          },
+          {
+            "id": "opt-no-depends",
+            "label": "不能，要看具体尺寸"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "给老板写一句建议：什么时候加宽更划算？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同 G3 基线（方案视图切换 + 层条等比）；同一表单与判分。",
+    "svgDom": "同 G3 基线。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 60,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 6,
+    "visibleLayerCount": 0
+  }
+}

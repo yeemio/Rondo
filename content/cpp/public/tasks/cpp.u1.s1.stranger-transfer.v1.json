@@ -1,0 +1,197 @@
+{
+  "taskId": "cpp.u1.s1.stranger-transfer.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "STRANGER",
+  "title": "体育课报数（综合）",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "换到体育课：全班从 1 到 60 报数，逢 3 的倍数就拍手一次。程序要输出两行：拍手总次数、最后一次拍手的编号。"
+    },
+    {
+      "type": "TEXT",
+      "text": "卡里已经有循环、判断和两个记录变量，但条件不对，而且「记下最后一次编号」那一步还没有写。"
+    },
+    {
+      "type": "TEXT",
+      "text": "先口算猜两个数（记录不判分），再把程序补对。"
+    }
+  ],
+  "givens": {
+    "inputs": {
+      "n": 60
+    },
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "clapCount",
+        "expr": "0"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "lastClap",
+        "expr": "0"
+      },
+      {
+        "kind": "FOR",
+        "var": "i",
+        "from": "1",
+        "bound": "n",
+        "cmp": "<=",
+        "body": [
+          {
+            "kind": "IF",
+            "cond": "i % 3 == 3",
+            "then": [
+              {
+                "kind": "ASSIGN",
+                "var": "clapCount",
+                "expr": "clapCount + 1"
+              }
+            ],
+            "else": []
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "clapCount"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "lastClap"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.program.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[2].body[0].cond"
+      ],
+      "insertableKinds": [
+        "ASSIGN"
+      ],
+      "deletableSteps": [],
+      "maxProgramSteps": 20,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "陌生任务：修对判断条件，并在拍手的大括号里补一条赋值，把当前编号记进 lastClap。机制和清点商品一样——数数 + 记录。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "报数从 1 到 60，凡是 3 的倍数就拍手。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "拍手时同时做两件事：次数加一、记下当前编号。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先手数 1..12 的拍手次数，对照程序。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.s1.no-miss",
+        "prompt": "怎么确认一个都没漏数？",
+        "options": [
+          {
+            "id": "opt-step-check",
+            "label": "单步看每一圈：判断满足时两件事都做了；退出前最后一圈也查过"
+          },
+          {
+            "id": "opt-guess",
+            "label": "凭感觉差不多就行"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "把范围改成 1 到 25：你的程序哪些地方不用改？哪一处要改？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

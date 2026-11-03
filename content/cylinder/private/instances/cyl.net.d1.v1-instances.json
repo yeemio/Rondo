@@ -1,0 +1,39 @@
+{
+  "taskId": "cyl.net.d1.delayed-transfer.v1",
+  "file": "cyl.net.d1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.net.d1.F1",
+      "initial": {
+        "radiusMm": 20,
+        "heightMm": 55
+      },
+      "givenCircumferenceCm": "12.56",
+      "truth": {
+        "radiusCm": "2.0",
+        "lateralAreaSpareCm2": "69.08",
+        "pairing": "standard",
+        "directionCircleEdges": [
+          "net-edge-2",
+          "net-edge-4"
+        ],
+        "directionHeightEdges": [
+          "net-edge-1",
+          "net-edge-3"
+        ]
+      },
+      "answerHint": "半径 = 12.56÷(2×3.14) = 12.56÷6.28 = 2.0 cm；配对与方向同标准真值表。",
+      "migration": {
+        "plannedAt": "L2 attempt FinishAttempt",
+        "availableAfterDays": 7,
+        "nominalWindowEndDays": 14,
+        "observedRequires": [
+          "newTaskSubmission",
+          "actualIntervalDays",
+          "assistanceData"
+        ]
+      }
+    }
+  ]
+}

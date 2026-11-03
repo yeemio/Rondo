@@ -1,0 +1,40 @@
+{
+  "taskId": "cyl.faces.i2.lid-count-condition.v1",
+  "file": "cyl.faces.i2.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.faces.i2.F1",
+      "initial": {
+        "radiusMm": 20,
+        "heightMm": 90
+      },
+      "condition": "label-to-sealed",
+      "truth": {
+        "deltaCm2": "25.12",
+        "attribution": "opt-two-lid",
+        "circleAreaCm2": "12.56",
+        "lateralAreaCm2": "113.04",
+        "diagnostics": {
+          "misOneLidValue": "12.56",
+          "misDoubleSideValue": "226.08"
+        }
+      },
+      "answerHint": "多用的纸 = 新加的两个盖面 = 2×πr² = 2×12.56 = 25.12 cm²；侧面原来就有，不用重算。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径；诊断题 r∉{1,2} cm（L34-13）；互斥总清单 L34-12；已服务实例"
+    ]
+  }
+}

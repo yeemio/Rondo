@@ -1,0 +1,154 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f1.g2.partition-bar.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "条带等分与数轴标点",
+  "boardView": "BAR_NUMBERLINE",
+  "givens": {
+    "rows": 1,
+    "cols": 1,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows"
+  ],
+  "responseSchemaId": "resp.thm.f1g2.v1",
+  "allowedOperationIds": [
+    "SetGridSize",
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetGridSize",
+      "rowsValues": [
+        1
+      ],
+      "colsValues": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "type": "SetFilled",
+      "maxCount": 12
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "在条带和数轴上表示 5/8"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧是一条 0 到 1 的条带，下面是同一条数轴。条带平均分成几份、涂几份，数轴上的点就走到第几格。"
+    },
+    {
+      "type": "TEXT",
+      "text": "操作：把条带平均分成 8 份，涂 5 份，确认。观察数轴上点停留的位置。"
+    },
+    {
+      "type": "TEXT",
+      "text": "回答：涂色部分是几分之几？它和 1/2 相比，谁大？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "条带分 8 份涂 5 份，写出分数，再和 1/2 比大小。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "数轴上 1/2 在正中间；点走过中点还是没到中点，直接看得出大小。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "比较时看分子有没有超过分母的一半：5 超过了 8 的一半。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f1g2.half",
+        "prompt": "5/8 和 1/2 谁大？你怎么看出来的？",
+        "options": [
+          {
+            "id": "opt-58-bigger",
+            "label": "5/8 大——点已越过数轴中点"
+          },
+          {
+            "id": "opt-half-bigger",
+            "label": "1/2 大"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "在数轴上指出 3/8 大概在哪里，说说你的想法。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "条带 + 数轴联动（SVG）：份数/涂色份数确认后重绘，点位置同步。",
+    "boardTable": "份数/涂色份数读数表；同一状态与判分。"
+  }
+}

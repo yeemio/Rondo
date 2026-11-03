@@ -1,0 +1,233 @@
+{
+  "title": "无盖笔筒的纸样",
+  "taskId": "cyl.faces.g2.one-lid-area.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.comboArea.v1",
+  "allowedOperationIds": [
+    "SelectFaces",
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    },
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "无盖笔筒的纸样"
+    },
+    {
+      "type": "TEXT",
+      "text": "还是这个罐身：半径 3.0 cm，高 8.0 cm。现在做一批无盖笔筒（有底、无盖），每个笔筒的纸样要算哪些面、一共多少平方厘米？"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ],
+        [
+          "包装条件",
+          "有底、无盖"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先猜一猜总共要多少平方厘米，再选面、展开、量一量、算一算。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。预测不求正确。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "unroll.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "S圆=πr²，观察阶段揭示"
+    },
+    {
+      "material": "card.formula-combo",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "组合 = S侧 + 盖数×S圆，观察阶段揭示"
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "两行单面值（侧面/圆），不含合计"
+    },
+    {
+      "material": "card.combo-area-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "组合面积目标值 REVIEW 前不下发"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=3.0 cm、h=8.0 cm，条件有底无盖。答总用纸面积，两位小数选单位。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "纸要按面下料——先想清楚有哪些面，再想每个面的面积怎么算。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "侧面面积 = 底面周长×高（上一课的 C×h）；一个圆面 = π×r×r；把两份加起来（给步骤不给数值）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesg2.label-tube",
+        "prompt": "如果把条件改成「无底无盖的标签筒」，纸是多少平方厘米？",
+        "options": [
+          {
+            "id": "opt-side-only",
+            "label": "只要侧面那份"
+          },
+          {
+            "id": "opt-plus-one",
+            "label": "还要加一个圆"
+          },
+          {
+            "id": "opt-plus-two",
+            "label": "还要加两个圆"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么算笔筒的纸要把一个圆加进去？这个圆对应罐子的哪个部分？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "选面高亮 + 展开摊平（矩形+一个圆并排），测量卡逐面挂接；πr² 公式卡 OBSERVATION 挂接圆面。",
+    "svgDom": "展开 SVG 面片（矩形+圆）+ 面清单 + 同一表单；键盘路径同 G1；同一判分。aria：数值输入带名称「总面积（平方厘米）」，错误后焦点回字段。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

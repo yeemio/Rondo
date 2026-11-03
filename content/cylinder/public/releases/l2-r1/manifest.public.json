@@ -1,0 +1,50 @@
+{
+  "releaseId": "rondo.cyl.l2-r1",
+  "taskIds": [
+    "cyl.net.g1.unroll-observe.v1",
+    "cyl.net.g2.edge-pairing.v1",
+    "cyl.net.g3.lateral-area.v1",
+    "cyl.net.i1.pair-normal.v1",
+    "cyl.net.i2.pair-tall-thin.v1",
+    "cyl.net.i3.area-value-unit.v1",
+    "cyl.net.s1.stranger-relabel.v1",
+    "cyl.net.d1.delayed-transfer.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.cylinder",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "3e497443d5cee225a687ca203e00b5b8efab1f99c90879ac842e9648612153d1",
+    "52b89a0497c4981eb831ac30c23b714eac22c86e8851a3b875a090634d295e23",
+    "7a9fcf706d3054610aca6ecf3a772a8bcc5f245052f43ff19bfa8265a8e481fd",
+    "8158a0835271ae852c97d01619713b11b28f47ff3f6aea3fd4a81aa4b8e51423",
+    "8f6e3ac7b638585971da36dc1a954e5c57a90726ac812d3d82dec74881f12338",
+    "946ab187bacfcceaeaeb2986efe415a233abeb0b4ea9db90b066df0e89a7e850",
+    "a7e2cd4ff58b116401c0879713094d4e56f79375f406c32e356b6e9aa40afdb6",
+    "dc0957be1dab2d8e9bc1874c069d7b363ab3ff4d57df244a42503e333674b4b3",
+    "e8d7546e239ce23dd5523ccadabe96cd87d0ec9815cb3b63e304801e50012301",
+    "f698d62e59ba60f6f82402774b2322805c5e1ddbf9e70afdfd743e478a5a53f1"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "WEBGL2",
+      "allowedOperationIds": [
+        "SetUnroll",
+        "SetDimension"
+      ]
+    },
+    {
+      "expression": "SVG_DOM",
+      "allowedOperationIds": [
+        "SetUnroll",
+        "SetDimension"
+      ]
+    }
+  ],
+  "publicManifestHash": "6973b1799ae4cb6d2e5440ac00454325a18b94168fe38e758b0f63a08c4e492c"
+}

@@ -1,0 +1,19 @@
+{
+  "taskId": "thm.f1.s1.stranger-relabel.v1",
+  "file": "thm.f1.s1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "thm.f1.s1.F1",
+      "initial": {
+        "rows": 1,
+        "cols": 1,
+        "filled": 0
+      },
+      "truth": {
+        "answerIsNoReason": "not-equal-parts"
+      },
+      "answerHint": "(1) 不能——随手切的 4 块大小不一，不是平均分；(2) 平均 4 份涂 1 份 → 1/4。"
+    }
+  ]
+}

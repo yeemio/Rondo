@@ -1,0 +1,56 @@
+{
+  "ruleId": "rule.cylNet.area.v1",
+  "file": "rule.cylNet.area.v1.json",
+  "boundTasks": [
+    "cyl.net.g3.lateral-area.v1",
+    "cyl.net.i3.area-value-unit.v1"
+  ],
+  "body": {
+    "ruleSetVersion": "1",
+    "note": "规范答案 = 2×(157/50)×r×h 一步有理计算（G3 按提交时确认快照；I3 按冻结实例快照），两位小数十进制规则，等价书写归一。"
+  },
+  "pendingDsl": {
+    "reasons": [
+      "NUMERIC_RELATION_V1_EDGE_MIN1: 冻结 NUMERIC_RELATION_V1 要求 expectedEdgeMapping>=1，纯数值任务无法以该族表达"
+    ],
+    "quantityChecks": [
+      {
+        "quantityId": "lateral-area",
+        "expected": {
+          "kind": "RATIONAL_PRODUCT_V1",
+          "factors": [
+            {
+              "numerator": 157,
+              "denominator": 50
+            },
+            {
+              "numerator": 2,
+              "denominator": 1
+            },
+            {
+              "factor": "radiusMm"
+            },
+            {
+              "factor": "heightMm"
+            }
+          ]
+        },
+        "acceptedUnitIds": [
+          "cm2"
+        ],
+        "rounding": {
+          "mode": "HALF_UP",
+          "decimalPlaces": 2
+        },
+        "comparison": "EXACT_AFTER_ROUNDING"
+      }
+    ],
+    "diagnostics": {
+      "misBaseAreaAdded": "提交值精确等于 C×h+πr² 或 C×h+2πr² 时记 mis-base-area-added，反馈「再检查：这道题只要侧面的面积，底面要算进去吗？」（不带数值）",
+      "unitMismatch": "数值对单位错时记 unit-mismatch，反馈「数值对了，再看看单位」"
+    },
+    "feedback": {
+      "numericRevise": "再算一遍，注意先算周长再乘高。"
+    }
+  }
+}

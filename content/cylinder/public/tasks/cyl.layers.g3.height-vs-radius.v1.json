@@ -1,0 +1,297 @@
+{
+  "title": "加高，还是加宽",
+  "taskId": "cyl.layers.g3.height-vs-radius.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "GUIDED",
+  "givenLocks": [],
+  "responseSchemaId": "resp.l4.varCompare.v1",
+  "allowedOperationIds": [
+    "SetDimension",
+    "SetLayerCount",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetDimension",
+      "dimension": "RADIUS",
+      "valuesMm": [
+        30,
+        60
+      ]
+    },
+    {
+      "type": "SetDimension",
+      "dimension": "HEIGHT",
+      "valuesMm": [
+        40,
+        80,
+        160
+      ]
+    },
+    {
+      "type": "SetLayerCount",
+      "values": [
+        4,
+        8,
+        16
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "加高，还是加宽"
+    },
+    {
+      "type": "TEXT",
+      "text": "商店有两个改造方案，都只改一个尺寸：方案甲把高度从 8.0 cm 加倍到 16.0 cm；方案乙把半径从 3.0 cm 加倍到 6.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "对象"
+        },
+        {
+          "label": "r（cm）"
+        },
+        {
+          "label": "h（cm）"
+        }
+      ],
+      "rows": [
+        [
+          "底罐",
+          "3.0",
+          "8.0"
+        ],
+        [
+          "方案甲（加高）",
+          "3.0",
+          "16.0"
+        ],
+        [
+          "方案乙（加宽）",
+          "6.0",
+          "8.0"
+        ],
+        [
+          "复查底罐",
+          "1.0",
+          "4.0"
+        ],
+        [
+          "复查乙（加宽）",
+          "2.0",
+          "4.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "① 两个方案哪个装得多？② 各能装多少立方厘米？③ 半径加倍后，体积是原来的几倍？先猜再动手验证。最后换一组小罐尺寸（复查组）再试一次，看看规律还成立吗。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。每层厚 1.0 cm 不变（复查组 h=4.0 cm 可切 4 层）。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ],
+      "note": "两方案+复查组数值均为任务脚本公开 givens"
+    },
+    {
+      "material": "dim.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-base",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "G2 已教材料"
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "随确认尺寸更新"
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "两方案体积目标值 REVIEW 前不下发"
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "L34-8：行（第 k 层：层厚/该层/累计）只在确认 visibleLayerCount ≥ k 后呈现；两表达渲染同一 DOM CumulativeTable，同步揭示"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "含复查组对照"
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "底罐 r=3.0、h=8.0；甲只把 h 加倍到 16.0；乙只把 r 加倍到 6.0。答哪个装得多、各多少、半径加倍体积几倍；最后换小罐再试。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "底面是一个圆——半径加倍，圆面积不是加倍；高只是乘法里的一个乘数。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "分别算两个底面积（π×3×3 和 π×6×6），各乘自己的高，再比大小。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersg3.recheck-ratio",
+        "prompt": "小罐 (r=1.0, h=4.0) 上同样试「半径加倍」，体积变成原来的：",
+        "options": [
+          {
+            "id": "opt-2x",
+            "label": "2 倍"
+          },
+          {
+            "id": "opt-4x",
+            "label": "4 倍"
+          },
+          {
+            "id": "opt-same",
+            "label": "一样"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.layersg3.proof-boundary",
+        "prompt": "试了两组尺寸都看到「半径加倍体积 4 倍」，这能证明对所有尺寸都成立吗：",
+        "options": [
+          {
+            "id": "opt-yes",
+            "label": "能"
+          },
+          {
+            "id": "opt-no-examples-only",
+            "label": "不能，例子只是检查"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么改半径比改高度「更划算」？用底面积说一说。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "尺寸确认后罐体与层叠重绘，底面积测量卡随确认值更新；两方案可切换观察（切换为 ViewState 呈现 + 尺寸确认命令）。",
+    "svgDom": "二维层条 + 横截面圆随尺寸等比重绘；参数输入+确认与 3D 同一 typed intent；同一表单与判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 8,
+    "visibleLayerCount": 0
+  }
+}

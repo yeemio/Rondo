@@ -1,0 +1,72 @@
+{
+  "lessonsVersion": "1",
+  "lessons": [
+    {
+      "lessonId": "cylinder.parameters",
+      "releaseId": "rondo.cyl.l1-r1",
+      "title": "第 1 课 · 参数与视角",
+      "taskFamily": "cylinder.parameters.v1",
+      "taskOrder": [
+        "cyl.param.g1.view-invariance.v1",
+        "cyl.param.g2.radius-change.v1",
+        "cyl.param.g3.height-section.v1",
+        "cyl.param.i1.identify-changes.v1",
+        "cyl.param.i2.predict-single-change.v1"
+      ]
+    },
+    {
+      "lessonId": "cylinder.net",
+      "releaseId": "rondo.cyl.l2-r1",
+      "title": "第 2 课 · 展开关系",
+      "taskFamily": "cylinder.net.v1",
+      "taskOrder": [
+        "cyl.net.g1.unroll-observe.v1",
+        "cyl.net.g2.edge-pairing.v1",
+        "cyl.net.g3.lateral-area.v1",
+        "cyl.net.i1.pair-normal.v1",
+        "cyl.net.i2.pair-tall-thin.v1",
+        "cyl.net.i3.area-value-unit.v1",
+        "cyl.net.s1.stranger-relabel.v1"
+      ],
+      "delayedTransferTaskId": "cyl.net.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      }
+    },
+    {
+      "lessonId": "cylinder.faces",
+      "releaseId": "rondo.cyl.l3-r1",
+      "title": "第 3 课 · 面的组合",
+      "taskFamily": "cylinder.faces.v1",
+      "taskOrder": [
+        "cyl.faces.g1.face-inventory.v1",
+        "cyl.faces.g2.one-lid-area.v1",
+        "cyl.faces.g3.full-surface.v1",
+        "cyl.faces.i1.faceset-new-instance.v1",
+        "cyl.faces.i2.lid-count-condition.v1",
+        "cyl.faces.i3.surface-value-unit.v1"
+      ]
+    },
+    {
+      "lessonId": "cylinder.layers",
+      "releaseId": "rondo.cyl.l4-r1",
+      "title": "第 4 课 · 层叠与体积",
+      "taskFamily": "cylinder.layers.v1",
+      "taskOrder": [
+        "cyl.layers.g1.stack-invariant.v1",
+        "cyl.layers.g2.layer-volume.v1",
+        "cyl.layers.g3.height-vs-radius.v1",
+        "cyl.layers.i1.volume-value-unit.v1",
+        "cyl.layers.i2.height-vs-radius-choice.v1",
+        "cyl.layers.i3.accumulate-count.v1",
+        "cyl.layers.s1.stranger-package.v1"
+      ],
+      "delayedTransferTaskId": "cyl.layers.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      }
+    }
+  ]
+}

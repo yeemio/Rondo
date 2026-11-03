@@ -1,0 +1,191 @@
+{
+  "taskId": "cpp.u1.g4.sales-sum.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "GUIDED",
+  "title": "五天销售额",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "小店连续 5 天记账：每天存进收银台的钱正好是第几天（第 1 天存 1 元，第 2 天存 2 元……）。程序用一条有界循环把它们累加。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "for (i = 1; i <= 5; i = i + 1) { sum := sum + i } （步长固定 +1，只读展示）"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测：sum 是多少？循环体会执行几次？退出循环时 i 是几？"
+    }
+  ],
+  "givens": {
+    "inputs": {},
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "sum",
+        "expr": "0"
+      },
+      {
+        "kind": "FOR",
+        "var": "i",
+        "from": "1",
+        "bound": "5",
+        "cmp": "<=",
+        "body": [
+          {
+            "kind": "ASSIGN",
+            "var": "sum",
+            "expr": "sum + i"
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "sum"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.loop.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[1].bound",
+        "step[1].cmp"
+      ],
+      "slotDomains": {
+        "step[1].bound": [
+          5,
+          10,
+          100
+        ]
+      },
+      "insertableKinds": [
+        "OUTPUT"
+      ],
+      "deletableSteps": [],
+      "maxProgramSteps": 12,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "动手任务：① 单步走完一圈，数一数循环体执行几次、退出时 i 是几；② 把上界改成 100，体会手算和循环的差别（输出窗最多 8 行，别在循环体里加输出时把上界改太大）；③ 在循环体里插入一行「输出 i」，看输出怎么变，再撤回或保留由你。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "连续 5 天，每天存的钱正好是第几天，最后 total 是多少。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "sum 从 0 开始，每圈加一次 i。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "单步看 i=5 那一圈走完后，判定再失败才退出——这时 i 是几？"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g4.exit-i",
+        "prompt": "循环退出后 i 是多少？为什么？",
+        "options": [
+          {
+            "id": "opt-i6",
+            "label": "6：i=5 那圈走完后 i 变成 6，判定 6<=5 不成立才退出"
+          },
+          {
+            "id": "opt-i5",
+            "label": "5：最后一圈用的就是它"
+          },
+          {
+            "id": "opt-i4",
+            "label": "4"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果 while 版忘了写「i := i + 1」会发生什么？（教学模型里会怎么表现？）"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

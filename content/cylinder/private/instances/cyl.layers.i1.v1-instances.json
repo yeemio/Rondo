@@ -1,0 +1,37 @@
+{
+  "taskId": "cyl.layers.i1.volume-value-unit.v1",
+  "file": "cyl.layers.i1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.layers.i1.F1",
+      "initial": {
+        "radiusMm": 40,
+        "heightMm": 70
+      },
+      "truth": {
+        "baseAreaCm2": "50.24",
+        "volumeCm3": "351.68",
+        "diagnostics": {
+          "misCircumferenceTimesH": "175.84",
+          "misPiRh": "87.92"
+        }
+      },
+      "answerHint": "S底=3.14×4×4=50.24；V=50.24×7.0=351.68 cm³。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径；公式诊断题 r∉{1,2} cm（L34-13）；互斥总清单 L34-12；已服务实例"
+    ]
+  }
+}

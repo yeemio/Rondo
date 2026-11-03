@@ -1,0 +1,267 @@
+{
+  "title": "每一层圆片有多大",
+  "taskId": "cyl.layers.g2.layer-volume.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.layerVolume.v1",
+  "allowedOperationIds": [
+    "SetLayerCount",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetLayerCount",
+      "values": [
+        8
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 40
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "每一层圆片有多大"
+    },
+    {
+      "type": "TEXT",
+      "text": "还是这个罐子：半径 3.0 cm，高 8.0 cm，装 8 层、每层厚 1.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ],
+        [
+          "层数 n",
+          "8"
+        ],
+        [
+          "层厚",
+          "1.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "① 每一层的体积是多少立方厘米？② 8 层装满一共多少立方厘米？先猜再算。"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height",
+        "layerCount"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "L34-8：行（第 k 层：层厚/该层/累计）只在确认 visibleLayerCount ≥ k 后呈现；两表达渲染同一 DOM CumulativeTable，同步揭示"
+    },
+    {
+      "material": "card.formula-base",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "S底=πr²"
+    },
+    {
+      "material": "card.formula-Vlayer",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "V层=S底×层厚"
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "V=S底×h"
+    },
+    {
+      "material": "card.formula-layerthick",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "层厚=高÷层数"
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "底面积值卡为公式印证材料（OBSERVATION 起）"
+    },
+    {
+      "material": "card.layer-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "每层体积目标值 REVIEW 前不下发"
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "总量目标值 REVIEW 前不下发"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=3.0 cm、h=8.0 cm、8 层。两问：每层体积、总量，两位小数选单位。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "每一层就是一个很薄的圆柱——它的「底」是那个圆，「高」是层厚。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算底面积 π×r×r，再乘层厚得每层，再乘 8（或直接乘总高 8.0 cm）得总量。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersg2.slice-16",
+        "prompt": "把同一罐子切成 16 层，每一层会：",
+        "options": [
+          {
+            "id": "opt-same",
+            "label": "还是 28.26 立方厘米"
+          },
+          {
+            "id": "opt-half",
+            "label": "变成 14.13 立方厘米"
+          },
+          {
+            "id": "opt-double",
+            "label": "变成 56.52 立方厘米"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么「每层×层数」和「底面积×高」算出同一个数？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同 G1 基线；公式卡挂接 SVG 横截面圆（S底）与层条（层厚）；同一表单与判分。",
+    "svgDom": "同 G1 基线。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 8,
+    "visibleLayerCount": 0
+  }
+}

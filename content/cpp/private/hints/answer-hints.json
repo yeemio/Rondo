@@ -1,0 +1,95 @@
+{
+  "cpp.u1.i1.fix-boundary.v1": [
+    {
+      "instanceId": "i1-F1",
+      "level": 4,
+      "text": "把「<」改成「<=」，第 10 圈也会被加上：1 加到 10 等于 55。"
+    },
+    {
+      "instanceId": "i1-EXB",
+      "level": 4,
+      "text": "换 20 号货架：1 加到 20 等于 210。"
+    }
+  ],
+  "cpp.u1.i2.enum-count.v1": [
+    {
+      "instanceId": "i2-F1",
+      "level": 4,
+      "text": "条件改成「i % 4 == 0」，count 输出 10。"
+    },
+    {
+      "instanceId": "i2-H0",
+      "level": 4,
+      "text": "n=0 时循环一次都不执行，count 还是 0。"
+    },
+    {
+      "instanceId": "i2-H4",
+      "level": 4,
+      "text": "n=4 时只有 4 这一个编号满足。"
+    }
+  ],
+  "cpp.u1.i3.build-digits.v1": [
+    {
+      "instanceId": "i3-F1",
+      "level": 4,
+      "text": "正确顺序：先取个位 8，再 358→35 取 5，再 35→3 取 3；输出 8、5、3，结束时 n=3。"
+    },
+    {
+      "instanceId": "i3-H0",
+      "level": 4,
+      "text": "中间是 0 也照取：7、0、2。"
+    }
+  ],
+  "cpp.u1.s1.stranger-transfer.v1": [
+    {
+      "instanceId": "s1-F1",
+      "level": 4,
+      "text": "60 以内 3 的倍数有 20 个，最后一个是 60。"
+    },
+    {
+      "instanceId": "s1-H25",
+      "level": 4,
+      "text": "25 以内 3 的倍数：3,6,…,24，共 8 个，最后是 24。"
+    }
+  ],
+  "cpp.u1.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "d1-F1",
+      "level": 4,
+      "text": "十位 7 的 270–279 共 10 个；个位 7 的 267、277、287、297 共 4 个；277 重叠只数一次：13 个。"
+    },
+    {
+      "instanceId": "d1-H289",
+      "level": 4,
+      "text": "到 289 为止：270–279 共 10 个；个位 7 的 267、277、287 共 3 个；277 重叠：12 个。"
+    }
+  ],
+  "cpp.u1.g1.receipt-trace.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "运费 6 之后 total=19+6=25；再输出 a=12：两行 25、12。"
+    }
+  ],
+  "cpp.u1.g2.pack-sweets.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "第一问 100÷8：商 12 余 4；第二问 100÷12：商 8 余 4，输出 8、4。"
+    }
+  ],
+  "cpp.u1.g3.member-discount.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "47≥30 走优惠，pay=42；total=30 时「>=」仍走优惠（pay=25），换成「>」才走原价（pay=30）。"
+    }
+  ],
+  "cpp.u1.g4.sales-sum.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "1+2+3+4+5=15；循环体 5 次；退出时 i=6。上界 100 时是 5050。"
+    }
+  ]
+}

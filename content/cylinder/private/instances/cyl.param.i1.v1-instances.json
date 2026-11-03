@@ -1,0 +1,71 @@
+{
+  "taskId": "cyl.param.i1.identify-changes.v1",
+  "file": "cyl.param.i1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.param.i1.EX-B",
+      "initial": {
+        "radiusMm": 45,
+        "heightMm": 120
+      },
+      "script": {
+        "dimension": "RADIUS",
+        "fromMm": 45,
+        "toMm": 30
+      },
+      "truth": {
+        "changedSet": [
+          "RADIUS",
+          "DIAMETER"
+        ],
+        "changedDirection": "DECREASE",
+        "diameterBeforeCm": "9.0",
+        "diameterAfterCm": "6.0",
+        "predictIfRadiusChanged": "INCREASE",
+        "predictIfHeightChanged": "UNCHANGED"
+      },
+      "answerHint": "改变的是半径（4.5→3.0 cm）。半径和直径都变小了，直径从 9.0 cm 变成 6.0 cm；高度没变。"
+    }
+  ],
+  "spares": [
+    {
+      "instanceId": "cyl.param.i1.EX-A",
+      "initial": {
+        "radiusMm": 25,
+        "heightMm": 60
+      },
+      "script": {
+        "dimension": "HEIGHT",
+        "fromMm": 60,
+        "toMm": 90
+      },
+      "truth": {
+        "changedSet": [
+          "HEIGHT"
+        ],
+        "changedDirection": "INCREASE",
+        "diameterBeforeCm": "5.0",
+        "diameterAfterCm": "5.0"
+      },
+      "answerHint": "改变的是高度（6.0→9.0 cm）。变了的是高度；半径和直径都没变，直径仍是 5.0 cm。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      15,
+      80
+    ],
+    "heightMm": [
+      40,
+      160
+    ],
+    "constraints": [
+      "初始与脚本后状态均不等于引导例 (30,80)/(40,80)",
+      "radiusMm != heightMm",
+      "脚本改变轴 in {RADIUS,HEIGHT}，|delta|>=15mm，改后仍在域内并满足前两条",
+      "同一 attempt 内与 I2 实例互不相同，与 L2 冻结实例不重复"
+    ],
+    "arithmetic": "L1 全部判分只用 d=2r 与 mm<->cm 换算；pi 不参与 L1 判分"
+  }
+}

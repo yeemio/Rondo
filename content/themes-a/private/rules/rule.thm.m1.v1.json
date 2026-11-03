@@ -1,0 +1,193 @@
+{
+  "ruleId": "rule.thm.m1.v1",
+  "file": "rule.thm.m1.v1.json",
+  "boundTasks": [
+    "thm.m1.diag.v1",
+    "thm.m1.supp.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.m1.diag.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "diameter-from-r",
+            "label": "直径（由半径 2.5 cm）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm",
+              "expectedDecimal": "5.0"
+            },
+            "acceptedUnitIds": [
+              "cm",
+              "mm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 1
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "radius-from-d",
+            "label": "半径（由直径 12 cm）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm",
+              "expectedDecimal": "6.0"
+            },
+            "acceptedUnitIds": [
+              "cm",
+              "mm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 1
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "直径与半径的关系",
+            "selectionId": "sel.relation",
+            "correctOptionId": "opt-d-eq-2r"
+          },
+          {
+            "id": "c4",
+            "kind": "choice",
+            "label": "半径变大时直径的方向",
+            "selectionId": "sel.direction",
+            "correctOptionId": "INCREASE"
+          }
+        ],
+        "diagnostics": [
+          {
+            "tag": "mis-rd-no-double",
+            "checkId": "c1",
+            "when": {
+              "kind": "OFF_BY_FACTOR",
+              "factor": 0.5
+            },
+            "feedback": "再看看：直径里能放几条半径？把两条半径接起来再答一次。"
+          },
+          {
+            "tag": "mis-rd-no-halving",
+            "checkId": "c2",
+            "when": {
+              "kind": "OFF_BY_FACTOR",
+              "factor": 2
+            },
+            "feedback": "想一想：一条直径可以分成几条半径？用除法再算一次。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "直径 = 2.5 × 2 = 5.0 cm。"
+          },
+          {
+            "checkId": "c2",
+            "text": "半径 = 12 ÷ 2 = 6.0 cm。"
+          },
+          {
+            "checkId": "c3",
+            "text": "直径 = 半径 × 2。"
+          },
+          {
+            "checkId": "c4",
+            "text": "变大——直径始终是半径的 2 倍。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍半径和直径的关系（一条直径 = 两条半径）。"
+        },
+        "diagnosis": {
+          "passRule": "ALL_CHECKS_FIRST_SUBMISSION_NO_ANSWER_HINT",
+          "supplementTaskId": "thm.m1.supp.v1"
+        }
+      },
+      "thm.m1.supp.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "diameter-now",
+            "label": "直径（当前圆）",
+            "source": {
+              "kind": "FROM_STATE",
+              "derive": "DIAMETER_CM"
+            },
+            "acceptedUnitIds": [
+              "cm",
+              "mm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 1
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "radius-target",
+            "label": "半径（目标直径 12.0 cm）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm",
+              "expectedDecimal": "6.0"
+            },
+            "acceptedUnitIds": [
+              "cm",
+              "mm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 1
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "CYLINDER_RADIUS",
+          "radiusMm": 35
+        },
+        "scenarioFeedback": "请先把半径调到 3.5 cm 并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-rd-no-double",
+            "checkId": "c1",
+            "when": {
+              "kind": "OFF_BY_FACTOR",
+              "factor": 0.5
+            },
+            "feedback": "读数里半径是 3.5——直径里能放两条半径，再算一次。"
+          },
+          {
+            "tag": "mis-rd-no-halving",
+            "checkId": "c2",
+            "when": {
+              "kind": "OFF_BY_FACTOR",
+              "factor": 2
+            },
+            "feedback": "这次是\"由直径求半径\"：用 12.0 除以 2 再答。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "半径 3.5 cm 时，直径 = 3.5 × 2 = 7.0 cm。"
+          },
+          {
+            "checkId": "c2",
+            "text": "半径 = 12.0 ÷ 2 = 6.0 cm。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再确认一次：直径 = 半径 × 2，半径 = 直径 ÷ 2。"
+        }
+      }
+    }
+  }
+}

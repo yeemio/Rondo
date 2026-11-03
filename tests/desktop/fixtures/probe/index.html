@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rondo 探针（测试夹具，不进产品候选）</title>
+  </head>
+  <body>
+    <h1>Rondo 桌面传输探针</h1>
+    <p>本页仅用于 check:desktop / check:desktop-hardening 的传输层自检（RONDO_BUILD_PROBE=1 时构建到 dist/web/__probe/）。不进入产品候选。</p>
+    <dl id="identity"></dl>
+    <dl id="paths"></dl>
+    <p>host phase: <strong id="host-phase">—</strong></p>
+    <button id="btn-refresh">刷新身份</button>
+    <button id="btn-selftest">运行自检</button>
+    <button id="btn-quit">退出</button>
+    <button id="btn-cancel">取消退出</button>
+    <pre id="quit-log"></pre>
+    <ul id="selftest"></ul>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+{
+  "title": "三种包装，三份纸样",
+  "taskId": "cyl.faces.g1.face-inventory.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.faceSet.v1",
+  "allowedOperationIds": [
+    "SelectFaces",
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    },
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "三种包装，三份纸样"
+    },
+    {
+      "type": "TEXT",
+      "text": "小店要给同一个罐身（半径 3.0 cm，高 8.0 cm）做三种纸包装：①标签筒——只在罐身外面裹一圈纸；②笔筒——有底、无盖；③封口罐——有底有盖，完全封住。"
+    },
+    {
+      "type": "TEXT",
+      "text": "面的小课堂：这个罐子的纸面只有三种——侧面（裹在罐身外的那圈）、上盖面（顶上的圆）、下盖面（底下的圆）。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先猜一猜：标签筒要用到哪些面？笔筒呢？把盖子数量点一点：笔筒有几个盖面？封口罐比标签筒多用纸还是少用纸？"
+    },
+    {
+      "type": "TEXT",
+      "text": "先写下猜测再动手选面、展开检查。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "三面 checkbox + 确认选面按钮 + 盖面计数显示；勾选为草稿，确认发整集 SelectFaces"
+    },
+    {
+      "material": "unroll.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "按面面积测量卡：确认选面后逐面显示"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "同一个罐身三种包装。当前答：笔筒要哪些面、几个盖面。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "包装条件（有盖/无盖/有底/无底）决定要算哪些面；「无盖」只说明上面开口，不说明底下不要纸。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "把三个面逐个问一遍——这个包装要不要侧面？要不要上面的圆？要不要下面的圆？再数一数圆有几个。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesg1.most-paper",
+        "prompt": "标签筒、笔筒、封口罐中用纸最多的是？",
+        "options": [
+          {
+            "id": "opt-sealed",
+            "label": "封口罐"
+          },
+          {
+            "id": "opt-pen",
+            "label": "笔筒"
+          },
+          {
+            "id": "opt-label",
+            "label": "标签筒"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么无盖的笔筒还是要用一张圆纸？用「底下会漏」或自己的话说一说。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "罐身三面可点选/键盘可达（面 checkbox 清单 + Tab/空格切换），已选面高亮 + 文字标签「已选入纸样」；SetUnroll 展开时保留面摊平为矩形+圆组合；测量卡按面挂接；相机旋转为 ViewState。",
+    "svgDom": "可点击的展开 SVG 面片（矩形=侧面、两个圆=上下盖）+ 同一面清单 checkbox + 同一测量卡 + 同一表单；盖数 radio（0/1/2）作 DOM 便捷入口，等效展开为两个盖面勾选；同一 typed intent、同一判分。aria：面清单为带组名的 checkbox 组，状态播报「侧面，已选入」。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

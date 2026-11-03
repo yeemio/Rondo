@@ -1,0 +1,539 @@
+{
+  "ruleId": "rule.thm.f3.v1",
+  "file": "rule.thm.f3.v1.json",
+  "boundTasks": [
+    "thm.f3.g1.percent-board.v1",
+    "thm.f3.g2.discount-chain.v1",
+    "thm.f3.i1.allocate.v1",
+    "thm.f3.s1.stranger.v1",
+    "thm.f3.d1.delayed-transfer.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.f3.g1.percent-board.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "percent-value",
+            "label": "涂色百分数",
+            "source": {
+              "kind": "FROM_STATE",
+              "derive": "FILLED_PERCENT"
+            },
+            "acceptedUnitIds": [
+              "percent"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "百分数的含义",
+            "selectionId": "sel.percent-meaning",
+            "correctOptionId": "opt-part-of-hundred"
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "percent-units",
+            "label": "75% 里 1% 的个数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "75"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "filled": 75
+        },
+        "scenarioFeedback": "请先把百格板涂到 75 格并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-percent-as-decimal",
+            "checkId": "c1",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "percent",
+              "value": "0.75"
+            },
+            "feedback": "再看看：涂了 75 格就是百分之七十五，写作 75%，不是 0.75%。"
+          },
+          {
+            "tag": "mis-percent-as-integer",
+            "checkId": "c1",
+            "when": {
+              "kind": "UNIT_MISMATCH"
+            },
+            "feedback": "数值对了，但单位要选\"百分数（%）\"——百分数不是个数。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "涂 75 格 = 75/100 = 75%。"
+          },
+          {
+            "checkId": "c2",
+            "text": "百分数表示一个数是一百份整体中的几份。"
+          },
+          {
+            "checkId": "c3",
+            "text": "75% 里有 75 个 1%。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：涂几格就是百分之几；百分数要带\"%\"（选百分数单位）。"
+        }
+      },
+      "thm.f3.g2.discount-chain.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "fold-percent",
+            "label": "八折的百分数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "percent",
+              "expectedDecimal": "80"
+            },
+            "acceptedUnitIds": [
+              "percent"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "pay-amount",
+            "label": "应付金额",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "64.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "save-amount",
+            "label": "便宜金额",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "16.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "filled": 80
+        },
+        "scenarioFeedback": "请先在百格板上涂出八折对应的格数（80 格）并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-fold-as-8pct",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "6.40"
+            },
+            "feedback": "再检查：八折是 80%，不是 8%——\"八折\"就是十分之八。"
+          },
+          {
+            "tag": "mis-discount-added",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "96.00"
+            },
+            "feedback": "再检查：打折是\"乘\"，不是先加价——96 是把 80 上浮了两成。"
+          },
+          {
+            "tag": "mis-no-discount",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "80.00"
+            },
+            "feedback": "再检查：这是原价——打折后要按原价的 80% 付。"
+          },
+          {
+            "tag": "mis-save-eq-pay",
+            "checkId": "c3",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "64.00"
+            },
+            "feedback": "再检查：这一问答的是\"便宜了多少\"，是原价减去应付的差。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "八折 = 80%（现价是原价的 80/100）。"
+          },
+          {
+            "checkId": "c2",
+            "text": "80 × 80% = 64.00 元。"
+          },
+          {
+            "checkId": "c3",
+            "text": "80 − 64 = 16.00 元。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再顺一遍链子：先写折扣的百分数，再乘原价，最后用原价减应付。"
+        }
+      },
+      "thm.f3.i1.allocate.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "share-per",
+            "label": "每份颗数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "12"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "part-a",
+            "label": "甲的颗数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "36"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "part-b",
+            "label": "乙的颗数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "ge",
+              "expectedDecimal": "24"
+            },
+            "acceptedUnitIds": [
+              "ge"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "rows": 3,
+          "cols": 12
+        },
+        "scenarioFeedback": "请把点阵保持在甲的建模（3 行 × 每行 12 颗）再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-equal-split",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "ge",
+              "value": "30"
+            },
+            "feedback": "再检查：按 3:2 分不是对半分——先求一份是多少。"
+          },
+          {
+            "tag": "mis-ratio-times-total",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "ge",
+              "value": "180"
+            },
+            "feedback": "再检查：60×3 把总数也乘进去了——应先 60÷(3+2) 求一份。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "60 ÷ (3+2) = 60 ÷ 5 = 12（颗/份）。"
+          },
+          {
+            "checkId": "c2",
+            "text": "甲 = 12 × 3 = 36 颗。"
+          },
+          {
+            "checkId": "c3",
+            "text": "乙 = 12 × 2 = 24 颗。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：按比例分配先求一份（总数 ÷ 份数和），再各自乘。"
+        }
+      },
+      "thm.f3.s1.stranger.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "store-a-pay",
+            "label": "甲店总价",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "60.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "store-b-pay",
+            "label": "乙店总价",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "64.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "哪家更便宜",
+            "selectionId": "sel.cheaper",
+            "correctOptionId": "opt-store-a"
+          },
+          {
+            "id": "c4",
+            "kind": "number",
+            "quantityId": "diff-amount",
+            "label": "差价",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "4.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          }
+        ],
+        "diagnostics": [
+          {
+            "tag": "mis-half-on-both",
+            "checkId": "c1",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "40.00"
+            },
+            "feedback": "再检查：半价只作用于第二支，第一支仍要付全价。"
+          },
+          {
+            "tag": "mis-fold-as-8pct",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "6.40"
+            },
+            "feedback": "再检查：八折是 80%，不是 8%。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "40 + 40×50% = 40 + 20 = 60.00 元。"
+          },
+          {
+            "checkId": "c2",
+            "text": "(40+40) × 80% = 80 × 0.8 = 64.00 元。"
+          },
+          {
+            "checkId": "c3",
+            "text": "甲店（第二件半价）更便宜。"
+          },
+          {
+            "checkId": "c4",
+            "text": "64 − 60 = 4.00 元。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再顺一遍：先各算总价（看清优惠作用在哪几件），再比大小。"
+        }
+      },
+      "thm.f3.d1.delayed-transfer.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "fold-percent",
+            "label": "九折的百分数",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "percent",
+              "expectedDecimal": "90"
+            },
+            "acceptedUnitIds": [
+              "percent"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "pay-amount",
+            "label": "应付金额",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "45.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          },
+          {
+            "id": "c3",
+            "kind": "number",
+            "quantityId": "save-amount",
+            "label": "便宜金额",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "yuan",
+              "expectedDecimal": "5.00"
+            },
+            "acceptedUnitIds": [
+              "yuan"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 2
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "filled": 90
+        },
+        "scenarioFeedback": "请先在百格板上涂出九折对应的格数（90 格）并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-fold-as-9pct",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "4.50"
+            },
+            "feedback": "再检查：九折是 90%，不是 9%。"
+          },
+          {
+            "tag": "mis-discount-added",
+            "checkId": "c2",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "yuan",
+              "value": "55.00"
+            },
+            "feedback": "再检查：打折是乘 90%，不是加一成。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "九折 = 90%。"
+          },
+          {
+            "checkId": "c2",
+            "text": "50 × 90% = 45.00 元。"
+          },
+          {
+            "checkId": "c3",
+            "text": "50 − 45 = 5.00 元。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再顺一遍：几折就是百分之几十；应付 = 原价 × 百分数。"
+        }
+      }
+    }
+  }
+}

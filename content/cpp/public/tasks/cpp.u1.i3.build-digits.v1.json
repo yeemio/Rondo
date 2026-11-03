@@ -1,0 +1,190 @@
+{
+  "taskId": "cpp.u1.i3.build-digits.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "INDEPENDENT",
+  "title": "价签的三位数",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "三位数价签 358：程序要把个位、十位、百位分三行输出。这张卡被打乱过，还缺了一步。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "%10 取最末位；/10 砍掉最末位"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测：现在这张（乱序缺步的）卡会输出什么？再把顺序整理对、补上缺的那一步。"
+    }
+  ],
+  "givens": {
+    "inputs": {
+      "n": 358
+    },
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "n",
+        "expr": "n / 10"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "ones",
+        "expr": "n % 10"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "tens",
+        "expr": "n % 10"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "hundreds",
+        "expr": "n % 10"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "ones"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "tens"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "hundreds"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.program.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [],
+      "insertableKinds": [
+        "ASSIGN"
+      ],
+      "deletableSteps": [
+        0
+      ],
+      "maxProgramSteps": 12,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "独立任务：可以删除第 1 行（它放错了位置），也可以插入一条赋值语句。目标：输出 8、5、3 三行，且结束时 n 是 3。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "358 里个位是 8；程序里怎么把 8 单独拿出来？"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "%10 取最末位，/10 砍掉最末位。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先在纸上写：358 → 35 → 3，每一步用哪个运算、取到的是哪一位。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.i3.shrink-first",
+        "prompt": "如果先「n := n / 10」再取个位，358 会输出什么？",
+        "options": [
+          {
+            "id": "opt-lose-ones",
+            "label": "个位 8 先被砍掉，取到的是 5（顺序错了就丢位）"
+          },
+          {
+            "id": "opt-same",
+            "label": "还是 8、5、3，顺序没关系"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "三位数中间是 0 时（比如 207），你的程序还工作吗？为什么？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

@@ -1,0 +1,153 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m1.supp.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "GUIDED",
+  "title": "补充活动 · 转动半径看直径",
+  "boardView": "CIRCLE_FLAT",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 10,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.thm.m1supp.v1",
+  "allowedOperationIds": [
+    "SetDimension"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetDimension",
+      "dimension": "RADIUS",
+      "minMm": 10,
+      "maxMm": 100
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "补充活动：一个可以调半径的圆"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧是一个俯视的圆（显示半径线和直径线）。用滑杆或方向键（↑ 变大 / ↓ 变小）调整半径，确认后圆和读数一起更新。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "操作目标"
+        },
+        {
+          "label": "要求"
+        }
+      ],
+      "rows": [
+        [
+          "① 调整半径",
+          "把半径调到 3.5 cm 并确认，读出直径"
+        ],
+        [
+          "② 反过来想",
+          "要让直径变成 12.0 cm，半径应调到多少？"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先做 ① 并确认，再提交两问的答案：现在圆的直径是多少？要让直径等于 12.0 cm，半径应调到多少厘米？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "把半径调到 3.5 cm 后读直径；再算\"直径 12.0 cm 对应的半径\"。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "直径 = 半径 × 2；半径 = 直径 ÷ 2。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "第 ① 问在确认后的读数里找；第 ② 问用 12.0 ÷ 2。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m1supp.watch",
+        "prompt": "调半径时你观察到直径读数怎样变化？",
+        "options": [
+          {
+            "id": "opt-double-always",
+            "label": "总是半径的 2 倍"
+          },
+          {
+            "id": "opt-sometimes",
+            "label": "有时不是 2 倍"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果半径调到 5.5 cm，直径是多少？你是怎么算的？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "俯视圆盘（SVG）随确认的半径重绘；半径/直径线段标注与读数同步。",
+    "boardTable": "r/d 读数表 + 相同滑杆与键盘入口；同一 typed intent、同一判分。"
+  }
+}

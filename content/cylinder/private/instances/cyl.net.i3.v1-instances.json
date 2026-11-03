@@ -1,0 +1,35 @@
+{
+  "taskId": "cyl.net.i3.area-value-unit.v1",
+  "file": "cyl.net.i3.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.net.i3.F1",
+      "initial": {
+        "radiusMm": 25,
+        "heightMm": 100
+      },
+      "truth": {
+        "circumferenceCm": "15.70",
+        "lateralAreaCm2": "157.00"
+      },
+      "answerHint": "C = 2×3.14×2.5 = 15.70 cm；S侧 = 15.70×10.0 = 157.00 cm²。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      200,
+      1500
+    ],
+    "stepMm": 50,
+    "excludes": [
+      "[30,80],[40,50],[5,120],[15,90],[20,55] 等全部引导/独立/陌生/迁移冻结示例",
+      "该学习者已服务过的实例参数（含 L1 侧已生成实例）"
+    ],
+    "arithmetic": "S = 2×(157/50)×r×h 一步有理计算（mm²），除以 100 得 cm²，两位小数十进制规则"
+  }
+}

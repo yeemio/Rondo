@@ -1,0 +1,251 @@
+{
+  "title": "侧面有多大",
+  "taskId": "cyl.net.g3.lateral-area.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "GUIDED",
+  "givenLocks": [],
+  "responseSchemaId": "resp.l2.areaValue.v1",
+  "allowedOperationIds": [
+    "SetUnroll",
+    "SetDimension"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    },
+    {
+      "type": "SetDimension",
+      "dimension": "RADIUS",
+      "minMm": 5,
+      "maxMm": 100
+    },
+    {
+      "type": "SetDimension",
+      "dimension": "HEIGHT",
+      "minMm": 10,
+      "maxMm": 200
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "侧面有多大"
+    },
+    {
+      "type": "TEXT",
+      "text": "现在这个圆筒：r=3.0 cm，h=8.0 cm。侧面展开后是一个长方形。"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "C = 2πr （π 取 3.14；观察阶段揭示）"
+    },
+    {
+      "type": "FORMULA",
+      "expression": "S侧 = C × h （观察阶段揭示）"
+    },
+    {
+      "type": "TEXT",
+      "text": "现在确认的尺寸下，侧面的面积是多少平方厘米？你可以展开、卷起，也可以改半径或高度，看看面积和什么有关。π 取 3.14，四舍五入保留两位小数，并选择单位。预测不求正确。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ],
+      "note": "显示当前确认值，随确认操作更新"
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-S",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-S",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "目标面积数值 REVIEW 前不下发"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "当前确认尺寸下求侧面面积；π 取 3.14，四舍五入保留两位小数并选单位。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "摊开的侧面是长方形；长方形的面积由两条边长决定——这两条边长分别从圆筒的哪里来？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "先算底面周长 C=2πr，再乘高 h；面积单位用平方厘米。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.netg3.r-effect",
+        "prompt": "把 r 变大，侧面积会：",
+        "options": [
+          {
+            "id": "opt-bigger",
+            "label": "变大"
+          },
+          {
+            "id": "opt-smaller",
+            "label": "变小"
+          },
+          {
+            "id": "opt-same",
+            "label": "不变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.netg3.h-effect",
+        "prompt": "把 h 变大呢？",
+        "options": [
+          {
+            "id": "opt-bigger",
+            "label": "变大"
+          },
+          {
+            "id": "opt-smaller",
+            "label": "变小"
+          },
+          {
+            "id": "opt-same",
+            "label": "不变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.netg3.base-included",
+        "prompt": "算侧面积时，两个底面的面积要算进去吗：",
+        "options": [
+          {
+            "id": "opt-yes",
+            "label": "要"
+          },
+          {
+            "id": "opt-no",
+            "label": "不要"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么侧面面积=底面周长×高？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "展开条带随尺寸变化等比例重绘，观察档公式卡挂接条带两向边长。",
+    "svgDom": "等比例矩形与尺寸表/测量卡同步；参数输入+确认控件与 3D 同一 typed intent、同一表单与判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

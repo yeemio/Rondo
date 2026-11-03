@@ -1,0 +1,184 @@
+{
+  "taskId": "cpp.u1.g1.receipt-trace.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "GUIDED",
+  "title": "收银台的三个数",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "小店收银台今天记了三笔数：第一件商品 a 是 12 元，第二件 b 是 7 元，先把它们加进 total，再补一笔运费。"
+    },
+    {
+      "type": "TEXT",
+      "text": "下面的步骤卡（教学模型）会一步一步算账；每一步执行后，右边「变量时间线」会显示变量怎么变。"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测：这张卡会输出什么？每行一个数。预测不求正确，也不会被覆盖。"
+    }
+  ],
+  "givens": {
+    "inputs": {},
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "a",
+        "expr": "12"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "b",
+        "expr": "7"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "total",
+        "expr": "a + b"
+      },
+      {
+        "kind": "ASSIGN",
+        "var": "total",
+        "expr": "total + 4"
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "total"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.trace.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[3].expr"
+      ],
+      "insertableKinds": [
+        "OUTPUT"
+      ],
+      "deletableSteps": [],
+      "maxProgramSteps": 8,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "动手任务：① 把第 4 步里的 4 改成 6；② 在最后一条输出前面插入一行「输出 a」。每改一处先单步观察变量时间线，再继续。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "两件商品 12 元和 7 元，先加起来，再补运费；一步一步看变量表。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "赋值是右边先算完，再覆盖左边的变量。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "单步到第 4 步，看 total 变化前后两行分别是多少。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g1.assign-order",
+        "prompt": "为什么「total := total + 4」不会自相矛盾？",
+        "options": [
+          {
+            "id": "opt-right-first",
+            "label": "右边先用旧的 total 算出得数，再覆盖左边"
+          },
+          {
+            "id": "opt-right-new",
+            "label": "右边直接用新值"
+          },
+          {
+            "id": "opt-loop",
+            "label": "会无限循环"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "用自己的话说一说：第 4 步执行时到底发生了什么？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

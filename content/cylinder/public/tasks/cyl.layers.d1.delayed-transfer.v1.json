@@ -1,0 +1,270 @@
+{
+  "title": "蜡烛铺的无盖蜡罐",
+  "taskId": "cyl.layers.d1.delayed-transfer.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "DELAYED_TRANSFER",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.strangerComposite.v1",
+  "allowedOperationIds": [
+    "SelectFaces",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 13
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "cm2",
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "蜡烛铺的无盖蜡罐"
+    },
+    {
+      "type": "TEXT",
+      "text": "蜡烛铺做无盖的圆柱蜡罐（有底、顶部敞开）：罐底圆的周长是 25.12 cm，罐高 6.5 cm。罐壁罐底用薄纸板，里面灌蜡。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "底面圆周长 C",
+          "25.12"
+        ],
+        [
+          "罐高 h",
+          "6.5"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 蜡罐的半径是多少厘米？(2) 纸板要算哪些面？在场景里选出来。(3) 纸板多少平方厘米？(4) 能灌多少立方厘米蜡？"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，(3)(4) 四舍五入保留两位小数并选择单位。每项都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "height",
+        "layerCount"
+      ],
+      "note": "故事 given：周长以文字给出，高度可见"
+    },
+    {
+      "material": "dim.radius",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "半径为推导目标"
+    },
+    {
+      "material": "dim.diameter",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "直径同样隐藏（给直径标签会使半径平凡化）"
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "迁移复测方法回忆"
+    },
+    {
+      "material": "card.formula-full",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative-values",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.surface-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "蜡罐有底无盖。已知底面周长 25.12 cm、罐高 6.5 cm。四问：半径；面集合；纸板面积；灌蜡体积。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "周长、半径是一家人：C=2πr 倒过来用；无盖说的是顶部敞开。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "r=C÷(2×3.14)；纸板=周长×高+一个圆；灌蜡=πr²×h（给步骤不给数值）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layersd1.vs-s1",
+        "prompt": "这次和首饰盒那题比，哪些地方不一样？（可多选）",
+        "multi": true,
+        "options": [
+          {
+            "id": "opt-given-c",
+            "label": "给的是周长不是直径"
+          },
+          {
+            "id": "opt-no-lid",
+            "label": "无盖所以少一个圆面"
+          },
+          {
+            "id": "opt-no-volume",
+            "label": "不算体积只算面积"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "隔了这些天，你是怎么想起来的？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "同 S1 基线；「回看练习」卡、状态与间隔显示两表达一致。",
+    "svgDom": "同 S1 基线。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 40,
+    "heightMm": 65,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 13,
+    "visibleLayerCount": 0
+  }
+}

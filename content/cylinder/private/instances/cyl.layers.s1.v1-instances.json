@@ -1,0 +1,34 @@
+{
+  "taskId": "cyl.layers.s1.stranger-package.v1",
+  "file": "cyl.layers.s1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.layers.s1.F1",
+      "initial": {
+        "radiusMm": 50,
+        "heightMm": 60
+      },
+      "layer": {
+        "layerCount": 6,
+        "thicknessMm": 10
+      },
+      "givenDiameterCm": "10.0",
+      "condition": "sealed",
+      "truth": {
+        "radiusCm": "5.0",
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-upper": "opt-include",
+          "cyl-face-lower": "opt-include"
+        },
+        "circumferenceCm": "31.40",
+        "lateralAreaCm2": "188.40",
+        "circleAreaCm2": "78.50",
+        "paperAreaCm2": "345.40",
+        "volumeCm3": "471.00"
+      },
+      "answerHint": "r=5.0 cm；面=侧面+上盖+下盖；纸板 345.40 cm²；衬垫 471.00 cm³。"
+    }
+  ]
+}

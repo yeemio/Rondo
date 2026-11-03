@@ -1,0 +1,44 @@
+{
+  "releaseId": "rondo.cyl.l1-r1",
+  "taskIds": [
+    "cyl.param.g1.view-invariance.v1",
+    "cyl.param.g2.radius-change.v1",
+    "cyl.param.g3.height-section.v1",
+    "cyl.param.i1.identify-changes.v1",
+    "cyl.param.i2.predict-single-change.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.cylinder",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "1b685e476055a0227046cf1c4f5d81ca02bd0b8b00c9a5d61a378a88a6f0aa37",
+    "34ace79877f03fa4fe782a64c57e227942fbd7d0ca02fc24a30e7df6eaad01d8",
+    "52b89a0497c4981eb831ac30c23b714eac22c86e8851a3b875a090634d295e23",
+    "8d7e46e9864cf2f1b2d77aeef98f39a8cda4619af9761b1ea562cc91f5a785c0",
+    "8f6e3ac7b638585971da36dc1a954e5c57a90726ac812d3d82dec74881f12338",
+    "974dc68bdf86322e6a76563f6264a5ad6dbbc27a1efe099b341101f271e9488b",
+    "c3fa97f0cdf520c952d179cd161ec2c690e3e3db5a686e1e4e76e3f669230fd2"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "WEBGL2",
+      "allowedOperationIds": [
+        "SetDimension",
+        "SetSection"
+      ]
+    },
+    {
+      "expression": "SVG_DOM",
+      "allowedOperationIds": [
+        "SetDimension",
+        "SetSection"
+      ]
+    }
+  ],
+  "publicManifestHash": "5067042109e22fddbaf5536077e251949774006bc7375ec4c9261283efe520bc"
+}

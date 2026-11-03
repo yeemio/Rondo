@@ -1,0 +1,59 @@
+{
+  "taskId": "cyl.param.i2.predict-single-change.v1",
+  "file": "cyl.param.i2.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.param.i2.EX-B",
+      "initial": {
+        "radiusMm": 20,
+        "heightMm": 70
+      },
+      "script": {
+        "dimension": "HEIGHT",
+        "fromMm": 70,
+        "toMm": 130,
+        "publicInPrompt": true
+      },
+      "truth": {
+        "direction": "UNCHANGED",
+        "valueCm": "4.0"
+      },
+      "answerHint": "直径不变。直径 = 2 × 2.0 cm = 4.0 cm，高度变化不改变直径。"
+    }
+  ],
+  "spares": [
+    {
+      "instanceId": "cyl.param.i2.EX-A",
+      "initial": {
+        "radiusMm": 35,
+        "heightMm": 50
+      },
+      "script": {
+        "dimension": "RADIUS",
+        "fromMm": 35,
+        "toMm": 55,
+        "publicInPrompt": true
+      },
+      "truth": {
+        "direction": "INCREASE",
+        "valueCm": "11.0"
+      },
+      "answerHint": "直径变大。新直径 = 2 × 5.5 cm = 11.0 cm。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      15,
+      80
+    ],
+    "heightMm": [
+      40,
+      160
+    ],
+    "constraints": [
+      "同 I1 域与排除规则",
+      "脚本内容在题面公开（givens），答案（方向/新值）不下发"
+    ]
+  }
+}

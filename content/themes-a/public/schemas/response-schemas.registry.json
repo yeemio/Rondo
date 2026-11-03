@@ -1,0 +1,1771 @@
+{
+  "registryVersion": "1",
+  "representationNote": "themes 微课/主题一 VERIFY 响应载体：numberWithUnit（数值+单位）/ fractionValue（分子/分母两个整数框）/ singleChoice（单项选择）/ objectMapping（稳定对象配对）。分数不用自由文本，避免书写格式错误伪装成概念错误。",
+  "schemas": [
+    {
+      "schemaId": "resp.thm.m1diag.v1",
+      "summary": "微课①诊断：直径/半径互算 + 关系 + 方向",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m1d.guess",
+            "kind": "choice",
+            "prompt": "先快猜：直径和半径是什么关系？",
+            "options": [
+              {
+                "id": "opt-d-eq-2r",
+                "label": "直径 = 半径 × 2"
+              },
+              {
+                "id": "opt-d-eq-r-plus-2",
+                "label": "直径 = 半径 + 2"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 半径 2.5 cm 的圆，直径是多少？",
+            "quantityId": "diameter-from-r",
+            "quantityLabel": "直径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 直径 12 cm 的圆，半径是多少？",
+            "quantityId": "radius-from-d",
+            "quantityLabel": "半径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(3) 直径和半径的关系是：",
+            "selectionId": "sel.relation",
+            "options": [
+              {
+                "id": "opt-d-eq-2r",
+                "label": "直径 = 半径 × 2"
+              },
+              {
+                "id": "opt-d-eq-r-plus-2",
+                "label": "直径 = 半径 + 2"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(4) 半径变大时，直径会：",
+            "selectionId": "sel.direction",
+            "options": [
+              {
+                "id": "INCREASE",
+                "label": "变大"
+              },
+              {
+                "id": "DECREASE",
+                "label": "变小"
+              },
+              {
+                "id": "UNCHANGED",
+                "label": "不变"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m1supp.v1",
+      "summary": "微课①补充：直径读数 + 目标半径",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m1s.d",
+            "kind": "numberValue",
+            "prompt": "先猜：半径 3.5 cm 时直径大约是多少？（记录用，不判分）",
+            "quantityLabel": "直径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "① 现在（半径已调到 3.5 cm）圆的直径是多少？",
+            "quantityId": "diameter-now",
+            "quantityLabel": "直径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "② 要让直径等于 12.0 cm，半径应调到多少？",
+            "quantityId": "radius-target",
+            "quantityLabel": "半径",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 1
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m2diag.v1",
+      "summary": "微课②诊断：面积 + 单位 + 换算",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m2d.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：5 cm × 3 cm 的长方形面积大约是多少？（记录用，不判分）",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              },
+              {
+                "id": "mm2",
+                "label": "平方毫米（mm²）"
+              },
+              {
+                "id": "dm2",
+                "label": "平方分米（dm²）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 长方形（长 5 cm、宽 3 cm）的面积是多少？",
+            "quantityId": "rect-area",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              },
+              {
+                "id": "mm2",
+                "label": "平方毫米（mm²）"
+              },
+              {
+                "id": "dm2",
+                "label": "平方分米（dm²）"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(2) 边长 1 cm 的正方形，面积是多少？",
+            "selectionId": "sel.square-unit",
+            "options": [
+              {
+                "id": "opt-1-cm",
+                "label": "1 厘米（cm）"
+              },
+              {
+                "id": "opt-1-cm2",
+                "label": "1 平方厘米（cm²）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(3) 面积单位为什么带\"平方\"？",
+            "selectionId": "sel.why-square",
+            "options": [
+              {
+                "id": "opt-length-times-length",
+                "label": "因为面积是长度 × 长度"
+              },
+              {
+                "id": "opt-task-rule",
+                "label": "题目规定这样写"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(4) 1 dm² 等于多少 cm²？",
+            "quantityId": "dm2-to-cm2",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              }
+            ],
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m2supp.v1",
+      "summary": "微课②补充：面积读数 + 反求长",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m2s.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：4 行 × 6 列（每格 1 cm²）面积大约是多少？（记录用，不判分）",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              },
+              {
+                "id": "mm2",
+                "label": "平方毫米（mm²）"
+              },
+              {
+                "id": "dm2",
+                "label": "平方分米（dm²）"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "① 现在（4 行 × 6 列）长方形的面积是多少？",
+            "quantityId": "area-now",
+            "quantityLabel": "面积",
+            "units": [
+              {
+                "id": "cm2",
+                "label": "平方厘米（cm²）"
+              },
+              {
+                "id": "mm2",
+                "label": "平方毫米（mm²）"
+              },
+              {
+                "id": "dm2",
+                "label": "平方分米（dm²）"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "② 面积要做成 18 cm²、宽 6 cm，长应是多少厘米？",
+            "quantityId": "length-needed",
+            "quantityLabel": "长",
+            "units": [
+              {
+                "id": "cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "mm",
+                "label": "毫米（mm）"
+              }
+            ],
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m3diag.v1",
+      "summary": "微课③诊断：乘除三问 + 关系",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m3d.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：每盒 6 支装 4 盒，一共大约多少支？（记录用，不判分）",
+            "quantityLabel": "总数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 每盒 6 支、装 4 盒，一共多少支？",
+            "quantityId": "total-mul",
+            "quantityLabel": "总数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 24 支、每 6 支一盒，能装几盒？",
+            "quantityId": "count-div-per",
+            "quantityLabel": "盒数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(3) 24 支、平均装 4 盒，每盒几支？",
+            "quantityId": "per-div-count",
+            "quantityLabel": "每盒支数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(4) 总数、每份数、份数的关系是：",
+            "selectionId": "sel.relation",
+            "options": [
+              {
+                "id": "opt-total-eq-per-times-count",
+                "label": "总数 = 每份数 × 份数"
+              },
+              {
+                "id": "opt-total-eq-per-plus-count",
+                "label": "总数 = 每份数 + 份数"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m3supp.v1",
+      "summary": "微课③补充：点阵总数 + 两问",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m3s.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：4 行、每行 6 个一共多少个？（记录用，不判分）",
+            "quantityLabel": "总数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "① 现在（4 行 × 每行 6 个）点阵一共多少个？",
+            "quantityId": "total-now",
+            "quantityLabel": "总数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "② 每行 8 个、摆 3 行，一共多少个？",
+            "quantityId": "total-8-3",
+            "quantityLabel": "总数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "③ 36 个、每行 9 个，能摆几行？",
+            "quantityId": "rows-36-9",
+            "quantityLabel": "行数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m4diag.v1",
+      "summary": "微课④诊断：单位分类 + 换算",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m4d.guess",
+            "kind": "choice",
+            "prompt": "先快猜：cm² 是哪类单位？",
+            "options": [
+              {
+                "id": "dim-length",
+                "label": "长度单位"
+              },
+              {
+                "id": "dim-area",
+                "label": "面积单位"
+              },
+              {
+                "id": "dim-volume",
+                "label": "体积单位"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "objectMapping",
+            "prompt": "(1) 把三个单位分别放入长度 / 面积 / 体积：",
+            "pairs": [
+              {
+                "leftId": "unit-cm",
+                "leftLabel": "厘米（cm）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-cm2",
+                "leftLabel": "平方厘米（cm²）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-cm3",
+                "leftLabel": "立方厘米（cm³）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(2) 测量课桌面的大小，用哪类单位？",
+            "selectionId": "sel.desk",
+            "options": [
+              {
+                "id": "opt-length-unit",
+                "label": "长度单位"
+              },
+              {
+                "id": "opt-area-unit",
+                "label": "面积单位"
+              },
+              {
+                "id": "opt-volume-unit",
+                "label": "体积单位"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(3) 1 m² 等于多少 dm²？",
+            "selectionId": "sel.m2-to-dm2",
+            "options": [
+              {
+                "id": "opt-10",
+                "label": "10"
+              },
+              {
+                "id": "opt-100",
+                "label": "100"
+              },
+              {
+                "id": "opt-1000",
+                "label": "1000"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(4) 棱长 1 cm 的正方体，体积是多少？",
+            "selectionId": "sel.cube",
+            "options": [
+              {
+                "id": "opt-1-cm",
+                "label": "1 厘米（cm）"
+              },
+              {
+                "id": "opt-1-cm2",
+                "label": "1 平方厘米（cm²）"
+              },
+              {
+                "id": "opt-1-cm3",
+                "label": "1 立方厘米（cm³）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.m4supp.v1",
+      "summary": "微课④补充：六单位分类 + 两问",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.m4s.guess",
+            "kind": "choice",
+            "prompt": "先快猜：dm³ 是哪类单位？",
+            "options": [
+              {
+                "id": "dim-length",
+                "label": "长度单位"
+              },
+              {
+                "id": "dim-area",
+                "label": "面积单位"
+              },
+              {
+                "id": "dim-volume",
+                "label": "体积单位"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "objectMapping",
+            "prompt": "(1) 把六个单位分别放入长度 / 面积 / 体积：",
+            "pairs": [
+              {
+                "leftId": "unit-mm",
+                "leftLabel": "毫米（mm）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-cm2",
+                "leftLabel": "平方厘米（cm²）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-dm3",
+                "leftLabel": "立方分米（dm³）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-m",
+                "leftLabel": "米（m）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-m2",
+                "leftLabel": "平方米（m²）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              },
+              {
+                "leftId": "unit-cm3",
+                "leftLabel": "立方厘米（cm³）",
+                "rightOptions": [
+                  {
+                    "id": "dim-length",
+                    "label": "长度单位"
+                  },
+                  {
+                    "id": "dim-area",
+                    "label": "面积单位"
+                  },
+                  {
+                    "id": "dim-volume",
+                    "label": "体积单位"
+                  },
+                  {
+                    "id": "opt-unsure",
+                    "label": "不确定"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(2) 一本字典占的空间大小，用哪个单位最合适？",
+            "selectionId": "sel.dict",
+            "options": [
+              {
+                "id": "opt-cm",
+                "label": "厘米（cm）"
+              },
+              {
+                "id": "opt-cm2",
+                "label": "平方厘米（cm²）"
+              },
+              {
+                "id": "opt-cm3",
+                "label": "立方厘米（cm³）"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(3) \"操场的面积是 300 米\"这句话错在哪？",
+            "selectionId": "sel.playground",
+            "options": [
+              {
+                "id": "opt-area-needs-square-unit",
+                "label": "面积应该用面积单位（平方米），不能用长度单位"
+              },
+              {
+                "id": "opt-number-too-small",
+                "label": "数字 300 太小了"
+              },
+              {
+                "id": "opt-no-mistake",
+                "label": "没有错"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f1g1.v1",
+      "summary": "课1引导1：等分圆盘写分数",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f1g1.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：平均分 4 份涂 3 份，涂色部分是几分之几？（记录用，不判分）",
+            "quantityLabel": "涂色部分"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "涂色部分是这个圆盘的几分之几？（按你确认后的图板作答）",
+            "quantityId": "circle-fraction",
+            "quantityLabel": "涂色部分"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "分数中的分母 4 表示什么？",
+            "selectionId": "sel.denom-meaning",
+            "options": [
+              {
+                "id": "opt-total-parts",
+                "label": "整体被平均分成的总份数"
+              },
+              {
+                "id": "opt-taken-parts",
+                "label": "取走（涂色）的份数"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "如果分成的 4 份大小不一样，还能说涂了 3 份就是 3/4 吗？",
+            "selectionId": "sel.unequal-parts",
+            "options": [
+              {
+                "id": "opt-no",
+                "label": "不能（没有平均分）"
+              },
+              {
+                "id": "opt-yes",
+                "label": "能"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f1g2.v1",
+      "summary": "课1引导2：条带 + 数轴",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f1g2.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：8 份涂 5 份是几分之几？（记录用，不判分）",
+            "quantityLabel": "涂色部分"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "涂色部分是整条条带的几分之几？（按你确认后的图板作答）",
+            "quantityId": "bar-fraction",
+            "quantityLabel": "涂色部分"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "这个分数和 1/2 相比：",
+            "selectionId": "sel.compare-half",
+            "options": [
+              {
+                "id": "opt-58-bigger",
+                "label": "比 1/2 大（点已越过中点）"
+              },
+              {
+                "id": "opt-58-smaller",
+                "label": "比 1/2 小"
+              },
+              {
+                "id": "opt-equal",
+                "label": "和 1/2 一样大"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f1i1.v1",
+      "summary": "课1独立：读图写分数",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f1i1.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：10 格涂 7 格是几分之几？（记录用，不判分）",
+            "quantityLabel": "涂色部分"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "涂色部分是这条巧克力的几分之几？",
+            "quantityId": "bar-fraction",
+            "quantityLabel": "涂色部分"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "分数中的分子表示什么？",
+            "selectionId": "sel.num-meaning",
+            "options": [
+              {
+                "id": "opt-num-taken",
+                "label": "涂色（取走）的份数"
+              },
+              {
+                "id": "opt-num-total",
+                "label": "总份数"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f1s1.v1",
+      "summary": "课1陌生：未平均分反例 + 修正操作",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f1s1.guess",
+            "kind": "choice",
+            "prompt": "先猜：大小不一的 4 块拿 1 块，能叫 1/4 吗？",
+            "options": [
+              {
+                "id": "opt-yes",
+                "label": "能"
+              },
+              {
+                "id": "opt-no",
+                "label": "不能"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "singleChoice",
+            "prompt": "(1) 小明能说他拿到了这张披萨的 1/4 吗？",
+            "selectionId": "sel.can-say-quarter",
+            "options": [
+              {
+                "id": "opt-no-not-equal",
+                "label": "不能——4 份大小不一样，不是平均分"
+              },
+              {
+                "id": "opt-yes-any-4",
+                "label": "能——反正是 4 块中的 1 块"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "fractionValue",
+            "prompt": "(2) 按你重新切好并确认的圆盘，涂色部分是几分之几？",
+            "quantityId": "circle-fraction",
+            "quantityLabel": "涂色部分"
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f1d1.v1",
+      "summary": "课1回看：蛋糕两问",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f1d1.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：8 块吃 3 块是几分之几？（记录用，不判分）",
+            "quantityLabel": "上午吃的"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "(1) 上午吃的是这块蛋糕的几分之几？（按你确认后的涂色作答）",
+            "quantityId": "morning-fraction",
+            "quantityLabel": "上午吃的"
+          },
+          {
+            "kind": "fractionValue",
+            "prompt": "(2) 这一天一共吃掉的是几分之几？",
+            "quantityId": "whole-day-fraction",
+            "quantityLabel": "全天吃的"
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f2g1.v1",
+      "summary": "课2引导1：同乘 2",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f2g1.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：1/2 同乘 2 之后是几分之几？（记录用，不判分）",
+            "quantityLabel": "新分数"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "现在的分数是几分之几？（按你确认后的图板作答）",
+            "quantityId": "scaled-fraction",
+            "quantityLabel": "新分数"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "放大前后，涂色部分的大小：",
+            "selectionId": "sel.size-change",
+            "options": [
+              {
+                "id": "opt-same-size",
+                "label": "没有变（还是同一部分）"
+              },
+              {
+                "id": "opt-bigger",
+                "label": "变大了"
+              },
+              {
+                "id": "opt-smaller",
+                "label": "变小了"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "两个分数相等的原因是：",
+            "selectionId": "sel.why-equal",
+            "options": [
+              {
+                "id": "opt-both-scaled",
+                "label": "分子和分母乘了同一个数"
+              },
+              {
+                "id": "opt-num-only",
+                "label": "只是分子变大了"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f2g2.v1",
+      "summary": "课2引导2：找等值分数",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f2g2.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：3/4 同乘 2 之后是几分之几？（记录用，不判分）",
+            "quantityLabel": "新分数"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "现在的分数是几分之几？（按你确认后的图板作答）",
+            "quantityId": "scaled-fraction",
+            "quantityLabel": "新分数"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "它和 3/4 相等的原因是：",
+            "selectionId": "sel.why-eq",
+            "options": [
+              {
+                "id": "opt-num-den-same-times",
+                "label": "分子分母同时乘了 2"
+              },
+              {
+                "id": "opt-num-only",
+                "label": "只有分子乘了 2"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f2i1.v1",
+      "summary": "课2独立：读点 + 等值选择",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f2i1.guess",
+            "kind": "fractionGuess",
+            "prompt": "先猜：6 格走到第 2 格是几分之几？（记录用，不判分）",
+            "quantityLabel": "点表示的分数"
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "fractionValue",
+            "prompt": "(1) 这个点表示的分数是几分之几？",
+            "quantityId": "point-fraction",
+            "quantityLabel": "点表示的分数"
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(2) 下面哪个分数和它相等？",
+            "selectionId": "sel.eq-choice",
+            "options": [
+              {
+                "id": "opt-1-3",
+                "label": "1/3"
+              },
+              {
+                "id": "opt-2-3",
+                "label": "2/3"
+              },
+              {
+                "id": "opt-1-6",
+                "label": "1/6"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f2s1.v1",
+      "summary": "课2陌生：折纸比较 + 分母 8",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f2s1.guess",
+            "kind": "choice",
+            "prompt": "先猜：1/2 和 2/4 谁涂得多？",
+            "options": [
+              {
+                "id": "opt-ming",
+                "label": "小明（1/2）"
+              },
+              {
+                "id": "opt-hong",
+                "label": "小红（2/4）"
+              },
+              {
+                "id": "opt-same",
+                "label": "一样多"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "singleChoice",
+            "prompt": "(1) 谁涂的面积大？",
+            "selectionId": "sel.who-more",
+            "options": [
+              {
+                "id": "opt-same",
+                "label": "一样大（2/4 = 1/2）"
+              },
+              {
+                "id": "opt-ming",
+                "label": "小明大"
+              },
+              {
+                "id": "opt-hong",
+                "label": "小红大"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "fractionValue",
+            "prompt": "(2) 按你确认后的图板，1/2 写成分母是 8 的分数是？",
+            "quantityId": "denom-8-fraction",
+            "quantityLabel": "新分数"
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f2d1.v1",
+      "summary": "课2回看：判断 + 约分",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f2d1.guess",
+            "kind": "choice",
+            "prompt": "先猜：3/9 和 1/3 相等吗？",
+            "options": [
+              {
+                "id": "opt-equal",
+                "label": "相等"
+              },
+              {
+                "id": "opt-not-equal",
+                "label": "不相等"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "singleChoice",
+            "prompt": "(1) 3/9 和 1/3 相等吗？",
+            "selectionId": "sel.eq-judge",
+            "options": [
+              {
+                "id": "opt-equal",
+                "label": "相等（分子分母同除 3）"
+              },
+              {
+                "id": "opt-not-equal",
+                "label": "不相等"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "fractionValue",
+            "prompt": "(2) 把 2/6 化成分子、分母都最小的等值分数：",
+            "quantityId": "reduced-fraction",
+            "quantityLabel": "最简分数"
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f3g1.v1",
+      "summary": "课3引导1：百格板百分数",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f3g1.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：涂 75 格是百分之几？（记录用，不判分）",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "涂色部分是百格板的百分之几？（按你确认后的图板作答）",
+            "quantityId": "percent-value",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "百分数表示的是：",
+            "selectionId": "sel.percent-meaning",
+            "options": [
+              {
+                "id": "opt-part-of-hundred",
+                "label": "一个数是一百份整体中的几份"
+              },
+              {
+                "id": "opt-count-things",
+                "label": "东西的个数"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "75% 里面有几个 1%？",
+            "quantityId": "percent-units",
+            "quantityLabel": "个数",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f3g2.v1",
+      "summary": "课3引导2：折扣问题链",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f3g2.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：八折大约是百分之几十？（记录用，不判分）",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 八折是百分之几？",
+            "quantityId": "fold-percent",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 买这个书包应付多少元？",
+            "quantityId": "pay-amount",
+            "quantityLabel": "应付金额",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(3) 比原价便宜了多少元？",
+            "quantityId": "save-amount",
+            "quantityLabel": "便宜金额",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f3i1.v1",
+      "summary": "课3独立：按比例分配",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f3i1.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：一份大约多少颗？（记录用，不判分）",
+            "quantityLabel": "每份",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 一份是多少颗？",
+            "quantityId": "share-per",
+            "quantityLabel": "每份",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 甲分到多少颗？",
+            "quantityId": "part-a",
+            "quantityLabel": "甲",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(3) 乙分到多少颗？",
+            "quantityId": "part-b",
+            "quantityLabel": "乙",
+            "units": [
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f3s1.v1",
+      "summary": "课3陌生：两店比价问题链",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f3s1.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：哪家店更便宜？先估个数（记录用，不判分）",
+            "quantityLabel": "便宜金额",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 甲店（第二件半价）买 2 支共付多少元？",
+            "quantityId": "store-a-pay",
+            "quantityLabel": "甲店总价",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 乙店（全店八折）买 2 支共付多少元？",
+            "quantityId": "store-b-pay",
+            "quantityLabel": "乙店总价",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "singleChoice",
+            "prompt": "(3) 哪家店更便宜？",
+            "selectionId": "sel.cheaper",
+            "options": [
+              {
+                "id": "opt-store-a",
+                "label": "甲店（第二件半价）"
+              },
+              {
+                "id": "opt-store-b",
+                "label": "乙店（全店八折）"
+              },
+              {
+                "id": "opt-same-price",
+                "label": "一样便宜"
+              },
+              {
+                "id": "opt-unsure",
+                "label": "不确定"
+              }
+            ]
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(4) 便宜多少元？",
+            "quantityId": "diff-amount",
+            "quantityLabel": "差价",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    },
+    {
+      "schemaId": "resp.thm.f3d1.v1",
+      "summary": "课3回看：九折问题链",
+      "predict": {
+        "asks": [
+          {
+            "id": "ask.f3d1.guess",
+            "kind": "numberValue",
+            "prompt": "先猜：九折大约是百分之几十？（记录用，不判分）",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ]
+          }
+        ]
+      },
+      "verify": {
+        "items": [
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(1) 九折是百分之几？",
+            "quantityId": "fold-percent",
+            "quantityLabel": "百分数",
+            "units": [
+              {
+                "id": "percent",
+                "label": "百分数（%）"
+              },
+              {
+                "id": "ge",
+                "label": "个"
+              }
+            ],
+            "decimals": 0
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(2) 应付多少元？",
+            "quantityId": "pay-amount",
+            "quantityLabel": "应付金额",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          },
+          {
+            "kind": "numberWithUnit",
+            "prompt": "(3) 比原价便宜多少元？",
+            "quantityId": "save-amount",
+            "quantityLabel": "便宜金额",
+            "units": [
+              {
+                "id": "yuan",
+                "label": "元"
+              }
+            ],
+            "decimals": 2
+          }
+        ]
+      }
+    }
+  ]
+}

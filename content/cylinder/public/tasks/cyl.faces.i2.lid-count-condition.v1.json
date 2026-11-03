@@ -1,0 +1,206 @@
+{
+  "title": "换个包装，多用多少纸",
+  "taskId": "cyl.faces.i2.lid-count-condition.v1",
+  "taskFamily": "cylinder.faces.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l3.lidDelta.v1",
+  "allowedOperationIds": [
+    "SelectFaces"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm2"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "换个包装，多用多少纸"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个罐身：半径 2.0 cm，高 9.0 cm。现在它只贴一圈标签纸（无盖无底的标签筒）。老板想把它改成封口罐（有底有盖）重新卖。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "2.0"
+        ],
+        [
+          "高度 h",
+          "9.0"
+        ],
+        [
+          "改造方向",
+          "标签筒 → 封口罐"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "改造后比原来多用多少平方厘米的纸？"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，四舍五入保留两位小数，并选择单位。每项都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "两个条件的集合可切换观察高亮差（构造辅助）"
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "I 类任务公式卡可见（沿 L2-I3 先例）"
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.delta-value",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "多用面积目标值 REVIEW 前不下发"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "r=2.0 cm、h=9.0 cm，从标签筒改成封口罐。答多用的纸（两位小数+单位）。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "多用出来的纸只会落在「新加进来的面」上——哪些面是新加的？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "把两种包装的面集合并排比一比，多出的面每个面积是 π×r×r（给步骤不给数值）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.facesi2.pen-tube",
+        "prompt": "如果改成的不是封口罐，而是「有底无盖的笔筒」，多用多少？",
+        "options": [
+          {
+            "id": "opt-one-lid",
+            "label": "一个盖面的面积"
+          },
+          {
+            "id": "opt-two-lid",
+            "label": "两个盖面的面积"
+          },
+          {
+            "id": "opt-same",
+            "label": "不变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么改包装时侧面那份纸不用重新算？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "两条件面集合切换高亮（「标签筒视图/封口罐视图」两个已确认集合槽），其余同基线。",
+    "svgDom": "两视图按钮 + 面片 SVG + 同一表单；同一判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 20,
+    "heightMm": 90,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

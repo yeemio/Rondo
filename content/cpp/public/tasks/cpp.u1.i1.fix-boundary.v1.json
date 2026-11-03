@@ -1,0 +1,180 @@
+{
+  "taskId": "cpp.u1.i1.fix-boundary.v1",
+  "taskFamily": "cpp.steps.v1",
+  "kind": "INDEPENDENT",
+  "title": "货架编号之和（修边界）",
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "店长要 1 到 10 号货架的编号数字之和。收银台的程序算出了 45，店长说应该是 55。"
+    },
+    {
+      "type": "TEXT",
+      "text": "先预测：现在这张卡会输出多少？再找出程序错在哪里，修好它。"
+    },
+    {
+      "type": "TEXT",
+      "text": "注意：提交后服务端还会用另一组货架编号复跑你的程序——可见这一问对了不算完成。"
+    }
+  ],
+  "givens": {
+    "inputs": {
+      "n": 10
+    },
+    "program": [
+      {
+        "kind": "ASSIGN",
+        "var": "sum",
+        "expr": "0"
+      },
+      {
+        "kind": "FOR",
+        "var": "i",
+        "from": "1",
+        "bound": "n",
+        "cmp": "<",
+        "body": [
+          {
+            "kind": "ASSIGN",
+            "var": "sum",
+            "expr": "sum + i"
+          }
+        ]
+      },
+      {
+        "kind": "OUTPUT",
+        "expr": "sum"
+      }
+    ],
+    "cursorStep": 0
+  },
+  "givenLocks": [],
+  "responseSchemaId": "resp.cpp.u1.program.v1",
+  "allowedOperationIds": [
+    "EditStepProgram",
+    "SetTraceCursor"
+  ],
+  "operationConstraints": [
+    {
+      "type": "StepProgram",
+      "editableSlots": [
+        "step[1].cmp",
+        "step[1].bound"
+      ],
+      "insertableKinds": [],
+      "deletableSteps": [],
+      "maxProgramSteps": 12,
+      "maxOutputLines": 8
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.program",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.var-table",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.trace-controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY"
+      ]
+    },
+    {
+      "material": "view.output-pane",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "预测阶段隐藏运行结果"
+    },
+    {
+      "material": "card.mission",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "mission": "独立任务：只允许改循环头（中间的比较条件、右边的界限）。修好后提交；想想怎么向店长证明真的修好了。",
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "目标是 1 加到 10；程序从 1 开始，最后一圈加到了几？"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "i < 10 在 i=10 时还进循环吗？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "单步数一共加了几次，最后一次加的是几。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示（会记录答案帮助）",
+      "revealsAnswer": true
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.i1.lt-lte",
+        "prompt": "在这道题里，「<」和「<=」的差别是什么？",
+        "options": [
+          {
+            "id": "opt-last-in",
+            "label": "<= 把最后一圈 i=n 也放进来，< 在 i=n 时提前退出"
+          },
+          {
+            "id": "opt-no-diff",
+            "label": "没有差别"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "怎么向店长证明程序修好了？（提示：只跑一个 n 够吗？）"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "stepTable": "步骤卡表格：每步一行（赋值/输出/判断/循环），可编辑槽位高亮、键盘可达（Tab 在槽位间移动，Enter 确认编辑）；结构与圆柱场景同一判分接口。",
+    "stateTrace": "变量时间线：每执行步一行（变量→值变化/判断结果/输出行），当前步高亮，输出窗逐行追加；与步骤卡表格光标同步（方向键在两个表达之间移动）。"
+  },
+  "taskVersion": "1"
+}

@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-26T09:56:18.087603+00:00",
+  "status": "PASS",
+  "scope": "Document completeness/readback only; no product acceptance",
+  "documentCount": 9,
+  "documents": [
+    {
+      "path": "README.md",
+      "sha256": "ce0e3abf23ca9fbf7436ae12a5d658320648dc227f6c03a0e4ae653ede5ca701"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "fe373ab501e7e5c5a90de6b841f52242ce9bb75d4c4646b5368b228a1cd10090"
+    },
+    {
+      "path": "docs/handoff/START-HERE.md",
+      "sha256": "ada20d92c643569155238785fe5ee1fcd80e30530cb9f25a9c2144cc25bea5e1"
+    },
+    {
+      "path": "docs/architecture/20261026/ARCHITECTURE.md",
+      "sha256": "c3462a271d74ebf476789209249834b886635e302da4488fd81dbe42aca771ec"
+    },
+    {
+      "path": "docs/architecture/20261026/DELIVERY-PLAN.md",
+      "sha256": "b8c982070033bc9d1c64f21a9b7e8ff51370a17c7bf63ed1d69dcae16f43ff64"
+    },
+    {
+      "path": "docs/architecture/20261026/LIFECYCLE-DATA-API.md",
+      "sha256": "841ec4054762d5a416dd5b2cb6c91eb4c20dadc775de95608bdf21626cafc4cc"
+    },
+    {
+      "path": "docs/architecture/20261026/PRODUCT-CONTRACT.md",
+      "sha256": "33e6858bcb25ff22629f2c728c921ae55f6df85949ef93aec78b1102e387b897"
+    },
+    {
+      "path": "docs/architecture/20261026/README.md",
+      "sha256": "40128e29c1711506bb4d6a011310b0b711cc2e818da1135106cf1158b9b11ed2"
+    },
+    {
+      "path": "docs/architecture/20261026/SCENE-CONTRACTS.md",
+      "sha256": "1ca635035b42d1cc9509602faa6d42ca9fc52b17c69b8f28cbfca141095ad3b2"
+    }
+  ],
+  "planningOriginals": [
+    {
+      "path": "docs/planning/rondo-requirements-20261026.md",
+      "expectedSha256": "773a3d8c34c94ef31de98aee076f5ae05036615eec8a592eea480d4fa2092f48",
+      "actualSha256": "773a3d8c34c94ef31de98aee076f5ae05036615eec8a592eea480d4fa2092f48",
+      "unchanged": true
+    },
+    {
+      "path": "docs/planning/rondo-product-plan-20261026.md",
+      "expectedSha256": "aa77fa28c7be5341d315bb8cfd5e95b7c7d71859f2e10e2d5177b7fffe3c5e21",
+      "actualSha256": "aa77fa28c7be5341d315bb8cfd5e95b7c7d71859f2e10e2d5177b7fffe3c5e21",
+      "unchanged": true
+    }
+  ],
+  "localLinkCount": 37,
+  "taskIds": [
+    "R0",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+  ],
+  "dependencyEdges": [
+    {
+      "from": "R0",
+      "to": "R1"
+    },
+    {
+      "from": "R1",
+      "to": "R2"
+    },
+    {
+      "from": "R2",
+      "to": "R3"
+    },
+    {
+      "from": "R1",
+      "to": "R4"
+    },
+    {
+      "from": "R2",
+      "to": "R5"
+    },
+    {
+      "from": "R3",
+      "to": "R5"
+    }
+  ],
+  "dependencyGraphAcyclic": true,
+  "protectedDonorReadbacks": [
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/docs/architecture/core-first-20261013/ASTRA-ARCHITECTURE.md",
+      "sha256": "0573c7d895274fba7fa9f263db8f0ecbbd5a074476fddec1565d106fcd7ccc02",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/docs/architecture/core-first-20261013/CONTROLLER-ACCEPTANCE.md",
+      "sha256": "98b7c08bce65666d9a7507ab9ad3927d23eb610c501f2d778ed3e588ed410f27",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/packages/core-api/src/index.ts",
+      "sha256": "1e0bd633e6c13896ad1ccb720bd34169d69692afd4174c3c6cefb257568a7c9f",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/packages/core-api/src/client.ts",
+      "sha256": "33c0a4a06be8ba595b899b7fe9ecf8fefba4af133f0da6fd75b4eb825685e3d2",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/package.json",
+      "sha256": "3513b59527aa800e026e4d07cb1f5153268d0a145860968ba339929ae02f4272",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/docs/ui-dsh-integration/README.md",
+      "sha256": "bbb17dc65c5c78de953b3e31a32723e6afba00b981690dac8b90c6d30ff1ea86",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/package.json",
+      "sha256": "2a2c225b151ece6e888961aa9b01cc8c20202bebe5ff9f2c9ec7dbd7a687950c",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/packages/integration-dsh/product-composition/profile/package.json",
+      "sha256": "a5fc6c35cfe5eb461ed6655917f8e717b61431d02d9de8f251af4910e89592bc",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/packages/integration-dsh/product-composition/bundle/package.json",
+      "sha256": "8066e3dbed9b1e635fa7774ba7e18fa2b6158ccd62c5368ab4faf703623d5315",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/ARTIFACT_IDENTITY.json",
+      "sha256": "32a4259f92d90a82ca86302564d8f2c248801dac52a1d3499781e5572c4a76df",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/inventory.json",
+      "sha256": "551fb8ad4305c8cb7462f8d12fa401f4ae3ddcd06e04626d6fea0a70a776a2a2",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/SHA256SUMS",
+      "sha256": "3eefcf14307b4702d9b4a8a25f6e1728e6e655816a5a2e227e0f57418aad87de",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/README.md",
+      "sha256": "8e8db744293ed03034a604cd9812dab83fdf7b02a21b7782fa9d37309179beba",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/pilot-log.md",
+      "sha256": "d8ca30af7c35accce094daccaa62f626c5142496a1b75cf15947ca605ed8354e",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/index.html",
+      "sha256": "8ad7106888923097227825cbfab09ccca6ae46481e63031ee3b9f1e8ca253a45",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/verify/report.md",
+      "sha256": "a715d06afc737dbfdbc255269ca1218c9e694d5d901b5268cf387cdad4e2cb29",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/verify/verify-headless.mjs",
+      "sha256": "dba5f94e3e742a9461195f8f2afa638efe2f36f235f6ad67ef61eb041c636065",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/vendor/three.module.js",
+      "sha256": "9052042d676cb0fdc1ddfefe193053f34b7ac0513a616fdac4535d49987812ea",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlChen-3d-pilot-cylinder-20261026/lab/vendor/three.core.js",
+      "sha256": "9edde002b066a9a05676a6127f67735b62baf399bdea529f2f7e31657da769e6",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/dsh/deepseek-ai-dsh-host-webserver-0.2.1-rc.2.owlcoda.1.tgz",
+      "sha256": "24372cb1018f39c4d96a9f8046204dfea9aaed72c4da8674a9dc3653bac25fb2",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/vendor/deepseek-ai-cordis-4.0.5.tgz",
+      "sha256": "579e54fd4bd522716c87c120e95b6c66b8ac1ce78038dac5e57ff55e91404dfa",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/apps/desktop/src/main.ts",
+      "sha256": "63273fe6be2e1f3ee0cf82f5317fb8ca6678a2e67c919c10e5cd455a3a70a9e0",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/apps/host/src/main.ts",
+      "sha256": "a341fa4e84f8dc90b08d3b6f742d46ac30c409b856a899063ac197c831765e8a",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/Metis/node_modules/electron/package.json",
+      "sha256": "af9a6fdc372c2516076375d676ba5005937513e1bdcc6769768217a1561b18b6",
+      "sameAsReadSnapshot": true
+    },
+    {
+      "path": "/Users/yeemio/AI/gitrep/OwlcodaE/vendor/dsh/0.2.1-rc.2.owlcoda.1/dsh/deepseek-ai-dsh-app-boot-0.2.1-rc.2.owlcoda.1.tgz",
+      "sha256": "2300b068ee745ac884e4ae4ccbdeb212e814f3746c95830148e3439123f4bafb",
+      "sameAsReadSnapshot": true
+    }
+  ],
+  "probeSourceBound": true,
+  "probeScopes": [
+    "Node 24.18.0 public DSH HTTP composition + synthetic SQLite",
+    "Electron 44.7.0 Node mode / Node 24.21.0 same public consumer"
+  ],
+  "git": {
+    "head": null,
+    "stagedEntries": false,
+    "remotes": false
+  },
+  "noProductInstall": true,
+  "compatibilityTemporaryDirectoriesRemaining": 0,
+  "notVerified": [
+    "Rondo dependency lock and independent install",
+    "DSH app-boot in Rondo",
+    "desktop window/preload/utilityProcess",
+    "family authorization and product persistence",
+    "lesson runtime/fallback",
+    "C++ isolation",
+    "real learning",
+    "deployment"
+  ],
+  "errors": []
+}

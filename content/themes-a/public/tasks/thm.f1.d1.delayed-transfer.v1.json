@@ -1,0 +1,156 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f1.d1.delayed-transfer.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "DELAYED_TRANSFER",
+  "title": "回看练习 · 生日蛋糕",
+  "boardView": "PIE",
+  "givens": {
+    "rows": 1,
+    "cols": 8,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols"
+  ],
+  "responseSchemaId": "resp.thm.f1d1.v1",
+  "allowedOperationIds": [
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetFilled",
+      "maxCount": 8
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "回看练习：生日蛋糕（隔几天后再来）"
+    },
+    {
+      "type": "TEXT",
+      "text": "一块圆形蛋糕被平均分成 8 块。上午家人吃了 3 块。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值"
+        }
+      ],
+      "rows": [
+        [
+          "平均分成的块数",
+          "8"
+        ],
+        [
+          "上午吃的块数",
+          "3"
+        ],
+        [
+          "下午又吃的块数",
+          "2"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "在右侧圆盘上把上午吃掉的 3 份涂色并确认。回答：(1) 上午吃的是这块蛋糕的几分之几？(2) 这一天一共吃掉的是几分之几？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "蛋糕平均分 8 块，上午吃 3 块、下午吃 2 块；写出上午的分数和全天的分数。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "分母还是总块数 8；全天吃的块数要先合起来。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "(1) 3 块 → 3/8；(2) 3+2=5 块 → 5/8。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f1d1.recall",
+        "prompt": "隔了这些天，你是怎么想起来的？",
+        "options": [
+          {
+            "id": "opt-parts-model",
+            "label": "想起\"总份数作分母、取的份数作分子\""
+          },
+          {
+            "id": "opt-tried-again",
+            "label": "在圆盘上又试了一遍"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写出你解题时心里想的那句话。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "8 等分圆盘（SVG），涂色经确认操作。",
+    "boardTable": "份数/涂色份数读数表；同一判分。"
+  }
+}

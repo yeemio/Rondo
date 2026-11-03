@@ -1,0 +1,163 @@
+{
+  "thm.f1.i1.represent.v1": [
+    {
+      "instanceId": "thm.f1.i1.F1",
+      "level": 4,
+      "text": "涂色 7 格、共 10 格：7/10；分子 7 表示涂色（取走）的份数。"
+    }
+  ],
+  "thm.f1.s1.stranger-relabel.v1": [
+    {
+      "instanceId": "thm.f1.s1.F1",
+      "level": 4,
+      "text": "(1) 不能——随手切的 4 块大小不一，不是平均分；(2) 平均 4 份涂 1 份 → 1/4。"
+    }
+  ],
+  "thm.f1.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "thm.f1.d1.F1",
+      "level": 4,
+      "text": "(1) 上午 3 块 → 3/8；(2) 3+2=5 块 → 5/8。"
+    }
+  ],
+  "thm.f2.i1.numberline.v1": [
+    {
+      "instanceId": "thm.f2.i1.F1",
+      "level": 4,
+      "text": "(1) 6 格走到第 2 格 → 2/6；(2) 同 ÷2 → 1/3。"
+    }
+  ],
+  "thm.f2.s1.stranger.v1": [
+    {
+      "instanceId": "thm.f2.s1.F1",
+      "level": 4,
+      "text": "(1) 一样大：2/4 = 1/2；(2) 1/2 同乘 4 → 4/8。"
+    }
+  ],
+  "thm.f2.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "thm.f2.d1.F1",
+      "level": 4,
+      "text": "(1) 3/9 同 ÷3 = 1/3，相等；(2) 2/6 同 ÷2 → 1/3。"
+    }
+  ],
+  "thm.f3.i1.allocate.v1": [
+    {
+      "instanceId": "thm.f3.i1.F1",
+      "level": 4,
+      "text": "60÷(3+2)=12（每份）；甲 12×3=36；乙 12×2=24。"
+    }
+  ],
+  "thm.f3.s1.stranger.v1": [
+    {
+      "instanceId": "thm.f3.s1.F1",
+      "level": 4,
+      "text": "甲店 40+40×50%=60.00 元；乙店 80×80%=64.00 元；甲店便宜 64−60=4.00 元。"
+    }
+  ],
+  "thm.f3.d1.delayed-transfer.v1": [
+    {
+      "instanceId": "thm.f3.d1.F1",
+      "level": 4,
+      "text": "九折=90%；50×90%=45.00 元；50−45=5.00 元。"
+    }
+  ],
+  "thm.m1.diag.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "(1) 2.5×2=5.0 cm；(2) 12÷2=6.0 cm；(3) 直径=半径×2；(4) 变大（始终 2 倍）。"
+    }
+  ],
+  "thm.m1.supp.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "① 半径 3.5 cm 时直径=3.5×2=7.0 cm；② 半径=12.0÷2=6.0 cm。"
+    }
+  ],
+  "thm.m2.diag.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "(1) 5×3=15 cm²；(2) 1 cm²；(3) 长度×长度；(4) 1 dm²=100 cm²。"
+    }
+  ],
+  "thm.m2.supp.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "① 4×6=24 cm²；② 18÷6=3 cm。"
+    }
+  ],
+  "thm.m3.diag.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "(1) 6×4=24 支；(2) 24÷6=4 盒；(3) 24÷4=6 支；(4) 总数=每份数×份数。"
+    }
+  ],
+  "thm.m3.supp.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "① 4×6=24 个；② 8×3=24 个；③ 36÷9=4 行。"
+    }
+  ],
+  "thm.m4.diag.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "(1) cm→长度、cm²→面积、cm³→体积；(2) 面积单位；(3) 100；(4) 1 cm³。"
+    }
+  ],
+  "thm.m4.supp.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "(1) mm/m→长度，cm²/m²→面积，dm³/cm³→体积；(2) cm³；(3) 面积要用面积单位（平方米）。"
+    }
+  ],
+  "thm.f1.g1.partition-circle.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "平均 4 份涂 3 份 → 3/4；分母 4=总份数；不平均分不能说 3/4。"
+    }
+  ],
+  "thm.f1.g2.partition-bar.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "8 份涂 5 份 → 5/8；5/8 > 1/2（点越过中点）。"
+    }
+  ],
+  "thm.f2.g1.scale-bar.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "同乘 2：1/2 → 2/4；大小不变；分子分母同乘一个数。"
+    }
+  ],
+  "thm.f2.g2.equivalent-find.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "3/4 同乘 2 → 6/8；分子分母同时乘 2。"
+    }
+  ],
+  "thm.f3.g1.percent-board.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "涂 75 格 → 75%；表示一百份中占 75 份；75 个 1%。"
+    }
+  ],
+  "thm.f3.g2.discount-chain.v1": [
+    {
+      "instanceId": "static",
+      "level": 4,
+      "text": "八折=80%；80×80%=64.00 元；80−64=16.00 元。"
+    }
+  ]
+}

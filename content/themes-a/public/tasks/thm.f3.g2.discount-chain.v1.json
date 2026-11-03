@@ -1,0 +1,189 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f3.g2.discount-chain.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "问题链 · 书包打八折",
+  "boardView": "HUNDRED",
+  "givens": {
+    "rows": 10,
+    "cols": 10,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols"
+  ],
+  "responseSchemaId": "resp.thm.f3g2.v1",
+  "allowedOperationIds": [
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetFilled",
+      "maxCount": 100
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "问题链：书包打八折"
+    },
+    {
+      "type": "TEXT",
+      "text": "术语：打八折的意思是现价是原价的 80%（百分之八十）；\"几折\"就是十分之几，也就是百分之几十。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "书包原价",
+          "80.00",
+          "元"
+        ],
+        [
+          "折扣",
+          "八折",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先在百格板上把\"八折对应的百分数\"涂出来（涂到 80 格）并确认。然后依次回答：(1) 八折是百分之几？(2) 买这个书包应付多少元？(3) 比原价便宜了多少元？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-discount",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "原价 80 元打八折：先写八折的百分数，再算应付的钱和便宜的钱。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "八折 = 现价是原价的 80%；便宜的是原价的 20%。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "应付 = 原价 × 80%；便宜 = 原价 − 应付。先乘再减，顺序不能反着想成先加。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f3g2.fold",
+        "prompt": "\"八折\"表示什么？",
+        "options": [
+          {
+            "id": "opt-80-of-price",
+            "label": "现价是原价的 80%"
+          },
+          {
+            "id": "opt-8-of-price",
+            "label": "现价是原价的 8%"
+          },
+          {
+            "id": "opt-80-off",
+            "label": "便宜 80 元"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      },
+      {
+        "itemId": "explain.f3g2.order",
+        "prompt": "算应付的钱时，正确的顺序是？",
+        "options": [
+          {
+            "id": "opt-multiply-first",
+            "label": "先用原价乘 80%（打折是乘，不是加）"
+          },
+          {
+            "id": "opt-add-first",
+            "label": "先把原价加上一成再算"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果打九折，应付多少元？写出你的算式。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "百格板（SVG）涂出折扣对应的百分数。",
+    "boardTable": "涂色格数读数表；同一判分。"
+  }
+}

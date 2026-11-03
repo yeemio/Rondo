@@ -1,0 +1,137 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m3.diag.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "INDEPENDENT",
+  "title": "先修诊断 · 乘除与数量关系",
+  "boardView": "DOTARRAY",
+  "givens": {
+    "rows": 3,
+    "cols": 6,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols",
+    "filled"
+  ],
+  "responseSchemaId": "resp.thm.m3diag.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "先修小诊断：乘除与数量关系（共 4 小题）"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "题号"
+        },
+        {
+          "label": "情境"
+        }
+      ],
+      "rows": [
+        [
+          "(1)",
+          "每盒铅笔 6 支，装了 4 盒"
+        ],
+        [
+          "(2)",
+          "一共 24 支，每 6 支装一盒"
+        ],
+        [
+          "(3)",
+          "一共 24 支，平均装 4 盒"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 铅笔一共多少支？(2) 能装几盒？(3) 每盒几支？(4) 总数、每份数、份数之间是什么关系？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-quantity",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "三个装铅笔的情境分别求总数、盒数、每盒支数，再选出三个量的关系。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "总数是\"每份数 × 份数\"铺出来的；反过来可以除。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "求总数用乘；求份数或每份数用除。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m3.when-divide",
+        "prompt": "什么时候用除法？",
+        "options": [
+          {
+            "id": "opt-total-known",
+            "label": "知道总数和每份数（或份数），求另一个"
+          },
+          {
+            "id": "opt-always-multiply",
+            "label": "都再用乘法算一遍"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "用\"每份数、份数、总数\"说一句生活中的例子。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "3 行 × 每行 6 个的点阵（SVG）静态呈现。",
+    "boardTable": "行/每行个数/总数读数表；同一任务卡与判分接口。"
+  }
+}

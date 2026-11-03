@@ -1,0 +1,175 @@
+{
+  "title": "条带的边来自哪里",
+  "taskId": "cyl.net.g2.edge-pairing.v1",
+  "taskFamily": "cylinder.net.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l2.edgePair.v1",
+  "allowedOperationIds": [
+    "SetUnroll"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetUnroll",
+      "minPermille": 0,
+      "maxPermille": 1000
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "条带的边来自哪里"
+    },
+    {
+      "type": "TEXT",
+      "text": "还是这个圆筒：r=3.0 cm，h=8.0 cm。条带四条边编号 1–4。"
+    },
+    {
+      "type": "TEXT",
+      "text": "把条带的四条边分别和圆筒配对：每条边卷回去以后，它是上底圆、下底圆，还是高（侧面上一条从上到下的直线）？先写下配对猜测，再展开、回卷检查。每条边都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "net.edge-markers",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "本任务非必需材料，仅供对照"
+    },
+    {
+      "material": "card.measure-C",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "非必需，仅供对照"
+    },
+    {
+      "material": "card.measure-strip",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "非必需，仅供对照"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "圆筒 r=3.0 cm、h=8.0 cm。把四条编号边分别配上：上底圆 / 下底圆 / 高。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "侧面和每个底面相接的地方是一条圆周；和上底相接、和下底相接，是两条不同的边。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "回卷一小段，看每条编号边正贴着圆筒的哪个部分；先配能确定的，剩下的再看。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.netg2.edge2-origin",
+        "prompt": "向同学解释「编号 2 的边来自哪里」，选最接近的说法：",
+        "options": [
+          {
+            "id": "opt-from-upper-circle",
+            "label": "它原来就是上底圆的边"
+          },
+          {
+            "id": "opt-because-longer",
+            "label": "因为它比较长"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "你怎么判断一条边卷回去贴着谁？用两三句话说明。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "选中某条边时高亮该边并淡显其配对目标候选；两组 select/radio 呈现，不依赖拖线。",
+    "svgDom": "条带边与部件清单同为可点选/键盘可选对象，相同对象 ID、相同表单与判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

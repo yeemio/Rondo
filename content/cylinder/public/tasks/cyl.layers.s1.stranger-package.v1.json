@@ -1,0 +1,264 @@
+{
+  "title": "首饰店的圆盒",
+  "taskId": "cyl.layers.s1.stranger-package.v1",
+  "taskFamily": "cylinder.layers.v1",
+  "kind": "STRANGER",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l4.strangerComposite.v1",
+  "allowedOperationIds": [
+    "SelectFaces",
+    "SetVisibleLayerCount"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SelectFaces",
+      "allowedFaceIds": [
+        "cyl-face-side",
+        "cyl-face-upper",
+        "cyl-face-lower"
+      ]
+    },
+    {
+      "type": "SetVisibleLayerCount",
+      "min": 0,
+      "max": 6
+    }
+  ],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "cm2",
+      "cm3"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "首饰店的圆盒"
+    },
+    {
+      "type": "TEXT",
+      "text": "首饰店订做一批圆柱形礼盒：盒底直径 10.0 cm，盒高 6.0 cm，有底有盖（封口），整盒用纸板，里面正好填满衬垫。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "盒底直径 d",
+          "10.0"
+        ],
+        [
+          "盒高 h",
+          "6.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 盒底的半径是多少厘米？(2) 纸板要算哪些面？在场景里选出来。(3) 整盒纸板多少平方厘米？(4) 盒内能填多少立方厘米衬垫？"
+    },
+    {
+      "type": "TEXT",
+      "text": "π 取 3.14，(3)(4) 四舍五入保留两位小数并选择单位。每项都可以选「不确定」。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "diameter",
+        "height",
+        "layerCount"
+      ],
+      "note": "故事 given：直径与高可见"
+    },
+    {
+      "material": "dim.radius",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "半径是参数识别作答目标，REVIEW 前隐藏（含 aria）"
+    },
+    {
+      "material": "face.checklist",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "layer.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "note": "层推进观察辅助（SetLayerCount 锁定 givens 层数）"
+    },
+    {
+      "material": "card.formula-circle",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "陌生任务复测方法回忆，ASSESSMENT 档不主动展示（沿 L2-S1 先例）"
+    },
+    {
+      "material": "card.formula-full",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.formula-V",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.measure-faces",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.base-area",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "table.cumulative-values",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.surface-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.volume-value",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "礼盒有底有盖。已知直径 10.0 cm、高 6.0 cm。四问：半径；面集合；纸板面积；衬垫体积（两位小数+单位）。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "先从直径找到半径；纸板按面下料，衬垫看底面和高的乘法。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "r=d÷2；纸板 = 周长×高 + 两个圆；衬垫 = πr²×h（给步骤不给数值）。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.layerss1.open-box",
+        "prompt": "这批礼盒如果改成「无盖展示盒」，纸板会：",
+        "options": [
+          {
+            "id": "opt-minus-one",
+            "label": "少一个圆"
+          },
+          {
+            "id": "opt-minus-two",
+            "label": "少两个圆"
+          },
+          {
+            "id": "opt-same",
+            "label": "不变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "向家人说明「纸板」和「衬垫」各要算哪些东西、为什么不一样。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "面片 3D 选面 + 层条推进 + 四段复合表单分段呈现（段内可不确定）；两表达同构同判分。",
+    "svgDom": "面片 SVG 选面 + 二维层条 + 同一四段表单；同一 typed intent、同一判分。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 50,
+    "heightMm": 60,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": [],
+    "layerCount": 6,
+    "visibleLayerCount": 0
+  }
+}

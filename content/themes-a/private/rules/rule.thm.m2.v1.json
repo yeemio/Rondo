@@ -1,0 +1,187 @@
+{
+  "ruleId": "rule.thm.m2.v1",
+  "file": "rule.thm.m2.v1.json",
+  "boundTasks": [
+    "thm.m2.diag.v1",
+    "thm.m2.supp.v1"
+  ],
+  "body": {
+    "kind": "GRID_TASK_TRUTH",
+    "entries": {
+      "thm.m2.diag.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "rect-area",
+            "label": "长方形面积（5 cm × 3 cm）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm2",
+              "expectedDecimal": "15"
+            },
+            "acceptedUnitIds": [
+              "cm2",
+              "mm2",
+              "dm2"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "choice",
+            "label": "边长 1 cm 正方形的面积",
+            "selectionId": "sel.square-unit",
+            "correctOptionId": "opt-1-cm2"
+          },
+          {
+            "id": "c3",
+            "kind": "choice",
+            "label": "面积单位为何带\"平方\"",
+            "selectionId": "sel.why-square",
+            "correctOptionId": "opt-length-times-length"
+          },
+          {
+            "id": "c4",
+            "kind": "number",
+            "quantityId": "dm2-to-cm2",
+            "label": "1 dm² 换算",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm2",
+              "expectedDecimal": "100"
+            },
+            "acceptedUnitIds": [
+              "cm2"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          }
+        ],
+        "diagnostics": [
+          {
+            "tag": "mis-perimeter-for-area",
+            "checkId": "c1",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "cm2",
+              "value": "16"
+            },
+            "feedback": "再检查：16 是把边都加起来（周长）了；面积要用乘法铺格子。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "每行 5 格、共 3 行：5 × 3 = 15 cm²。"
+          },
+          {
+            "checkId": "c2",
+            "text": "1 平方厘米（cm²）。"
+          },
+          {
+            "checkId": "c3",
+            "text": "面积是长度 × 长度，所以单位带\"平方\"。"
+          },
+          {
+            "checkId": "c4",
+            "text": "1 dm = 10 cm，1 dm² = 10 × 10 = 100 cm²。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：面积要用乘法（每行个数 × 行数）。"
+        },
+        "diagnosis": {
+          "passRule": "ALL_CHECKS_FIRST_SUBMISSION_NO_ANSWER_HINT",
+          "supplementTaskId": "thm.m2.supp.v1"
+        }
+      },
+      "thm.m2.supp.v1": {
+        "checks": [
+          {
+            "id": "c1",
+            "kind": "number",
+            "quantityId": "area-now",
+            "label": "当前长方形面积",
+            "source": {
+              "kind": "FROM_STATE",
+              "derive": "GRID_AREA_CM2"
+            },
+            "acceptedUnitIds": [
+              "cm2",
+              "mm2",
+              "dm2"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          },
+          {
+            "id": "c2",
+            "kind": "number",
+            "quantityId": "length-needed",
+            "label": "长（面积 18 cm²、宽 6 cm）",
+            "source": {
+              "kind": "AUTHORED",
+              "unitId": "cm",
+              "expectedDecimal": "3"
+            },
+            "acceptedUnitIds": [
+              "cm",
+              "mm"
+            ],
+            "rounding": {
+              "mode": "HALF_UP",
+              "decimalPlaces": 0
+            }
+          }
+        ],
+        "scenario": {
+          "kind": "GRID_AT",
+          "rows": 4,
+          "cols": 6
+        },
+        "scenarioFeedback": "请先把长方形调成 4 行 × 6 列并确认，再提交。",
+        "diagnostics": [
+          {
+            "tag": "mis-perimeter-for-area",
+            "checkId": "c1",
+            "when": {
+              "kind": "VALUE_EQUALS",
+              "unitId": "cm2",
+              "value": "20"
+            },
+            "feedback": "再检查：20 是 (4+6)×2，那是周长；面积要用 4 × 6。"
+          },
+          {
+            "tag": "mis-unit-scale",
+            "checkId": "c1",
+            "when": {
+              "kind": "UNIT_MISMATCH"
+            },
+            "feedback": "数值对了，再看看单位——面积要选面积单位。"
+          }
+        ],
+        "reveal": [
+          {
+            "checkId": "c1",
+            "text": "4 行 × 6 列（每格 1 cm²）：4 × 6 = 24 cm²。"
+          },
+          {
+            "checkId": "c2",
+            "text": "长 = 18 ÷ 6 = 3 cm。"
+          }
+        ],
+        "feedback": {
+          "reviseGeneric": "再想一遍：面积 = 长 × 宽；反过来长 = 面积 ÷ 宽。"
+        }
+      }
+    }
+  }
+}

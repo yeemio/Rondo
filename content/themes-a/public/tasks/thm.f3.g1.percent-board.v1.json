@@ -1,0 +1,145 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f3.g1.percent-board.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "GUIDED",
+  "title": "百格板上的百分数",
+  "boardView": "HUNDRED",
+  "givens": {
+    "rows": 10,
+    "cols": 10,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols"
+  ],
+  "responseSchemaId": "resp.thm.f3g1.v1",
+  "allowedOperationIds": [
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetFilled",
+      "maxCount": 100
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "涂出 75%"
+    },
+    {
+      "type": "TEXT",
+      "text": "右侧是一块 10×10 的百格板（100 个同样大的小格）。术语：百分数表示一个数是另一个数（一百份的整体）的百分之几；1% 就是百分之一，写作 1/100。"
+    },
+    {
+      "type": "TEXT",
+      "text": "操作：用步进按钮或上下方向键把涂色格数调到 75，确认。"
+    },
+    {
+      "type": "TEXT",
+      "text": "回答：涂色部分是百格板的百分之几（用百分数作答）？75% 里面有几个 1%？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-percent",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "百格板涂 75 格：写出百分数，数出有几个 1%。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "百分数的分母固定是 100；涂 75 格就是 75/100。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "涂几格就是百分之几；1 格 = 1%。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f3g1.unit",
+        "prompt": "百分数和\"个\"有什么不同？",
+        "options": [
+          {
+            "id": "opt-part-of-hundred",
+            "label": "百分数表示占一百份中的几份，不是计数个数"
+          },
+          {
+            "id": "opt-same",
+            "label": "没什么不同"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果涂 100 格，是百分之几？涂 50 格呢？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "百格板（SVG）随确认的涂色格数逐格填充。",
+    "boardTable": "涂色格数/总格数读数表；同一判分。"
+  }
+}

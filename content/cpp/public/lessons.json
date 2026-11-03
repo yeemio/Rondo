@@ -1,0 +1,27 @@
+{
+  "lessonsVersion": "1",
+  "lessons": [
+    {
+      "lessonId": "cpp.u1.basics",
+      "releaseId": "rondo.cpp.u1-r1",
+      "title": "GESP 2 · 第 1 单元：顺序、分支与有界循环",
+      "taskFamily": "cpp.steps.v1",
+      "taskOrder": [
+        "cpp.u1.g1.receipt-trace.v1",
+        "cpp.u1.g2.pack-sweets.v1",
+        "cpp.u1.g3.member-discount.v1",
+        "cpp.u1.g4.sales-sum.v1",
+        "cpp.u1.i1.fix-boundary.v1",
+        "cpp.u1.i2.enum-count.v1",
+        "cpp.u1.i3.build-digits.v1",
+        "cpp.u1.s1.stranger-transfer.v1"
+      ],
+      "delayedTransferTaskId": "cpp.u1.d1.delayed-transfer.v1",
+      "delayedTransferWindowDays": {
+        "availableAfterDays": 7,
+        "nominalEndDays": 14
+      },
+      "note": "对 GESP 2 仅作部分能力关联（分支、循环、整数运算、枚举模拟的结构练习）；本单元不构成任何等级达成或资格表述，考级报名与衔接按当年官方规则另行核对。"
+    }
+  ]
+}

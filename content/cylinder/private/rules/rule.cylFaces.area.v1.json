@@ -1,0 +1,90 @@
+{
+  "ruleId": "rule.cylFaces.area.v1",
+  "file": "rule.cylFaces.area.v1.json",
+  "boundTasks": [
+    "cyl.faces.g2.one-lid-area.v1",
+    "cyl.faces.g3.full-surface.v1",
+    "cyl.faces.i2.lid-count-condition.v1",
+    "cyl.faces.i3.surface-value-unit.v1"
+  ],
+  "note": "组合面积 = C×h + 盖数×πr² 一步有理（π=157/50），两位小数十进制规则，等价书写归一，容差不取浮点 epsilon。Δ=2πr² 分支同。反馈一律不带数值、不反推。原 COMBO_SUM_FAMILY pendingDsl 已正式化为 COMBO_AREA_TRUTH（H0-DELTA-INTEGRATION-20261027-3）；诊断签名由判分器按判定快照一步有理重算，诊断结构携带 tag+受限反馈。",
+  "body": {
+    "kind": "COMBO_AREA_TRUTH",
+    "entries": {
+      "cyl.faces.g2.one-lid-area.v1": {
+        "taskForm": "COMBO",
+        "snapshot": {
+          "radiusMm": 30,
+          "heightMm": 80
+        },
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-lower": "opt-include",
+          "cyl-face-upper": "opt-exclude"
+        },
+        "snapshotMustEqualDeclaration": true,
+        "expectedCm2": "178.98"
+      },
+      "cyl.faces.g3.full-surface.v1": {
+        "taskForm": "COMBO",
+        "snapshot": {
+          "radiusMm": 30,
+          "heightMm": 80
+        },
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-upper": "opt-include",
+          "cyl-face-lower": "opt-include"
+        },
+        "snapshotMustEqualDeclaration": true,
+        "expectedCm2": "207.24",
+        "advice": {
+          "usable": "opt-advice-no",
+          "problem": "opt-advice-missing-lid"
+        }
+      },
+      "cyl.faces.i2.lid-count-condition.v1": {
+        "taskForm": "LID_DELTA",
+        "snapshot": {
+          "radiusMm": 20,
+          "heightMm": 90
+        },
+        "fromInstance": "cyl.faces.i2.F1",
+        "snapshotSubsetOnly": true,
+        "expectedCm2": "25.12",
+        "attribution": "opt-two-lid"
+      },
+      "cyl.faces.i3.surface-value-unit.v1": {
+        "taskForm": "COMBO",
+        "snapshot": {
+          "radiusMm": 60,
+          "heightMm": 40
+        },
+        "fromInstance": "cyl.faces.i3.F1",
+        "snapshotSubsetOnly": true,
+        "expectedCm2": "376.80"
+      }
+    },
+    "diagnostics": {
+      "misOneLidMissing": {
+        "tag": "mis-one-lid-missing",
+        "feedback": "封口罐有几个圆面？再数一遍"
+      },
+      "misLidsMissing": {
+        "tag": "mis-lids-missing",
+        "feedback": "封口罐有几个圆面？再数一遍"
+      },
+      "misDoubleSide": {
+        "tag": "mis-double-side",
+        "feedback": "多用的是圆面还是侧面翻倍？"
+      },
+      "unitMismatch": {
+        "tag": "unit-mismatch",
+        "feedback": "数值对了，再看看单位"
+      }
+    },
+    "feedback": {
+      "numericRevise": "先分面，再把每个面的面积加起来。"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "frozen": [
+    {
+      "instanceId": "i1-F1",
+      "inputs": {
+        "n": 10
+      },
+      "truth": {
+        "bugLines": [
+          "45"
+        ],
+        "fixedLines": [
+          "55"
+        ],
+        "finalSum": 55,
+        "finalI": 11,
+        "fix": "cmp < -> <="
+      },
+      "answerHint": "把「<」改成「<=」，第 10 圈也会被加上：1 加到 10 等于 55。"
+    },
+    {
+      "instanceId": "i1-EXB",
+      "inputs": {
+        "n": 20
+      },
+      "truth": {
+        "bugLines": [
+          "190"
+        ],
+        "fixedLines": [
+          "210"
+        ]
+      },
+      "answerHint": "换 20 号货架：1 加到 20 等于 210。"
+    }
+  ]
+}

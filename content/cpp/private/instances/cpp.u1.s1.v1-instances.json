@@ -1,0 +1,30 @@
+{
+  "frozen": [
+    {
+      "instanceId": "s1-F1",
+      "inputs": {
+        "n": 60
+      },
+      "truth": {
+        "answerLines": [
+          "20",
+          "60"
+        ]
+      },
+      "answerHint": "60 以内 3 的倍数有 20 个，最后一个是 60。"
+    },
+    {
+      "instanceId": "s1-H25",
+      "inputs": {
+        "n": 25
+      },
+      "truth": {
+        "answerLines": [
+          "8",
+          "24"
+        ]
+      },
+      "answerHint": "25 以内 3 的倍数：3,6,…,24，共 8 个，最后是 24。"
+    }
+  ]
+}

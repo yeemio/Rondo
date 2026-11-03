@@ -1,0 +1,34 @@
+{
+  "frozen": [
+    {
+      "instanceId": "i3-F1",
+      "inputs": {
+        "n": 358
+      },
+      "truth": {
+        "answerLines": [
+          "8",
+          "5",
+          "3"
+        ],
+        "finalN": 3
+      },
+      "answerHint": "正确顺序：先取个位 8，再 358→35 取 5，再 35→3 取 3；输出 8、5、3，结束时 n=3。"
+    },
+    {
+      "instanceId": "i3-H0",
+      "inputs": {
+        "n": 207
+      },
+      "truth": {
+        "answerLines": [
+          "7",
+          "0",
+          "2"
+        ],
+        "finalN": 2
+      },
+      "answerHint": "中间是 0 也照取：7、0、2。"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.m1.diag.v1",
+  "taskFamily": "themes.micro.v1",
+  "kind": "INDEPENDENT",
+  "title": "先修诊断 · 半径与直径",
+  "boardView": "CIRCLE_FLAT",
+  "givens": {
+    "radiusMm": 25,
+    "heightMm": 10,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  },
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.thm.m1diag.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "先修小诊断：半径与直径（共 4 小题，快判）"
+    },
+    {
+      "type": "TEXT",
+      "text": "下面的圆（俯视）画出了半径 r 的线段。半径：从圆心到圆上任意一点的线段；直径：穿过圆心、两端都在圆上的线段。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "题号"
+        },
+        {
+          "label": "已知"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "(1)",
+          "一个圆的半径 r = 2.5",
+          "cm"
+        ],
+        [
+          "(2)",
+          "另一个圆的直径 d = 12",
+          "cm"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "(1) 半径 2.5 cm 的圆，直径是多少？(2) 直径 12 cm 的圆，半径是多少？(3) 直径和半径是什么关系？(4) 一个圆的半径变大，直径会怎样？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.term-radius-diameter",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "(1) 已知 r=2.5 cm 求 d；(2) 已知 d=12 cm 求 r；(3) 选出 d 和 r 的关系；(4) 判断 r 变大时 d 怎么变。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "直径是把半径\"对折再接一段同样的长\"——两个半径拼成一条直径。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "d = r × 2；反过来 r = d ÷ 2。两道数值题各用一次。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.m1.how",
+        "prompt": "你主要怎么记住半径和直径的关系？",
+        "options": [
+          {
+            "id": "opt-d-is-2r",
+            "label": "直径是半径的 2 倍"
+          },
+          {
+            "id": "opt-picture",
+            "label": "看图：一条直径由两条半径拼成"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "用一句话向家人解释半径和直径的关系。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "俯视圆盘（SVG）：圆心、半径线段与直径线段标注；静态呈现，无交互。",
+    "boardTable": "同状态的表格投影：r、d 两行读数；同一任务卡与判分接口。"
+  }
+}

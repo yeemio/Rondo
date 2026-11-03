@@ -1,0 +1,26 @@
+/** Diagnostic: exercise the real domain + SQLite queue, replacing only the worker with counted deterministic receipts. */
+import {mkdirSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {Harness} from '../fixtures/harness';
+import {createLearningServer} from '../../modules/learning';
+import {applyReleaseStatusChange} from '../../modules/learning/maintenance';
+import type {CompilerService} from '../../workers/cpp/compiler.mjs';
+const label=process.argv[2]??'before',root=resolve('.synthetic-data-r2-concurrency-'+label);mkdirSync(root,{recursive:true});
+const h=await Harness.create({dbFile:root+'/learning.sqlite',contentRoot:root+'/content'});
+const releaseId='rondo.mvp.gesp-202303-p1-r1';
+await h.content.loadRelease(resolve('dist/content'),releaseId);
+for(const to of ['REVIEWED','AVAILABLE'] as const)await applyReleaseStatusChange(h.storage,()=>Date.now(),{releaseId,to,reason:'synthetic-concurrency-probe'});
+await h.setupFamily('probe');const guardian=await h.guardianContext();const learnerId=await h.createLearner(guardian,'synthetic-probe');const ctx=await h.enterLearner(learnerId);
+let submitCalls=0;
+const compiler={capability:()=>({available:true,instanceId:'counted-worker'}),submit:()=>{submitCalls++;return {id:'same-worker-job',requestId:'same-request',instanceId:'counted-worker',state:'COMPILING',terminal:false,sourceHash:'source',inputHash:'stdin',result:{compilation:{stderr:'synthetic compiler diagnostic'}}};},read:()=>({id:'same-worker-job',requestId:'same-request',instanceId:'counted-worker',state:'COMPILE_ERROR',terminal:true,sourceHash:'source',inputHash:'stdin',result:{compilation:{stderr:'synthetic compiler diagnostic'}}}),close:async()=>{}} as unknown as CompilerService;
+const server=createLearningServer({context:h.auth.contextProvider,content:h.content,storage:h.storage,time:{now:()=>Date.now()},ids:h.ids,policy:{courseGraph:[],hintPolicy:[],defaultRetention:{mode:'UNTIL_GUARDIAN_DELETES'}},compiler});
+const start=await server.handleCommand(ctx,h.envelope({kind:'learning.startAttempt',idempotencyKey:'start',target:{scope:'LEARNER',learnerId},payload:{releaseId}}));const attemptId=start.effectRefs.find(x=>x.startsWith('attempt:'))!.slice(8);
+await server.handleCommand(ctx,h.envelope({kind:'learning.recordPrediction',idempotencyKey:'prediction',target:{scope:'LEARNER',learnerId,attemptId},payload:{prediction:{claims:[]},uncertain:true,explanation:'This probe does not express certainty.'}}));
+const q=await server.query(ctx,{kind:'learning.questionView',attemptId});if(q.kind!=='learning.questionView')throw Error('question');
+const e=h.envelope({kind:'code.requestRun',idempotencyKey:'one-concurrent-request',expectedAttemptVersion:2,target:{scope:'LEARNER',learnerId,attemptId},binding:{releaseId,questionInstanceId:q.spec.questionInstanceId,rendererContractVersion:'1'},payload:{taskId:'mvp.gesp.202303.p1.v1',source:'int main(){}',stdin:'',compilerContractId:'rondo.gesp.gcc13.2.cpp11.linux-arm64.v1'}});
+const receipts=await Promise.all([server.handleCommand(ctx,e),server.handleCommand(ctx,e)]);
+await new Promise(r=>setTimeout(r,250));
+const events=h.storage.rawDatabase().prepare("SELECT payloadJson FROM learningEvent WHERE attemptId=? AND eventType='CODE_RUN_STATUS' ORDER BY seq").all(attemptId).map(x=>JSON.parse(String(x['payloadJson'])));
+const result={label,submitCalls,logicalJobs:new Set(receipts.flatMap(x=>x.effectRefs.filter(y=>y.startsWith('job:')))).size,statusFacts:events.map(x=>({status:x.run.status,terminal:x.run.terminal})),terminalFacts:events.filter(x=>x.run.terminal).length,receiptsEqual:JSON.stringify(receipts[0])===JSON.stringify(receipts[1]),dataRoot:root};
+writeFileSync(resolve('../delivery/r2/concurrent-'+label+'.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
+await server.close();await h.closeAll();

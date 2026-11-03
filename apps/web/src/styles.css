@@ -1,0 +1,479 @@
+/* Rondo web UI — the interactive lesson book ("可交互立体学习书").
+   Paper token language per docs/REFERENCE-BRIEF-every-joule.md §2/§5:
+   paper feel = 色 + 线 + 字 (warm paper, hairlines, serif + handwriting) —
+   no texture images, no gradients except the narrow spine band. State is
+   text+shape, never color-only.
+
+   Spatial model (Owner acceptance 2026-10-27: "三维实验是页面主体，模型与
+   书页有明确空间关系"): the app background is a DESK (one step darker than
+   paper); the lesson is an open BOOK floating on it — left page carries the
+   text (auxiliary), spine in the middle, right page is a FULL-BLEED 3D
+   experiment page with the model as the visual subject. Verified visually at
+   1280x800 and 960x640 via e2e-harness screenshots. */
+
+:root {
+  /* palette — mirror of modules/scenes/cylinder (webglScene + svgScene) */
+  --paper: #f6f0e3;   /* 暖米白纸张底色（右页/三维页，与 WebGL clear 同值） */
+  --card: #fbf8f0;    /* 卡片/浅层底 */
+  --ink: #1c2433;     /* 主墨色（蓝黑） */
+  --ink2: #4b5466;    /* 次级墨色 */
+  --rule: #cfc5b0;    /* 发丝线 */
+  --rule2: #b8ad97;   /* 强分隔线 */
+  --accent: #9a3b2a;  /* 砖红强调（focus 同色；批注/未确认） */
+  --pen: #273463;     /* 钢笔蓝（链接感/手写编号） */
+  --chip: #efe7d6;    /* 徽片底 / hover 底 */
+  --shadow-ink: #d9cfba; /* 平涂阴影（与 3D 同源） */
+
+  /* 书的空间：桌面（深一号纸色）与左右页明度差（右页稍亮 → 引导到模型） */
+  --desk: #e4dac2;
+  --page-left: #f1e9d5;
+  --page-right: var(--paper);
+  --edge-line: rgba(28, 36, 51, 0.20);
+
+  /* typography — 中文映射 per REFERENCE-BRIEF §5.2:
+     Latin serif + 汉字衬线 (Noto Serif SC / 宋体) for body;
+     Caveat + 霞鹜文楷 / 楷体 for handwritten margin notes. */
+  --serif: "Source Serif 4", "Noto Serif SC", Georgia, "Songti SC", "SimSun", serif;
+  --hand: "Caveat", "LXGW WenKai", "Kaiti SC", "STKaiti", "KaiTi", cursive;
+  --sans: system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  --fs: 17px;
+  --measure: 42rem; /* 中文行宽收窄（汉字密度更高） */
+}
+
+/* classroom projector mode: one class flips the whole token set */
+html.projector {
+  --fs: 25px;
+  --paper: #fffefa;
+  --card: #ffffff;
+  --ink: #000000;
+  --ink2: #1d1d1d;
+  --rule: #6f6a60;
+  --rule2: #2a2a2a;
+  --accent: #8a1f0c;
+  --pen: #001a66;
+  --chip: #ece6d6;
+  --measure: 60rem;
+}
+@media print {
+  :root {
+    --fs: 9pt;
+    --paper: #fff;
+    --card: #fff;
+    --rule: #bbb;
+    --rule2: #888;
+    --desk: #fff;
+    --page-left: #fff;
+    --edge-line: rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (max-width: 760px) {
+  :root { --fs: 16px; }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--serif);
+  font-size: var(--fs);
+  color: var(--ink);
+  background: var(--desk);
+  line-height: 1.6;
+}
+
+.app-root { max-width: 1560px; margin: 0 auto; padding: 8px 22px 22px; }
+main { display: block; }
+
+/* visually hidden, still accessible (keyboard-hint lines inside overlays) */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---- shell / masthead (compact: the book, not the chrome, is the page) ---- */
+.app-header {
+  display: flex; align-items: baseline; gap: 14px; padding: 6px 2px 9px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule2); margin-bottom: 15px;
+}
+.masthead h1 { font-size: 1.08rem; margin: 0; letter-spacing: 0.02em; }
+.masthead-sub { margin: 0; font-size: 0.92rem; color: var(--pen); }
+.hand { font-family: var(--hand); color: var(--pen); }
+.badge {
+  font-family: var(--sans); font-size: 11.5px; padding: 2px 9px; border: 1px solid var(--rule2);
+  border-radius: 999px; background: var(--card); color: var(--ink2); white-space: nowrap;
+}
+.badge-mock { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.badge-lesson { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.badge-task { background: var(--card); color: var(--ink); }
+
+/* ---- cards / forms ---- */
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 18px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(28, 36, 51, 0.06); }
+.card h2, .card h3, .card h4 { margin: 4px 0 10px; color: var(--ink); }
+.entry-card { max-width: 30rem; margin: 6vh auto 0; padding: 22px 26px; }
+
+button {
+  font: inherit; font-family: var(--serif); font-size: 0.94rem; padding: 5px 12px; border-radius: 8px;
+  border: 1px solid var(--rule2); background: var(--card); color: var(--ink); cursor: pointer;
+}
+button:hover { background: var(--chip); }
+button.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+button.primary:hover { background: #2c3850; border-color: #2c3850; }
+button.danger { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .scene-canvas:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+input, select, textarea {
+  font: inherit; font-family: var(--serif); padding: 4px 8px; border: 1px solid var(--rule2);
+  border-radius: 8px; background: #fff; color: var(--ink); max-width: 100%;
+}
+input[type="range"] { accent-color: var(--accent); padding: 0; border: none; background: none; }
+label { display: inline-flex; align-items: center; gap: 6px; margin: 4px 6px 4px 0; }
+label.stack { display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 8px 0; }
+
+/* 虚线活动框：当前阶段的作答/操作表单嵌在左页书页上（辅助页，视觉降一档） */
+fieldset.ask { border: 1px dashed var(--rule2); border-radius: 9px; margin: 8px 0; padding: 7px 10px 9px; }
+fieldset.ask legend { font-family: var(--serif); font-size: 12.5px; font-weight: 600; color: var(--ink); padding: 0 6px; }
+.radio-line { display: flex; align-items: center; gap: 6px; margin: 3px 0; font-size: 13px; }
+.btnrow { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.btnrow button { font-size: 12.5px; padding: 4px 10px; }
+.hint { font-family: var(--sans); font-size: 11.5px; color: var(--ink2); line-height: 1.65; }
+.error { color: var(--accent); font-size: 12.5px; }
+.notice { background: var(--chip); border: 1px solid var(--rule2); border-left: 3px solid var(--pen); border-radius: 8px; padding: 8px 12px; font-size: 13px; }
+
+/* ---- player: one lesson = one open book on the desk ----
+   The book fills the viewport: the 3D page never scrolls out of view; the
+   left page scrolls ITS OWN text internally (auxiliary channel). */
+.player { display: flex; flex-direction: column; height: calc(100vh - 85px); min-height: 560px; }
+
+/* 书本：跨页主体。外沿 ::before/::after 是纸页叠边（多层纸张的层次线），
+   柔和投影一层让书"浮"在桌面上。 */
+.book-spread {
+  position: relative; flex: 1; min-height: 0;
+  display: grid; grid-template-columns: minmax(330px, 42%) 34px 1fr;
+  border-radius: 10px;
+  background: var(--page-right);
+  box-shadow: 0 16px 40px rgba(28, 36, 51, 0.19), 0 3px 9px rgba(28, 36, 51, 0.10);
+}
+.book-spread::before {
+  content: ""; position: absolute; inset: -3px; pointer-events: none;
+  border: 1.5px solid rgba(28, 36, 51, 0.30); border-radius: 12px;
+}
+.book-spread::after {
+  content: ""; position: absolute; inset: -6px; pointer-events: none;
+  border: 1px solid rgba(28, 36, 51, 0.16); border-radius: 14px;
+}
+
+/* 中缝书脊：装订沟 — 两侧受脊深影、中央一线高光反纸（跨页空间的中轴，
+   纯色+细线表达凹陷，不用拟物渐变之外的手法） */
+.spine { position: relative; background: var(--page-left); }
+.spine::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(28, 36, 51, 0.24) 0%, rgba(28, 36, 51, 0.05) 34%,
+      rgba(28, 36, 51, 0.03) 62%, rgba(28, 36, 51, 0.19) 100%);
+}
+.spine::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - 3px); width: 6px;
+  background: linear-gradient(90deg,
+    rgba(28, 36, 51, 0.10) 0%, rgba(28, 36, 51, 0.26) 45%,
+    rgba(246, 240, 227, 0.55) 55%, rgba(28, 36, 51, 0.08) 100%);
+}
+
+.page { min-width: 0; }
+
+/* 左页：辅助文本页。排版收紧、次要文字降档，明确不是视觉主体；
+   内容超高时在本页内部滚动，书本身（右页三维）永不滚出视口。 */
+.page-left {
+  grid-column: 1; background: var(--page-left);
+  padding: 16px 20px 20px 24px;
+  border-radius: 10px 0 0 10px;
+  overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--rule2) transparent;
+}
+/* 右页：三维实验页。全出血（无内边距/无边框），模型即页面。 */
+.page-right {
+  grid-column: 3; position: relative; display: flex; flex-direction: column; min-height: 0;
+  background: var(--page-right);
+  border-radius: 0 10px 10px 0;
+}
+@media (max-width: 1100px) {
+  .book-spread { grid-template-columns: 1fr; }
+  .spine { display: none; }
+  .page-right { order: -1; min-height: 470px; border-radius: 10px 10px 0 0; }
+  .page-left { border-radius: 0 0 10px 10px; overflow-y: visible; }
+  .player { height: auto; min-height: 0; }
+}
+
+/* 左页书眉（原页面级 player-header 收进左页顶部，弱化为书签条） */
+.player-header {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 10px;
+  padding-bottom: 8px; border-bottom: 1px dashed var(--rule2);
+}
+.bookmark-btn {
+  font-size: 12px; padding: 2px 10px; border-radius: 3px 10px 10px 3px;
+  background: var(--chip); border-color: var(--rule2);
+}
+.phase-stepper { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.phase-stepper li {
+  font-family: var(--sans); font-size: 10.5px; padding: 2px 7px;
+  border: 1px solid var(--rule2); border-radius: 8px 8px 2px 2px; background: var(--card); color: var(--ink2);
+}
+.phase-stepper li.current { font-weight: 700; border-color: var(--accent); color: var(--accent); border-bottom: 2px solid var(--accent); }
+.phase-stepper li.done { border-style: dashed; }
+
+/* 左页课头：课号 + 课名 + 手写任务注记 */
+.lesson-head { border-top: 2px solid var(--ink); padding-top: 8px; margin: 0 0 10px; }
+.lesson-num { font-family: var(--sans); font-weight: 600; font-size: 0.78rem; color: var(--ink2); margin: 0 0 2px; letter-spacing: 0.1em; }
+.lesson-title { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; margin: 0; line-height: 1.3; }
+.lesson-task { font-family: var(--hand); color: var(--pen); font-size: 1.02rem; margin: 3px 0 0; }
+.prose { max-width: 31rem; line-height: 1.75; font-size: 0.93rem; }
+.prose p { margin: 7px 0; }
+
+/* 1px 细线公式框 */
+.formula-box {
+  font-family: var(--serif); font-style: italic; font-size: 1.02rem; text-align: center;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 7px 12px; margin: 9px 0; letter-spacing: 0.03em;
+}
+
+.measure-table { border-collapse: collapse; font-size: 12px; margin: 7px 0; font-family: var(--sans); }
+.measure-table th, .measure-table td { border: 1px solid var(--rule); padding: 3px 8px; text-align: left; }
+.material-card {
+  font-family: var(--sans); font-size: 11.5px; background: var(--card); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 5px 9px; margin: 5px 0;
+}
+.material-card.formula { font-family: var(--serif); font-style: italic; }
+
+.activity-box {
+  border: 1px dashed var(--rule2); border-radius: 10px; padding: 10px 12px 12px;
+  margin: 12px 0 8px; background: rgba(251, 248, 240, 0.5);
+}
+.activity-box h3 { margin: 2px 0 8px; font-size: 0.98rem; }
+
+/* 服务端反馈：页边批注（accent 手写感），语义与文案不变 */
+.feedback { border: none; border-left: 3px solid var(--accent); background: transparent; padding: 3px 0 3px 10px; margin: 8px 0; border-radius: 0; }
+.feedback ul { margin: 5px 0; padding-left: 18px; font-size: 13px; }
+.verdict { font-family: var(--hand); font-size: 1.08rem; color: var(--ink); }
+.verdict.correct { color: var(--pen); }
+.verdict.revise { color: var(--accent); }
+.reveal-card { background: var(--card); border: 1px solid var(--rule2); border-left: 3px solid var(--accent); border-radius: 10px; padding: 9px 12px; margin: 8px 0; font-size: 13.5px; }
+.reveal-card h4 { margin: 2px 0 6px; font-size: 0.95rem; }
+.hint-panel { margin-top: 12px; border-top: 1px dashed var(--rule); padding-top: 7px; }
+.hint-panel h4 { font-family: var(--hand); color: var(--pen); font-size: 1.02rem; margin: 3px 0; }
+.hint-panel button { font-size: 12px; padding: 3px 9px; }
+.shown-hints { background: var(--chip); border: 1px solid var(--rule); border-radius: 9px; padding: 5px 9px; margin-top: 6px; }
+.hint-text { font-size: 12.5px; margin: 4px 0; font-family: var(--hand); color: var(--ink); }
+
+/* 投递状态条（左页内小字）：文本+左线形状双通道 */
+.delivery { display: flex; align-items: center; gap: 8px; font-family: var(--sans); font-size: 11.5px; border-radius: 7px; padding: 4px 8px; margin: 0 0 8px; flex-wrap: wrap; }
+.delivery.ok { background: var(--card); border: 1px solid var(--rule2); border-left: 3px solid var(--ink); }
+.delivery.warn { background: var(--chip); border: 1px solid var(--rule2); border-left: 3px solid var(--accent); }
+.delivery button { font-size: 11.5px; padding: 2px 8px; }
+
+/* ---- scene: the right page — FULL-BLEED canvas + Fig. strip on the page edge ---- */
+.scene-panel { position: relative; display: flex; flex-direction: column; flex: 1; min-width: 0; min-height: 0; }
+.scene-stage { position: relative; display: flex; flex-direction: column; flex: 1; min-height: 240px; }
+.scene-canvas {
+  position: absolute; inset: 0;
+  border: none; border-radius: 0; overflow: hidden; background: var(--page-right);
+}
+.webgl-canvas { width: 100%; height: 100%; display: block; }
+.webgl-canvas.hidden-canvas { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.svg-holder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.svg-holder svg { width: 100%; height: 100%; display: block; }
+
+/* 表达方式行（当前显示：三维/平面图）：右页角落的小字墨线签，不占模型区 */
+.scene-mode {
+  position: absolute; top: 10px; left: 12px; z-index: 6; max-width: 40%;
+  font-family: var(--sans); font-size: 11px; color: var(--ink2); line-height: 1.45;
+  background: rgba(246, 240, 227, 0.88); border: 1px solid var(--rule2);
+  border-radius: 6px; padding: 2px 8px; overflow-wrap: anywhere;
+}
+
+/* Fig. 图注条：贴右页底缘的一行 */
+.fig-caption {
+  position: relative; z-index: 4;
+  font-family: var(--serif); font-size: 11.5px; color: var(--ink2);
+  background: rgba(246, 240, 227, 0.92);
+  border-top: 1px solid var(--rule2); padding: 5px 14px 6px; line-height: 1.55;
+}
+.fig-no { font-family: var(--hand); color: var(--accent); font-size: 0.98rem; margin-right: 4px; }
+.fig-alt { display: block; font-size: 10.5px; color: var(--ink2); opacity: 0.9; }
+
+/* DOM 覆盖层标注：白底圆角小卡 + 引线，每帧跟随几何（vector.project） */
+.ann-overlay { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ann { position: absolute; left: 0; top: 0; will-change: transform; }
+.ann-card {
+  display: inline-block; position: relative; background: #fff; border: 1px solid var(--ink);
+  border-radius: 6px; padding: 0 6px; font-family: var(--sans); font-size: 11.5px; line-height: 1.45;
+  color: var(--ink); white-space: nowrap; box-shadow: 0 1px 2px rgba(28, 36, 51, 0.14);
+}
+.ann-draft .ann-card { border: 1.5px dashed var(--accent); color: var(--accent); }
+.ann-draft-mark { font-family: var(--hand); font-style: normal; color: var(--accent); margin-left: 5px; font-size: 12px; }
+.ann-chip {
+  display: inline-flex; align-items: center; justify-content: center; width: 21px; height: 21px;
+  border-radius: 50%; background: #fff; border: 1.5px solid var(--accent); color: var(--pen);
+  font-family: var(--sans); font-size: 12px; font-weight: 600;
+  box-shadow: 0 1px 2px rgba(28, 36, 51, 0.18);
+}
+/* 卡片相对锚点（.ann 平移到锚点后的局部原点）的放置与引线 */
+.ann-up .ann-card { transform: translate(-50%, calc(-100% - 13px)); }
+.ann-up::after { content: ""; position: absolute; left: 0; top: -13px; width: 1px; height: 13px; background: var(--ink2); }
+.ann-down .ann-card { transform: translate(-50%, 13px); }
+.ann-down::after { content: ""; position: absolute; left: 0; top: 0; width: 1px; height: 13px; background: var(--ink2); }
+.ann-left .ann-card { transform: translate(calc(-100% - 13px), -50%); }
+.ann-left::after { content: ""; position: absolute; left: -13px; top: 0; width: 13px; height: 1px; background: var(--ink2); }
+.ann-right .ann-card { transform: translate(13px, -50%); }
+.ann-right::after { content: ""; position: absolute; left: 0; top: 0; width: 13px; height: 1px; background: var(--ink2); }
+.ann-center .ann-chip { transform: translate(-50%, -50%); }
+
+/* 视角控制：右页右上角的悬浮墨线小控件组（细线字，弱化为图注级元素） */
+.view-controls {
+  position: absolute; top: 10px; right: 12px; z-index: 6;
+  display: flex; gap: 3px; align-items: center; margin: 0;
+  background: rgba(246, 240, 227, 0.82); border: 1px solid var(--rule2);
+  border-radius: 7px; padding: 2px;
+}
+.view-controls button {
+  font-family: var(--sans); font-size: 10.5px; line-height: 1.25; padding: 1px 6px;
+  border: none; border-radius: 4px;
+  background: transparent; color: var(--ink2);
+}
+.view-controls button:hover { background: var(--chip); color: var(--ink); }
+.view-controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* 操作控件：右页左下角的悬浮工作台小面板（不打断全出血取景） */
+.op-controls {
+  position: absolute; left: 12px; bottom: 46px; z-index: 6;
+  width: min(380px, 52%);
+  background: rgba(246, 240, 227, 0.94); border: 1px solid rgba(28, 36, 51, 0.4);
+  border-radius: 10px; padding: 7px 10px 9px;
+  box-shadow: 0 2px 8px rgba(28, 36, 51, 0.08);
+}
+.op-controls fieldset { border: none; margin: 0; padding: 0; }
+.op-controls legend { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink2); padding: 0; margin-bottom: 3px; }
+.op-controls .btnrow button { font-size: 11.5px; padding: 3px 9px; }
+.op-controls input[type="number"] { font-size: 12.5px; padding: 3px 6px; width: 5.5em; }
+.op-controls input[type="range"] { width: 100%; }
+.op-controls .radio-line { font-size: 12px; margin: 2px 0; }
+.op-controls .hint { font-size: 10.5px; }
+/* 未开放阶段：不悬浮，只是图注条下的一行小字 */
+.op-controls.idle {
+  position: static; width: auto; background: none; border: none; box-shadow: none; padding: 0 14px;
+}
+.op-controls.idle .hint { margin: 2px 0 4px; }
+.draft-badge {
+  font-family: var(--hand); font-size: 12px; margin-left: 6px; padding: 0 7px;
+  border-radius: 999px; border: 1px dashed var(--accent); color: var(--accent);
+}
+
+/* ---- learner home: 目录页 + 课签 ---- */
+.learner-home .card { margin-bottom: 12px; }
+.lesson-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 8px 0; }
+.lesson-row button {
+  border-radius: 10px 10px 0 0; border: 1px solid var(--rule2); border-bottom: 2px solid var(--ink);
+  background: var(--chip); padding: 8px 16px;
+}
+.lesson-row button:hover { background: #e6dcc4; }
+.delayed-card p { margin: 6px 0; }
+.attempt-list { list-style: none; padding: 0; }
+.attempt-list li { margin: 4px 0; }
+.timeline ol { list-style: none; padding: 0; }
+.tl-event { border-top: 1px dashed var(--rule); padding: 6px 0; font-size: 13.5px; }
+.tl-kind { font-weight: 600; color: var(--pen); }
+.tl-time { color: var(--ink2); font-size: 12px; margin-left: 8px; }
+.tl-payload p { margin: 2px 0 2px 12px; font-size: 12.5px; color: var(--ink2); }
+.inline-form { border: 1px solid var(--rule2); }
+.learner-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* ---- motion: everything animates only when allowed; reduce → 150ms fade ---- */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes flap-in {
+  from { opacity: 0; transform: rotateX(14deg); transform-origin: top center; }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  button, input, select, .card { transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease; }
+  .book-spread { animation: fade-in 320ms ease-out; }
+  .activity-box { animation: fade-in 260ms ease-out; }
+  .reveal-card { animation: flap-in 420ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .ann-card, .ann-chip { animation: fade-in 240ms ease-out; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book-spread, .activity-box, .reveal-card, .ann-card, .ann-chip { animation: fade-in 150ms linear; }
+  button, input, select { transition: none; }
+}
+
+@media print {
+  .book-spread { box-shadow: none; }
+  .book-spread::before, .book-spread::after, .view-controls, .op-controls { display: none; }
+  .player { min-height: 0; }
+}
+
+/* ==========================================================================
+   Family panels + carriers (integration W1): themes grid board, steps card,
+   L3 face checklist / L4 layer stack — appended blocks from the family trees,
+   re-toned comments only; layout tokens inherit the book palette above.
+   ========================================================================== */
+
+.draft-badge { font-size: 12px; margin-left: 8px; padding: 2px 8px; border-radius: 999px; border: 1px solid #c98a2e; color: #8a5a14; }
+.advice-card .advice-flag {
+  font-style: normal;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: #8a6d1a;
+  background: #f3e7c6;
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+.advice-card .advice-body {
+  margin: 4px 0;
+  border-left: 3px solid #d8cfb8;
+  padding-left: 10px;
+}
+.advice-card .hint {
+  font-size: 0.8rem;
+}
+.face-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 2px 0;
+}
+.face-row .unsure-line {
+  color: #7a6a33;
+}
+.cumulative-table-wrap {
+  margin-top: 10px;
+}
+.cumulative-table {
+  max-width: 34em;
+}
+.layer-controls fieldset {
+  margin: 8px 0;
+}
+
+
+/* MVP learning book: one shared domain context, three distinct curriculum indexes. */
+.domain-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule2);margin:20px 0;flex-wrap:wrap}
+.domain-tabs button{border-radius:0;background:transparent;padding:12px 22px;border:0;border-bottom:3px solid transparent}
+.domain-tabs button[aria-pressed=true]{border-bottom-color:var(--accent);color:var(--accent)}
+.mvp-spread{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);background:var(--paper);box-shadow:0 12px 30px #332d231c;margin:18px 0 38px}
+.mvp-page{min-width:0;padding:34px 38px;background:var(--page-left)}
+.mvp-page+.mvp-page{background:var(--page-right);border-left:1px solid var(--rule2)}
+.mvp-page h2{font-size:2rem;line-height:1.35;margin-top:0}.mvp-page p{max-width:65ch}
+.mvp-page label{display:block;margin:18px 0 10px}.mvp-page textarea,.mvp-page select,.mvp-page input{display:block;width:100%;margin-top:8px}
+.mvp-page textarea{min-height:110px;resize:vertical}.mvp-page .code-editor{min-height:340px;font:15px/1.6 ui-monospace,SFMono-Regular,monospace;tab-size:4}
+.mvp-page fieldset{border:1px solid var(--rule2);padding:15px;margin:18px 0}
+.mvp-page button{margin:5px 8px 5px 0}.mvp-object svg{display:block;width:100%;max-height:340px;margin:40px 0}
+.mvp-object article{border-bottom:1px solid var(--rule2);padding:18px 0}.mvp-object table{width:100%;border-collapse:collapse;margin:25px 0}.mvp-object th,.mvp-object td{padding:10px;border-bottom:1px solid var(--rule);text-align:left;font-variant-numeric:tabular-nums}
+.mvp-history{margin:32px 0}.mvp-history details{padding:15px 0;border-bottom:1px solid var(--rule2)}.mvp-history summary{cursor:pointer;font-weight:600}.mvp-history pre,.mvp-object pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:500px;overflow:auto;font-size:14px;line-height:1.7}
+.scope-index li{padding:10px 0;border-bottom:1px solid var(--rule)}.scope-index span{display:block;color:var(--ink2);font-size:.86rem}.scope-index ol{padding-left:1.5em}
+.player-toolbar{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.mvp-page :focus-visible,.domain-tabs :focus-visible,.mvp-history summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+::selection{background:#d9c4a3;color:var(--ink)}textarea,input{caret-color:var(--accent)}
+@media(max-width:850px){.mvp-spread{grid-template-columns:1fr}.mvp-page{padding:24px 20px}.mvp-page+.mvp-page{border-left:0;border-top:1px solid var(--rule2)}.domain-tabs button{padding:12px}.mvp-page h2{font-size:1.7rem}}

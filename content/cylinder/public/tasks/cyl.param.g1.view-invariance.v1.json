@@ -1,0 +1,167 @@
+{
+  "title": "旋转视角不改变尺寸",
+  "taskId": "cyl.param.g1.view-invariance.v1",
+  "taskFamily": "cylinder.parameters.v1",
+  "kind": "GUIDED",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l1.viewChange.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "mm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "一个圆筒和你的眼睛"
+    },
+    {
+      "type": "TEXT",
+      "text": "屏幕上有一个圆筒。它现在的半径是 3.0 cm，高是 8.0 cm。"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "尺寸"
+        },
+        {
+          "label": "数值",
+          "unitId": "cm"
+        }
+      ],
+      "rows": [
+        [
+          "半径 r",
+          "3.0"
+        ],
+        [
+          "高度 h",
+          "8.0"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "如果只用鼠标或方向键绕着它转动观察、放大缩小，不去碰任何尺寸设置，它的半径、直径或高度会改变吗？先在下面填你的预测，再动手转动观察。"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.size-unchanged",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "这个圆筒半径 3.0 cm、高 8.0 cm。你只转动观察、放大缩小，不碰任何尺寸设置。问题是：它的半径或高度会不会变？"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "「看的角度」和「物体自己的大小」是两件不同的事。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "转动时你改变的是相机位置还是圆筒的尺寸数字？转动前后各看一眼尺寸表里的数字有没有动。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.g1.what-changed",
+        "prompt": "转动观察时，真正改变的是什么？",
+        "options": [
+          {
+            "id": "opt-view-angle",
+            "label": "观察视角（相机位置）"
+          },
+          {
+            "id": "opt-radius",
+            "label": "半径"
+          },
+          {
+            "id": "opt-height",
+            "label": "高度"
+          },
+          {
+            "id": "opt-nothing",
+            "label": "都没有变"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "为什么转动之后圆筒「看起来」不一样了，但它的尺寸没有变？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "observationSnapshot",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "three.js WebGL2 参数化圆柱；尺寸标注随 givens 可见；轨道旋转/缩放/复位为 ViewState，不产生领域事件。",
+    "svgDom": "正交视图按钮（前视/侧视/俯视）+ 同一尺寸表 + 复位/缩放；同一任务卡与响应表单，判分接口相同。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 30,
+    "heightMm": 80,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

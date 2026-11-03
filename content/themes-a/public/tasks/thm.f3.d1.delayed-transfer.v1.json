@@ -1,0 +1,153 @@
+{
+  "taskVersion": "1",
+  "taskId": "thm.f3.d1.delayed-transfer.v1",
+  "taskFamily": "themes.frac.v1",
+  "kind": "DELAYED_TRANSFER",
+  "title": "回看练习 · 水壶打九折",
+  "boardView": "HUNDRED",
+  "givens": {
+    "rows": 10,
+    "cols": 10,
+    "filled": 0
+  },
+  "givenLocks": [
+    "rows",
+    "cols"
+  ],
+  "responseSchemaId": "resp.thm.f3d1.v1",
+  "allowedOperationIds": [
+    "SetFilled"
+  ],
+  "operationConstraints": [
+    {
+      "type": "SetFilled",
+      "maxCount": 100
+    }
+  ],
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "回看练习：水壶打九折（隔几天后再来）"
+    },
+    {
+      "type": "MEASUREMENT_TABLE",
+      "columns": [
+        {
+          "label": "已知"
+        },
+        {
+          "label": "数值"
+        },
+        {
+          "label": "单位"
+        }
+      ],
+      "rows": [
+        [
+          "水壶原价",
+          "50.00",
+          "元"
+        ],
+        [
+          "折扣",
+          "九折",
+          "—"
+        ]
+      ]
+    },
+    {
+      "type": "TEXT",
+      "text": "先在百格板上涂出九折对应的百分数（涂到 90 格）并确认。依次回答：(1) 九折是百分之几？(2) 应付多少元？(3) 比原价便宜多少元？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "board.figure",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.state-readout",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "原价 50 元打九折：写百分数、算应付和便宜的钱。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "九折 = 现价是原价的 90%。"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "应付 = 50 × 90%；便宜 = 50 − 应付。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.f3d1.recall",
+        "prompt": "隔了这些天，你是怎么想起来的？",
+        "options": [
+          {
+            "id": "opt-fold-ten",
+            "label": "想起\"几折就是十分之几/百分之几十\""
+          },
+          {
+            "id": "opt-retried",
+            "label": "在百格板上又涂了一遍"
+          },
+          {
+            "id": "opt-unsure",
+            "label": "不确定"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "写出你解这道题的两步算式。"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "confirmedOperation",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "boardSvg": "百格板（SVG）涂出九折对应百分数。",
+    "boardTable": "涂色格数读数表；同一判分。"
+  }
+}

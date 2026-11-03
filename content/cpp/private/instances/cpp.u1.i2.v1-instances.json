@@ -1,0 +1,41 @@
+{
+  "frozen": [
+    {
+      "instanceId": "i2-F1",
+      "inputs": {
+        "n": 40
+      },
+      "truth": {
+        "answerLines": [
+          "10"
+        ],
+        "cond": "i % 4 == 0"
+      },
+      "answerHint": "条件改成「i % 4 == 0」，count 输出 10。"
+    },
+    {
+      "instanceId": "i2-H0",
+      "inputs": {
+        "n": 0
+      },
+      "truth": {
+        "answerLines": [
+          "0"
+        ]
+      },
+      "answerHint": "n=0 时循环一次都不执行，count 还是 0。"
+    },
+    {
+      "instanceId": "i2-H4",
+      "inputs": {
+        "n": 4
+      },
+      "truth": {
+        "answerLines": [
+          "1"
+        ]
+      },
+      "answerHint": "n=4 时只有 4 这一个编号满足。"
+    }
+  ]
+}

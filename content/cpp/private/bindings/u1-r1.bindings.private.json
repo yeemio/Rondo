@@ -1,0 +1,122 @@
+{
+  "releaseId": "rondo.cpp.u1-r1",
+  "taskBindings": [
+    {
+      "taskId": "cpp.u1.g1.receipt-trace.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.trace.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.trace.v1.json"
+      }
+    },
+    {
+      "taskId": "cpp.u1.g2.pack-sweets.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.trace.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.trace.v1.json"
+      }
+    },
+    {
+      "taskId": "cpp.u1.g3.member-discount.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.branch.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.branch.v1.json"
+      }
+    },
+    {
+      "taskId": "cpp.u1.g4.sales-sum.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.trace.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.trace.v1.json"
+      }
+    },
+    {
+      "taskId": "cpp.u1.i1.fix-boundary.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.program.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.program.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cpp.u1.i1.v1-instances.json"
+      },
+      "enabledSegments": [
+        "outputAnswer",
+        "finalVariables",
+        "conceptCheck"
+      ]
+    },
+    {
+      "taskId": "cpp.u1.i2.enum-count.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.program.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.program.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cpp.u1.i2.v1-instances.json"
+      },
+      "enabledSegments": [
+        "outputAnswer",
+        "finalVariables",
+        "conceptCheck"
+      ]
+    },
+    {
+      "taskId": "cpp.u1.i3.build-digits.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.program.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.program.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cpp.u1.i3.v1-instances.json"
+      },
+      "enabledSegments": [
+        "outputAnswer",
+        "finalVariables",
+        "conceptCheck"
+      ]
+    },
+    {
+      "taskId": "cpp.u1.s1.stranger-transfer.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.program.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.program.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cpp.u1.s1.v1-instances.json"
+      },
+      "enabledSegments": [
+        "outputAnswer",
+        "finalVariables",
+        "conceptCheck"
+      ]
+    },
+    {
+      "taskId": "cpp.u1.d1.delayed-transfer.v1",
+      "ruleRef": {
+        "ruleId": "rule.cppU1.program.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cppU1.program.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cpp.u1.d1.v1-instances.json"
+      },
+      "enabledSegments": [
+        "outputAnswer",
+        "finalVariables",
+        "conceptCheck"
+      ]
+    }
+  ]
+}

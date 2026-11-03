@@ -1,0 +1,42 @@
+{
+  "releaseId": "rondo.thm.t1l2-r1",
+  "taskIds": [
+    "thm.f2.g1.scale-bar.v1",
+    "thm.f2.g2.equivalent-find.v1",
+    "thm.f2.i1.numberline.v1",
+    "thm.f2.s1.stranger.v1",
+    "thm.f2.d1.delayed-transfer.v1"
+  ],
+  "taskVersion": "1",
+  "rendererDeclarations": [
+    {
+      "rendererId": "rondo.gridboard",
+      "rendererContractVersion": "1",
+      "publicStateSchemaVersion": "1"
+    }
+  ],
+  "publicAssetHashes": [
+    "1ddd39e2ecefb0bf7df475a40f553efaca55b3b9b3797d46645738b431254958",
+    "24fa9cd2d25350f82264ec0b6355565c7b438f460087059abb5067cc02b7d46c",
+    "292eb1d5caad57327d10c760d1c0f721ef7451b165d8034929b9f8e37e01eadf",
+    "4a8a900ea07bcbf128890ddd3bd74871990eb809e29a177f488221e910363e26",
+    "c86e4fbc3336de8f808ae38d4c13c2ce90d9d40728a8a4ccf9ece4302413d1a5",
+    "cbdc0d79649ef67e304a3434cf51808d4419c59691b48e9703c2a98119cdcac4",
+    "fbac5c42523d40ed3a07c93c9ca44d9c67e25f5b101a95ae0f9c189ab3ea82de"
+  ],
+  "expressionOperationSubsets": [
+    {
+      "expression": "BOARD_SVG",
+      "allowedOperationIds": [
+        "ScaleBoth"
+      ]
+    },
+    {
+      "expression": "BOARD_TABLE",
+      "allowedOperationIds": [
+        "ScaleBoth"
+      ]
+    }
+  ],
+  "publicManifestHash": "a5837993393ed4e8ca2bbb89f1b88631040c5dc3da199e21b603d80417480d5c"
+}

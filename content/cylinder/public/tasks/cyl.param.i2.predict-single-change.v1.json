@@ -1,0 +1,145 @@
+{
+  "title": "预测直径",
+  "taskId": "cyl.param.i2.predict-single-change.v1",
+  "taskFamily": "cylinder.parameters.v1",
+  "kind": "INDEPENDENT",
+  "givenLocks": [
+    "radiusMm",
+    "heightMm"
+  ],
+  "responseSchemaId": "resp.l1.predictDimension.v1",
+  "allowedOperationIds": [],
+  "operationConstraints": [],
+  "numericPolicy": {
+    "pi": "3.14",
+    "displayDecimals": 1,
+    "acceptedUnitIds": [
+      "cm",
+      "mm"
+    ]
+  },
+  "prompt": [
+    {
+      "type": "TEXT",
+      "text": "预测直径"
+    },
+    {
+      "type": "TEXT",
+      "text": "一个新的圆筒：半径 2.0 cm，高 7.0 cm。它的半径和高度标签可见，直径不给你看。"
+    },
+    {
+      "type": "TEXT",
+      "text": "它即将发生一个改变：高度将从 7.0 cm 变成 13.0 cm，半径不变。预测保存后改变才会发生。"
+    },
+    {
+      "type": "TEXT",
+      "text": "预测：① 高度变化后，直径会变大、变小还是不变？② 新的直径是多少？"
+    }
+  ],
+  "visibility": [
+    {
+      "material": "givens.table",
+      "phases": [
+        "PREDICT",
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ],
+      "rows": [
+        "radius",
+        "height"
+      ]
+    },
+    {
+      "material": "dim.diameter",
+      "phases": [
+        "REVIEW"
+      ],
+      "note": "直径读数 REVIEW 前在任何通道不出现"
+    },
+    {
+      "material": "view.controls",
+      "phases": [
+        "OPERATE",
+        "VERIFY",
+        "EXPLAIN",
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.before-after",
+      "phases": [
+        "REVIEW"
+      ]
+    },
+    {
+      "material": "card.prediction-compare",
+      "phases": [
+        "REVIEW"
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "level": 1,
+      "label": "重述题意",
+      "text": "圆筒半径 2.0 cm、高 7.0 cm。即将发生：高度变成 13.0 cm，半径不变。你要预测直径的方向和新值。"
+    },
+    {
+      "level": 2,
+      "label": "概念提示",
+      "text": "直径是跟着半径走，还是跟着高度走？"
+    },
+    {
+      "level": 3,
+      "label": "策略提示",
+      "text": "直径 = 半径 × 2，高度不进入这个关系；用半径算一遍。"
+    },
+    {
+      "level": 4,
+      "label": "答案级提示"
+    }
+  ],
+  "explain": {
+    "selections": [
+      {
+        "itemId": "explain.i2.why",
+        "prompt": "直径为什么这样变？",
+        "options": [
+          {
+            "id": "opt-d-eq-2r",
+            "label": "直径 = 半径 × 2，半径变它就跟着变"
+          },
+          {
+            "id": "opt-h-no-effect",
+            "label": "高度不影响直径"
+          },
+          {
+            "id": "opt-unclear",
+            "label": "说不清"
+          }
+        ]
+      }
+    ],
+    "freeTextPrompt": "如果这次是半径变小，直径会怎样？如果改的是高度呢？"
+  },
+  "exitEvidence": [
+    "firstPrediction",
+    "scriptedChangeSnapshot",
+    "submission",
+    "explanation"
+  ],
+  "expressions": {
+    "webgl2": "半径/高度标注可见、直径标注不渲染；脚本变更一次动画呈现（ViewState 呈现已落库变更）。",
+    "svgDom": "givens 数值表（半径/高度两行，直径行 REVIEW 前不注入 DOM）；视角按钮；同一表单与判分接口。"
+  },
+  "taskVersion": "1",
+  "givens": {
+    "radiusMm": 20,
+    "heightMm": 70,
+    "unrollPermille": 0,
+    "section": "NONE",
+    "selectedFaceIds": []
+  }
+}

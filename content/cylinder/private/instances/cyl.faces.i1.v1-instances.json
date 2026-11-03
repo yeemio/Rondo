@@ -1,0 +1,44 @@
+{
+  "taskId": "cyl.faces.i1.faceset-new-instance.v1",
+  "file": "cyl.faces.i1.v1-instances.json",
+  "kind": "frozen",
+  "frozen": [
+    {
+      "instanceId": "cyl.faces.i1.F1",
+      "initial": {
+        "radiusMm": 50,
+        "heightMm": 100
+      },
+      "condition": "has-bottom-no-lid",
+      "truth": {
+        "faceSet": {
+          "cyl-face-side": "opt-include",
+          "cyl-face-lower": "opt-include",
+          "cyl-face-upper": "opt-exclude"
+        },
+        "lidCount": "opt-1",
+        "snapshotMustEqualDeclaration": true,
+        "reviewCircumferenceCm": "31.40",
+        "reviewLateralAreaCm2": "314.00",
+        "reviewCircleAreaCm2": "78.50"
+      },
+      "answerHint": "爆米花桶纸样 = 侧面 + 下盖面（1 个盖面）；顶部敞开，上盖面不算。"
+    }
+  ],
+  "domain": {
+    "radiusMm": [
+      100,
+      600
+    ],
+    "heightMm": [
+      400,
+      1500
+    ],
+    "stepMm": 100,
+    "constraints": [
+      "整数 cm 半径（L34-13）；radiusMm != heightMm",
+      "组合不得等于互斥总清单任何项（L34-12，见 rule.cylFaces.area.v1 注记）",
+      "该学习者已服务过的实例参数"
+    ]
+  }
+}

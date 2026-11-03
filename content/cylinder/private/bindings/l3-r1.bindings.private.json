@@ -1,0 +1,65 @@
+{
+  "releaseId": "rondo.cyl.l3-r1",
+  "taskBindings": [
+    {
+      "taskId": "cyl.faces.g1.face-inventory.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.set.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.set.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.faces.g2.one-lid-area.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.area.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.area.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.faces.g3.full-surface.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.area.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.area.v1.json"
+      }
+    },
+    {
+      "taskId": "cyl.faces.i1.faceset-new-instance.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.set.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.set.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.faces.i1.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "cyl.faces.i2.lid-count-condition.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.area.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.area.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.faces.i2.v1-instances.json"
+      }
+    },
+    {
+      "taskId": "cyl.faces.i3.surface-value-unit.v1",
+      "ruleRef": {
+        "ruleId": "rule.cylFaces.area.v1",
+        "ruleVersion": "1",
+        "path": "rules/rule.cylFaces.area.v1.json"
+      },
+      "instanceGeneratorRef": {
+        "kind": "frozen",
+        "path": "instances/cyl.faces.i3.v1-instances.json"
+      }
+    }
+  ]
+}
