@@ -2,7 +2,7 @@ import {mathLessonForRelease,applyMathOperation} from '../curriculum/math6';
 import {mathOperationSchema} from '../contracts/public/math6';
 import {evaluateMath6} from './math6-evaluate';
 import {evaluateGespObjective} from './gesp-evaluate';
-import {CompilerLifecycle} from './compiler-lifecycle';
+import {CompilerLifecycle,CompilerAdmissionRejected} from './compiler-lifecycle';
 import {GESP_LESSONS} from '../curriculum/gesp';
 import {gespReasoningOperationSchema} from '../contracts/public/gesp';
 /**
@@ -23,8 +23,10 @@ import {gespReasoningOperationSchema} from '../contracts/public/gesp';
  * Rejection mapping: business rejections surface as REJECTED receipts with a
  * stable errorCode and are stored (replay of the same envelope returns the
  * same REJECTED receipt). VERSION_CONFLICT / IDEMPOTENCY_CONFLICT /
- * HOST_RECOVERING / PERSISTENCE_FAILED are thrown as RondoError and leave no
- * receipt row: the client retries with a corrected version and a NEW key.
+ * HOST_RECOVERING / PERSISTENCE_FAILED normally leave no receipt row. Only
+ * a typed code reservation rejection or stale code-run version, before
+ * admission or writes, commits a REJECTED receipt. Unknown deliveries retain
+ * the ORIGINAL key and envelope.
  *
  * Internal seams used beyond the frozen ports (documented, failing closed):
  * - ContentServiceInternal (getTaskSpec/getHintContent/sampleGivens)
@@ -32,13 +34,13 @@ import {gespReasoningOperationSchema} from '../contracts/public/gesp';
  * - concrete repository extras (see adapters/sqlite/repositories.ts)
  */
 import { createHash } from 'node:crypto';
-import { activityStateSchema, type ActivityState, type CodeSnapshot, type ActivityHistory } from '../contracts/public/activity';
+import { activityStateSchema, type ActivityState, type CodeSnapshot, type CodeAvailability, type ActivityHistory } from '../contracts/public/activity';
 import { COMPILER_CONTRACT, LEARNING_ACTIVITIES, supersededActivityNotice } from '../curriculum/mvp';
 import compilerConfig from '../../workers/cpp/worker-lock.json';
 import type { ActivityRule } from '../contracts/server/rules-activity';
 import {AI_NEW_IDS,aiLabOperationSchema,applyAILabOperation,type NewAIId} from '../contracts/public/ai-lab';
 import {evaluateAILab} from './ai-evaluate';
-import { hashText, executeActivityCode, type StoredCodeRun } from './activity-code';
+import { hashText, executeActivityCode, UNCONFIRMED_CODE_MESSAGE, reportCodeFailure, type StoredCodeRun } from './activity-code';
 import { parseEnvelope, type PublicCommandEnvelope, type StructuredResponseItem, type RecordPredictionPayload } from '../contracts/public/envelope';
 import { parsePublicQuery, deletionResultSchema, type DeletionScope, type DeletionResult, type PublicProjection, type PublicQuery } from '../contracts/public/queries';
 import {
@@ -235,7 +237,9 @@ class LearningServerImpl {
             at: this.now(),
           };
         } catch (err) {
-          if (isRondoError(err) && REJECT_RECEIPT_CODES.has(err.code)) {
+          if (isRondoError(err) && (REJECT_RECEIPT_CODES.has(err.code) ||
+              (envelope.kind==='code.requestRun'&&!admittedJobId&&
+                (err instanceof CompilerAdmissionRejected||err.code==='VERSION_CONFLICT')))) {
             record = {
               familyId: ctx.familyId,
               actorId: ctx.actorId,
@@ -1846,10 +1850,20 @@ class LearningServerImpl {
     return [...latest.values()];
   }
 
+  private codeAvailability(rule:FamilyRuleBody|null):CodeAvailability {
+    if(!this.compilerLifecycle||rule?.kind!=='MVP_ACTIVITY_TRUTH_V1'||!['cpp','gesp-program'].includes(rule.activity))return {available:false,reason:'UNAVAILABLE'};
+    // Use the same task capacity as reserve, without reserving, rotating or submitting anything.
+    const {available,reason}=this.compilerLifecycle.capability(1+(rule.gesp?.codeCases??rule.privateInputs).length);
+    return {available,reason};
+  }
+
   private publicCode(stored:StoredCodeRun):CodeSnapshot {
     const run=stored.run;
     const current=this.compilerLifecycle?.capability().instanceId;
-    return !run.terminal && run.instanceId!==current ? {...run,status:'UNKNOWN',terminal:true,stderr:'Host已重启，旧作业结果未确认；保留旧记录，使用新请求重新运行。'} : run;
+    const uncertain=!run.terminal&&(run.instanceId!==current||this.compilerLifecycle?.isUnresolved(run.jobId));
+    // Projection only: never rewrite old events or expose raw infrastructure diagnostics.
+    if(uncertain)return {...run,status:'UNKNOWN',terminal:true,stderr:UNCONFIRMED_CODE_MESSAGE};
+    return ['UNKNOWN','CAPABILITY_UNAVAILABLE','INTERNAL_ERROR'].includes(run.status)?{...run,stderr:UNCONFIRMED_CODE_MESSAGE}:run;
   }
 
   private async cmdCode(ctx:ServerContext,envelope:PublicCommandEnvelope,repos:Repositories,scope:RepoScope,onCodeAdmission:(jobId:string)=>void){
@@ -1870,7 +1884,7 @@ class LearningServerImpl {
     const p=envelope.payload as {source:string;stdin:string;taskId:string;compilerContractId:string};
     if(p.taskId!==instance!.taskId||p.compilerContractId!==COMPILER_CONTRACT)throw rondoError('INVALID_OPERATION','任务或编译合同不匹配。');
     if(Buffer.byteLength(p.source)>32768||Buffer.byteLength(p.stdin)>16384)throw rondoError('INVALID_OPERATION','源码限32KiB，输入限16KiB（UTF-8）。');
-    if(!this.compilerLifecycle?.capability().available)throw rondoError('CAPABILITY_UNAVAILABLE','本机隔离编译器不可用。');
+    if(!this.compilerLifecycle)throw rondoError('CAPABILITY_UNAVAILABLE','本机隔离编译器不可用。');
     const prior=await this.codeRecords(scope,repos,attempt.attemptId);
     if(prior.some(x=>!this.publicCode(x).terminal))throw rondoError('INVALID_OPERATION','已有运行未结束，请等待或停止。');
     const jobId=this.deps.ids.newId('job');
@@ -1915,7 +1929,11 @@ class LearningServerImpl {
       control.promise=executeActivityCode(lease.compiler,data,rule.gesp?.codeCases??rule.privateInputs,persist,()=>control.cancelled)
         .catch(()=>{})
         .finally(()=>{this.compilerLifecycle?.settle(jobId,data.run.status,persisted);this.runningCode.delete(jobId);});
-    }catch(error){this.compilerLifecycle?.settle(jobId,'UNKNOWN',false);this.runningCode.delete(jobId);throw error;}
+    }catch(error){
+      reportCodeFailure({jobId,instanceId:this.compilerLifecycle?.forRun(jobId)?.instanceId??'unknown'},
+        {stage:'LAUNCH',operation:'PREPARE',category:'UNKNOWN',workerJobId:null});
+      this.compilerLifecycle?.settle(jobId,'UNKNOWN',false);this.runningCode.delete(jobId);throw error;
+    }
   }
 
   private async evaluateActivity(rule:ActivityRule,state:ActivityState,response:StructuredResponseItem[],scope:RepoScope,repos:Repositories,attemptId:string,cycleId:string):Promise<EvaluationResult>{
@@ -1932,7 +1950,7 @@ class LearningServerImpl {
         if(!stored||stored.run.cycleId!==cycleId||stored.run.source!==item.source||stored.run.stdin!==item.stdin)throw rondoError('INVALID_OPERATION','代码或输入已经变化，请运行当前版本再提交。');
         const run=this.publicCode(stored);scorable=run.terminal&&!['UNKNOWN','CAPABILITY_UNAVAILABLE','INTERNAL_ERROR'].includes(run.status);correct=scorable&&reasoned&&stored.privatePassed===true;
       }
-      const detail=!scorable?'运行结果尚未确认，保留当前代码后重新运行。':!reasoned?'请把输入理解、关键步骤和边界核对分别留在推演记录里，再提交。':correct?(rule.activity==='gesp-program'?'程序已通过本题课程登记的有限用例；这不等同官方全套评测通过。推演文字已保存，仍需你说明依据。':'这次选择与课程语义核对一致。推演原文已保存，接着说明自己的依据；一次选择不代表掌握。'):'再核对本题的条件、执行顺序和边界；样例输出或编译成功本身不能保证正确。';
+      const detail=!scorable?UNCONFIRMED_CODE_MESSAGE:!reasoned?'请把输入理解、关键步骤和边界核对分别留在推演记录里，再提交。':correct?(rule.activity==='gesp-program'?'程序已通过本题课程登记的有限用例；这不等同官方全套评测通过。推演文字已保存，仍需你说明依据。':'这次选择与课程语义核对一致。推演原文已保存，接着说明自己的依据；一次选择不代表掌握。'):'再核对本题的条件、执行顺序和边界；样例输出或编译成功本身不能保证正确。';
       return{outcome:!scorable?'UNSCORABLE':correct?'CORRECT':'REVISE',feedback:{ruleKind:'FAMILY_TRUTH_V1',scenarioMet:reasoned,responseTypeOk:true,itemResults:[{key:'gesp',label:'本题核对',verdict:correct?'CORRECT':'REVISE',feedback:detail}],diagnostics:[detail],reveal:{explanation:rule.explanation,...(rule.referenceSource?{referenceSource:rule.referenceSource}:{})}}};
     }
     if(AI_NEW_IDS.includes(rule.activity as NewAIId)){if(response.length!==1||response[0].kind!=='aiLabAnswer')throw rondoError('INVALID_OPERATION','本题需要登记的AI活动回答。');return evaluateAILab(rule,state,response[0]);}
@@ -1955,7 +1973,7 @@ class LearningServerImpl {
       const run=this.publicCode(record);
       scorable=run.terminal&&!['UNKNOWN','CAPABILITY_UNAVAILABLE','INTERNAL_ERROR'].includes(run.status);
       correct=scorable&&record.privatePassed===true&&state.inspected.includes('algorithm');
-      detail=!scorable?'执行结果未确认，本次不能判分；保留记录，重新运行。':correct?'程序通过本题已登记的边界检查。流程完成不等于掌握。':'样例运行与题目正确性分开核对。请检查跨行字母顺序、Z后回到A、行长度和多余空格。';
+      detail=!scorable?UNCONFIRMED_CODE_MESSAGE:correct?'程序通过本题已登记的边界检查。流程完成不等于掌握。':'样例运行与题目正确性分开核对。请检查跨行字母顺序、Z后回到A、行长度和多余空格。';
     }
     return {outcome:!scorable?'UNSCORABLE':correct?'CORRECT':'REVISE',feedback:{ruleKind:'FAMILY_TRUTH_V1',scenarioMet:correct,responseTypeOk:true,itemResults:[{key:'activity',label:'活动核对',verdict:correct?'CORRECT':'REVISE',feedback:detail}],diagnostics:[detail],reveal:{explanation:rule.explanation,...(rule.referenceSource?{referenceSource:rule.referenceSource}:{})}}};
   }
@@ -2214,12 +2232,25 @@ class LearningServerImpl {
         }
         return { kind: 'guardian.exportStatus', exportId: op.opId, phase: op.phase, scopeHash: op.scopeHash };
       }
+      case 'code.availability': {
+        const attempt=await repos.learningAttempt.findById(scope,request.attemptId);
+        if(!attempt||ctx.role==='LEARNER'&&attempt.learnerId!==ctx.learnerId)throw rondoError('FORBIDDEN','当前编程任务不可见。');
+        const cycle=await this.currentCycle(scope,repos,attempt);
+        const instance=await repos.questionInstance.findById(scope,cycle.questionInstanceId);
+        const rule=instance?this.content().getRuleBody(instance.releaseId,instance.taskId):null;
+        return {kind:'code.availability',attemptId:attempt.attemptId,questionInstanceId:cycle.questionInstanceId,availability:this.codeAvailability(rule)};
+      }
       case 'code.runStatus': {
-        if(!this.deps.compiler) throw rondoError('CAPABILITY_UNAVAILABLE','本Host未配置代码执行能力。');
         const learners=ctx.role==='LEARNER' ? [ctx.learnerId!] : (await repos.learner.listByFamily(scope,ctx.familyId)).map(x=>x.learnerId);
         for(const learnerId of learners)for(const attempt of await repos.learningAttempt.listByLearner(scope,learnerId)){
           const stored=(await this.codeRecords(scope,repos,attempt.attemptId)).find(x=>x.run.jobId===request.jobId);
-          if(stored){const run=this.publicCode(stored);const status=run.terminal?(run.status==='CANCELLED'?'CANCELLED':run.status==='UNKNOWN'?'UNKNOWN':'FINISHED'):['QUEUED','COMPILING','RUNNING','CANCEL_REQUESTED'].includes(run.status)?run.status:'RUNNING';return {kind:'code.runStatus',jobId:request.jobId,status:status as import('../contracts/public/queries').CodeJobStatus,run};}
+          if(stored){
+            const run=this.publicCode(stored);
+            const status=run.terminal?(run.status==='CANCELLED'?'CANCELLED':run.status==='UNKNOWN'?'UNKNOWN':'FINISHED'):
+              ['QUEUED','COMPILING','RUNNING','CANCEL_REQUESTED'].includes(run.status)?run.status:'RUNNING';
+            const rule=this.content().getRuleBody(attempt.releaseId,run.taskId);
+            return {kind:'code.runStatus',jobId:request.jobId,status:status as import('../contracts/public/queries').CodeJobStatus,run,availability:this.codeAvailability(rule)};
+          }
         }
         throw rondoError('FORBIDDEN','作业不可见。');
       }

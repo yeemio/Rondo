@@ -1,5 +1,5 @@
 /**
- * Public query catalog (10 kinds, closed) and projections.
+ * Public query catalog (closed) and projections.
  *
  * Frozen sources:
  * - LIFECYCLE-DATA-API.md §6 (query list; pagination by server seq/cursor;
@@ -20,7 +20,7 @@
  *   found now", never "the command never ran".
  */
 import { z } from 'zod';
-import { activityHistorySchema, codeSnapshotSchema } from './activity';
+import { activityHistorySchema, codeSnapshotSchema, codeAvailabilitySchema } from './activity';
 import { idSchema, positiveIntSchema } from './protocol';
 import { commandKindSchema, RETENTION_MODES } from './envelope';
 import { receiptLookupSchema } from './receipts';
@@ -70,6 +70,7 @@ export const QUERY_KINDS = [
   'guardian.exportStatus',
   'guardian.deletionStatus',
   'code.runStatus',
+  'code.availability',
 ] as const;
 export type QueryKind = (typeof QUERY_KINDS)[number];
 
@@ -114,6 +115,7 @@ export const publicQuerySchema = z
     z.object({ kind: z.literal('guardian.exportStatus'), exportId: idSchema }).strict(),
     z.object({ kind: z.literal('guardian.deletionStatus'), deletionId: idSchema, confirmationKey: idSchema.optional() }).strict(),
     z.object({ kind: z.literal('code.runStatus'), jobId: idSchema }).strict(),
+    z.object({ kind: z.literal('code.availability'), attemptId: idSchema }).strict(),
   ])
   .superRefine((query, ctx) => {
     if (query.kind === 'guardian.retentionPreview' && query.mode === 'UNTIL_GUARDIAN_DELETES' && query.rollingDays !== undefined) {
@@ -306,8 +308,16 @@ export const publicProjectionSchema = z.discriminatedUnion('kind', [
       jobId: idSchema,
       status: z.enum(CODE_JOB_STATUSES),
       run: codeSnapshotSchema.optional(),
+      availability: codeAvailabilitySchema.optional(),
     })
     .strict(),
+  // Admission for the currently bound task, including tasks with no historical run.
+  z.object({
+    kind: z.literal('code.availability'),
+    attemptId: idSchema,
+    questionInstanceId: idSchema,
+    availability: codeAvailabilitySchema,
+  }).strict(),
 ]);
 
 export type PublicProjection = z.infer<typeof publicProjectionSchema>;

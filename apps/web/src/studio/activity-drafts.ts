@@ -117,11 +117,15 @@ export class ActivityDrafts {
  discardRetained=()=>{this.state.retainedDraft=null;this.state.notice='';this.persist();this.emit();};
 }
 
-export interface DraftLeaveState {dirty:boolean;locallyStored:boolean;pending:boolean;busy:boolean;needsReentry:boolean;active:boolean;}
+export interface DraftLeaveState {dirty:boolean;locallyStored:boolean;pending:boolean;pendingRun?:boolean;busy:boolean;needsReentry:boolean;active:boolean;}
 /** Internal navigation uses one save, then checks the live state again before allowing an unmount. */
-export async function leaveActivityEditor(input:{state:()=>DraftLeaveState;save:()=>Promise<CommandReceipt|null>;notice:(message:string)=>void}):Promise<boolean>{
- const state=input.state();
- if(state.busy||state.pending||state.needsReentry){input.notice('刚才的保存还没有确认，请先确认保存；当前编辑仍保留在这里。');return false;}
+export async function leaveActivityEditor(input:{state:()=>DraftLeaveState;save:()=>Promise<CommandReceipt|null>;confirmPendingRun?:()=>Promise<void>;notice:(message:string)=>void}):Promise<boolean>{
+ let state=input.state();
+ // Resolve the original delivery before saving or navigating. Never drop a pending key locally.
+ if(state.pendingRun&&!state.busy&&!state.needsReentry&&input.confirmPendingRun){
+  await input.confirmPendingRun();state=input.state();
+ }
+ if(state.busy||state.pending||state.needsReentry){input.notice(state.pendingRun?'运行请求仍待确认，原代码和编辑保留在这里；请按原请求确认，不要另发一次运行。':'刚才的保存还没有确认，请先确认保存；当前编辑仍保留在这里。');return false;}
  if(!state.dirty)return true;
  if(!state.active){if(state.locallyStored)return true;input.notice('这次活动已停止编辑，当前草稿尚未保留到本机，请先保留原文。');return false;}
  const receipt=await input.save(),after=input.state();
