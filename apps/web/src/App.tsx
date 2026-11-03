@@ -12,6 +12,7 @@ import type { AppPorts } from './client/ports';
 import type { MigrationCardView } from './client/ports';
 import { LESSONS } from './content/bundled';
 import { Player } from './app/Player';
+import {DailyPlayer} from './studio/DailyPlayer';
 import { MvpHome, MvpPlayer } from './app/Mvp';
 import { GuardianHome } from './app/Guardian';
 
@@ -20,6 +21,7 @@ type Screen =
   | { name: 'entry' }
   | { name: 'learner-home'; learnerId: string; session: AuthSession }
   | { name: 'player'; learnerId: string; attemptId: string; releaseId: string; session: AuthSession | null }
+  | { name: 'daily'; learnerId:string; setId:string; session:AuthSession }
   | { name: 'guardian'; session: AuthSession };
 
 export function App({ ports }: { ports: AppPorts }) {
@@ -54,7 +56,7 @@ export function App({ ports }: { ports: AppPorts }) {
 
   const leaveLearning = async (action: () => void | Promise<void>) => {
     setLearningLeaveError('');
-    if (screen.name === 'player' && screen.releaseId.startsWith('rondo.mvp.') && playerLeave.current && !await playerLeave.current()) return;
+    if ((screen.name === 'daily' || screen.name === 'player' && screen.releaseId.startsWith('rondo.mvp.')) && playerLeave.current && !await playerLeave.current()) return;
     try { await action(); } catch { setLearningLeaveError('暂时未能离开，当前页面与编辑仍保留，请稍后再试。'); }
   };
 
@@ -96,6 +98,7 @@ export function App({ ports }: { ports: AppPorts }) {
             familyId={screen.session.familyId}
             subject={subject}
             onSubject={setSubject}
+            onOpenDaily={setId=>setScreen({name:'daily',learnerId:screen.learnerId,setId,session:screen.session})}
             onOpenAttempt={(attemptId, releaseId) => setScreen({ name: 'player', learnerId: screen.learnerId, attemptId, releaseId, session })}
             onLock={async () => {
               await ports.auth.lock();
@@ -107,6 +110,7 @@ export function App({ ports }: { ports: AppPorts }) {
             }}
           />
         ) : null}
+        {screen.name === 'daily'?<DailyPlayer key={screen.setId} ports={ports} learnerId={screen.learnerId} familyId={screen.session.familyId} setId={screen.setId} onRegisterLeave={registerPlayerLeave} onOpenSet={setId=>setScreen({...screen,setId})} onSubject={index=>void leaveLearning(()=>{setSubject(index);setScreen({name:'learner-home',learnerId:screen.learnerId,session:screen.session});})} onExit={()=>setScreen({name:'learner-home',learnerId:screen.learnerId,session:screen.session})}/>:null}
         {screen.name === 'player' && screen.releaseId.startsWith('rondo.mvp.') ? <MvpPlayer key={screen.attemptId} ports={ports} learnerId={screen.learnerId} familyId={(screen.session??session)!.familyId} attemptId={screen.attemptId} releaseId={screen.releaseId} onRegisterLeave={registerPlayerLeave} onSubject={index=>{setSubject(index);setScreen({name:'learner-home',learnerId:screen.learnerId,session:(screen.session??session) as AuthSession});}} onExit={()=>setScreen({name:'learner-home',learnerId:screen.learnerId,session:(screen.session??session) as AuthSession})}/> : null}
         {screen.name === 'player' && !screen.releaseId.startsWith('rondo.mvp.') ? (
           <Player

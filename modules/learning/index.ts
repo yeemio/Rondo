@@ -34,6 +34,9 @@ import {gespReasoningOperationSchema} from '../contracts/public/gesp';
  * - concrete repository extras (see adapters/sqlite/repositories.ts)
  */
 import { createHash } from 'node:crypto';
+import {dailyDate,dailyEntrySnapshot,dailyEvents,dailyMembership,readDailySets,projectDailySet,selectDailyItems,evaluateDailyShort,type DailyMembership} from './daily';
+import {dailyPoolEntry} from '../curriculum/daily';
+import type {DailyEntry,DailyScope,DailyPlan} from '../contracts/public/daily';
 import { activityStateSchema, type ActivityState, type CodeSnapshot, type CodeAvailability, type ActivityHistory } from '../contracts/public/activity';
 import { COMPILER_CONTRACT, LEARNING_ACTIVITIES, supersededActivityNotice } from '../curriculum/mvp';
 import compilerConfig from '../../workers/cpp/worker-lock.json';
@@ -625,6 +628,9 @@ class LearningServerImpl {
       await this.requireLearner(ctx, envelope, repos);
     }
     switch (kind) {
+      case 'learning.startDaily': return this.cmdStartDaily(ctx,envelope,repos,scope);
+      case 'learning.advanceDaily': return this.cmdAdvanceDaily(ctx,envelope,repos,scope);
+      case 'learning.revealDaily': return this.cmdRevealDaily(ctx,envelope,repos,scope);
       case 'code.requestRun':
       case 'code.requestCancel':
         return this.cmdCode(ctx,envelope,repos,scope,onCodeAdmission);
@@ -725,6 +731,7 @@ class LearningServerImpl {
     envelope: PublicCommandEnvelope,
     repos: Repositories,
     scope: RepoScope,
+    daily?:{entry:DailyEntry;setId?:string;index:number},
   ) {
     if (envelope.target.scope !== 'LEARNER') {
       throw rondoError('INVALID_OPERATION', 'startAttempt 需要 LEARNER 目标。');
@@ -736,8 +743,8 @@ class LearningServerImpl {
     if (active.some((a) => a.attemptStatus === 'ACTIVE')) {
       throw rondoError('INVALID_OPERATION', '请先明确暂停当前正在进行的课程，再开始所选课程。');
     }
-    if (active.some((a) => a.releaseId === payload.releaseId && a.attemptStatus === 'PAUSED')) {
-      throw rondoError('INVALID_OPERATION', '本课已有暂停的学习记录，请继续原记录，完成后再重练。');
+    if(!daily)for(const a of active.filter(a=>a.releaseId===payload.releaseId&&a.attemptStatus==='PAUSED')){
+      if(!await dailyMembership(scope,repos,a))throw rondoError('INVALID_OPERATION', '本课已有暂停的学习记录，请继续原记录，完成后再重练。');
     }
     // Chain to the learner's most recent terminal attempt (COMPLETED/ABANDONED)
     // so the resume point follows the attempt chain; null until one exists.
@@ -754,6 +761,7 @@ class LearningServerImpl {
     }
     const firstTaskId = (JSON.parse(release.courseVersionsJson) as { taskIds: string[] }).taskIds[0];
     const { taskSpec, givens } = await this.taskSpecFor(scope, payload.releaseId, firstTaskId, repos);
+    if(daily&&(daily.entry.releaseId!==payload.releaseId||daily.entry.taskId!==firstTaskId||daily.entry.taskVersion!==taskSpec.taskVersion))throw rondoError('CONTENT_UNAVAILABLE','日常练习绑定的题目版本不匹配，未创建新的学习记录。');
     const now = this.now();
     const attemptId = this.deps.ids.newId('att');
     const cycleId = this.deps.ids.newId('cyc');
@@ -785,7 +793,7 @@ class LearningServerImpl {
       cycleId,
       attemptId,
       questionInstanceId,
-      phase: 'PREDICT',
+      phase: daily?.entry.workflow==='daily.short.v1'?'OPERATE':'PREDICT',
       givensJson: canonicalize(givens),
       confirmedStateJson: canonicalize(confirmedState),
       stateVersion: 1,
@@ -797,11 +805,110 @@ class LearningServerImpl {
       taskId: firstTaskId,
       givens,
     });
+    if(daily)await this.appendEvent(scope,repos,envelope,attemptId,'DAILY_ITEM_STARTED',{
+      version:'rondo.daily.v1',setId:daily.setId??attemptId,index:daily.index,entry:daily.entry,
+    });
     return {
       effectRefs: [`attempt:${attemptId}`, `cycle:${cycleId}`, `questionInstance:${questionInstanceId}`, eventRef],
       changedKinds: ['learning.resumePoint', 'learning.attemptView', 'learning.questionView', 'learning.timeline'],
       attemptVersion: 1,
     };
+  }
+
+  private async requireDailyEntry(scope:RepoScope,repos:Repositories,entry:DailyEntry):Promise<void>{
+    await this.requireReleaseForNewWork(scope,entry.releaseId,repos);
+    const task=this.content().getTaskSpec(entry.releaseId,entry.taskId),pool=dailyPoolEntry(entry.poolId);
+    if(!task||!pool||task.taskVersion!==entry.taskVersion||pool.releaseId!==entry.releaseId||pool.taskId!==entry.taskId||pool.workflow!==entry.workflow)throw rondoError('CONTENT_UNAVAILABLE','题组固定的题目版本暂不可用，原顺序和记录保留。');
+  }
+
+  private async cmdStartDaily(ctx:ServerContext,envelope:PublicCommandEnvelope,repos:Repositories,scope:RepoScope){
+    const learnerId=await this.requireLearner(ctx,envelope,repos),payload=envelope.payload as {scope:DailyScope;mode:'today'|'practice';previousSetId?:string};
+    const sets=await readDailySets(scope,repos,learnerId),today=dailyDate(this.now());
+    const projected=await Promise.all(sets.map(set=>projectDailySet(scope,repos,learnerId,set)));
+    const unfinished=projected.find(set=>set.status==='OPEN');
+    const sameDay=[...projected].reverse().find(set=>set.date===today&&set.status!=='OPEN');
+    const existing=unfinished??(payload.mode==='today'?sameDay:projected.find(set=>set.practiceOf===payload.previousSetId));
+    if(existing)return {effectRefs:[`daily:${existing.setId}`],changedKinds:['learning.daily']};
+    if(payload.mode==='practice'&&!projected.some(set=>set.setId===payload.previousSetId&&(set.status==='COMPLETE'||set.status==='UNAVAILABLE')))throw rondoError('INVALID_OPERATION','请先读回要复练的那一组，再开始新的练习。');
+    if((await repos.learningAttempt.listByLearner(scope,learnerId,'ACTIVE')).length)throw rondoError('INVALID_OPERATION','请先保存并暂停当前活动，再开始这组练习。');
+    const items=await selectDailyItems(scope,repos,learnerId,payload.scope,sets.filter(s=>s.plan.scope===payload.scope).length);
+    for(const entry of items)await this.requireDailyEntry(scope,repos,entry);
+    // All rejections precede writes. A later failure rolls the entire new group back.
+    try{
+      const first=await this.cmdStartAttempt(ctx,{...envelope,payload:{releaseId:items[0].releaseId}},repos,scope,{entry:dailyEntrySnapshot(dailyPoolEntry(items[0].poolId)!),index:0});
+      const setId=first.effectRefs.find(ref=>ref.startsWith('attempt:'))!.slice(8);
+      const plan:DailyPlan={version:'rondo.daily.v1',setId,scope:payload.scope,date:today,createdAt:this.now(),practiceOf:payload.previousSetId??null,items};
+      await this.appendEvent(scope,repos,envelope,setId,'DAILY_SET_CREATED',plan);
+      await this.appendEvent(scope,repos,envelope,setId,'DAILY_ITEM_LINKED',{index:0,attemptId:setId});
+      return {effectRefs:[`daily:${setId}`,...first.effectRefs],changedKinds:['learning.daily',...first.changedKinds],attemptVersion:first.attemptVersion};
+    }catch{throw rondoError('PERSISTENCE_FAILED','这组练习尚未保存，事务已回滚；请按原请求确认。');}
+  }
+
+  private async dailyCloseCheck(scope:RepoScope,repos:Repositories,attempt:LearningAttemptRecord,defer:boolean){
+    const member=await dailyMembership(scope,repos,attempt);if(!member)throw rondoError('INVALID_OPERATION','这项学习不属于日常题组。');
+    const cycle=await this.currentCycle(scope,repos,attempt),subs=await this.submissionsOfCycle(scope,repos,cycle.cycleId);
+    const last=subs.at(-1),evaluation=last?await repos.evaluation.findOriginalBySubmission(scope,last.submissionId):null;
+    if(!evaluation)throw rondoError('INVALID_OPERATION','先提交一次回答，看看具体反馈。');
+    if(evaluation.outcome==='REVISE'&&(!defer||subs.length<2))throw rondoError('INVALID_OPERATION','先按反馈修改并再提交一次；仍需练习时，可明确选择留待复练。');
+    if(evaluation.outcome==='UNSCORABLE'&&(JSON.parse(evaluation.feedbackJson).assessmentMode?.mode!=='OBSERVATION_RECORDED'))throw rondoError('INVALID_OPERATION','这次结果尚未核对，不能按通过进入下一题。');
+    if(member.entry.workflow==='daily.short.v1'&&cycle.phase!=='VERIFY'&&attempt.attemptStatus!=='COMPLETED')throw rondoError('INVALID_OPERATION','先提交当前回答并读回反馈，再继续。');
+    if(member.entry.workflow==='daily.model.v1'){
+      const explanations=await repos.explanationRevision.listByCycle(scope,cycle.cycleId);
+      if(cycle.phase!=='REVIEW'||!explanations.at(-1)||explanations.at(-1)!.freeText.trim().length<8)throw rondoError('INVALID_OPERATION','请先保存引用两个模型记录的解释，再继续。');
+    }
+    return {member,cycle,evaluation};
+  }
+
+  private async cmdAdvanceDaily(ctx:ServerContext,envelope:PublicCommandEnvelope,repos:Repositories,scope:RepoScope){
+    const learnerId=await this.requireLearner(ctx,envelope,repos),attempt=await this.requireAttempt(ctx,envelope,repos);
+    if(!envelope.binding)throw rondoError('INVALID_OPERATION','下一题需要绑定当前保存的回答。');
+    const payload=envelope.payload as {setId:string;index:number;defer:boolean};
+    const set=(await readDailySets(scope,repos,learnerId)).find(x=>x.plan.setId===payload.setId);
+    if(!set||set.links[payload.index]?.attemptId!==attempt.attemptId)throw rondoError('FORBIDDEN','这道题不属于当前学习者的指定题组位置。');
+    // A repeated click on the original position reads the existing successor; it never skips twice.
+    if(set.closed||set.links.length>payload.index+1)return {effectRefs:[`daily:${set.plan.setId}`,`attempt:${set.links.at(-1)!.attemptId}`],changedKinds:['learning.daily']};
+    this.checkExpectedVersion(attempt,envelope);
+    const view=await projectDailySet(scope,repos,learnerId,set);
+    if(view.status==='UNAVAILABLE')throw rondoError('CONTENT_UNAVAILABLE','本组有记录已移除或暂不可用，请保留现有记录并返回首页查看。');
+    if(attempt.attemptStatus!=='ACTIVE'&&attempt.attemptStatus!=='COMPLETED')throw rondoError('INVALID_OPERATION','请先继续这道题，再进入下一题。');
+    const {member,cycle}=await this.dailyCloseCheck(scope,repos,attempt,payload.defer);
+    const next=set.plan.items[payload.index+1];if(next)await this.requireDailyEntry(scope,repos,next);
+    if((await repos.learningAttempt.listByLearner(scope,learnerId,'ACTIVE')).some(a=>a.attemptId!==attempt.attemptId))throw rondoError('INVALID_OPERATION','另一项活动正在进行，请先暂停它再继续这组。');
+    try{
+      if(attempt.attemptStatus==='ACTIVE'){
+        if(member.entry.workflow==='daily.short.v1'){
+          await this.setPhase(scope,repos,cycle,'REVIEW');
+          const summary=await this.buildResultSummary(scope,repos,attempt,[cycle]);
+          await this.casAttempt(scope,repos,attempt,{nextStatus:'COMPLETED',endAttempt:true,resultSummaryJson:canonicalize(summary)});
+          await this.appendEvent(scope,repos,envelope,attempt.attemptId,'DAILY_SHORT_FINISHED',{cycleId:cycle.cycleId,deferred:payload.defer,workflow:member.entry.workflow});
+        }else await this.cmdFinishAttempt(ctx,envelope,repos,scope);
+      }
+      await this.appendEvent(scope,repos,envelope,attempt.attemptId,'DAILY_ITEM_CLOSED',{index:payload.index,attemptId:attempt.attemptId,deferred:payload.defer});
+      let nextAttemptId=attempt.attemptId;
+      if(next){
+        const started=await this.cmdStartAttempt(ctx,{...envelope,payload:{releaseId:next.releaseId}},repos,scope,{entry:dailyEntrySnapshot(dailyPoolEntry(next.poolId)!),setId:set.plan.setId,index:payload.index+1});
+        nextAttemptId=started.effectRefs.find(x=>x.startsWith('attempt:'))!.slice(8);
+        const link={index:payload.index+1,attemptId:nextAttemptId};
+        await this.appendEvent(scope,repos,envelope,attempt.attemptId,'DAILY_ITEM_LINKED',link);
+        await this.appendEvent(scope,repos,envelope,nextAttemptId,'DAILY_SET_SNAPSHOT',{plan:set.plan,links:[...set.links,link]});
+      }else await this.appendEvent(scope,repos,envelope,attempt.attemptId,'DAILY_SET_FINISHED',{finishedAt:this.now()});
+      const owner=await repos.learningAttempt.findById(scope,attempt.attemptId);if(!owner)throw Error('missing current attempt');
+      await this.bumpAttempt(scope,repos,owner);
+      const current=await repos.learningAttempt.findById(scope,nextAttemptId);
+      return {effectRefs:[`daily:${set.plan.setId}`,`attempt:${nextAttemptId}`],changedKinds:['learning.daily','learning.activityHistory','learning.resumePoint','learning.attemptView'],attemptVersion:current?.version};
+    }catch{throw rondoError('PERSISTENCE_FAILED','下一题尚未确认，事务已回滚；请保留当前编辑并确认原请求。');}
+  }
+
+  private async cmdRevealDaily(ctx:ServerContext,envelope:PublicCommandEnvelope,repos:Repositories,scope:RepoScope){
+    const attempt=await this.requireAttempt(ctx,envelope,repos);this.checkExpectedVersion(attempt,envelope);
+    const member=await dailyMembership(scope,repos,attempt);
+    if(!member||member.entry.workflow!=='daily.short.v1'||!envelope.binding||attempt.attemptStatus!=='ACTIVE')throw rondoError('INVALID_OPERATION','只有当前日常短练可请求这份解析。');
+    const cycle=await this.currentCycle(scope,repos,attempt,'VERIFY');
+    if(!await repos.submission.findLatestByCycle(scope,cycle.cycleId))throw rondoError('INVALID_OPERATION','先留下自己的回答，再查看解析。');
+    if((await dailyEvents(scope,repos,attempt.attemptId)).some(e=>e.eventType==='DAILY_EXPLANATION_REQUESTED'))return {effectRefs:[`attempt:${attempt.attemptId}`],changedKinds:['learning.activityHistory','learning.daily'],attemptVersion:attempt.version};
+    const updated=await this.bumpAttempt(scope,repos,attempt);
+    await this.appendEvent(scope,repos,envelope,attempt.attemptId,'DAILY_EXPLANATION_REQUESTED',{cycleId:cycle.cycleId,workflow:member.entry.workflow});
+    return {effectRefs:[`attempt:${attempt.attemptId}`],changedKinds:['learning.activityHistory','learning.daily'],attemptVersion:updated.version};
   }
 
   private async cmdBeginCycle(
@@ -812,6 +919,7 @@ class LearningServerImpl {
   ) {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
+    if(await dailyMembership(scope,repos,attempt))throw rondoError('INVALID_OPERATION','日常题组请用下一题继续，不能另开课程轮次。');
     if (attempt.attemptStatus !== 'ACTIVE') {
       throw rondoError('INVALID_OPERATION', `attempt 当前状态 ${attempt.attemptStatus}，不能开始新轮次。`);
     }
@@ -962,6 +1070,8 @@ class LearningServerImpl {
     }
     let cycle = await this.currentCycle(scope, repos, attempt);
     const payload = envelope.payload as { operation: { type: string } & Record<string, unknown> };
+    const daily=await dailyMembership(scope,repos,attempt);
+    if(daily?.entry.workflow==='daily.short.v1'&&payload.operation.type!=='SaveActivityDraft')throw rondoError('INVALID_OPERATION','本次短练只保存回答草稿，不代替模型操作或推演记录。');
     const draftOnly=payload.operation.type==='SaveActivityDraft' && this.content().familyOf(attempt.releaseId)==='activity';
     if (draftOnly) { /* A draft changes no phase or submitted learning fact. */ } else if (cycle.phase === 'VERIFY') {
       const canRevise = await this.latestOutcomeIsRevise(scope, repos, cycle);
@@ -1087,6 +1197,7 @@ class LearningServerImpl {
   ) {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
+    if(await dailyMembership(scope,repos,attempt)&&attempt.attemptStatus!=='ACTIVE')throw rondoError('INVALID_OPERATION','请先继续当前练习，再修改回答。');
     const cycle = await this.currentCycle(scope, repos, attempt, 'VERIFY');
     if (!(await this.latestOutcomeIsRevise(scope, repos, cycle))) {
       throw rondoError('INVALID_OPERATION', '只有结果为 REVISE 时才能重新作答。');
@@ -1112,6 +1223,7 @@ class LearningServerImpl {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
     const notice=supersededActivityNotice(attempt.releaseId);if(notice)throw rondoError('CONTENT_UNAVAILABLE',notice);
+    if(await dailyMembership(scope,repos,attempt)&&attempt.attemptStatus!=='ACTIVE')throw rondoError('INVALID_OPERATION','请先继续当前练习，再提交回答。');
     const cycle = await this.currentCycle(scope, repos, attempt, 'OPERATE');
     const instance = await repos.questionInstance.findById(scope, cycle.questionInstanceId);
     if (instance === null) {
@@ -1307,6 +1419,8 @@ class LearningServerImpl {
   ) {
     const attempt = await this.requireAttempt(ctx, envelope, repos);
     this.checkExpectedVersion(attempt, envelope);
+    const daily=await dailyMembership(scope,repos,attempt);
+    if(daily?.entry.workflow==='daily.short.v1')throw rondoError('INVALID_OPERATION','这道短练不用填写模板解释；请按反馈再试，或进入下一题。');
     const cycle = await this.currentCycle(scope, repos, attempt, 'VERIFY');
     const submissions = await (repos.submission as Repositories['submission'] & {
       listAllByCycle?: (scope: RepoScope, cycleId: string) => Promise<{ submissionId: string }[]>;
@@ -1316,6 +1430,11 @@ class LearningServerImpl {
     }
     if (submissions.length === 0) {
       throw rondoError('INVALID_OPERATION', '至少需要一次有效提交和反馈才能进入解释阶段。');
+    }
+    if(daily){
+      if(attempt.attemptStatus!=='ACTIVE')throw rondoError('INVALID_OPERATION','请先继续当前练习。');
+      const evaluation=await repos.evaluation.findOriginalBySubmission(scope,submissions.at(-1)!.submissionId);
+      if(!evaluation||evaluation.outcome==='UNSCORABLE'||evaluation.outcome==='REVISE'&&submissions.length<2)throw rondoError('INVALID_OPERATION','先按反馈修改并再提交一次，再说明模型比较的依据。');
     }
     await this.setPhase(scope, repos, cycle, 'EXPLAIN');
     const updated = await this.casAttempt(scope, repos, attempt, {});
@@ -1346,6 +1465,8 @@ class LearningServerImpl {
       freeText: string;
       transcribedByGuardian: boolean;
     };
+    const daily=await dailyMembership(scope,repos,attempt);
+    if(daily&&(daily.entry.workflow!=='daily.model.v1'||attempt.attemptStatus!=='ACTIVE'||payload.freeText.trim().length<8))throw rondoError('INVALID_OPERATION','请用至少8个字记录自己的模型比较依据；系统保留解释原文。');
     let scribeActorId: string | null = null;
     if (payload.transcribedByGuardian) {
       const session = await repos.hostSession.findActive(scope, ctx.sessionId, ctx.hostEpoch);
@@ -1399,6 +1520,9 @@ class LearningServerImpl {
     if (attempt.attemptStatus !== 'ACTIVE') {
       throw rondoError('INVALID_OPERATION', `attempt 当前状态 ${attempt.attemptStatus}，不能完成。`);
     }
+    const daily=await dailyMembership(scope,repos,attempt);
+    if(daily?.entry.workflow==='daily.short.v1')throw rondoError('INVALID_OPERATION','短练请用题组中的下一题结束，不代填课程的预测和解释。');
+    if(daily)await this.dailyCloseCheck(scope,repos,attempt,true);
     const cycles = await this.allCyclesOfAttempt(scope, repos, attempt.attemptId);
     if (cycles.length === 0 || cycles[cycles.length - 1].phase !== 'REVIEW') {
       throw rondoError('INVALID_OPERATION', '当前轮次未处于 REVIEW，不能完成 attempt。');
@@ -1780,6 +1904,8 @@ class LearningServerImpl {
     attempt: LearningAttemptRecord,
     cycles: LearningCycleRecord[],
   ): Promise<Record<string, unknown>> {
+    const daily=await dailyMembership(scope,repos,attempt);
+    const explanationRequested=daily?(await dailyEvents(scope,repos,attempt.attemptId)).some(e=>e.eventType==='DAILY_EXPLANATION_REQUESTED'):false;
     const perCycle: Record<string, unknown>[] = [];
     for (const cycle of cycles) {
       const instance = await repos.questionInstance.findById(scope, cycle.questionInstanceId);
@@ -1791,7 +1917,7 @@ class LearningServerImpl {
       }
       const assistance = await repos.assistanceRecord.listByAttempt(scope, attempt.attemptId);
       const answerAssisted =
-        assistance.some((r) => r.category === 'ANSWER') ||
+        explanationRequested || assistance.some((r) => r.category === 'ANSWER') ||
         (await this.cycleHasAnswerHint(scope, repos, cycle, instance?.releaseId ?? attempt.releaseId, instance?.taskId ?? ''));
       const hints = await repos.hintPresentation.listByCycle(scope, cycle.cycleId);
       perCycle.push({
@@ -1800,7 +1926,8 @@ class LearningServerImpl {
         finalOutcome,
         hintCount: hints.length,
         answerAssisted,
-        independence: answerAssisted ? 'ANSWER_ASSISTED' : hints.length > 0 || assistance.length > 0 ? 'ASSISTED' : 'INDEPENDENT',
+        ...(daily?{workflow:daily.entry.workflow,explanationRequested}:{}),
+        independence: daily?'NOT_ASSESSED':answerAssisted ? 'ANSWER_ASSISTED' : hints.length > 0 || assistance.length > 0 ? 'ASSISTED' : 'INDEPENDENT',
       });
     }
     return {
@@ -1937,6 +2064,9 @@ class LearningServerImpl {
   }
 
   private async evaluateActivity(rule:ActivityRule,state:ActivityState,response:StructuredResponseItem[],scope:RepoScope,repos:Repositories,attemptId:string,cycleId:string):Promise<EvaluationResult>{
+    const attempt=await repos.learningAttempt.findById(scope,attemptId);
+    const daily=attempt?await dailyMembership(scope,repos,attempt):null;
+    if(daily?.entry.workflow==='daily.short.v1')return evaluateDailyShort(daily.entry,rule,state,response);
     if(rule.activity==='math6'){if(!state.math||response.length!==1||response[0].kind!=='mathAnswer')throw rondoError('INVALID_OPERATION','请提交当前数学活动的登记回答。');return evaluateMath6(rule,state.math,response[0]);}
     if(rule.activity==='gesp-objective'||rule.activity==='gesp-program'){
       const truth=rule.gesp,record=state.gesp,question=GESP_LESSONS.find(q=>q.id===truth?.questionId);
@@ -1985,6 +2115,8 @@ class LearningServerImpl {
     const result:ActivityHistory={kind:'learning.activityHistory',learnerId,attempts:[]};
     for(const attempt of await repos.learningAttempt.listByLearner(scope,learnerId)){
       if(!attempt.releaseId.startsWith('rondo.mvp.'))continue;
+      const daily=await dailyMembership(scope,repos,attempt);
+      const dailyReveal=daily?.entry.workflow==='daily.short.v1'&&(await dailyEvents(scope,repos,attempt.attemptId)).some(e=>e.eventType==='DAILY_EXPLANATION_REQUESTED');
       const cycles:ActivityHistory['attempts'][number]['cycles']=[];
       for(const cycle of await this.allCyclesOfAttempt(scope,repos,attempt.attemptId)){
         const instance=await repos.questionInstance.findById(scope,cycle.questionInstanceId);
@@ -1992,7 +2124,7 @@ class LearningServerImpl {
         for(const sub of await (repos.submission as typeof repos.submission & {listAllByCycle(s:RepoScope,id:string):Promise<import('../contracts/server/storage').SubmissionRecord[]>}).listAllByCycle(scope,cycle.cycleId)){
           const ev=await repos.evaluation.findOriginalBySubmission(scope,sub.submissionId);
           const feedback=ev?JSON.parse(ev.feedbackJson):{};
-          if(cycle.phase!=='REVIEW') delete feedback.reveal;
+          if(cycle.phase!=='REVIEW'&&!dailyReveal) delete feedback.reveal;
           const snapshot=activityStateSchema.parse(JSON.parse(sub.stateSnapshotJson));
           submissions.push({submissionId:sub.submissionId,response:JSON.parse(sub.responseJson),outcome:ev?.outcome??'UNSCORABLE',feedback,...(snapshot.lab?{lab:snapshot.lab}:{}),...(snapshot.gesp?{gesp:snapshot.gesp}:{}),...(snapshot.math?{math:snapshot.math}:{}),at:sub.at});
         }
@@ -2003,7 +2135,7 @@ class LearningServerImpl {
         for(;;){const events=await repos.learningEvent.pageBySeq(scope,{attemptId:attempt.attemptId,afterSeq,limit:200});for(const event of events)if(event.eventType==='OPERATION_COMMITTED'){const p=JSON.parse(event.payloadJson);if(p.cycleId===cycle.cycleId&&p.operation?.type!=='SaveActivityDraft')operations.push({operation:p.operation,...(p.stateAfter?.lab?{labAfter:activityStateSchema.parse(p.stateAfter).lab}:{}),...(p.stateAfter?.gesp?{gespAfter:activityStateSchema.parse(p.stateAfter).gesp}:{}),...(p.stateAfter?.math?{mathAfter:activityStateSchema.parse(p.stateAfter).math}:{}),at:event.occurredAt});}if(events.length<200)break;afterSeq=events.at(-1)!.seq;}
         cycles.push({cycleId:cycle.cycleId,taskId:instance?.taskId??'',phase:cycle.phase,hints,operations,state:activityStateSchema.parse(JSON.parse(cycle.confirmedStateJson)),prediction:prediction?{...prediction,content:JSON.parse(prediction.contentJson)}:null,submissions,explanations:(await repos.explanationRevision.listByCycle(scope,cycle.cycleId)).map(x=>({revisionId:x.revisionId,text:x.freeText,at:x.at})),runs:(await this.codeRecords(scope,repos,attempt.attemptId)).filter(x=>x.run.cycleId===cycle.cycleId).map(x=>this.publicCode(x))});
       }
-      result.attempts.push({attemptId:attempt.attemptId,releaseId:attempt.releaseId,status:attempt.attemptStatus,previousAttemptId:attempt.previousAttemptId,startedAt:attempt.startedAt,cycles});
+      result.attempts.push({attemptId:attempt.attemptId,releaseId:attempt.releaseId,status:attempt.attemptStatus,...(daily?{daily:{setId:daily.setId,index:daily.index,workflow:daily.entry.workflow,poolId:daily.entry.poolId,title:daily.entry.title}}:{}),previousAttemptId:attempt.previousAttemptId,startedAt:attempt.startedAt,cycles});
     }
     return result;
   }
@@ -2012,6 +2144,14 @@ class LearningServerImpl {
   private async runQuery(ctx: ServerContext, request: PublicQuery, repos: Repositories): Promise<PublicProjection> {
     const scope = { familyId: ctx.familyId, actorId: ctx.actorId };
     switch (request.kind) {
+      case 'learning.daily': {
+        if(ctx.role!=='LEARNER'||ctx.learnerId!==request.learnerId||!await repos.learner.findById(scope,request.learnerId))throw rondoError('FORBIDDEN','只能读取当前学习者的日常练习。');
+        const sets=await readDailySets(scope,repos,request.learnerId);
+        const views=await Promise.all(sets.map(set=>projectDailySet(scope,repos,request.learnerId,set)));
+        const selected=request.setId?views.find(set=>set.setId===request.setId):views.find(set=>set.status==='OPEN')??views.at(-1);
+        if(request.setId&&!selected)throw rondoError('FORBIDDEN','这组练习不可见或已随原记录移除。');
+        return {kind:'learning.daily',learnerId:request.learnerId,serverDate:dailyDate(this.now()),set:selected??null};
+      }
       case 'learning.activityHistory': return this.activityHistory(ctx,repos,request.learnerId);
       case 'catalog.availableLessons': {
         const releases = await repos.contentRelease.findByStatus(scope, 'AVAILABLE');
@@ -2055,6 +2195,7 @@ class LearningServerImpl {
         if (attempt === null) {
           throw rondoError('INVALID_OPERATION', `未知的 attempt：${request.attemptId}`);
         }
+        const daily=await dailyMembership(scope,repos,attempt);
         const cycle = await repos.learningCycle.findCurrentByAttempt(scope, attempt.attemptId);
         return {
           kind: 'learning.attemptView',
@@ -2063,6 +2204,7 @@ class LearningServerImpl {
           releaseId: attempt.releaseId,
           questionInstanceId: cycle?.questionInstanceId ?? '',
           attemptStatus: attempt.attemptStatus,
+          ...(daily?{daily:{setId:daily.setId,index:daily.index,workflow:daily.entry.workflow,poolId:daily.entry.poolId,title:daily.entry.title}}:{}),
           version: attempt.version,
           currentCycle:
             cycle === null

@@ -10,7 +10,7 @@ export type NavigationSend = (kind:CommandKind,payload:unknown,target:unknown,ve
 
 /** Choose an unfinished attempt only from the selected release, preferring its active attempt. */
 export function selectedCourseAttempt(history:ActivityHistory,releaseId:string):ActivityHistory['attempts'][number]|undefined {
- return history.attempts.filter(a=>a.releaseId===releaseId&&(a.status==='ACTIVE'||a.status==='PAUSED'))
+ return history.attempts.filter(a=>!a.daily&&a.releaseId===releaseId&&(a.status==='ACTIVE'||a.status==='PAUSED'))
   .sort((a,b)=>Number(b.status==='ACTIVE')-Number(a.status==='ACTIVE')||b.startedAt-a.startedAt||b.attemptId.localeCompare(a.attemptId))[0];
 }
 
@@ -28,13 +28,13 @@ export async function enterSelectedCourse({client,send,learnerId,releaseId,revie
 }):Promise<{attemptId:string;releaseId:string}|null> {
  const snapshot=await readCourseNavigation(client,learnerId);
  const selected=selectedCourseAttempt(snapshot.history,releaseId);
- const other=snapshot.active?.releaseId!==releaseId?snapshot.active:null;
+ const other=snapshot.active&&(snapshot.active.releaseId!==releaseId||snapshot.active.daily)?snapshot.active:null;
  if(other){
   if(other.attemptId!==reviewedActiveId)throw Error('正在进行的课程已有变化，请重新核对目录和切课按钮后再试。');
   const paused=await send('learning.pauseAttempt',{},{scope:'LEARNER',learnerId,attemptId:other.attemptId},other.version);
   if(!paused)return null;if(paused.status!=='APPLIED')throw Error('原课程尚未暂停，暂时没有进入另一课。');
  }
- let attemptId=selected?.attemptId??(snapshot.active?.releaseId===releaseId?snapshot.active.attemptId:undefined);
+ let attemptId=selected?.attemptId??(snapshot.active?.releaseId===releaseId&&!snapshot.active.daily?snapshot.active.attemptId:undefined);
  if(attemptId){
   const view=await client.query({kind:'learning.attemptView',attemptId});
   if(view.kind!=='learning.attemptView'||view.releaseId!==releaseId)throw Error('所选课程记录已有变化，请重新读取目录。');

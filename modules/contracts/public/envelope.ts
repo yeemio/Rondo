@@ -1,4 +1,5 @@
 import {mathResponseSchema} from './math6';
+import {startDailyPayloadSchema,advanceDailyPayloadSchema} from './daily';
 import {GESP_ACTIVITIES} from './gesp';
 /**
  * Public command envelope: 23-kind closed CommandKind set, per-kind payload
@@ -22,6 +23,10 @@ import { gridOperationV1Schema } from './scene-gridboard';
 import { stepOperationV1Schema } from './scene-steps';
 
 export const COMMAND_KINDS = [
+  // Daily workflow v1; original command payloads and attempts keep their contract.
+  'learning.startDaily',
+  'learning.advanceDaily',
+  'learning.revealDaily',
   'family.createLearner',
   'family.setRetention',
   'learning.startAttempt',
@@ -65,6 +70,8 @@ export function safeParseCommandKind(input: unknown): z.SafeParseReturnType<unkn
  * these kinds and absent-forbidden nowhere else; payloads never duplicate it.
  */
 export const KINDS_REQUIRING_EXPECTED_ATTEMPT_VERSION: ReadonlySet<CommandKind> = new Set<CommandKind>([
+  'learning.advanceDaily',
+  'learning.revealDaily',
   'learning.beginCycle',
   'learning.commitOperation',
   'learning.reviseResponse',
@@ -387,6 +394,9 @@ export const requestCancelPayloadSchema = z
   .strict();
 
 const payloadSchemaByKind = {
+  'learning.startDaily': startDailyPayloadSchema,
+  'learning.advanceDaily': advanceDailyPayloadSchema,
+  'learning.revealDaily': emptyPayloadSchema,
   'family.createLearner': createLearnerPayloadSchema,
   'family.setRetention': setRetentionPayloadSchema,
   'learning.startAttempt': startAttemptPayloadSchema,
@@ -439,7 +449,11 @@ export type ConfirmDeletionPayload = z.infer<typeof confirmDeletionPayloadSchema
 export type RequestRunPayload = z.infer<typeof requestRunPayloadSchema>;
 export type RequestCancelPayload = z.infer<typeof requestCancelPayloadSchema>;
 
+export type StartDailyPayload=z.infer<typeof startDailyPayloadSchema>;
+export type AdvanceDailyPayload=z.infer<typeof advanceDailyPayloadSchema>;
 export type CommandPayload =
+  | StartDailyPayload
+  | AdvanceDailyPayload
   | CreateLearnerPayload
   | SetRetentionPayload
   | StartAttemptPayload
@@ -521,6 +535,9 @@ function envelopeMember<K extends CommandKind>(
 }
 
 export const envelopeSchema = z.discriminatedUnion('kind', [
+  envelopeMember('learning.startDaily', payloadSchemaByKind['learning.startDaily'], false),
+  envelopeMember('learning.advanceDaily', payloadSchemaByKind['learning.advanceDaily'], true),
+  envelopeMember('learning.revealDaily', payloadSchemaByKind['learning.revealDaily'], true),
   envelopeMember('family.createLearner', payloadSchemaByKind['family.createLearner'], false),
   envelopeMember('family.setRetention', payloadSchemaByKind['family.setRetention'], false),
   envelopeMember('learning.startAttempt', payloadSchemaByKind['learning.startAttempt'], false),

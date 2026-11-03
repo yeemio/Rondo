@@ -20,6 +20,7 @@
  *   found now", never "the command never ran".
  */
 import { z } from 'zod';
+import {dailyProjectionSchema,dailyAttemptTagSchema} from './daily';
 import { activityHistorySchema, codeSnapshotSchema, codeAvailabilitySchema } from './activity';
 import { idSchema, positiveIntSchema } from './protocol';
 import { commandKindSchema, RETENTION_MODES } from './envelope';
@@ -57,6 +58,7 @@ export const CODE_JOB_STATUSES = [
 export type CodeJobStatus = (typeof CODE_JOB_STATUSES)[number];
 
 export const QUERY_KINDS = [
+  'learning.daily',
   'learning.activityHistory',
   'catalog.availableLessons',
   'learning.resumePoint',
@@ -79,6 +81,7 @@ const afterSeqSchema = z.number().int().min(0);
 
 export const publicQuerySchema = z
   .discriminatedUnion('kind', [
+    z.object({kind:z.literal('learning.daily'),learnerId:idSchema,setId:idSchema.optional()}).strict(),
     z.object({kind: z.literal('learning.activityHistory'), learnerId: idSchema}).strict(),
     z.object({ kind: z.literal('catalog.availableLessons') }).strict(),
     z.object({ kind: z.literal('learning.resumePoint'), learnerId: idSchema }).strict(),
@@ -191,6 +194,7 @@ export const deletionResultSchema = z.object({
 export type DeletionResult = z.infer<typeof deletionResultSchema>;
 
 export const publicProjectionSchema = z.discriminatedUnion('kind', [
+  dailyProjectionSchema,
   activityHistorySchema,
   z
     .object({
@@ -221,6 +225,7 @@ export const publicProjectionSchema = z.discriminatedUnion('kind', [
       releaseId: idSchema,
       questionInstanceId: idSchema,
       attemptStatus: attemptStatusSchema,
+      daily:dailyAttemptTagSchema.optional(),
       version: positiveIntSchema,
       currentCycle: z
         .object({
