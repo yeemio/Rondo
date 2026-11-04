@@ -1,0 +1,285 @@
+[
+  {
+    "id": "math6.u1-11",
+    "placementId": "U1-11",
+    "top": 1,
+    "pages": "11-12",
+    "title": "练习二",
+    "objectives": [
+      "能联系除法意义解释一个数除以小数表示的数量关系。",
+      "能运用商不变规律把除数转化为整数并正确计算。",
+      "能按指定精确度用四舍五入法求商的近似值。"
+    ],
+    "family": "decimal",
+    "variant": "divide",
+    "parameters": {
+      "a": 90,
+      "b": 45
+    },
+    "mode": "score",
+    "concept": "综合练习要区分准确商与按情境处理后的整数。",
+    "challenge": "算0.9÷0.045并验算；13.6吨橘子用载重4吨卡车运输。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "0.9÷0.045",
+        "kind": "quantity",
+        "unit": "unitless"
+      },
+      {
+        "id": "q2",
+        "label": "至少运输次数",
+        "kind": "quantity",
+        "unit": "次"
+      },
+      {
+        "id": "q3",
+        "label": "3.5÷1.1保留三位小数",
+        "kind": "quantity",
+        "unit": "unitless"
+      }
+    ],
+    "explain": "结合这次“练习二”，引用模型记录说明0.9÷0.045的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第11-12页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b06",
+    "placementId": "B06",
+    "top": 6,
+    "pages": "53-54",
+    "title": "按比分配",
+    "objectives": [
+      "能根据总量和各部分的比求各部分数量并检验总和。"
+    ],
+    "family": "ratio",
+    "variant": "",
+    "parameters": {
+      "first": 3,
+      "second": 2,
+      "scale": 1
+    },
+    "mode": "score",
+    "concept": "按比分配先把总量看作总份数，再分到各部分并检验总和。",
+    "challenge": "500克青团皮，糯米粉与草浆3∶2；再看含馅料5∶3∶2的500克青团。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "两种皮中糯米粉",
+        "kind": "quantity",
+        "unit": "克"
+      },
+      {
+        "id": "q2",
+        "label": "两种皮中草浆",
+        "kind": "quantity",
+        "unit": "克"
+      },
+      {
+        "id": "q3",
+        "label": "三种材料中豆沙",
+        "kind": "quantity",
+        "unit": "克"
+      }
+    ],
+    "explain": "结合这次“按比分配”，引用模型记录说明两种皮中糯米粉的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第53-54页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b16",
+    "placementId": "B16",
+    "top": 8,
+    "pages": "69-71",
+    "title": "圆的认识、画圆和基本特征",
+    "objectives": [
+      "能辨认圆心、半径和直径，按要求画圆并运用同圆半径相等等特征。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 3,
+      "angle": 90,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "圆心确定位置，半径确定大小；同圆半径相等，直径是半径两倍。",
+    "challenge": "分别建半径3厘米的圆与直径3厘米的圆。用半径线和直径线核对。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "半径3厘米的圆直径",
+        "kind": "quantity",
+        "unit": "厘米"
+      },
+      {
+        "id": "q2",
+        "label": "直径3厘米的圆半径",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“圆的认识、画圆和基本特征”，引用模型记录说明半径3厘米的圆直径的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第69-71页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.b20",
+    "placementId": "B20",
+    "top": 8,
+    "pages": "76-77",
+    "title": "圆的周长、圆周率与公式",
+    "objectives": [
+      "能根据半径或直径求圆周长并解释圆周率。"
+    ],
+    "family": "circle",
+    "variant": "perimeter",
+    "parameters": {
+      "radius": 7,
+      "angle": 360,
+      "slices": 8,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "周长是边界长度，周长÷直径等于π；测量有误差，公式与测量记录要分开。",
+    "challenge": "改变圆的半径观察滚动一周；计算半径14米喷水池的周长（本题π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "半径14米圆周长",
+        "kind": "quantity",
+        "unit": "米"
+      },
+      {
+        "id": "q2",
+        "label": "周长31.4厘米圆的直径",
+        "kind": "quantity",
+        "unit": "厘米"
+      }
+    ],
+    "explain": "结合这次“圆的周长、圆周率与公式”，引用模型记录说明半径14米圆周长的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第76-77页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.u7-05",
+    "placementId": "U7-05",
+    "top": 11,
+    "pages": "111",
+    "title": "确定位置：评价与反思",
+    "objectives": [
+      "结合“确定位置：评价与反思”记录一次观察、解释或反思；不把活动记录当成正确性或掌握证据。"
+    ],
+    "family": "position",
+    "variant": "",
+    "parameters": {
+      "col": 3,
+      "row": 4,
+      "quadrant": 0,
+      "angle": 30,
+      "distance": 20
+    },
+    "mode": "observe",
+    "concept": "反思要指出表示方法的条件与局限。",
+    "challenge": "保存同一位置的方格数对与方向距离记录，比较两种方法需要哪些信息。",
+    "questions": [],
+    "explain": "说明原点/观测点、轴方向、比例尺，提出一次误差检查；不要记录真实家庭位置。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第111页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-04",
+    "placementId": "R-04",
+    "top": 12,
+    "pages": "113",
+    "title": "回顾与整理：图形的位置与运动",
+    "objectives": [
+      "能判断图形按比例放大或缩小，并说明形状不变、对应边成比例。",
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。",
+      "能解释图上距离与实际距离的比，并在数值比例尺和线段比例尺间转换。"
+    ],
+    "family": "scale",
+    "variant": "",
+    "parameters": {
+      "sx": 2,
+      "sy": 2,
+      "divisor": 1
+    },
+    "mode": "score",
+    "concept": "图形运动复习区分放缩、平移、旋转；对应关系比外观更可靠。",
+    "challenge": "按2∶1放大底3格高2格梯形，再看平移7格是否改变面积。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "新底",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q2",
+        "label": "新高",
+        "kind": "quantity",
+        "unit": "格"
+      },
+      {
+        "id": "q3",
+        "label": "平移是否改变面积",
+        "kind": "choice",
+        "options": [
+          {
+            "id": "0",
+            "label": "改变"
+          },
+          {
+            "id": "1",
+            "label": "不改变"
+          }
+        ]
+      }
+    ],
+    "explain": "结合这次“回顾与整理：图形的位置与运动”，引用模型记录说明新底的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第113页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  },
+  {
+    "id": "math6.r-07",
+    "placementId": "R-07",
+    "top": 12,
+    "pages": "115-116",
+    "title": "练习与应用：圆、坐标与放缩",
+    "objectives": [
+      "能根据半径或直径求圆周长并解释圆周率。",
+      "能根据半径或直径求圆面积并说明公式中的量。",
+      "能根据给定比在方格纸上画出图形的放大图或缩小图。"
+    ],
+    "family": "circle",
+    "variant": "",
+    "parameters": {
+      "radius": 2,
+      "angle": 90,
+      "slices": 16,
+      "assembled": 0
+    },
+    "mode": "score",
+    "concept": "圆、坐标与放缩综合练习保持各自的约定。",
+    "challenge": "在（4，3）处半径2格圆中作面积占1/4的扇形；直径45厘米车轮滚40圈（π取3.14）。",
+    "questions": [
+      {
+        "id": "q1",
+        "label": "扇形圆心角",
+        "kind": "quantity",
+        "unit": "度"
+      },
+      {
+        "id": "q2",
+        "label": "车轮滚过长度",
+        "kind": "quantity",
+        "unit": "米"
+      }
+    ],
+    "explain": "结合这次“练习与应用：圆、坐标与放缩”，引用模型记录说明扇形圆心角的依据，指出一个容易混淆的条件或边界。",
+    "sourceSha256": "60820941f23b6bd043df9af0194695002ad63dca4f27b1fc3fa692e41360d3ea",
+    "sourceNote": "苏教版2024审核六年级上册，书内第115-116页；Rondo按该页段目标改编，模型及新练习为教学材料。"
+  }
+]

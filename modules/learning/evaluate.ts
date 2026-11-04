@@ -77,7 +77,7 @@ export interface FamilyItemFeedback {
 }
 
 export interface EvaluationFeedback {
-  readonly assessmentMode?: {version:'math.assessment.v1';mode:'OBSERVATION_RECORDED'|'RULE_CHECKED'};
+  readonly assessmentMode?: {version:'math.assessment.v1';mode:'OBSERVATION_RECORDED'|'RULE_CHECKED'}|{version:'gesp.assessment.v1';mode:'ISSUE_RECORDED'|'CHOICE_CHECKED'}|{version:'daily.assessment.v1';mode:'SHORT_CHECKED'};
   readonly ruleKind: 'PARAMETER_IDENTIFICATION_V1' | 'NUMERIC_RELATION_V1' | 'FAMILY_TRUTH_V1';
   readonly scenarioMet: boolean;
   readonly wrongProperties?: readonly string[];

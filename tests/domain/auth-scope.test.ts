@@ -105,6 +105,38 @@ test('lock revokes the current session; the context provider refuses the old ref
   }
 });
 
+test('ordinary learner sessions last four hours without granting guardian powers', async () => {
+  const { harness, learnerId, learnerCtx } = await createReadyHarness();
+  try {
+    const session = await harness.auth.session();
+    assert.equal(session?.role, 'LEARNER');
+    const expiresAt = session!.expiresAtMs;
+    assert.equal(expiresAt - harness.clock.now(), 4 * 60 * 60 * 1000);
+    harness.clock.advance(16 * 60 * 1000);
+    assert.equal((await harness.auth.session())?.expiresAtMs, expiresAt);
+    assert.equal((await harness.auth.contextProvider(learnerCtx.sessionId, WINDOW_REF))?.role, 'LEARNER');
+    const denied = await harness.cmd(learnerCtx, {
+      kind: 'guardian.prepareExport', idempotencyKey: 'four-hour-export-denied',
+      payload: { scope: { categories: ['ALIASES'] } }, target: { scope: 'FAMILY' },
+    });
+    assert.equal(denied.status, 'REJECTED');
+    assert.equal(denied.errorCode, 'FORBIDDEN');
+    await assert.rejects(() => harness.auth.enterLearner({ learnerId }),
+      (err: unknown) => asRondoError(err)?.code === 'UNAUTHENTICATED');
+    harness.clock.advance(expiresAt - harness.clock.now() - 1);
+    assert.equal((await harness.auth.session())?.learnerId, learnerId);
+    harness.clock.advance(1);
+    assert.equal(await harness.auth.session(), null);
+    assert.equal(await harness.auth.contextProvider(learnerCtx.sessionId, WINDOW_REF), null);
+    await harness.auth.unlockGuardian({ passphrase: GUARDIAN_PASSPHRASE });
+    const reentered = await harness.auth.enterLearner({ learnerId });
+    assert.equal(reentered.role, 'LEARNER');
+    assert.equal(reentered.expiresAtMs - harness.clock.now(), 4 * 60 * 60 * 1000);
+  } finally {
+    await harness.closeAll();
+  }
+});
+
 test('advancing the host epoch invalidates every older session', async () => {
   const root = await mkdtemp(join(tmpdir(), 'rondo-epoch-'));
   const dbFile = `${root}/rondo.sqlite`;

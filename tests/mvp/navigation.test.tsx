@@ -121,6 +121,6 @@ test('navigation catalogue remount restores selected lesson title and chapter/to
  const g=renderToStaticMarkup(<GespCatalogue selectedId={gesp.id} onSelect={()=>{}} completed={new Set()}/>);assert.ok(g.includes(gesp.title));assert.ok(g.includes('aria-pressed="true"'));
  const memory=store(),sessionDescriptor=Object.getOwnPropertyDescriptor(globalThis,'sessionStorage'),localDescriptor=Object.getOwnPropertyDescriptor(globalThis,'localStorage');memory.setItem('rondo.mvp.catalogue.family-test.learner-test',JSON.stringify(choice));
  Object.defineProperty(globalThis,'sessionStorage',{configurable:true,value:memory});Object.defineProperty(globalThis,'localStorage',{configurable:true,value:store()});
- try{const html=renderToStaticMarkup(<MvpHome ports={{isMock:false} as AppPorts} learnerId="learner-test" familyId="family-test" subject={0} onSubject={()=>{}} onOpenAttempt={()=>{}} onLock={()=>{}} onGuardian={()=>{}}/>);assert.ok(html.includes(math.title));}
+ try{const html=renderToStaticMarkup(<MvpHome ports={{isMock:false} as AppPorts} learnerId="learner-test" familyId="family-test" subject={0} onSubject={()=>{}} onOpenAttempt={()=>{}} onOpenDaily={()=>{}} onLock={()=>{}} onGuardian={()=>{}}/>);assert.ok(html.includes(math.title));}
  finally{if(sessionDescriptor)Object.defineProperty(globalThis,'sessionStorage',sessionDescriptor);else Reflect.deleteProperty(globalThis,'sessionStorage');if(localDescriptor)Object.defineProperty(globalThis,'localStorage',localDescriptor);else Reflect.deleteProperty(globalThis,'localStorage');}
 });
