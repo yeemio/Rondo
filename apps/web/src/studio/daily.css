@@ -13,6 +13,15 @@
 .daily-progress small{color:#63716a;margin-top:6px}
 .daily-step-number{font-variant-numeric:tabular-nums;color:#aa4f1d;font-size:16px}
 .daily-home-note .daily-progress{grid-template-columns:1fr}
+.daily-history-nav{min-width:0;margin:18px 0 26px;overflow-wrap:anywhere}
+.daily-history-nav h2{font-size:19px;color:#245b4e}
+.daily-history-nav ul{list-style:none;padding:0;margin:16px 0;display:grid;gap:10px}
+.daily-history-nav li,.daily-history-nav button>span{min-width:0}
+.daily-history-nav button{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;width:100%;max-width:100%;min-height:48px;box-sizing:border-box;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.daily-history-nav strong,.daily-history-nav small{display:block}
+.daily-history-nav small{margin-top:5px;color:#63716a;font-weight:400}
+.daily-history-nav button:focus-visible{outline:3px solid #aa4f1d;outline-offset:3px}
+.daily-history-nav button:disabled{opacity:.55;cursor:not-allowed}
 .daily-sheet{max-width:1000px;margin-left:auto;margin-right:auto;line-height:1.85}
 .daily-sheet header>p{max-width:72ch}
 .daily-sheet input,.daily-sheet select,.daily-sheet textarea{max-width:100%;font:inherit}

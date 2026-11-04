@@ -140,7 +140,7 @@ function DailyQuestion({ports,familyId,learnerId,set,item,command,revision,onCha
     {feedback?.reveal?.explanation?<details open><summary>对照解析</summary><p className="daily-source-text">{feedback.reveal.explanation}</p></details>:null}
     <LearningHints hints={cycle?.hints??[]} disabled={blocked||!active||!['OPERATE','VERIFY'].includes(phase)} onRequest={level=>void send('learning.requestHint',{hintLevel:level})}/>
     {cycle?.submissions.length?<details><summary>回看这题的每次回答 · {cycle.submissions.length}次</summary>{cycle.submissions.map((s,i)=><section key={s.submissionId}><h3>第{i+1}次 · {s.outcome==='CORRECT'?'核对正确':s.outcome==='REVISE'?'需要修正':'尚未核对'}</h3><DailyAnswerText response={s.response} item={item}/></section>)}</details>:null}
-    <details><summary>题目来源与这次安排</summary><p>{item.reason}</p><p>{item.selectionBasis}</p>{math?<p>{math.sourceNote}</p>:gesp?<GespSource lesson={gesp} compact/>:null}</details>
+    <details><summary>题目来源与建组时的安排理由</summary><p>{item.reason}</p><p>{item.selectionBasis}</p>{math?<p>{math.sourceNote}</p>:gesp?<GespSource lesson={gesp} compact/>:null}</details>
     {error?<p className="daily-field-error" role="alert">{error}</p>:null}
     {editing.notice?<p className="save-notice" role="status">{editing.notice}</p>:null}{editing.storageError?<p className="form-recovery" role="alert">{editing.storageError}</p>:null}
     {editing.retainedDraft?<details><summary>保留的较早编辑，可复制核对</summary>{(['prediction','answerText','explanation'] as const).map(key=><label key={key}>{key==='prediction'?'猜想':key==='answerText'?'回答':'解释'}<textarea readOnly value={editing.retainedDraft![key]}/></label>)}<button className="text-button" onClick={editor.discardRetained}>清除这份较早的本机草稿</button></details>:null}

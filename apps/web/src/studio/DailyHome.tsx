@@ -1,4 +1,5 @@
 import type {DailyProjection,DailySetView,DailyScope} from '../../../../modules/contracts/public/daily';
+import type {ActivityHistory} from '../../../../modules/contracts/public/activity';
 
 export const dailyResultText={NOT_CHECKED:'尚未核对',CORRECT:'核对正确',CORRECTED:'纠正后通过',REVIEW:'尚待复练',OBSERVED:'观察已记录'} as const;
 export function DailyProgress({set}: {set:DailySetView}){
@@ -30,9 +31,19 @@ export function DailyHomeCard({value,loadError,scope,disabled,activeOther,onStar
       <p className="footnote">日期按北京时间计算；昨天没做完的练习仍先继续。</p>
     </div>
     <aside className="daily-home-note"><h2>{unfinished?'这组顺序已经留好':'这次怎样安排'}</h2><p>优先再练有修正或提示记录的题，再接同类基础题。没有记录时，从已选定的小题池开始。</p><p>这是一组固定的基础练习。刷新或重新打开，会继续原组。</p>
-      {set?<details><summary>看看这组题目与安排理由</summary><DailyProgress set={set}/>{set.items.map(item=><p key={item.poolId}><strong>{item.title}</strong>：{item.reason}</p>)}</details>:null}
+      {set?<details><summary>看看这组题目与建组时的安排理由</summary><DailyProgress set={set}/>{set.items.map(item=><p key={item.poolId}><strong>{item.title}</strong>：{item.reason}</p>)}</details>:null}
     </aside>
   </section>;
+}
+/** References only: opening a group reads its original setId through the existing daily query. */
+export function DailyHistoryLinks({sets,onOpen,disabled=false}:{sets:NonNullable<ActivityHistory['dailySets']>;onOpen:(setId:string)=>void;disabled?:boolean}){
+  const groups=[...new Map(sets.map(set=>[set.setId,set])).values()].sort((a,b)=>b.createdAt-a.createdAt||b.setId.localeCompare(a.setId));
+  if(!groups.length)return null;
+  return <nav className="daily-history-nav" aria-label="回看日常题组与小结"><h2>按题组回看</h2><p>打开原来的一组，回看小结和每道题的记录。</p>
+    <ul>{groups.map(set=><li key={set.setId}><button type="button" className="secondary-button" disabled={disabled} onClick={()=>onOpen(set.setId)}>
+      <span><strong>{set.date} · {set.scope==='math'?'数学':'GESP客观题'}</strong><small>{new Date(set.createdAt+8*60*60*1000).toISOString().slice(11,16)} 建组 · 北京时间</small></span><span>回看题组与小结 →</span>
+    </button></li>)}</ul>
+  </nav>;
 }
 export function DailySummary({set,onHome,onPractice,disabled}:{set:DailySetView;onHome:()=>void;onPractice:()=>void;disabled:boolean}){
   const counts=(result:string)=>set.items.filter(item=>item.state!=='MISSING'&&item.result===result).length;

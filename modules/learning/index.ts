@@ -2113,6 +2113,9 @@ class LearningServerImpl {
     if(ctx.role==='LEARNER'&&ctx.learnerId!==learnerId)throw rondoError('FORBIDDEN','不能读取其他学习者的历史。');
     if(!await repos.learner.findById(scope,learnerId))throw rondoError('FORBIDDEN','学习者不可见。');
     const result:ActivityHistory={kind:'learning.activityHistory',learnerId,attempts:[]};
+    // Derive navigation references from retained organization events, never from browser scores or dates.
+    const dailySets=await readDailySets(scope,repos,learnerId);
+    if(dailySets.length)result.dailySets=dailySets.map(({plan:{setId,date,scope,createdAt}})=>({setId,date,scope,createdAt}));
     for(const attempt of await repos.learningAttempt.listByLearner(scope,learnerId)){
       if(!attempt.releaseId.startsWith('rondo.mvp.'))continue;
       const daily=await dailyMembership(scope,repos,attempt);

@@ -141,7 +141,15 @@ export function evaluateDailyShort(entry:DailyEntry,rule:ActivityRule,state:Acti
     const truth=rule.gesp,answer=response[0];
     if(rule.activity!=='gesp-objective'||!truth||truth.questionId!==entry.lessonId||truth.acceptedAnswers.includes('ISSUE')||!state.gesp||state.gesp.questionId!==entry.lessonId||response.length!==1||answer.kind!=='singleChoice'||answer.selectionId!==entry.lessonId||!(entry.lessonId.includes('.tf')?['T','F']:['A','B','C','D']).includes(answer.optionId))throw rondoError('INVALID_OPERATION','请选择当前客观题的一项；整题前提有争议的题不在日常自动核对范围内。');
     const ok=truth.acceptedAnswers.some(option=>option===answer.optionId);
-    items=[{key:entry.lessonId,label:'我的选择',verdict:ok?'CORRECT':'REVISE',feedback:ok?'这一项选择核对正确。':entry.skill==='运算符'?'再读符号的顺序；如果有赋值，要把结果放回变量。':entry.skill==='循环条件'?'先看条件何时检查，再考虑第一次检查就不成立的情况。':'区分语言规定的名字、普通名称，以及引号内的字符。'}];
+    // These four public prompts need different next steps despite sharing a skill label.
+    // Existing evaluations retain their saved feedback; only a new check uses these messages.
+    const nextStep:Record<string,string>={
+      'gesp2.202303.mcq05':'检查各选项是语言保留的关键字，还是可用作函数或变量的普通名字；题目要选“不是关键字”的一项。',
+      'gesp2.202303.mcq06':'核对每一项的两个符号能否组成 C++ 运算符；先分清斜杠 / 和反斜杠 \\，再留意题目问的是“不是”。',
+      'gesp2.202303.tf05':"把变量 a 和字符字面量 'a' 分开：引号里写的是哪个字符？给变量赋值，会改变引号内的文字吗？",
+      'gesp2.202303.tf08':'逐字比较题面两个符号的先后顺序；交换符号后，是否仍是 C++ 规定的运算符？',
+    };
+    items=[{key:entry.lessonId,label:'我的选择',verdict:ok?'CORRECT':'REVISE',feedback:ok?'这一项选择核对正确。':nextStep[entry.lessonId]??(entry.skill==='运算符'?'再读符号的顺序；如果有赋值，要把结果放回变量。':entry.skill==='循环条件'?'先看条件何时检查，再考虑第一次检查就不成立的情况。':'区分语言规定的名字、普通名称，以及引号内的字符。')}];
   }
   return {outcome:items.every(x=>x.verdict==='CORRECT')?'CORRECT':'REVISE',feedback:{ruleKind:'FAMILY_TRUTH_V1',scenarioMet:true,responseTypeOk:true,
     assessmentMode:{version:'daily.assessment.v1',mode:'SHORT_CHECKED'},itemResults:items,diagnostics:['只核对本次短练的回答；没有代填预测、模型记录或推演。'],
